@@ -283,7 +283,7 @@ ggplot(data = df_results_cv) +
 
 Best results obtained above can be extracted to obtain an improved predictor.
 
-Altrnatively a grid search for the best parameter combinationcan be performed.
+Altrnatively a grid search for the best parameter combination can be performed.
 
 ```{r prepareOptimization, eval=FALSE}
 train_labels <- ames_train$Sale_Price

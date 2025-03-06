@@ -1,13 +1,13 @@
 {
     "sortOrder": [
         {
-            "columnIndex": 2,
-            "ascending": true
-        },
-        {
             "columnIndex": 4,
             "ascending": false
+        },
+        {
+            "columnIndex": 2,
+            "ascending": true
         }
     ],
-    "path": "C:/Users/Usuario/Dropbox (Personal)/Classes/StatisticalLearning/Intro2StatisticalLearning/.github/workflows"
+    "path": "C:/Users/Usuario/Dropbox (Personal)/Classes/StatisticalLearning/Intro2StatisticalLearning/labs"
 }
