@@ -3,7 +3,7 @@ name: Render and Deploy Quarto Site
 on:
   push:
     branches:
-      - main  # Trigger deployment when changes are pushed to main
+      - main  # Change if using another branch
 
 jobs:
   build-deploy:
@@ -12,17 +12,45 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Cache Quarto installation
+      - name: Cache Quarto
+        uses: actions/cache@v3
+        with:
+          path: /opt/quarto
+          key: quarto-v1
+
+      # Install Quarto only if not cached
       - name: Install Quarto
         run: |
-          wget https://quarto.org/download/latest/quarto-linux-amd64.deb
-          sudo dpkg -i quarto-linux-amd64.deb
+          if [ ! -f /opt/quarto/bin/quarto ]; then
+            wget https://quarto.org/download/latest/quarto-linux-amd64.deb
+            sudo dpkg -i quarto-linux-amd64.deb
+            sudo mv /usr/local/bin/quarto /opt/quarto/bin/quarto
+          fi
+          echo "/opt/quarto/bin" >> $GITHUB_PATH
 
+      # Cache TinyTeX installation
+      - name: Cache TinyTeX
+        uses: actions/cache@v3
+        with:
+          path: ~/.TinyTeX
+          key: tinytex-v1
+
+      # Install TinyTeX only if not cached
+      - name: Install TinyTeX
+        run: |
+          if [ ! -d ~/.TinyTeX ]; then
+            quarto install tinytex
+          fi
+          echo "PATH=$HOME/bin:$PATH" >> $GITHUB_ENV
+
+      # Render Quarto website
       - name: Render site
         run: quarto render
 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
-
