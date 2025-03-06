@@ -1,0 +1,8 @@
+---
+title: "About"
+---
+
+This page is intended to provide support materials (slides, scripts datasets etc)  in an agile way for one part of the _Statistical Learning_ 
+course at the [UPC-UB MSc in Statistics and Operations Research (MESIO)](https://mesioupcub.masters.upc.edu/en).
+
+This part of the course has an introduction and two blocks, each with two parts.
