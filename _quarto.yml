@@ -21,17 +21,17 @@ website:
           - href: index.qmd
             text: Home
           - href: C0-Intro2StatLearn-PD_AS.qmd
-            text: Course presentation
+            text: Course presentation (Slides)
           - href: C1.1-SupervisedLearning-PD_AS.qmd
-            text: Overview of Supervised Learning
+            text: Overview of Supervised Learning (Slides)
           - href: C1.2-Model_validation_and_Resampling.qmd
-            text: Model Validation and Resampling
+            text: Model Validation and Resampling (Slides)
 
       - section: "Tree-based Methods"
         contents:
           - href: C2.1-DecisionTrees-Slides.qmd
-            text: Decision Trees
-          - href: CART-Examples.html
+            text: Decision Trees (Slides)
+          - href: labs/CART-Examples.html
             text: Classification and Regression Trees (Lab)
           - href: labs/Lab-C2.3-Py-ISLch08-baggboost.ipynb
             text: Decision Trees Lab (Python)
@@ -39,7 +39,7 @@ website:
       - section: "Ensemble Methods"
         contents:
           - href: C2.2-Ensemble_Methods-Slides.qmd
-            text: Ensemble Methods
+            text: Ensemble Methods (Slides)
           - href: labs/Lab-C.2.4-Ensembles-1RF.qmd
             text: Random Forest Lab
           - href: labs/Lab-C.2.4-Boosting.qmd
@@ -50,9 +50,9 @@ website:
       - section: "Artificial Neural Networks"
         contents:
           - href: C3.1-Introduction_to_ANN-Slides.qmd
-            text: Neural Networks
+            text: Neural Networks (Slides)
           - href: C3.2-Introduction_to_Deep_Learning-Slides.qmd
-            text: Deep Learning
+            text: Deep Learning (Slides)
 
       # - section: "Resources"
       #   contents:
