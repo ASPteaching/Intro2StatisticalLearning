@@ -54,10 +54,10 @@ website:
           - href: C3.2-Introduction_to_Deep_Learning-Slides.qmd
             text: Deep Learning
 
-      - section: "Resources"
-        contents:
-          - href: references.qmd
-            text: References
+      # - section: "Resources"
+      #   contents:
+      #     - href: references.qmd
+      #       text: References
 # 
 # format:
 #   html:

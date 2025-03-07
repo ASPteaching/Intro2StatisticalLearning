@@ -24,12 +24,16 @@ By the other side, in order to make the materials completely reproducible, the p
 
 - [Course presentation](C0-Intro2StatLearn-PD_AS.qmd)
 
-- [1.1 Overview of Supervised Learning](C1.1-SupervisedLearning-PD_AS.qmd)
-- [1.2 Model validation and Resampling](C1.2-Model_validation_and_Resampling.qmd)
+The first part of the course introduces Statistical Learning and relates it to the related fields of Statistics, Machine Learning and Statistical Learning.
 
-- R-labs
-  - [Regression with KNN](labs/Lab-C1.1-knn4regression.Rmd)
-  - [Classification with KNN](labs/Lab-C1.2-knn4classification)
+This done an introduction to Supervised Learning (Prediction and Classification) and to Model Validation and Resampling (Bootstrap) concepts is presented.
+
+<!-- - [1.1 Overview of Supervised Learning](C1.1-SupervisedLearning-PD_AS.qmd) -->
+<!-- - [1.2 Model validation and Resampling](C1.2-Model_validation_and_Resampling.qmd) -->
+
+<!-- - R-labs -->
+<!--   - [Regression with KNN](labs/Lab-C1.1-knn4regression.Rmd) -->
+<!--   - [Classification with KNN](labs/Lab-C1.2-knn4classification) -->
 
 - Complements
   - [Introduction to biomarkers and diagnostic tests](FromBiomarker2DiagnosticTests.pdf)
@@ -40,11 +44,11 @@ By the other side, in order to make the materials completely reproducible, the p
 
 Decision trees are a type of non-parametric classifiers which have been Very successful because of their interpretability, flexibility and a very decent accuracy.
 
-- [2.1-DecisionTrees-Slides](2.1-DecisionTrees-Slides.qmd)
-- R-labs
-    - [Lab_1- Classification and Regression Trees](CART-Examples.html)
-- Python-labs
-    - [Lab_1- Decision Trees lab (from ISL. Ch 08)](ISLch08-baggboost-lab.ipynb)
+<!-- - [2.1-DecisionTrees-Slides](2.1-DecisionTrees-Slides.qmd) -->
+<!-- - R-labs -->
+<!--     - [Lab_1- Classification and Regression Trees](CART-Examples.html) -->
+<!-- - Python-labs -->
+<!--     - [Lab_1- Decision Trees lab (from ISL. Ch 08)](ISLch08-baggboost-lab.ipynb) -->
 
 ### Ensemble methods
 
@@ -52,14 +56,14 @@ The term "Ensemble" (together in french) refers to distinct approaches to build 
 
 They have proved to addres well some limitations of trees therefore improving accuracy and robustness as well as being able to reduce overfitting and capture complex relationships.
 
-- [2.2-Ensemble Methods. Slides](C2.2-Ensemble_Methods-Slides.qmd)
-- R-Labs
-  - [Ensemble Lab 1 (Random Forest)](labs/Lab-C.2.4-Ensembles-1RF.qmd)
-  - [Ensemble Lab 2 (Boosting)](Lab-C.2.4-Boosting.qmd)
-  - [Ensemble Lab 2b (Boosting Optimization)](Lab-C.2.4b-BoostingOptimization.qmd)
+<!-- - [2.2-Ensemble Methods. Slides](C2.2-Ensemble_Methods-Slides.qmd) -->
+<!-- - R-Labs -->
+<!--   - [Ensemble Lab 1 (Random Forest)](labs/Lab-C.2.4-Ensembles-1RF.qmd) -->
+<!--   - [Ensemble Lab 2 (Boosting)](Lab-C.2.4-Boosting.qmd) -->
+<!--   - [Ensemble Lab 2b (Boosting Optimization)](Lab-C.2.4b-BoostingOptimization.qmd) -->
 
-  - [Ensemble Lab 3 (Caret)](The-caret_package.qmd)
-  
+<!--   - [Ensemble Lab 3 (Caret)](The-caret_package.qmd) -->
+
 
 ## Artifical Neural Networks
 
@@ -71,10 +75,10 @@ For long their applicability has been relatively restricted to a few fields or p
 
 The scenario has now completely changed with the advent of deep neural networks which are in the basis of many powerful applications of artificial intelligence.
 
-- [Neural Networks Slides](C3.1-Introduction_to_ANN-Slides.qmd)
-- Labs
-  - NeuralNets Lab (Rmd version)
-  - NeuralNets Lab (Python notebook
+<!-- - [Neural Networks Slides](C3.1-Introduction_to_ANN-Slides.qmd) -->
+<!-- - Labs -->
+<!--   - NeuralNets Lab (Rmd version) -->
+<!--   - NeuralNets Lab (Python notebook -->
 
 ### Deep Neural Networks
 
@@ -82,9 +86,9 @@ Esssentially these are ANN with multiple hidden layers with allow overpassing ma
 
 They can be tuned in a much more automatical way and have been applied to many complex tasks. such as Computer vision, Natural Language Processing or Recommender systems.
   
-- [Deep learning Slides](C3.2-Introduction_to_Deep_Learning-Slides.qmd)
-  - DeepLearning Lab (Rmd version)
-  - DeepLearning Lab (Python notebook
+<!-- - [Deep learning Slides](C3.2-Introduction_to_Deep_Learning-Slides.qmd) -->
+<!--   - DeepLearning Lab (Rmd version) -->
+<!--   - DeepLearning Lab (Python notebook -->
   
 
 # References and resources
