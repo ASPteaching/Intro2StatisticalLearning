@@ -10,7 +10,6 @@ format:
       code-fold: false
       fig-width: 8
       fig-height: 6
-    pdf: default
 knit:
   quarto:
     chunk_options:

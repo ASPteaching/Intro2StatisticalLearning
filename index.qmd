@@ -2,19 +2,31 @@
 title: "Introduction to Statistical Learning"
 ---
 
+# Introduction
 
-# Introduction 
+This [web page](https://aspteaching.github.io/Intro2StatisticalLearning/) and its [associated github repository](https://github.comaspteaching/Intro2StatisticalLearning/) is intended to provide materials 
+(slides, scripts datasets etc) for _some of the units[^1]_ of the _Statistical Learning_ 
+course at the [UPC-UB MSc in Statistics and Operations Research (MESIO)](https://mesioupcub.masters.upc.edu/en).
 
-All materials are available from the repository [https://aspteaching.github.io/Intro2StatisticalLearning/](https://aspteaching.github.io/Intro2StatisticalLearning/).
+[^1:] Specifically the materials in this page are about chapters:
 
-In this page you will find links to the html/pdf version of the slides and other documents, as well as to datasets or references and resources documents
+  1. Introduction 
+  4. Tree and Ensemble Methods 
+  5. Artificial Neural Networks..
 
-- [Course presentation](C0-Intro2StatLearn-PD_AS.qmd)
+The main reason for creating this page, apart of making it open and facilitatigt the hierrchjichal presentation of the materials, is that some labs may take time to run. So, given that it is not an option to run them in class we provide links to the HTML files obtaind when running the R or Python notebooks provided.
+
+By the other side, in order to make the materials completely reproducible, the page is based on a github repository, which can be cloned or downladed in order for anyone who wishes to play around with the materials and reproduce or improve the examples.
+
+
 
 ## Introduction to Statistical Learning
 
+- [Course presentation](C0-Intro2StatLearn-PD_AS.qmd)
+
 - [1.1 Overview of Supervised Learning](C1.1-SupervisedLearning-PD_AS.qmd)
 - [1.2 Model validation and Resampling](C1.2-Model_validation_and_Resampling.qmd)
+
 - R-labs
   - [Regression with KNN](labs/Lab-C1.1-knn4regression.Rmd)
   - [Classification with KNN](labs/Lab-C1.2-knn4classification)
@@ -41,10 +53,13 @@ The term "Ensemble" (together in french) refers to distinct approaches to build 
 They have proved to addres well some limitations of trees therefore improving accuracy and robustness as well as being able to reduce overfitting and capture complex relationships.
 
 - [2.2-Ensemble Methods. Slides](C2.2-Ensemble_Methods-Slides.qmd)
-- Labs
+- R-Labs
   - [Ensemble Lab 1 (Random Forest)](labs/Lab-C.2.4-Ensembles-1RF.qmd)
-  - [Ensemble Lab 2 (Boosting](Lab-C.2.4-Boosting.qmd)
+  - [Ensemble Lab 2 (Boosting)](Lab-C.2.4-Boosting.qmd)
+  - [Ensemble Lab 2b (Boosting Optimization)](Lab-C.2.4b-BoostingOptimization.qmd)
+
   - [Ensemble Lab 3 (Caret)](The-caret_package.qmd)
+  
 
 ## Artifical Neural Networks
 
