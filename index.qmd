@@ -71,7 +71,7 @@ For long their applicability has been relatively restricted to a few fields or p
 
 The scenario has now completely changed with the advent of deep neural networks which are in the basis of many powerful applications of artificial intelligence.
 
-- Neural Networks Slides
+- [Neural Networks Slides](C3.1-Introduction_to_ANN-Slides.qmd)
 - Labs
   - NeuralNets Lab (Rmd version)
   - NeuralNets Lab (Python notebook
@@ -82,7 +82,7 @@ Esssentially these are ANN with multiple hidden layers with allow overpassing ma
 
 They can be tuned in a much more automatical way and have been applied to many complex tasks. such as Computer vision, Natural Language Processing or Recommender systems.
   
-- Deep learning Slides
+- [Deep learning Slides](C3.2-Introduction_to_Deep_Learning-Slides.qmd)
   - DeepLearning Lab (Rmd version)
   - DeepLearning Lab (Python notebook
   

@@ -134,10 +134,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -155,7 +154,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -163,35 +162,184 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aspteaching/Intro2StatisticalLearning"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C2.1-DecisionTrees-Slides.html">Tree-based Methods</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C2.3-Py-ISLch08-baggboost.html">Decision Trees Lab (Python)</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#install-load-required-libraries" id="toc-install-load-required-libraries" class="nav-link" data-scroll-target="#install-load-required-libraries">Install / load required libraries</a></li>
-  <li><a href="#fitting-classification-trees" id="toc-fitting-classification-trees" class="nav-link" data-scroll-target="#fitting-classification-trees">Fitting Classification Trees</a></li>
-  <li><a href="#fitting-regression-trees" id="toc-fitting-regression-trees" class="nav-link" data-scroll-target="#fitting-regression-trees">Fitting Regression Trees</a></li>
-  <li><a href="#bagging-and-random-forests" id="toc-bagging-and-random-forests" class="nav-link" data-scroll-target="#bagging-and-random-forests">Bagging and Random Forests</a></li>
-  <li><a href="#boosting" id="toc-boosting" class="nav-link" data-scroll-target="#boosting">Boosting</a></li>
-  <li><a href="#bayesian-additive-regression-trees" id="toc-bayesian-additive-regression-trees" class="nav-link" data-scroll-target="#bayesian-additive-regression-trees">Bayesian Additive Regression Trees</a></li>
-  </ul>
-</nav>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C0-Intro2StatLearn-PD_AS.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course presentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C1.1-SupervisedLearning-PD_AS.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of Supervised Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C1.2-Model_validation_and_Resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Validation and Resampling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tree-based Methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C2.1-DecisionTrees-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../CART-Examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classification and Regression Trees (Lab)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C2.3-Py-ISLch08-baggboost.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Decision Trees Lab (Python)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Ensemble Methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C2.2-Ensemble_Methods-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ensemble Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C.2.4-Ensembles-1RF.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random Forest Lab</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C.2.4-Boosting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boosting Lab</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C.2.4b-BoostingOptimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boosting Optimization Lab</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Artificial Neural Networks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C3.1-Introduction_to_ANN-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C3.2-Introduction_to_Deep_Learning-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deep Learning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
     </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C2.1-DecisionTrees-Slides.html">Tree-based Methods</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C2.3-Py-ISLch08-baggboost.html">Decision Trees Lab (Python)</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Lab: Tree based methods</h1>
 </div>
@@ -299,7 +447,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Py-ISLch08-baggboost-lab_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab-C2.3-Py-ISLch08-baggboost_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -401,7 +549,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Py-ISLch08-baggboost-lab_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab-C2.3-Py-ISLch08-baggboost_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -490,7 +638,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Py-ISLch08-baggboost-lab_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab-C2.3-Py-ISLch08-baggboost_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -527,7 +675,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Py-ISLch08-baggboost-lab_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab-C2.3-Py-ISLch08-baggboost_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -555,7 +703,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Py-ISLch08-baggboost-lab_files/figure-html/cell-26-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="Lab-C2.3-Py-ISLch08-baggboost_files/figure-html/cell-26-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -692,7 +840,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Py-ISLch08-baggboost-lab_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Lab-C2.3-Py-ISLch08-baggboost_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

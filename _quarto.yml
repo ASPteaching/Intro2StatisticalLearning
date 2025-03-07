@@ -29,11 +29,11 @@ website:
 
       - section: "Tree-based Methods"
         contents:
-          - href: 2.1-DecisionTrees-Slides.qmd
+          - href: C2.1-DecisionTrees-Slides.qmd
             text: Decision Trees
           - href: CART-Examples.html
             text: Classification and Regression Trees (Lab)
-          - href: ISLch08-baggboost-lab.ipynb
+          - href: labs/Lab-C2.3-Py-ISLch08-baggboost.ipynb
             text: Decision Trees Lab (Python)
 
       - section: "Ensemble Methods"
@@ -42,24 +42,26 @@ website:
             text: Ensemble Methods
           - href: labs/Lab-C.2.4-Ensembles-1RF.qmd
             text: Random Forest Lab
-          - href: Lab-C.2.4-Boosting.qmd
+          - href: labs/Lab-C.2.4-Boosting.qmd
             text: Boosting Lab
+          - href: labs/Lab-C.2.4b-BoostingOptimization.qmd
+            text: Boosting Optimization Lab
 
       - section: "Artificial Neural Networks"
         contents:
-          - href: Neural_Networks.qmd
+          - href: C3.1-Introduction_to_ANN-Slides.qmd
             text: Neural Networks
-          - href: Deep_Learning.qmd
+          - href: C3.2-Introduction_to_Deep_Learning-Slides.qmd
             text: Deep Learning
 
       - section: "Resources"
         contents:
           - href: references.qmd
             text: References
-
-format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
-    link-external-newwindow: true  # 🔹 Enlaces externos se abren en nueva pestaña
+# 
+# format:
+#   html:
+#     theme: cosmo
+#     css: styles.css
+#     toc: true
+    # link-external-newwindow: true  #Enlaces externos se abren en nueva pestaña

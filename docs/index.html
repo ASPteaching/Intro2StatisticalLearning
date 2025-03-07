@@ -68,10 +68,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -172,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2.1-DecisionTrees-Slides.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./C2.1-DecisionTrees-Slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Decision Trees</span></a>
   </div>
 </li>
@@ -184,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ISLch08-baggboost-lab.ipynb" class="sidebar-item-text sidebar-link">
+  <a href="./labs/Lab-C2.3-Py-ISLch08-baggboost.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Decision Trees Lab (Python)</span></a>
   </div>
 </li>
@@ -213,8 +212,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab-C.2.4-Boosting.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./labs/Lab-C.2.4-Boosting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Boosting Lab</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C.2.4b-BoostingOptimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boosting Optimization Lab</span></a>
   </div>
 </li>
       </ul>
@@ -230,13 +235,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Neural_Networks.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./C3.1-Introduction_to_ANN-Slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Neural Networks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Deep_Learning.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./C3.2-Introduction_to_Deep_Learning-Slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deep Learning</span></a>
   </div>
 </li>
@@ -264,34 +269,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#introduction-to-statistical-learning" id="toc-introduction-to-statistical-learning" class="nav-link" data-scroll-target="#introduction-to-statistical-learning">Introduction to Statistical Learning</a></li>
-  <li><a href="#tree-based-methods" id="toc-tree-based-methods" class="nav-link" data-scroll-target="#tree-based-methods">Tree based methods</a>
-  <ul class="collapse">
-  <li><a href="#decision-trees" id="toc-decision-trees" class="nav-link" data-scroll-target="#decision-trees">Decision Trees</a></li>
-  <li><a href="#ensemble-methods" id="toc-ensemble-methods" class="nav-link" data-scroll-target="#ensemble-methods">Ensemble methods</a></li>
-  </ul></li>
-  <li><a href="#artifical-neural-networks" id="toc-artifical-neural-networks" class="nav-link" data-scroll-target="#artifical-neural-networks">Artifical Neural Networks</a>
-  <ul class="collapse">
-  <li><a href="#shallow-neural-networks" id="toc-shallow-neural-networks" class="nav-link" data-scroll-target="#shallow-neural-networks">Shallow Neural Networks</a></li>
-  <li><a href="#deep-neural-networks" id="toc-deep-neural-networks" class="nav-link" data-scroll-target="#deep-neural-networks">Deep Neural Networks</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#references-and-resources" id="toc-references-and-resources" class="nav-link" data-scroll-target="#references-and-resources">References and resources</a>
-  <ul class="collapse">
-  <li><a href="#references-for-tree-based-methods" id="toc-references-for-tree-based-methods" class="nav-link" data-scroll-target="#references-for-tree-based-methods">References for Tree based methods</a></li>
-  <li><a href="#references-for-deep-neural-networks" id="toc-references-for-deep-neural-networks" class="nav-link" data-scroll-target="#references-for-deep-neural-networks">References for deep neural networks</a></li>
-  <li><a href="#some-interesting-online-resources" id="toc-some-interesting-online-resources" class="nav-link" data-scroll-target="#some-interesting-online-resources">Some interesting online resources</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -383,7 +361,7 @@ ul.task-list li input[type="checkbox"] {
 <p>For long their applicability has been relatively restricted to a few fields or problems due mainly to their “black box” functioning that made them hard to interpret.</p>
 <p>The scenario has now completely changed with the advent of deep neural networks which are in the basis of many powerful applications of artificial intelligence.</p>
 <ul>
-<li>Neural Networks Slides</li>
+<li><a href="./C3.1-Introduction_to_ANN-Slides.html">Neural Networks Slides</a></li>
 <li>Labs
 <ul>
 <li>NeuralNets Lab (Rmd version)</li>
@@ -396,7 +374,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Esssentially these are ANN with multiple hidden layers with allow overpassing many of their limitations.</p>
 <p>They can be tuned in a much more automatical way and have been applied to many complex tasks. such as Computer vision, Natural Language Processing or Recommender systems.</p>
 <ul>
-<li>Deep learning Slides
+<li><a href="./C3.2-Introduction_to_Deep_Learning-Slides.html">Deep learning Slides</a>
 <ul>
 <li>DeepLearning Lab (Rmd version)</li>
 <li>DeepLearning Lab (Python notebook</li>
@@ -549,11 +527,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

@@ -132,10 +132,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,7 +152,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -161,59 +160,180 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aspteaching/Intro2StatisticalLearning"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">k-NN regression</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#data-for-prediction" id="toc-data-for-prediction" class="nav-link" data-scroll-target="#data-for-prediction">Data for prediction</a></li>
-  <li><a href="#main-predicion-goal" id="toc-main-predicion-goal" class="nav-link" data-scroll-target="#main-predicion-goal">Main predicion goal</a></li>
-  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description">Data description</a></li>
-  </ul></li>
-  <li><a href="#building-a-model-with-knn" id="toc-building-a-model-with-knn" class="nav-link" data-scroll-target="#building-a-model-with-knn">Building a model with KNN</a>
-  <ul class="collapse">
-  <li><a href="#tuning-the-model" id="toc-tuning-the-model" class="nav-link" data-scroll-target="#tuning-the-model">Tuning the model</a></li>
-  </ul></li>
-  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance">Model performance</a>
-  <ul class="collapse">
-  <li><a href="#what-is-training-error" id="toc-what-is-training-error" class="nav-link" data-scroll-target="#what-is-training-error">What is Training Error?</a>
-  <ul class="collapse">
-  <li><a href="#why-is-training-error-misleading" id="toc-why-is-training-error-misleading" class="nav-link" data-scroll-target="#why-is-training-error-misleading">Why is Training Error Misleading?</a></li>
-  <li><a href="#example-k-nn-and-overfitting" id="toc-example-k-nn-and-overfitting" class="nav-link" data-scroll-target="#example-k-nn-and-overfitting">Example: k-NN and Overfitting</a></li>
-  </ul></li>
-  <li><a href="#a-better-approach-using-test-error" id="toc-a-better-approach-using-test-error" class="nav-link" data-scroll-target="#a-better-approach-using-test-error">A Better Approach: Using Test Error</a>
-  <ul class="collapse">
-  <li><a href="#an-improved-example" id="toc-an-improved-example" class="nav-link" data-scroll-target="#an-improved-example">An (improved) example</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#step-by-step-explanation-of-the-knn_regr-function" id="toc-step-by-step-explanation-of-the-knn_regr-function" class="nav-link" data-scroll-target="#step-by-step-explanation-of-the-knn_regr-function">Step-by-step Explanation of the knn_regr Function</a>
-  <ul class="collapse">
-  <li><a href="#function-code" id="toc-function-code" class="nav-link" data-scroll-target="#function-code">Function Code</a></li>
-  <li><a href="#step-by-step-explanation" id="toc-step-by-step-explanation" class="nav-link" data-scroll-target="#step-by-step-explanation">Step-by-Step Explanation</a>
-  <ul class="collapse">
-  <li><a href="#function-inputs" id="toc-function-inputs" class="nav-link" data-scroll-target="#function-inputs">1. Function Inputs</a></li>
-  <li><a href="#checking-the-input-t" id="toc-checking-the-input-t" class="nav-link" data-scroll-target="#checking-the-input-t">2. Checking the Input <code>t</code></a></li>
-  <li><a href="#compute-the-distance-matrix" id="toc-compute-the-distance-matrix" class="nav-link" data-scroll-target="#compute-the-distance-matrix">3. Compute the Distance Matrix</a></li>
-  <li><a href="#find-the-k-nearest-neighbors" id="toc-find-the-k-nearest-neighbors" class="nav-link" data-scroll-target="#find-the-k-nearest-neighbors">4. Find the k Nearest Neighbors</a></li>
-  <li><a href="#compute-the-k-nn-estimate" id="toc-compute-the-k-nn-estimate" class="nav-link" data-scroll-target="#compute-the-k-nn-estimate">5. Compute the k-NN Estimate</a></li>
-  <li><a href="#return-the-estimated-values" id="toc-return-the-estimated-values" class="nav-link" data-scroll-target="#return-the-estimated-values">6. Return the Estimated Values</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C0-Intro2StatLearn-PD_AS.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course presentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C1.1-SupervisedLearning-PD_AS.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of Supervised Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C1.2-Model_validation_and_Resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Validation and Resampling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tree-based Methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C2.1-DecisionTrees-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../CART-Examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classification and Regression Trees (Lab)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C2.3-Py-ISLch08-baggboost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees Lab (Python)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Ensemble Methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C2.2-Ensemble_Methods-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ensemble Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C.2.4-Ensembles-1RF.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random Forest Lab</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C.2.4-Boosting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boosting Lab</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C.2.4b-BoostingOptimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boosting Optimization Lab</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Artificial Neural Networks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C3.1-Introduction_to_ANN-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C3.2-Introduction_to_Deep_Learning-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deep Learning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
     </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
