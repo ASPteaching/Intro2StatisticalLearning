@@ -188,192 +188,96 @@ paste("Error train (rmse) in XGBoost:", round(train_rmseboost,2))
 paste("Error test (rmse) in XGBoost:", round(test_rmseboost,2))
 ```
 
-# Parameter optimization
+<!-- # Parameter optimization -->
 
-## Tree number
+<!-- ## Tree number -->
 
-This is a critical parameter as far as adding new trees increases risk of overfitting.
+<!-- This is a critical parameter as far as adding new trees increases risk of overfitting. -->
 
-```{r}
-boostResult_cv <- xgb.cv(
-                data      = ames_train,
-                params    = list(eta = 0.3, max_depth = 6, subsample = 1),
-                nrounds   = 500,
-                nfold     = 5,
-                metrics   = "rmse", 
-                verbose   = 0
-             )
+<!-- ```{r} -->
+<!-- boostResult_cv <- xgb.cv( -->
+<!--                 data      = ames_train, -->
+<!--                 params    = list(eta = 0.3, max_depth = 6, subsample = 1), -->
+<!--                 nrounds   = 500, -->
+<!--                 nfold     = 5, -->
+<!--                 metrics   = "rmse",  -->
+<!--                 verbose   = 0 -->
+<!--              ) -->
 
-boostResult_cv <- boostResult_cv$evaluation_log
-```
+<!-- boostResult_cv <- boostResult_cv$evaluation_log -->
+<!-- ``` -->
 
-We aim at at the lowest number of trees that has associated a small cross-validation error.
-
-
-```{r}
-ggplot(data = boostResult_cv) +
-  geom_line(aes(x = iter, y = train_rmse_mean, color = "train rmse")) + 
-  geom_line(aes(x = iter, y = test_rmse_mean, color = "cv rmse")) +
-  geom_point(
-    data = slice_min(boostResult_cv, order_by = test_rmse_mean, n = 1),
-    aes(x = iter, y = test_rmse_mean),
-    color = "firebrick"
-  ) +
-  labs(
-    title = "Evolution of cv-error vs number of trees",
-    x     = "number of trees",
-    y     = "cv-error (rmse)",
-    color = ""
-  ) +
-  theme_bw() +
-  theme(legend.position = "bottom")
-```
-
-```{r}
-paste("Optimal number of rounds (nrounds):", slice_min(boostResult_cv, order_by = test_rmse_mean, n = 1)$iter)
-```
-
-## Learning rate
-
-Alongside the number of trees, the learning rate (eta) is the most crucial hyperparameter in Gradient Boosting. It controls how quickly the model learns and thus influences the risk of overfitting. 
-
-These two hyperparameters are interdependent: a lower learning rate requires more trees to achieve good results but reduces the risk of overfitting.
-
-```{r}
-eta_range          <- c(0.001, 0.01, 0.1, 0.3)
-df_results_cv   <- data.frame()
-
-for(i in seq_along(eta_range)){
-  set.seed(123)
-  results_cv <- xgb.cv(
-                    data    = ames_train,
-                    params  = list(eta = eta_range[i], 
-                                   max_depth = 6, subsample = 1),
-                    nrounds = 4000,
-                    nfold   = 5,
-                    metrics = "rmse", 
-                    verbose = 0
-                 )
-  
-  results_cv <- results_cv$evaluation_log
-  results_cv <- results_cv %>%
-                   select(iter, test_rmse_mean) %>%
-                   mutate(eta = as.character(eta_range[i]))
-  
-  df_results_cv <- df_results_cv %>% bind_rows(results_cv)
-}
-```
+<!-- We aim at at the lowest number of trees that has associated a small cross-validation error. -->
 
 
-```{r}
-ggplot(data = df_results_cv) +
-  geom_line(aes(x = iter, y = test_rmse_mean, color = eta)) + 
-  labs(
-    title = "Evolution of cv-error vs learning rate (eta)",
-    x     = "eta",
-    y     = "cv-error (rmse)",
-    color = ""
-  ) +
-  theme_bw() +
-  theme(legend.position = "bottom")
-```
+<!-- ```{r} -->
+<!-- ggplot(data = boostResult_cv) + -->
+<!--   geom_line(aes(x = iter, y = train_rmse_mean, color = "train rmse")) +  -->
+<!--   geom_line(aes(x = iter, y = test_rmse_mean, color = "cv rmse")) + -->
+<!--   geom_point( -->
+<!--     data = slice_min(boostResult_cv, order_by = test_rmse_mean, n = 1), -->
+<!--     aes(x = iter, y = test_rmse_mean), -->
+<!--     color = "firebrick" -->
+<!--   ) + -->
+<!--   labs( -->
+<!--     title = "Evolution of cv-error vs number of trees", -->
+<!--     x     = "number of trees", -->
+<!--     y     = "cv-error (rmse)", -->
+<!--     color = "" -->
+<!--   ) + -->
+<!--   theme_bw() + -->
+<!--   theme(legend.position = "bottom") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- paste("Optimal number of rounds (nrounds):", slice_min(boostResult_cv, order_by = test_rmse_mean, n = 1)$iter) -->
+<!-- ``` -->
+
+<!-- ## Learning rate -->
+
+<!-- Alongside the number of trees, the learning rate (eta) is the most crucial hyperparameter in Gradient Boosting. It controls how quickly the model learns and thus influences the risk of overfitting.  -->
+
+<!-- These two hyperparameters are interdependent: a lower learning rate requires more trees to achieve good results but reduces the risk of overfitting. -->
+
+<!-- ```{r} -->
+<!-- eta_range          <- c(0.001, 0.01, 0.1, 0.3) -->
+<!-- df_results_cv   <- data.frame() -->
+
+<!-- for(i in seq_along(eta_range)){ -->
+<!--   set.seed(123) -->
+<!--   results_cv <- xgb.cv( -->
+<!--                     data    = ames_train, -->
+<!--                     params  = list(eta = eta_range[i],  -->
+<!--                                    max_depth = 6, subsample = 1), -->
+<!--                     nrounds = 4000, -->
+<!--                     nfold   = 5, -->
+<!--                     metrics = "rmse",  -->
+<!--                     verbose = 0 -->
+<!--                  ) -->
+
+<!--   results_cv <- results_cv$evaluation_log -->
+<!--   results_cv <- results_cv %>% -->
+<!--                    select(iter, test_rmse_mean) %>% -->
+<!--                    mutate(eta = as.character(eta_range[i])) -->
+
+<!--   df_results_cv <- df_results_cv %>% bind_rows(results_cv) -->
+<!-- } -->
+<!-- ``` -->
 
 
-## Optimized predictor
-
-Best results obtained above can be extracted to obtain an improved predictor.
-
-Altrnatively a grid search for the best parameter combination can be performed.
-
-```{r prepareOptimization, eval=FALSE}
-train_labels <- ames_train$Sale_Price
-test_labels <- ames_test$Sale_Price
-ames_train_matrix <- xgb.DMatrix(
-  data = as.matrix(ames_train[, !names(ames_train) %in% "Sale_Price"]),
-  label = train_labels
-)
-ames_test_matrix <- xgb.DMatrix(
-  data = as.matrix(ames_test[, !names(ames_test) %in% "Sale_Price"]),
-  label = test_labels
-)
-eta_values <- c(0.01, 0.05, 0.1, 0.3)  
-nrounds_values <- c(500, 1000, 2000)  
-
-best_rmse <- Inf
-best_params <- list()
-```
+<!-- ```{r} -->
+<!-- ggplot(data = df_results_cv) + -->
+<!--   geom_line(aes(x = iter, y = test_rmse_mean, color = eta)) +  -->
+<!--   labs( -->
+<!--     title = "Evolution of cv-error vs learning rate (eta)", -->
+<!--     x     = "eta", -->
+<!--     y     = "cv-error (rmse)", -->
+<!--     color = "" -->
+<!--   ) + -->
+<!--   theme_bw() + -->
+<!--   theme(legend.position = "bottom") -->
+<!-- ``` -->
 
 
-```{r runGridSearch, eval=FALSE}
-for (eta in eta_values) {
-  for (nrounds in nrounds_values) {
-    
-    set.seed(123)
-    cv_results <- xgb.cv(
-      data = ames_train_matrix,  
-      params = list(
-        eta = eta,
-        max_depth = 6,
-        subsample = 0.8,
-        colsample_bytree = 0.8,
-        objective = "reg:squarederror"
-      ),
-      nrounds = nrounds,
-      nfold = 5,
-      metrics = "rmse",
-      verbose = 0
-    )
-    
-    
-    min_rmse <- min(cv_results$evaluation_log$test_rmse_mean)
-    best_nrounds <- cv_results$evaluation_log$iter[which.min(cv_results$evaluation_log$test_rmse_mean)]
-    
-    if (min_rmse < best_rmse) {
-      best_rmse <- min_rmse
-      best_params <- list(
-        eta = eta,
-        nrounds = best_nrounds
-      )
-    }
-  }
-}
-
-print(best_params)
-```
-
-An optimal predictor can now be obtained training a model with the optimal values.
-
-```{r optimalPredictor, eval=FALSE}
-set.seed(123)
-ames.boost.optimized <- xgb.train(
-  data = ames_train_matrix,
-  params = list(
-    eta = best_params$eta,
-    max_depth = 6,
-    subsample = 0.8,
-    colsample_bytree = 0.8,
-    objective = "reg:squarederror"
-  ),
-  nrounds = best_params$nrounds
-)
-
-
-ames.boost.optimized.trainpred <- predict(ames.boost.optimized, newdata = ames_train_matrix)
-ames.boost.optimized.pred <- predict(ames.boost.optimized, newdata = ames_test_matrix)
-
-
-train_rmseboost_optimized <- sqrt(mean((ames.boost.optimized.trainpred - getinfo(ames_train_matrix, "label"))^2))
-test_rmseboost_optimized <- sqrt(mean((ames.boost.optimized.pred - getinfo(ames_test_matrix, "label"))^2))
-```
-
-The comparison shows the improvement
-
-```{r optimalPredictorError, eval=FALSE}
-
-cat("\nComparación de RMSE:\n")
-cat("Modelo original - Train RMSE:", round(train_rmseboost, 2), "| Test RMSE:", round(test_rmseboost, 2), "\n")
-cat("Modelo optimizado - Train RMSE:", round(train_rmseboost_optimized, 2), "| Test RMSE:", round(test_rmseboost_optimized, 2
-
-```
 
 # References

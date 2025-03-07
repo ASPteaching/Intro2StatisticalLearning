@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.47">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-03-06">
+
+<title>Lab 2: Ensembles of Trees – Introduction to Statistical Learning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Introduction to Statistical Learning</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link" data-scroll-target="#the-dataset">The dataset</a></li>
+  <li><a href="#exploratory-data-analysis-an-preprocessing" id="toc-exploratory-data-analysis-an-preprocessing" class="nav-link" data-scroll-target="#exploratory-data-analysis-an-preprocessing">Exploratory Data Analysis an preprocessing</a></li>
+  <li><a href="#spliting-the-data-into-testtrain" id="toc-spliting-the-data-into-testtrain" class="nav-link" data-scroll-target="#spliting-the-data-into-testtrain">Spliting the data into test/train</a></li>
+  </ul></li>
+  <li><a href="#a-simple-regression-tree" id="toc-a-simple-regression-tree" class="nav-link" data-scroll-target="#a-simple-regression-tree">A simple regression tree</a>
+  <ul class="collapse">
+  <li><a href="#optimizing-the-tree" id="toc-optimizing-the-tree" class="nav-link" data-scroll-target="#optimizing-the-tree">Optimizing the tree</a></li>
+  <li><a href="#feature-interpretation" id="toc-feature-interpretation" class="nav-link" data-scroll-target="#feature-interpretation">Feature interpretation</a></li>
+  </ul></li>
+  <li><a href="#bagging-trees" id="toc-bagging-trees" class="nav-link" data-scroll-target="#bagging-trees">Bagging trees</a>
+  <ul class="collapse">
+  <li><a href="#distinct-error-rates" id="toc-distinct-error-rates" class="nav-link" data-scroll-target="#distinct-error-rates">Distinct error rates</a>
+  <ul class="collapse">
+  <li><a href="#error-estimated-from-train-samples" id="toc-error-estimated-from-train-samples" class="nav-link" data-scroll-target="#error-estimated-from-train-samples">Error estimated from train samples</a></li>
+  <li><a href="#error-estimated-from-test-samples" id="toc-error-estimated-from-test-samples" class="nav-link" data-scroll-target="#error-estimated-from-test-samples">Error estimated from test samples</a></li>
+  <li><a href="#error-estimated-from-out-of-bag-samples" id="toc-error-estimated-from-out-of-bag-samples" class="nav-link" data-scroll-target="#error-estimated-from-out-of-bag-samples">Error estimated from out-of-bag samples</a></li>
+  </ul></li>
+  <li><a href="#bagging-parameter-tuning" id="toc-bagging-parameter-tuning" class="nav-link" data-scroll-target="#bagging-parameter-tuning">Bagging parameter tuning</a></li>
+  <li><a href="#variable-importance" id="toc-variable-importance" class="nav-link" data-scroll-target="#variable-importance">Variable importance</a></li>
+  </ul></li>
+  <li><a href="#a-random-forest-to-improve-bagging" id="toc-a-random-forest-to-improve-bagging" class="nav-link" data-scroll-target="#a-random-forest-to-improve-bagging">A random forest to improve bagging</a>
+  <ul class="collapse">
+  <li><a href="#parameter-optimization-for-rf" id="toc-parameter-optimization-for-rf" class="nav-link" data-scroll-target="#parameter-optimization-for-rf">Parameter optimization for RF</a></li>
+  <li><a href="#error-comparison-for-all-approaches" id="toc-error-comparison-for-all-approaches" class="nav-link" data-scroll-target="#error-comparison-for-all-approaches">Error comparison for all approaches</a></li>
+  <li><a href="#variable-importance-1" id="toc-variable-importance-1" class="nav-link" data-scroll-target="#variable-importance-1">Variable importance</a></li>
+  </ul></li>
+  <li><a href="#random-forests-with-python" id="toc-random-forests-with-python" class="nav-link" data-scroll-target="#random-forests-with-python">Random Forests with Python</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Lab-C.2.4-Ensembles-1RF.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 2: Ensembles of Trees</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alex Sánchez, Esteban Vegas and Ferran Reeverter </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 6, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)       <span class="co"># for data wrangling</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)     <span class="co"># for awesome plotting</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modeldata)  <span class="co"># for parallel backend to foreach</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)     <span class="co"># for parallel processing with for loops</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Modeling packages</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#library(caret)       # for general model fitting</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)       <span class="co"># for fitting decision trees</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ipred)       <span class="co"># for fitting bagged decision trees</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This lab presents some examples on building ensemble predictors with a variety of methods.</p>
+<p>In order to facilitate the comparison between methods and tools the same prediction problem will be solved with distinct methods and distinct parameter settings.</p>
+<p>We will work with the <code>AmesHousing</code> dataset, a dataset with multiple variables about housing in Ames, IA. Our goal is to predict the sales prices stored in the <code>Sale_Price</code> variable.</p>
+<section id="the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="the-dataset">The dataset</h2>
+<p>Packge <code>AmesHousing</code> contains the data jointly with some instructions to create the required dataset.</p>
+<p>We will use, however data from the <code>modeldata</code> package where some preprocessing of the data has already been performed (see: <a href="https://www.tmwr.org/ames">https://www.tmwr.org/ames</a>)</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ames, <span class="at">package =</span> <span class="st">"modeldata"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2930   74</code></pre>
+</div>
+</div>
+</section>
+<section id="exploratory-data-analysis-an-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis-an-preprocessing">Exploratory Data Analysis an preprocessing</h2>
+<p>The dataset has 74 variables, and has already been prepared by the package <code>modeldata</code>maintainers.</p>
+<p>In any case it is always recommended to do some Exploratory Analysis.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">ames</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">2930</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">74</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">ordered</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: left;">top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MS_SubClass</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">One: 1079, Two: 575, One: 287, One: 192</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MS_Zoning</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Res: 2273, Res: 462, Flo: 139, Res: 27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Street</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Pav: 2918, Grv: 12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alley</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">No_: 2732, Gra: 120, Pav: 78</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lot_Shape</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Reg: 1859, Sli: 979, Mod: 76, Irr: 16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Land_Contour</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Lvl: 2633, HLS: 120, Bnk: 117, Low: 60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Utilities</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">All: 2927, NoS: 2, NoS: 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lot_Config</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Ins: 2140, Cor: 511, Cul: 180, FR2: 85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Land_Slope</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Gtl: 2789, Mod: 125, Sev: 16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Neighborhood</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">Nor: 443, Col: 267, Old: 239, Edw: 194</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Condition_1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Nor: 2522, Fee: 164, Art: 92, RRA: 50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Condition_2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Nor: 2900, Fee: 13, Art: 5, Pos: 4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bldg_Type</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">One: 2425, Twn: 233, Dup: 109, Twn: 101</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">House_Style</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">One: 1481, Two: 873, One: 314, SLv: 128</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Overall_Cond</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Ave: 1654, Abo: 533, Goo: 390, Ver: 144</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roof_Style</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Gab: 2321, Hip: 551, Gam: 22, Fla: 20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Roof_Matl</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Com: 2887, Tar: 23, WdS: 9, WdS: 7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exterior_1st</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">Vin: 1026, Met: 450, HdB: 442, Wd : 420</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Exterior_2nd</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">Vin: 1015, Met: 447, HdB: 406, Wd : 397</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mas_Vnr_Type</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Non: 1775, Brk: 880, Sto: 249, Brk: 25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Exter_Cond</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Typ: 2549, Goo: 299, Fai: 67, Exc: 12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Foundation</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">PCo: 1310, CBl: 1244, Brk: 311, Sla: 49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bsmt_Cond</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Typ: 2616, Goo: 122, Fai: 104, No_: 80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bsmt_Exposure</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">No: 1906, Av: 418, Gd: 284, Mn: 239</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BsmtFin_Type_1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">GLQ: 859, Unf: 851, ALQ: 429, Rec: 288</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BsmtFin_Type_2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Unf: 2499, Rec: 106, LwQ: 89, No_: 81</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Heating</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Gas: 2885, Gas: 27, Gra: 9, Wal: 6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Heating_QC</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Exc: 1495, Typ: 864, Goo: 476, Fai: 92</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Central_Air</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Y: 2734, N: 196</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Electrical</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">SBr: 2682, Fus: 188, Fus: 50, Fus: 8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Functional</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Typ: 2728, Min: 70, Min: 65, Mod: 35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Garage_Type</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Att: 1731, Det: 782, Bui: 186, No_: 157</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Garage_Finish</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Unf: 1231, RFn: 812, Fin: 728, No_: 159</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Garage_Cond</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Typ: 2665, No_: 159, Fai: 74, Goo: 15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Paved_Drive</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Pav: 2652, Dir: 216, Par: 62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pool_QC</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">No_: 2917, Exc: 4, Goo: 4, Typ: 3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fence</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">No_: 2358, Min: 330, Goo: 118, Goo: 112</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Misc_Feature</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Non: 2824, She: 95, Gar: 5, Oth: 4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sale_Type</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">WD : 2536, New: 239, COD: 87, Con: 26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sale_Condition</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Nor: 2413, Par: 245, Abn: 190, Fam: 46</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Lot_Frontage</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">57.65</td>
+<td style="text-align: right;">33.50</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">43.00</td>
+<td style="text-align: right;">63.00</td>
+<td style="text-align: right;">78.00</td>
+<td style="text-align: right;">313.00</td>
+<td style="text-align: left;">▇▇▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lot_Area</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10147.92</td>
+<td style="text-align: right;">7880.02</td>
+<td style="text-align: right;">1300.00</td>
+<td style="text-align: right;">7440.25</td>
+<td style="text-align: right;">9436.50</td>
+<td style="text-align: right;">11555.25</td>
+<td style="text-align: right;">215245.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Year_Built</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1971.36</td>
+<td style="text-align: right;">30.25</td>
+<td style="text-align: right;">1872.00</td>
+<td style="text-align: right;">1954.00</td>
+<td style="text-align: right;">1973.00</td>
+<td style="text-align: right;">2001.00</td>
+<td style="text-align: right;">2010.00</td>
+<td style="text-align: left;">▁▂▃▆▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Year_Remod_Add</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1984.27</td>
+<td style="text-align: right;">20.86</td>
+<td style="text-align: right;">1950.00</td>
+<td style="text-align: right;">1965.00</td>
+<td style="text-align: right;">1993.00</td>
+<td style="text-align: right;">2004.00</td>
+<td style="text-align: right;">2010.00</td>
+<td style="text-align: left;">▅▂▂▃▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mas_Vnr_Area</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">101.10</td>
+<td style="text-align: right;">178.63</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">162.75</td>
+<td style="text-align: right;">1600.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BsmtFin_SF_1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.18</td>
+<td style="text-align: right;">2.23</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: left;">▃▂▇▁▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BsmtFin_SF_2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">49.71</td>
+<td style="text-align: right;">169.14</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1526.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bsmt_Unf_SF</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">559.07</td>
+<td style="text-align: right;">439.54</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">219.00</td>
+<td style="text-align: right;">465.50</td>
+<td style="text-align: right;">801.75</td>
+<td style="text-align: right;">2336.00</td>
+<td style="text-align: left;">▇▅▂▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total_Bsmt_SF</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1051.26</td>
+<td style="text-align: right;">440.97</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">793.00</td>
+<td style="text-align: right;">990.00</td>
+<td style="text-align: right;">1301.50</td>
+<td style="text-align: right;">6110.00</td>
+<td style="text-align: left;">▇▃▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">First_Flr_SF</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1159.56</td>
+<td style="text-align: right;">391.89</td>
+<td style="text-align: right;">334.00</td>
+<td style="text-align: right;">876.25</td>
+<td style="text-align: right;">1084.00</td>
+<td style="text-align: right;">1384.00</td>
+<td style="text-align: right;">5095.00</td>
+<td style="text-align: left;">▇▃▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Second_Flr_SF</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">335.46</td>
+<td style="text-align: right;">428.40</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">703.75</td>
+<td style="text-align: right;">2065.00</td>
+<td style="text-align: left;">▇▃▂▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gr_Liv_Area</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1499.69</td>
+<td style="text-align: right;">505.51</td>
+<td style="text-align: right;">334.00</td>
+<td style="text-align: right;">1126.00</td>
+<td style="text-align: right;">1442.00</td>
+<td style="text-align: right;">1742.75</td>
+<td style="text-align: right;">5642.00</td>
+<td style="text-align: left;">▇▇▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bsmt_Full_Bath</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: left;">▇▆▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bsmt_Half_Bath</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Full_Bath</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.57</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: left;">▁▇▇▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Half_Bath</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: left;">▇▁▅▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bedroom_AbvGr</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: left;">▁▇▂▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kitchen_AbvGr</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.04</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: left;">▁▇▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TotRms_AbvGrd</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6.44</td>
+<td style="text-align: right;">1.57</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">6.00</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: right;">15.00</td>
+<td style="text-align: left;">▁▇▂▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fireplaces</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: left;">▇▇▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Garage_Cars</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.77</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left;">▅▇▂▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Garage_Area</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">472.66</td>
+<td style="text-align: right;">215.19</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">320.00</td>
+<td style="text-align: right;">480.00</td>
+<td style="text-align: right;">576.00</td>
+<td style="text-align: right;">1488.00</td>
+<td style="text-align: left;">▃▇▃▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wood_Deck_SF</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">93.75</td>
+<td style="text-align: right;">126.36</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">168.00</td>
+<td style="text-align: right;">1424.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Open_Porch_SF</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">47.53</td>
+<td style="text-align: right;">67.48</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">27.00</td>
+<td style="text-align: right;">70.00</td>
+<td style="text-align: right;">742.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Enclosed_Porch</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">23.01</td>
+<td style="text-align: right;">64.14</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1012.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Three_season_porch</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.59</td>
+<td style="text-align: right;">25.14</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">508.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Screen_Porch</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">16.00</td>
+<td style="text-align: right;">56.09</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">576.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pool_Area</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.24</td>
+<td style="text-align: right;">35.60</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">800.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Misc_Val</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">50.64</td>
+<td style="text-align: right;">566.34</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">17000.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mo_Sold</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6.22</td>
+<td style="text-align: right;">2.71</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">6.00</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">12.00</td>
+<td style="text-align: left;">▅▆▇▃▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Year_Sold</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2007.79</td>
+<td style="text-align: right;">1.32</td>
+<td style="text-align: right;">2006.00</td>
+<td style="text-align: right;">2007.00</td>
+<td style="text-align: right;">2008.00</td>
+<td style="text-align: right;">2009.00</td>
+<td style="text-align: right;">2010.00</td>
+<td style="text-align: left;">▇▇▇▇▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sale_Price</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">180796.06</td>
+<td style="text-align: right;">79886.69</td>
+<td style="text-align: right;">12789.00</td>
+<td style="text-align: right;">129500.00</td>
+<td style="text-align: right;">160000.00</td>
+<td style="text-align: right;">213500.00</td>
+<td style="text-align: right;">755000.00</td>
+<td style="text-align: left;">▇▇▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Longitude</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-93.64</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">-93.69</td>
+<td style="text-align: right;">-93.66</td>
+<td style="text-align: right;">-93.64</td>
+<td style="text-align: right;">-93.62</td>
+<td style="text-align: right;">-93.58</td>
+<td style="text-align: left;">▅▅▇▆▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Latitude</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">42.03</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">41.99</td>
+<td style="text-align: right;">42.02</td>
+<td style="text-align: right;">42.03</td>
+<td style="text-align: right;">42.05</td>
+<td style="text-align: right;">42.06</td>
+<td style="text-align: left;">▂▂▇▇▇</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The exploration shows that the data set is well formed with factor data types for categorical variables and no missings.</p>
+<p>It can also be seen that tha response variabl, <code>Sales_Price</code> varies on a high range, as confirmed below.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ames<span class="sc">$</span>Sale_Price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  12789  129500  160000  180796  213500  755000 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ames[,<span class="fu">sapply</span>(ames, is.numeric)], <span class="at">las=</span><span class="dv">2</span>, <span class="at">cex.axis=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Although not strictly necessary, given that the variable that has the widest range of variation is the variable to predict we can consider transforming it. In this case the simplest transform seems to express the price in thousands instead of dollars. The distribution of the variable is asymetrical so we may also consider taking logarithm, but given that it would complicate the interpretation of the results, and that something like normality is not required by the methods we use, only division by 1000 is performed.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ames <span class="ot">&lt;-</span> ames <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Sale_Price =</span> Sale_Price<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="spliting-the-data-into-testtrain" class="level2">
+<h2 class="anchored" data-anchor-id="spliting-the-data-into-testtrain">Spliting the data into test/train</h2>
+<p>We split the data in separate test / training sets and do it in such a way that samplig is balanced for the response variable, <code>Sale_Price</code>.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(rsample))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"rsample"</span>, <span class="at">dep=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Stratified sampling with the rsample package</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.7</span>, </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">strata =</span> <span class="st">"Sale_Price"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>ames_train  <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>ames_test   <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="a-simple-regression-tree" class="level1">
+<h1>A simple regression tree</h1>
+<p>As a first attempt to predict Sales_Price we build a unique regression tree, which as has been discussed is a weak learner. The <code>tree</code> package will be used to fit and optimize the tree.</p>
+<p>We build a tree using non-restrictive parameters. This will allow space for pruning it better.</p>
+<p>We use the <code>tree.control</code> function to set the values for the <code>control</code> parameter in the <code>tree</code> function.</p>
+<p>Let’s start with a tree with the default values.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tree)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ctlPars <span class="ot">&lt;-</span><span class="fu">tree.control</span>(<span class="at">nobs =</span><span class="fu">nrow</span>(ames_train), </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">mincut =</span> <span class="dv">5</span>, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">minsize =</span> <span class="dv">10</span>, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">mindev =</span> <span class="fl">0.01</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ames_rt1 <span class="ot">&lt;-</span>  tree<span class="sc">::</span><span class="fu">tree</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data    =</span> ames_train,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">split   =</span> <span class="st">"deviance"</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">control =</span> ctlPars)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ames_rt1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Regression tree:
+tree::tree(formula = Sale_Price ~ ., data = ames_train, control = ctlPars, 
+    split = "deviance")
+Variables actually used in tree construction:
+[1] "Neighborhood"  "First_Flr_SF"  "Gr_Liv_Area"   "Total_Bsmt_SF"
+[5] "Second_Flr_SF"
+Number of terminal nodes:  12 
+Residual mean deviance:  1428 = 2909000 / 2037 
+Distribution of residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-227.1000  -21.2400   -0.2372    0.0000   19.0800  212.0000 </code></pre>
+</div>
+</div>
+<p>This gives a small tree with only 11 terminal nodes.</p>
+<p>We can visualize the tree</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ames_rt1, <span class="at">type =</span> <span class="st">"proportional"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> ames_rt1, <span class="at">splits =</span> <span class="cn">TRUE</span>, <span class="at">pretty =</span> <span class="dv">0</span>, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="st">"firebrick"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/plotAmes1-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If instead of using the <code>tree</code>package we use <code>rpart</code> we can get a better plot:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ames_rt1bis <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> ames_train,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method  =</span> <span class="st">"anova"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> ctlPars</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(ames_rt1bis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="optimizing-the-tree" class="level2">
+<h2 class="anchored" data-anchor-id="optimizing-the-tree">Optimizing the tree</h2>
+<p>In order to optimize the tree we ccan ompute the best cost complexity value</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cv_ames_rt1 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">cv.tree</span>(ames_rt1, <span class="at">K =</span> <span class="dv">5</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>optSize <span class="ot">&lt;-</span> <span class="fu">rev</span>(cv_ames_rt1<span class="sc">$</span>size)[<span class="fu">which.min</span>(<span class="fu">rev</span>(cv_ames_rt1<span class="sc">$</span>dev))]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Optimal size obtained is:"</span>, optSize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Optimal size obtained is: 12"</code></pre>
+</div>
+</div>
+<p>The best value of alpha is obtained with the same tree, which suggests that <em>there will be no advantage in pruning</em>.</p>
+<p>This is confirmed by plotting tree size vs deviance which shows that the tree with the samllest error is the biggest one that can be obtained.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>resultados_cv <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">n_nodes  =</span> cv_ames_rt1<span class="sc">$</span>size,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">deviance =</span> cv_ames_rt1<span class="sc">$</span>dev,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha    =</span> cv_ames_rt1<span class="sc">$</span>k</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> resultados_cv, <span class="fu">aes</span>(<span class="at">x =</span> n_nodes, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> optSize, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs tree size"</span>) <span class="sc">+</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> resultados_cv, <span class="fu">aes</span>(<span class="at">x =</span> alpha, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs penalization (alpha)"</span>) <span class="sc">+</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/plotPruneAmes-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We could have tried to obtain a bigger tree with the hope that pruning might find a better tree. This can be done setting the tree parameters to minimal values.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ctlPars2 <span class="ot">&lt;-</span><span class="fu">tree.control</span>(<span class="at">nobs=</span><span class="fu">nrow</span>(ames_train), <span class="at">mincut =</span> <span class="dv">1</span>, <span class="at">minsize =</span> <span class="dv">2</span>, <span class="at">mindev =</span> <span class="dv">0</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ames_rt2 <span class="ot">&lt;-</span>  tree<span class="sc">::</span><span class="fu">tree</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data    =</span> ames_train,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">split   =</span> <span class="st">"deviance"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">control =</span> ctlPars2)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ames_rt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Regression tree:
+tree::tree(formula = Sale_Price ~ ., data = ames_train, control = ctlPars2, 
+    split = "deviance")
+Variables actually used in tree construction:
+ [1] "Neighborhood"   "First_Flr_SF"   "Garage_Cond"    "Gr_Liv_Area"   
+ [5] "Central_Air"    "Garage_Area"    "Enclosed_Porch" "Lot_Area"      
+ [9] "Longitude"      "Latitude"       "MS_SubClass"    "Lot_Frontage"  
+[13] "Overall_Cond"   "Year_Built"     "MS_Zoning"      "Alley"         
+[17] "Fireplaces"     "House_Style"    "BsmtFin_Type_1" "Bsmt_Exposure" 
+[21] "Bsmt_Unf_SF"    "Electrical"     "Year_Remod_Add" "Exterior_1st"  
+[25] "Open_Porch_SF"  "Exterior_2nd"   "Functional"     "Mo_Sold"       
+[29] "Total_Bsmt_SF"  "Bsmt_Full_Bath" "Sale_Condition" "Heating_QC"    
+[33] "Mas_Vnr_Area"   "Garage_Cars"    "Land_Contour"   "Condition_1"   
+[37] "Mas_Vnr_Type"   "Second_Flr_SF"  "Lot_Config"     "Exter_Cond"    
+[41] "Fence"          "Lot_Shape"      "Bsmt_Cond"      "Bedroom_AbvGr" 
+[45] "Wood_Deck_SF"   "Roof_Style"     "Sale_Type"      "BsmtFin_Type_2"
+[49] "Bldg_Type"      "Garage_Type"    "Year_Sold"      "Garage_Finish" 
+[53] "Screen_Porch"   "Half_Bath"      "Foundation"     "BsmtFin_SF_1"  
+[57] "Full_Bath"      "Land_Slope"     "TotRms_AbvGrd" 
+Number of terminal nodes:  1222 
+Residual mean deviance:  2.579 = 2133 / 827 
+Distribution of residuals:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ -2.750  -0.500   0.000   0.000   0.500   2.943 </code></pre>
+</div>
+</div>
+<p>This bigger tree has indeed a smaller deviance but pruning provides no benefit:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cv_ames_rt2 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">cv.tree</span>(ames_rt2, <span class="at">K =</span> <span class="dv">5</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>optSize2 <span class="ot">&lt;-</span> <span class="fu">rev</span>(cv_ames_rt2<span class="sc">$</span>size)[<span class="fu">which.min</span>(<span class="fu">rev</span>(cv_ames_rt2<span class="sc">$</span>dev))]</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Optimal size obtained is:"</span>, optSize2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Optimal size obtained is: 12"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>prunedTree2 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">prune.tree</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tree =</span> ames_rt2,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">best =</span> optSize2</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>               )</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(prunedTree2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Regression tree:
+snip.tree(tree = ames_rt2, nodes = c(61L, 31L, 12L, 13L, 60L, 
+18L, 19L, 14L, 23L, 10L, 22L, 8L))
+Variables actually used in tree construction:
+[1] "Neighborhood"  "First_Flr_SF"  "Gr_Liv_Area"   "Total_Bsmt_SF"
+[5] "Second_Flr_SF"
+Number of terminal nodes:  12 
+Residual mean deviance:  1428 = 2909000 / 2037 
+Distribution of residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-227.1000  -21.2400   -0.2372    0.0000   19.0800  212.0000 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>res_cv2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">n_nodes  =</span> cv_ames_rt2<span class="sc">$</span>size,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">deviance =</span> cv_ames_rt2<span class="sc">$</span>dev,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha    =</span> cv_ames_rt2<span class="sc">$</span>k</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> res_cv2, <span class="fu">aes</span>(<span class="at">x =</span> n_nodes, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> optSize2, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs tree size"</span>) <span class="sc">+</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> res_cv2, <span class="fu">aes</span>(<span class="at">x =</span> alpha, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs penalization (alpha)"</span>) <span class="sc">+</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The performance of the trees is hardly different between small or big tree in pruned or non-pruned version.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ames_rt_pred1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(ames_rt1, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>test_rmse1    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_rt_pred1 <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for initial tree:"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Error test (rmse) for initial tree: 39.69"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ames_rt_pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(ames_rt2, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>test_rmse2    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_rt_pred2 <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for big tree:"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Error test (rmse) for big tree: 37.59"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ames_pruned_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(prunedTree2, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>test_rmse3    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_pruned_pred <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for pruned tree:"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Error test (rmse) for pruned tree: 39.69"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>improvement <span class="ot">&lt;-</span> (test_rmse3<span class="sc">-</span>test_rmse2)<span class="sc">/</span>test_rmse2<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The MSE for each model will be saved to facilitate comparison with other models</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>errTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(),  <span class="at">RMSE=</span><span class="fu">double</span>())</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">1</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Default Regression Tree"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">2</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Big Regression Tree"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">3</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Optimally pruned Regression Tree"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kableExtra::kable(errTable) %&gt;% kableExtra::kable_styling()</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(errTable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Default Regression Tree</td>
+<td style="text-align: left;">39.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Big Regression Tree</td>
+<td style="text-align: left;">37.59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Optimally pruned Regression Tree</td>
+<td style="text-align: left;">39.69</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>In summary, what is illustrated by this example is that, <em>for some datasets, it is very hard to obtain an optimal tree because there seems to be a minimum complexity which is very hard to decrease</em>.</p>
+<p>Building a saturated tree only provides a slight improvement of less than 5% in RMSE at the cost of having to use 5 times more variables in a tree withh more than 1000 nodes.</p>
+<p>This is a good point to consider using an ensemble instead of single trees.</p>
+</section>
+<section id="feature-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="feature-interpretation">Feature interpretation</h2>
+<p>To measure feature importance, the reduction in the loss function (e.g., SSE) attributed to each variable at each split is tabulated.</p>
+<p>In some instances, a single variable could be used multiple times in a tree; consequently, the total reduction in the loss function across all splits by a variable are summed up and used as the total feature importance.</p>
+<p>Not all packages store the informaticon required to compute variable importance. For instance, the <code>tree</code>packges does not, but <code>rpart</code>or <code>caret</code> do save it.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(ames_rt1bis, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bagging-trees" class="level1">
+<h1>Bagging trees</h1>
+<p>The first attempt to build an ensemble may be to apply <code>bagging</code> that is building multiple trees from a set of resamples and averaging the predictions of each tree.</p>
+<p>In this example, rather than use a single pruned decision tree, we can use, say, 100 bagged unpruned trees (by not pruning the trees we’re keeping bias low and variance high which is when bagging will have the biggest effect).</p>
+<p>Bagging is equivalent to RandomForest if we use all the trees so the library <code>randomForest</code> is used.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make bootstrapping reproducible</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>bag.Ames <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> <span class="fu">ncol</span>(ames_train<span class="dv">-1</span>), </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree =</span> <span class="dv">100</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">show</span>(bag.Ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+ randomForest(formula = Sale_Price ~ ., data = ames_train, mtry = ncol(ames_train -      1), ntree = 100, importance = TRUE) 
+               Type of random forest: regression
+                     Number of trees: 100
+No. of variables tried at each split: 73
+
+          Mean of squared residuals: 737.1328
+                    % Var explained: 88.57</code></pre>
+</div>
+</div>
+<p>Bagging, as most ensemble procedures, can be time consuming. See <a href="https://bradleyboehmke.github.io/HOML/bagging.html#easily-parallelize"><span class="citation" data-cites="Boehmke2020">Boehmke and Greenwell (<span>2020</span>)</span></a> for an example on how to easily parallelize code, and save time.</p>
+<section id="distinct-error-rates" class="level2">
+<h2 class="anchored" data-anchor-id="distinct-error-rates">Distinct error rates</h2>
+<p>The following chunks of code show the fit between data and predictions for the train set, the test set and the out-of bag samples</p>
+<section id="error-estimated-from-train-samples" class="level3">
+<h3 class="anchored" data-anchor-id="error-estimated-from-train-samples">Error estimated from train samples</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>yhattrain.bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag.Ames, <span class="at">newdata =</span> ames_train)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># train_mse_bag  &lt;- sqrt(mean(yhattrain.bag - ames_train$Sale_Price)^2)</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>train_rmse_bag <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhattrain.bag <span class="sc">-</span> ames_train<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>showError<span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Error train (rmse) for bagged tree:"</span>, <span class="fu">round</span>(train_rmse_bag,<span class="dv">6</span>))</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhattrain.bag, ames_train<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/predictBagTrain-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>THis error is much smaller even than those from trees because of overfitting</p>
+</section>
+<section id="error-estimated-from-test-samples" class="level3">
+<h3 class="anchored" data-anchor-id="error-estimated-from-test-samples">Error estimated from test samples</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>yhat.bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag.Ames, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># test_mse_bag  &lt;- sqrt(mean(yhat.bag - ames_test$Sale_Price)^2)</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>test_rmse_bag  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.bag <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>showError<span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Error test (rmse) for bagged tree:"</span>, <span class="fu">round</span>(test_rmse_bag,<span class="dv">4</span>))</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhat.bag, ames_test<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/predictBagTest-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="error-estimated-from-out-of-bag-samples" class="level3">
+<h3 class="anchored" data-anchor-id="error-estimated-from-out-of-bag-samples">Error estimated from out-of-bag samples</h3>
+<p>Bagging allows computing an out-of bag error estimate.</p>
+<p>Out of bag error rate is reported in the output and can be computed from the <code>predicted</code> (<em>“the predicted values of the input data based on out-of-bag samples”</em>)</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>oob_err<span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((bag.Ames<span class="sc">$</span>predicted<span class="sc">-</span>ames_train<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>showError <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Out of bag error for bagged tree:"</span>, <span class="fu">round</span>(oob_err,<span class="dv">4</span>))</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bag.Ames<span class="sc">$</span>predicted, ames_train<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/predictBagOOB-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interestingly this may be not only bigger than the error estimated on the train set but also bigger than the error estimated on the test set.</p>
+<p>We can collect error rates and compare to each other and also to those obtained from regression trees:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>errTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(),  <span class="at">RMSE=</span><span class="fu">double</span>())</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">1</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Default Regression Tree"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">2</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Big Regression Tree"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">3</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Optimally pruned Regression Tree"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">4</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with Train Data"</span>, <span class="fu">round</span>(train_rmse_bag,<span class="dv">2</span>))</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">5</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with Test Data"</span>, <span class="fu">round</span>(test_rmse_bag,<span class="dv">2</span>))</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">6</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with OOB error rate"</span>, <span class="fu">round</span>(oob_err,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="bagging-parameter-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="bagging-parameter-tuning">Bagging parameter tuning</h2>
+<p>Bagging tends to improve quickly as the number of resampled trees increases, and then it reaches a platform.</p>
+<p>The figure below has been produced iterated the computation above over <code>nbagg</code> values of 1–200 and applied the <code>bagging()</code> function.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/baggingRSME.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Error curve for bagging 1-200 deep, unpruned decision trees. The benefit of bagging is optimized at 187 trees although the majority of error reduction occurred within the first 100 trees</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-importance" class="level2">
+<h2 class="anchored" data-anchor-id="variable-importance">Variable importance</h2>
+<p>Due to the bagging process, models that are normally perceived as interpretable are no longer so.</p>
+<p>However, we can still make inferences about how features are influencing our model using <em>feature importance</em> measures based on the sum of the reduction in the loss function (e.g., SSE) attributed to each variable at each split in a given tree.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>VIP <span class="ot">&lt;-</span> <span class="fu">importance</span>(bag.Ames) </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>VIP <span class="ot">&lt;-</span> VIP[<span class="fu">order</span>(VIP[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(VIP, <span class="at">n=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 %IncMSE IncNodePurity
+Gr_Liv_Area    26.419428    1923769.45
+Neighborhood   19.795920    5243520.37
+Total_Bsmt_SF  14.370182    1012412.95
+First_Flr_SF   13.467640     511525.12
+MS_SubClass    10.468429     146349.46
+BsmtFin_Type_1  9.491046      57870.21
+Year_Remod_Add  9.273779     214595.97
+Garage_Area     7.485364     334439.51
+Year_Built      7.112852     266905.91
+Fireplaces      6.999228      57043.18
+Garage_Cars     6.915052    1777310.87
+Bsmt_Unf_SF     6.879415      78882.32
+Second_Flr_SF   6.867619     103373.55
+Exterior_1st    6.699528      95407.73
+Overall_Cond    6.676218      96814.53
+Garage_Cond     6.622676      49944.12
+Exterior_2nd    5.907220      61992.47
+Latitude        5.872897      72448.76
+Lot_Area        5.696540     134015.35
+Longitude       5.055073      71328.45
+Garage_Type     4.686528      37116.56
+BsmtFin_SF_1    4.543646      10169.18
+Bsmt_Exposure   4.500273      48517.30
+Full_Bath       4.416821      84402.03
+Garage_Finish   4.405324      24862.60
+Sale_Condition  4.173237      25932.41
+TotRms_AbvGrd   4.162582      27350.80
+Central_Air     4.080131      21049.07
+Heating_QC      3.922138      19705.37
+Mas_Vnr_Area    3.862446      72973.11</code></pre>
+</div>
+</div>
+<p>Importance values can be plotted directly:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>invVIP <span class="ot">&lt;-</span>VIP[<span class="fu">order</span>(VIP[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">FALSE</span>),<span class="dv">1</span>] </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>tVIP<span class="ot">&lt;-</span> <span class="fu">tail</span>(invVIP, <span class="at">n=</span><span class="dv">15</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tVIP, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">cex.names=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Alternatively one can use the <code>vip</code>function from the <code>vip</code> package</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(bag.Ames, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="a-random-forest-to-improve-bagging" class="level1">
+<h1>A random forest to improve bagging</h1>
+<p>Bagging can be improved if, instead of using all variables to build each tree we rely on subsets of variables, which are chosen at each split in order to decrease correlation between trees.</p>
+<p>Random Forests are considered to produce good predictors with default values sop no parameter is set in a first iteration.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make bootstrapping reproducible</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(randomForest)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>RF.Ames <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show</span>(RF.Ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+ randomForest(formula = Sale_Price ~ ., data = ames_train, importance = TRUE) 
+               Type of random forest: regression
+                     Number of trees: 500
+No. of variables tried at each split: 24
+
+          Mean of squared residuals: 729.7088
+                    % Var explained: 88.69</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>yhat.rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(RF.Ames, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhat.rf, ames_test<span class="sc">$</span>Sale_Price)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/predictRF-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>test_rmse_rf  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.rf <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for Random Forest:"</span>, <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Error test (rmse) for Random Forest: 24.57"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">7</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest (defaults)"</span>, <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>There is some improvement on bagging but it is clearly small.</p>
+<p>Notice however that the percentage of explained variance is bigger for RF than for Bag</p>
+<section id="parameter-optimization-for-rf" class="level2">
+<h2 class="anchored" data-anchor-id="parameter-optimization-for-rf">Parameter optimization for RF</h2>
+<p>Several parameters can be changed to optimize a random forest predictor, but, usually, the most important one is the <em>number of variables</em> to be randomly selected at each split <span class="math inline">\(m_{try}\)</span>, followed by the number of tree, which tends to stabilize after a certain value.</p>
+<p>A common strategy to find the optimum combination of parameters is to perform a <em>grid search</em> through a combination of parameter values. Obviously it can be time consuming so a small grid is run in the example below to illustrate how to do it.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>num_trees_range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">400</span>, <span class="dv">100</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>num_vars_range <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">ncol</span>(ames_train)<span class="sc">/</span>(<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">1</span>)))</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>RFerrTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(), </span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">NumTree=</span><span class="fu">integer</span>(), <span class="at">NumVar=</span><span class="fu">integer</span>(), </span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">RMSE=</span><span class="fu">double</span>())</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>errValue <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(num_trees_range)){</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq_along</span>(num_vars_range)) {  </span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    numTrees <span class="ot">&lt;-</span> num_trees_range[i]</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    numVars <span class="ot">&lt;-</span> num_vars_range [j] <span class="co"># floor(ncol(ames_train)/3) # default</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>    RF.Ames.n <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> numVars,</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree=</span> numTrees,</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    yhat.rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(RF.Ames.n, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>    oob.rf <span class="ot">&lt;-</span> RF.Ames.n<span class="sc">$</span>predicted</span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>    test_rmse_rf  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.rf <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>    RFerrTable[errValue, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest"</span>, </span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a>                            <span class="at">NumTree =</span> numTrees, <span class="at">NumVar =</span> numVars, </span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a>                            <span class="at">RMSE =</span> <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>)) </span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a>    errValue <span class="ot">&lt;-</span> errValue<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+ 180.40    1.05  186.91 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>RFerrTable <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">NumTree</th>
+<th style="text-align: left;">NumVar</th>
+<th style="text-align: left;">RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">24.51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">24.85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">24.79</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">24.66</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">24.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">24.74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">300</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">24.51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">300</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">24.53</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">300</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">25.12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">400</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">24.58</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">400</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">24.62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">400</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">24.84</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The minimum RMSE is attained at.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>bestRF <span class="ot">&lt;-</span> <span class="fu">which</span>(RFerrTable<span class="sc">$</span>RMSE<span class="sc">==</span><span class="fu">min</span>(RFerrTable<span class="sc">$</span>RMSE))</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>RFerrTable[bestRF,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Model NumTree NumVar  RMSE
+1 Random Forest     100     37 24.51
+7 Random Forest     300     37 24.51</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>minRFErr <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(RFerrTable[bestRF,<span class="dv">4</span>])</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">8</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest (Optimized)"</span>, <span class="fu">round</span>(minRFErr,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="error-comparison-for-all-approaches" class="level2">
+<h2 class="anchored" data-anchor-id="error-comparison-for-all-approaches">Error comparison for all approaches</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kableExtra::kable(errTable) %&gt;% kableExtra::kable_styling()</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(errTable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Default Regression Tree</td>
+<td style="text-align: left;">39.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Big Regression Tree</td>
+<td style="text-align: left;">37.59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Optimally pruned Regression Tree</td>
+<td style="text-align: left;">39.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bagged Tree with Train Data</td>
+<td style="text-align: left;">10.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bagged Tree with Test Data</td>
+<td style="text-align: left;">24.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bagged Tree with OOB error rate</td>
+<td style="text-align: left;">27.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Random Forest (defaults)</td>
+<td style="text-align: left;">24.57</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest (Optimized)</td>
+<td style="text-align: left;">24.51</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>In summary, it has been shown that a Random Forest with 400 trees and 37 variables provides the smallest error rate, though the improvement on the default values and even the bagging approach is very small. This may be seen as a confirmation from the fact that Random Forests are well known to be good “out-of-the-box predictors”, that is that they perform well, even without tuning.</p>
+</section>
+<section id="variable-importance-1" class="level2">
+<h2 class="anchored" data-anchor-id="variable-importance-1">Variable importance</h2>
+<p>As could be expected, a variable importance plot shows that there is hardly any difference between the variables by bagging or random forests.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(RF.Ames, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab-C.2.4-Ensembles-1RF_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="random-forests-with-python" class="level1">
+<h1>Random Forests with Python</h1>
+<p>The following link points to a good brief tutorial on how to train and evaluate Random Forests using Python</p>
+<p><a href="https://www.datacamp.com/tutorial/random-forests-classifier-python">DataCamp: Random Forest Classification with Scikit-Learn</a></p>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Boehmke2020" class="csl-entry" role="listitem">
+Boehmke, Bradley, and Brandon Greenwell. 2020. <em>The r Series Hands-on Machine Learning with r</em>. <em>CRC Press</em>. <a href="https://www.routledge.com/Hands-On-Machine-Learning-with-R/Boehmke-Greenwell/p/book/9781138495685">https://www.routledge.com/Hands-On-Machine-Learning-with-R/Boehmke-Greenwell/p/book/9781138495685</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
