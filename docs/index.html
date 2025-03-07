@@ -68,9 +68,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -94,6 +95,13 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aspteaching/Intro2StatisticalLearning"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -256,7 +264,34 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-statistical-learning" id="toc-introduction-to-statistical-learning" class="nav-link" data-scroll-target="#introduction-to-statistical-learning">Introduction to Statistical Learning</a></li>
+  <li><a href="#tree-based-methods" id="toc-tree-based-methods" class="nav-link" data-scroll-target="#tree-based-methods">Tree based methods</a>
+  <ul class="collapse">
+  <li><a href="#decision-trees" id="toc-decision-trees" class="nav-link" data-scroll-target="#decision-trees">Decision Trees</a></li>
+  <li><a href="#ensemble-methods" id="toc-ensemble-methods" class="nav-link" data-scroll-target="#ensemble-methods">Ensemble methods</a></li>
+  </ul></li>
+  <li><a href="#artifical-neural-networks" id="toc-artifical-neural-networks" class="nav-link" data-scroll-target="#artifical-neural-networks">Artifical Neural Networks</a>
+  <ul class="collapse">
+  <li><a href="#shallow-neural-networks" id="toc-shallow-neural-networks" class="nav-link" data-scroll-target="#shallow-neural-networks">Shallow Neural Networks</a></li>
+  <li><a href="#deep-neural-networks" id="toc-deep-neural-networks" class="nav-link" data-scroll-target="#deep-neural-networks">Deep Neural Networks</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#references-and-resources" id="toc-references-and-resources" class="nav-link" data-scroll-target="#references-and-resources">References and resources</a>
+  <ul class="collapse">
+  <li><a href="#references-for-tree-based-methods" id="toc-references-for-tree-based-methods" class="nav-link" data-scroll-target="#references-for-tree-based-methods">References for Tree based methods</a></li>
+  <li><a href="#references-for-deep-neural-networks" id="toc-references-for-deep-neural-networks" class="nav-link" data-scroll-target="#references-for-deep-neural-networks">References for deep neural networks</a></li>
+  <li><a href="#some-interesting-online-resources" id="toc-some-interesting-online-resources" class="nav-link" data-scroll-target="#some-interesting-online-resources">Some interesting online resources</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -514,6 +549,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
