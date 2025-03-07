@@ -9,12 +9,48 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+  sidebar:
+    style: "docked"
+    contents:
+      - section: "Introduction"
+        contents:
+          - href: index.qmd
+            text: Home
+          - href: C0-Intro2StatLearn-PD_AS.qmd
+            text: Course presentation
+          - href: C1.1-SupervisedLearning-PD_AS.qmd
+            text: Overview of Supervised Learning
+          - href: C1.2-Model_validation_and_Resampling.qmd
+            text: Model Validation and Resampling
 
-format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
+      - section: "Tree-based Methods"
+        contents:
+          - href: 2.1-DecisionTrees-Slides.qmd
+            text: Decision Trees
+          - href: CART-Examples.html
+            text: Classification and Regression Trees (Lab)
+          - href: ISLch08-baggboost-lab.ipynb
+            text: Decision Trees Lab (Python)
 
+      - section: "Ensemble Methods"
+        contents:
+          - href: C2.2-Ensemble_Methods-Slides.qmd
+            text: Ensemble Methods
+          - href: labs/Lab-C.2.4-Ensembles-1RF.qmd
+            text: Random Forest Lab
+          - href: Lab-C.2.4-Boosting.qmd
+            text: Boosting Lab
+
+      - section: "Artificial Neural Networks"
+        contents:
+          - href: Neural_Networks.qmd
+            text: Neural Networks
+          - href: Deep_Learning.qmd
+            text: Deep Learning
+
+      - section: "Resources"
+        contents:
+          - href: references.qmd
+            text: References
 
 

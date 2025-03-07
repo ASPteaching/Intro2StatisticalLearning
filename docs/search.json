@@ -270,49 +270,84 @@
     "href": "index.html",
     "title": "Introduction to Statistical Learning",
     "section": "",
-    "text": "This web page and its associated github repository is intended to provide materials (slides, scripts datasets etc) for some of the units[^1] of the Statistical Learning course at the UPC-UB MSc in Statistics and Operations Research (MESIO).\n[^1:] Specifically the materials in this page are about chapters:\n\nIntroduction\nTree and Ensemble Methods\nArtificial Neural Networks..\n\nThe main reason for creating this page, apart of making it open and facilitatigt the hierrchjichal presentation of the materials, is that some labs may take time to run. So, given that it is not an option to run them in class we provide links to the HTML files obtaind when running the R or Python notebooks provided.\nBy the other side, in order to make the materials completely reproducible, the page is based on a github repository, which can be cloned or downladed in order for anyone who wishes to play around with the materials and reproduce or improve the examples.\n\n\n\nCourse presentation\n1.1 Overview of Supervised Learning\n1.2 Model validation and Resampling\nR-labs\n\nRegression with KNN\nClassification with KNN\n\nComplements\n\nIntroduction to biomarkers and diagnostic tests\n\n\n\n\n\n\n\nDecision trees are a type of non-parametric classifiers which have been Very successful because of their interpretability, flexibility and a very decent accuracy.\n\n2.1-DecisionTrees-Slides\nR-labs\n\nLab_1- Classification and Regression Trees\n\nPython-labs\n\nLab_1- Decision Trees lab (from ISL. Ch 08)\n\n\n\n\n\nThe term “Ensemble” (together in french) refers to distinct approaches to build predictiors by combining multiple models.\nThey have proved to addres well some limitations of trees therefore improving accuracy and robustness as well as being able to reduce overfitting and capture complex relationships.\n\n2.2-Ensemble Methods. Slides\nR-Labs\n\nEnsemble Lab 1 (Random Forest)\nEnsemble Lab 2 (Boosting)\nEnsemble Lab 2b (Boosting Optimization)\nEnsemble Lab 3 (Caret)\n\n\n\n\n\n\n\n\nThese are raditional ML models, inspired in brain, that simulate neuron behavior, thata is they receive an input, which is processed and an output prediction is produced.\nFor long their applicability has been relatively restricted to a few fields or problems due mainly to their “black box” functioning that made them hard to interpret.\nThe scenario has now completely changed with the advent of deep neural networks which are in the basis of many powerful applications of artificial intelligence.\n\nNeural Networks Slides\nLabs\n\nNeuralNets Lab (Rmd version)\nNeuralNets Lab (Python notebook\n\n\n\n\n\nEsssentially these are ANN with multiple hidden layers with allow overpassing many of their limitations.\nThey can be tuned in a much more automatical way and have been applied to many complex tasks. such as Computer vision, Natural Language Processing or Recommender systems.\n\nDeep learning Slides\n\nDeepLearning Lab (Rmd version)\nDeepLearning Lab (Python notebook"
+    "text": "This web page and its associated github repository is intended to provide materials (slides, scripts datasets etc) for some of the units[^1] of the Statistical Learning course at the UPC-UB MSc in Statistics and Operations Research (MESIO).\n[^1:] Specifically the materials in this page are about chapters:\n\nIntroduction\nTree and Ensemble Methods\nArtificial Neural Networks..\n\nThe main reason for creating this page, apart of making it open and facilitatigt the hierrchjichal presentation of the materials, is that some labs may take time to run. So, given that it is not an option to run them in class we provide links to the HTML files obtaind when running the R or Python notebooks provided.\nBy the other side, in order to make the materials completely reproducible, the page is based on a github repository, which can be cloned or downladed in order for anyone who wishes to play around with the materials and reproduce or improve the examples.\n\n\n\nCourse presentation\n1.1 Overview of Supervised Learning\n1.2 Model validation and Resampling\nR-labs\n\nRegression with KNN\nClassification with KNN\n\nComplements\n\nIntroduction to biomarkers and diagnostic tests\n\n\n\n\n\n\n\nDecision trees are a type of non-parametric classifiers which have been Very successful because of their interpretability, flexibility and a very decent accuracy.\n\n2.1-DecisionTrees-Slides\nR-labs\n\nLab_1- Classification and Regression Trees\n\nPython-labs\n\nLab_1- Decision Trees lab (from ISL. Ch 08)\n\n\n\n\n\nThe term “Ensemble” (together in french) refers to distinct approaches to build predictiors by combining multiple models.\nThey have proved to addres well some limitations of trees therefore improving accuracy and robustness as well as being able to reduce overfitting and capture complex relationships.\n\n2.2-Ensemble Methods. Slides\nR-Labs\n\nEnsemble Lab 1 (Random Forest)\nEnsemble Lab 2 (Boosting)\nEnsemble Lab 2b (Boosting Optimization)\nEnsemble Lab 3 (Caret)\n\n\n\n\n\n\n\n\nThese are raditional ML models, inspired in brain, that simulate neuron behavior, thata is they receive an input, which is processed and an output prediction is produced.\nFor long their applicability has been relatively restricted to a few fields or problems due mainly to their “black box” functioning that made them hard to interpret.\nThe scenario has now completely changed with the advent of deep neural networks which are in the basis of many powerful applications of artificial intelligence.\n\nNeural Networks Slides\nLabs\n\nNeuralNets Lab (Rmd version)\nNeuralNets Lab (Python notebook\n\n\n\n\n\nEsssentially these are ANN with multiple hidden layers with allow overpassing many of their limitations.\nThey can be tuned in a much more automatical way and have been applied to many complex tasks. such as Computer vision, Natural Language Processing or Recommender systems.\n\nDeep learning Slides\n\nDeepLearning Lab (Rmd version)\nDeepLearning Lab (Python notebook",
+    "crumbs": [
+      "Home",
+      "Introduction",
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#introduction-to-statistical-learning",
     "href": "index.html#introduction-to-statistical-learning",
     "title": "Introduction to Statistical Learning",
     "section": "",
-    "text": "Course presentation\n1.1 Overview of Supervised Learning\n1.2 Model validation and Resampling\nR-labs\n\nRegression with KNN\nClassification with KNN\n\nComplements\n\nIntroduction to biomarkers and diagnostic tests"
+    "text": "Course presentation\n1.1 Overview of Supervised Learning\n1.2 Model validation and Resampling\nR-labs\n\nRegression with KNN\nClassification with KNN\n\nComplements\n\nIntroduction to biomarkers and diagnostic tests",
+    "crumbs": [
+      "Home",
+      "Introduction",
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#tree-based-methods",
     "href": "index.html#tree-based-methods",
     "title": "Introduction to Statistical Learning",
     "section": "",
-    "text": "Decision trees are a type of non-parametric classifiers which have been Very successful because of their interpretability, flexibility and a very decent accuracy.\n\n2.1-DecisionTrees-Slides\nR-labs\n\nLab_1- Classification and Regression Trees\n\nPython-labs\n\nLab_1- Decision Trees lab (from ISL. Ch 08)\n\n\n\n\n\nThe term “Ensemble” (together in french) refers to distinct approaches to build predictiors by combining multiple models.\nThey have proved to addres well some limitations of trees therefore improving accuracy and robustness as well as being able to reduce overfitting and capture complex relationships.\n\n2.2-Ensemble Methods. Slides\nR-Labs\n\nEnsemble Lab 1 (Random Forest)\nEnsemble Lab 2 (Boosting)\nEnsemble Lab 2b (Boosting Optimization)\nEnsemble Lab 3 (Caret)"
+    "text": "Decision trees are a type of non-parametric classifiers which have been Very successful because of their interpretability, flexibility and a very decent accuracy.\n\n2.1-DecisionTrees-Slides\nR-labs\n\nLab_1- Classification and Regression Trees\n\nPython-labs\n\nLab_1- Decision Trees lab (from ISL. Ch 08)\n\n\n\n\n\nThe term “Ensemble” (together in french) refers to distinct approaches to build predictiors by combining multiple models.\nThey have proved to addres well some limitations of trees therefore improving accuracy and robustness as well as being able to reduce overfitting and capture complex relationships.\n\n2.2-Ensemble Methods. Slides\nR-Labs\n\nEnsemble Lab 1 (Random Forest)\nEnsemble Lab 2 (Boosting)\nEnsemble Lab 2b (Boosting Optimization)\nEnsemble Lab 3 (Caret)",
+    "crumbs": [
+      "Home",
+      "Introduction",
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#artifical-neural-networks",
     "href": "index.html#artifical-neural-networks",
     "title": "Introduction to Statistical Learning",
     "section": "",
-    "text": "These are raditional ML models, inspired in brain, that simulate neuron behavior, thata is they receive an input, which is processed and an output prediction is produced.\nFor long their applicability has been relatively restricted to a few fields or problems due mainly to their “black box” functioning that made them hard to interpret.\nThe scenario has now completely changed with the advent of deep neural networks which are in the basis of many powerful applications of artificial intelligence.\n\nNeural Networks Slides\nLabs\n\nNeuralNets Lab (Rmd version)\nNeuralNets Lab (Python notebook\n\n\n\n\n\nEsssentially these are ANN with multiple hidden layers with allow overpassing many of their limitations.\nThey can be tuned in a much more automatical way and have been applied to many complex tasks. such as Computer vision, Natural Language Processing or Recommender systems.\n\nDeep learning Slides\n\nDeepLearning Lab (Rmd version)\nDeepLearning Lab (Python notebook"
+    "text": "These are raditional ML models, inspired in brain, that simulate neuron behavior, thata is they receive an input, which is processed and an output prediction is produced.\nFor long their applicability has been relatively restricted to a few fields or problems due mainly to their “black box” functioning that made them hard to interpret.\nThe scenario has now completely changed with the advent of deep neural networks which are in the basis of many powerful applications of artificial intelligence.\n\nNeural Networks Slides\nLabs\n\nNeuralNets Lab (Rmd version)\nNeuralNets Lab (Python notebook\n\n\n\n\n\nEsssentially these are ANN with multiple hidden layers with allow overpassing many of their limitations.\nThey can be tuned in a much more automatical way and have been applied to many complex tasks. such as Computer vision, Natural Language Processing or Recommender systems.\n\nDeep learning Slides\n\nDeepLearning Lab (Rmd version)\nDeepLearning Lab (Python notebook",
+    "crumbs": [
+      "Home",
+      "Introduction",
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#references-for-tree-based-methods",
     "href": "index.html#references-for-tree-based-methods",
     "title": "Introduction to Statistical Learning",
     "section": "References for Tree based methods",
-    "text": "References for Tree based methods\n\nBreiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.\nBrandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site\nEfron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer."
+    "text": "References for Tree based methods\n\nBreiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.\nBrandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site\nEfron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer.",
+    "crumbs": [
+      "Home",
+      "Introduction",
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#references-for-deep-neural-networks",
     "href": "index.html#references-for-deep-neural-networks",
     "title": "Introduction to Statistical Learning",
     "section": "References for deep neural networks",
-    "text": "References for deep neural networks\n\nGoodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site\nLeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.\nChollet, F. (2018). Deep learning with Python. Manning Publications.\nChollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications."
+    "text": "References for deep neural networks\n\nGoodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site\nLeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.\nChollet, F. (2018). Deep learning with Python. Manning Publications.\nChollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications.",
+    "crumbs": [
+      "Home",
+      "Introduction",
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#some-interesting-online-resources",
     "href": "index.html#some-interesting-online-resources",
     "title": "Introduction to Statistical Learning",
     "section": "Some interesting online resources",
-    "text": "Some interesting online resources\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nAn Introduction to Recursive Partitioning Using the RPART Routines\nIntroduction to Artificial Neural Networks\n\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Some interesting online resources\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nAn Introduction to Recursive Partitioning Using the RPART Routines\nIntroduction to Artificial Neural Networks\n\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "crumbs": [
+      "Home",
+      "Introduction",
+      "Home"
+    ]
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides.html#outline",
