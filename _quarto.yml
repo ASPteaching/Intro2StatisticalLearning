@@ -9,6 +9,10 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+    right:
+      - icon: github
+        href: https://github.com/aspteaching/Intro2StatisticalLearning
+        aria-label: "GitHub Repository"
   sidebar:
     style: "docked"
     contents:
@@ -53,4 +57,9 @@ website:
           - href: references.qmd
             text: References
 
-
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    link-external-newwindow: true  # 🔹 Enlaces externos se abren en nueva pestaña
