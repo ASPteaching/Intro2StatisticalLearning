@@ -1,6 +1,6 @@
 ---
 title: "ARTIFICIAL NEURAL NETWORKS"
-subtitle: 'Neural Networks, Deep Learning and Artificial Intelligence'
+subtitle: 'Neural Networks, Deep Learning and<br> Artificial Intelligence'
 format:
   revealjs: 
     incremental: false  
@@ -131,8 +131,10 @@ have also contributed to the widespread adoption of AI.
 ::: {.column width='40%'}
 
 <br>
+```{r, fig.align='center'}
+knitr::include_graphics("images/2.1-Introduction_to_ANN-Slides_insertimage_2.png")
+```
 
-![](images/2.1-Introduction_to_ANN-Slides_insertimage_2.png)
 
 :::
 
@@ -155,7 +157,7 @@ knitr::include_graphics("images/AI-ML-DL-1.jpg")
 
 -   **Deep learning**: sub field of ML focusing on learning data representations as successive successive layers of increasingly meaningful representations.
 
-## How does DL improve
+## How does DL improve on ML
 
 ```{r, fig.align='center', out.width="100%", fig.cap="[ML and DL Approaches for Brain Disease Diagnosis](https://ieeexplore.ieee.org/document/9363896)"}
 knitr::include_graphics("images/ML_vs_DL-2.png")
@@ -203,7 +205,7 @@ knitr::include_graphics("images/ML_vs_DL-2.png")
     -   *It may take a while for AI to be deployed to its true potential---a potential the full extent of which no one has yet dared to dream*
     -   *but AI is coming, and it will transform our world in a fantastic way*".
 
-# The Artificial Neurone (AN)
+# The **A**rtificial **N**eurone
 
 
 ## Emulating biological neurons
@@ -239,7 +241,10 @@ knitr::include_graphics("images/MacCulloghPitts-Neuron.png")
     -   It performs an aggregation and
     -   based on the aggregated value the second part, $f$, makes a decision.
 
-See [the source of this picture](https://towardsdatascience.com/mcculloch-pitts-model-5fdf65ac5dd1) for an illustration on how this can be used to emulate logical operations such as AND, OR or NOT, but not XOR.
+:::{.font70}
+- See [this link for an explanation](https://medium.com/towards-data-science/mcculloch-pitts-model-5fdf65ac5dd1) on how it can emulate logical operations such as AND, OR or NOT, but not XOR.
+- See [this link]() for a nice clarifying example
+:::
 
 ## Limitations
 
@@ -279,16 +284,29 @@ This first attempt to emulate neurons succeeded but with limitations:
 
 [![](images/McCullaughVSRosenblattPerceptron.png){width="100%"}](https://towardsdatascience.com/perceptron-the-artificial-neuron-4d8c70d5cc8d)
 
-## Comparison between the two
 
--   This is an improvement because
+## COMPARISON BETWEEN THE TWO
 
-    -   both, weights and threshold, can be learned and
-    -   the inputs can be real values
+The Perceptron represents an improvement over McCullough-Pitts' neuron:
 
--   But there is still a drawback in that a single perceptron can only be used to implement linearly separable functions.
+- It admits real-valued inputs.
+- Both weights and the threshold can be learned.
 
--   Artificial Neural Networks improve on this by introducing *Activation Functions*
+However, there are still limitations:
+
+- The output is determined by a **step function**, which limits its ability to model complex relationships.
+- A **single perceptron can only classify linearly separable functions**.
+
+## ANs and Activation Functions
+
+- The Perceptron can be generalized by *Artificial Neurones* which can use more general functions, called *Activation Functions* to produce their output.
+
+  - Activation functions are built in a way that they allow neurons to produce continuous and non-linear outputs.
+  
+- It must be noted however that *a single artificial neurone, even with a different activation function, still cannot model no-linear separable problems like XOR.*
+
+
+
 
 ## Activation in biological neurons
 
@@ -300,7 +318,7 @@ This first attempt to emulate neurons succeeded but with limitations:
 
 -   Analogously, *activation functions* in AN are functions to decide if the AN it is activated or not.
 -   AN's activation function is a mathematical function applied to the neuron's input to produce an output.
-    -   In practice it extends to complicated functions that can learn complex patterns in the data.
+    -   In practice it may go from simple to complex functions that can learn  patterns in the data.
     -   Activation functions can incorporate non-linearity, improving over linear classifiers.
 
 ## Activation function
@@ -397,19 +415,19 @@ knitr::include_graphics("images/TanhFunction.png")
 ## The ReLU {.smaller}
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="55%"}
 -   *rectified linear unit*: $f(z)=\max\{0,z\}$.
 
 -   Close to a linear: piece-wise *linear* function with two linear pieces.
 
--   Outputs are in %(0,\infty)\$ , thus not bounded
+-   Outputs are in $(0,\infty)$ , thus not bounded
 
 -   Half rectified: activation threshold at 0
 
 -   No vanishing gradient problem
 :::
 
-::: {.column width="50%"}
+::: {.column width="45%"}
 ```{r, fig.align='center', out.width="100%"}
 knitr::include_graphics("images/ReLUFunction.png")
 ```
@@ -428,7 +446,7 @@ knitr::include_graphics("images/ArtificialNeuron.png")
 
 ## In words {.smaller}
 
-- An ANN takes a vector of input values $x_{1}, \ldots, x_{d}$ and combines it with some weights that are local to the neuron $\left(w_{0}, w_{1}, . ., w_{d}\right)$ to compute a net input $w_{0}+\sum_{i=1}^{d} w_{i} \cdot x_{i}$. 
+- An AN takes a vector of input values $x_{1}, \ldots, x_{d}$ and combines it with some weights that are local to the neuron $\left(w_{0}, w_{1}, . ., w_{d}\right)$ to compute a net input $w_{0}+\sum_{i=1}^{d} w_{i} \cdot x_{i}$. 
 
 - To compute its output, it then passes the net input through a possibly non-linear univariate activation function $g(\cdot)$, usually vchosen from a set of options such as *Sigmoid*, *Tanh* or *ReLU* functions
 
@@ -440,19 +458,21 @@ $$
 
 # From neurons to neural networks
 
-## The basic neural network {.smaller}
+## The basic neural network
 
-Following with the brain analogy one can combine (artificial) neurons to create better learners.
+::: font90
 
-A simple artificial neural network is usually created by combining two types of modifications to the basic perceptron (AN).
+- Following with the brain analogy one can combine (artificial) neurons to create better learners.
 
-- Stacking several neurons insteads of just one.
-- Adding an additional layer of neurons, which is call a *hidden* layer, 
+- A simple artificial neural network is usually created by combining two types of modifications to the basic perceptron (AN).
 
-This yields a system where the output of a \emph{neuron} can be the input
-of another in many different ways.
+  - Stacking several neurons insteads of just one.
+  
+  - Adding an additional layer of neurons, which is call a *hidden* layer, 
 
+- This yields a system where *the output of a neuron can be the input of another* in many different ways.
 
+:::
 ## An Artificial Neural network
 
 ```{r, fig.align='center', out.width="90%"}
@@ -483,6 +503,8 @@ With all this in mind our example neural network has three layers with:
 
 ## How an ANN works 
 
+::: font90
+
 An ANN is a predictive model (a *learner*) whose properties and behaviour  can be well characterized.
 
 <!-- In practice this means: -->
@@ -494,35 +516,44 @@ An ANN is a predictive model (a *learner*) whose properties and behaviour  can b
 - These are characterized (parametrized) by their *weights* and *biases*, that need to be *learnt*. 
   - This is done by *training the ANN*.
 
-## Training the ANN {.smaller}
+:::
 
-- In order for the ANN to perform well, the training process aims at finding the best possible  parameter values for the learning task defined by the fnctions. This is done by
+## Training the ANN
+
+::: font80
+
+- The training process aims at finding *the best possible parameter values* for the learning task defined by the fnctions. This is done by
 
   - Selecting an appropriate (convex) loss function,
-  - Finding those weights that minimize a the total *cost* function (avg. loss).
+  - Finding weights that minimize the total *cost* function (avg. loss).
 
 - This is usually done using some iterative optimization procedure such as *gradient descent*.
   - This requires evaluating derivatives in a huge number of points.
   - Such high number may be reduced by *Stochastic Gradient Descent*.
   - The evaluation of derivatives is simplified thanks to *Backpropagation*.
 
+:::
 
 ## Forward propagation {.smaller}
 
-As described above the process that encompasses the computations required to go from the input values to the final output is known as *forward propagation*.
+The process that encompasses the computations required to go from the input values to the final output is known as *forward propagation*.
 
-The  weights are combined with the input to produce the final output.
+<!-- The  weights are combined with the input to produce the final output. -->
 
-Each node, $a_i^{(2)}$ of the hidden layer opperates on all nodes of the input values
+For the ANN with 3 input values and 3 neurons in the hidden layer we have:
 
+1. Each node, $a_i^{(2)}$ of the hidden layer opperates on all nodes of the input values
+  
+::: font90  
 \begin{eqnarray}
 a_1^{(2)}&=&f(\theta_{10}^{(1)}+\theta_{11}^{(1)}x_1+\theta_{12}^{(1)}x_2+\theta_{13}^{(1)}x_3)\\
 a_2^{(2)}&=&f(\theta_{20}^{(1)}+\theta_{21}^{(1)}x_1+\theta_{22}^{(1)}x_2+\theta_{23}^{(1)}x_3)\\
 a_3^{(2)}&=&f(\theta_{30}^{(1)}+\theta_{31}^{(1)}x_1+\theta_{32}^{(1)}x_2+\theta_{33}^{(1)}x_3))
 \end{eqnarray}
+:::
 
-The output of the hidden layer is transformed through the activation function:
-
+  2. Output of hidden layer is transformed by the activation function:
+  
 $$
 h_{\Theta}(x)=a_1^{(3)}=f(\theta_{10}^{(2)}+\theta_{11}^{(2)}a_1^{(2)}+\theta_{12}^{(2)}a_2^{(2)}+\theta_{13}^{(2)}a_3^{(2)}
 $$
@@ -676,7 +707,9 @@ $$
 # Training Neural Networks
 
 
-## Training an ANN {.smaller}
+## Training an ANN 
+
+::: font80
 
 - An ANN is a predictive model whose properties and behaviour  can be mathematically characterized.
 
@@ -686,7 +719,9 @@ $$
   .
 - *Training* the network is done by 
   - Selecting an appropriate (convex) loss function,
-  - Finding those weights that minimize a the total *cost* function (avg loss).
+  - Finding weights that minimize a the total *cost* function (avg loss).
+
+:::
 
 ## The tools for training
 
@@ -696,74 +731,77 @@ $$
     - Such high number may be reduced by *Stochastic Gradient Descent*.
     - The evaluation of derivatives is simplified thanks to *Backpropagation*.
 
-## A loss function for optimization
+## Loss functions for optimization {.smaller}
 
-Depending on the form of the activation function we may decide to use one or another form of loss function.
+Depending on the activation function it may be advisable to use one or another form of loss function.
 
--   At first an idea may be to use *squared error loss*:
+- A typical choice may be *quadratic  (or square) error loss*:
 $$
   l(h_\theta(x),y)=\left (y-\frac{1}{1+e^{-\theta^\intercal x}}\right )^2
 $$
 
-- However it happens to be that, given a sigmoid activation function, the resulting loss function [* is  not a convex   problem*](https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c)  which means that MSE is not appropriate.
+- Given a sigmoid AF, the squared error loss [*is  not a convex problem*](https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c) so that MSE is not appropriate.
 
-- Quadratic loss may be used, for instance, with ReLu activation.
+- Quadratic loss may be used with ReLu activation.
 
-## Illustrating non-convexity {.smaller}
+<!-- ## Illustrating non-convexity {.smaller} -->
 
-```{r, eval=FALSE, echo=TRUE}
-library(plot3D)
+<!-- ```{r, eval=FALSE, echo=TRUE} -->
+<!-- library(plot3D) -->
 
-# Define the squared error loss function
-squared_error <- function(y, y_hat) {
-  return(0.5 * (y - y_hat)^2)
-}
+<!-- # Define the squared error loss function -->
+<!-- squared_error <- function(y, y_hat) { -->
+<!--   return(0.5 * (y - y_hat)^2) -->
+<!-- } -->
 
-# Define the logistic activation function
-logistic <- function(z) {
-  return(1 / (1 + exp(-z)))
-}
+<!-- # Define the logistic activation function -->
+<!-- logistic <- function(z) { -->
+<!--   return(1 / (1 + exp(-z))) -->
+<!-- } -->
 
-# Generate data
-x <- seq(-10, 10, length.out = 200)
-y <- seq(-10, 10, length.out = 200)
-z <- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y)))
+<!-- # Generate data -->
+<!-- x <- seq(-10, 10, length.out = 200) -->
+<!-- y <- seq(-10, 10, length.out = 200) -->
+<!-- z <- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y))) -->
 
-# Plot the exaggerated loss surface
-persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue",
-        ticktype = "detailed", xlab = "Weight 1", ylab = "Weight 2", zlab = "Loss")
+<!-- # Plot the exaggerated loss surface -->
+<!-- persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue", -->
+<!--         ticktype = "detailed", xlab = "Weight 1", ylab = "Weight 2", zlab = "Loss") -->
 
-```
+<!-- ``` -->
 
-## Illustrating non-convexity {.smaller}
+<!-- ## Illustrating non-convexity {.smaller} -->
 
-```{r echo=FALSE}
-library(plot3D)
+<!-- ```{r echo=FALSE} -->
+<!-- library(plot3D) -->
 
-# Define the squared error loss function
-squared_error <- function(y, y_hat) {
-  return(0.5 * (y - y_hat)^2)
-}
+<!-- # Define the squared error loss function -->
+<!-- squared_error <- function(y, y_hat) { -->
+<!--   return(0.5 * (y - y_hat)^2) -->
+<!-- } -->
 
-# Define the logistic activation function
-logistic <- function(z) {
-  return(1 / (1 + exp(-z)))
-}
+<!-- # Define the logistic activation function -->
+<!-- logistic <- function(z) { -->
+<!--   return(1 / (1 + exp(-z))) -->
+<!-- } -->
 
-# Generate data
-x <- seq(-10, 10, length.out = 200)
-y <- seq(-10, 10, length.out = 200)
-z <- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y)))
+<!-- # Generate data -->
+<!-- x <- seq(-10, 10, length.out = 200) -->
+<!-- y <- seq(-10, 10, length.out = 200) -->
+<!-- z <- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y))) -->
 
 
-# Plot the exaggerated loss surface
-persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue", ticktype = "detailed", xlab = "Weight 1", ylab = "Weight 2", zlab = "Loss")
+<!-- # Plot the exaggerated loss surface -->
+<!-- persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue", ticktype = "detailed", xlab = "Weight 1", ylab = "Weight 2", zlab = "Loss") -->
 
-```
+<!-- ``` -->
 
 
 ## Cross-entropy loss function {.smaller}
 
+- A common loss function to use with ANNs is Cross-entropy defined as:
+
+::: font80
 $$
     l(h_\theta(x),y)=\big{\{}\begin{array}{ll}
     -\log h_\theta(x) & \textrm{if }y=1\\
@@ -771,19 +809,25 @@ $$
     \end{array}
 $$
 
-This function can also be written as:
+:::
+
+- This function can also be written as:
 
 $$
 l(h_\theta(x),y)=-y\log h_\theta(x) - (1-y)\log(1-h_\theta(x))
 $$
 
-Using cross-entropy loss, the cost function is of the form:
+- Using cross-entropy loss, the cost function is of the form:
 
-\begin{eqnarray*}
-    J(\theta)=-\frac{1}{n}\big[\sum_{i=1}^n&&(y^{(i)}\log h_\theta(x^{(i)})+\\ &&(1-y^{(i)})\log(1-h_\theta(x^{(i)}))\big]
-\end{eqnarray*}
+::: font80
 
-Now, this is a convex optimization problem.
+$$
+  J(\theta)=-\frac{1}{n}\left[\sum_{i=1}^n (y^{(i)}\log h_\theta(x^{(i)})+ (1-y^{(i)})\log(1-h_\theta(x^{(i)}))\right]
+$$
+
+:::
+
+- Now, this is a convex optimization problem.
 
 ## Regularized cross entropy
 

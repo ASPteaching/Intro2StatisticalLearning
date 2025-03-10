@@ -393,7 +393,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">ARTIFICIAL NEURAL NETWORKS</h1>
-  <p class="subtitle">Neural Networks, Deep Learning and Artificial Intelligence</p>
+  <p class="subtitle">Neural Networks, Deep Learning and<br> Artificial Intelligence</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -484,7 +484,15 @@
 </ul>
 </div><div class="column" style="width:40%;">
 <p><br></p>
-<p><img data-src="images/2.1-Introduction_to_ANN-Slides_insertimage_2.png"></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/2.1-Introduction_to_ANN-Slides_insertimage_2.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
 </div></div>
 </section>
 <section id="back-to-science" class="slide level2">
@@ -500,8 +508,8 @@
 <li><p><strong>Deep learning</strong>: sub field of ML focusing on learning data representations as successive successive layers of increasingly meaningful representations.</p></li>
 </ul>
 </section>
-<section id="how-does-dl-improve" class="slide level2">
-<h2>How does DL improve</h2>
+<section id="how-does-dl-improve-on-ml" class="slide level2">
+<h2>How does DL improve on ML</h2>
 
 <img data-src="images/ML_vs_DL-2.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://ieeexplore.ieee.org/document/9363896">ML and DL Approaches for Brain Disease Diagnosis</a></p><aside class="notes">
 <ul>
@@ -552,8 +560,8 @@
 </ul>
 </section></section>
 <section>
-<section id="the-artificial-neurone-an" class="title-slide slide level1 center">
-<h1>The Artificial Neurone (AN)</h1>
+<section id="the-artificial-neurone" class="title-slide slide level1 center">
+<h1>The <strong>A</strong>rtificial <strong>N</strong>eurone</h1>
 
 </section>
 <section id="emulating-biological-neurons" class="slide level2">
@@ -596,7 +604,12 @@
 <li>based on the aggregated value the second part, <span class="math inline">\(f\)</span>, makes a decision.</li>
 </ul></li>
 </ul>
-<p>See <a href="https://towardsdatascience.com/mcculloch-pitts-model-5fdf65ac5dd1">the source of this picture</a> for an illustration on how this can be used to emulate logical operations such as AND, OR or NOT, but not XOR.</p>
+<div class="font70">
+<ul>
+<li>See <a href="https://medium.com/towards-data-science/mcculloch-pitts-model-5fdf65ac5dd1">this link for an explanation</a> on how it can emulate logical operations such as AND, OR or NOT, but not XOR.</li>
+<li>See <a href="">this link</a> for a nice clarifying example</li>
+</ul>
+</div>
 </section>
 <section id="limitations" class="slide level2">
 <h2>Limitations</h2>
@@ -638,15 +651,26 @@
 <p><a href="https://towardsdatascience.com/perceptron-the-artificial-neuron-4d8c70d5cc8d"><img data-src="images/McCullaughVSRosenblattPerceptron.png" style="width:100.0%"></a></p>
 </section>
 <section id="comparison-between-the-two-1" class="slide level2">
-<h2>Comparison between the two</h2>
+<h2>COMPARISON BETWEEN THE TWO</h2>
+<p>The Perceptron represents an improvement over McCullough-Pitts’ neuron:</p>
 <ul>
-<li><p>This is an improvement because</p>
+<li>It admits real-valued inputs.</li>
+<li>Both weights and the threshold can be learned.</li>
+</ul>
+<p>However, there are still limitations:</p>
 <ul>
-<li>both, weights and threshold, can be learned and</li>
-<li>the inputs can be real values</li>
+<li>The output is determined by a <strong>step function</strong>, which limits its ability to model complex relationships.</li>
+<li>A <strong>single perceptron can only classify linearly separable functions</strong>.</li>
+</ul>
+</section>
+<section id="ans-and-activation-functions" class="slide level2">
+<h2>ANs and Activation Functions</h2>
+<ul>
+<li><p>The Perceptron can be generalized by <em>Artificial Neurones</em> which can use more general functions, called <em>Activation Functions</em> to produce their output.</p>
+<ul>
+<li>Activation functions are built in a way that they allow neurons to produce continuous and non-linear outputs.</li>
 </ul></li>
-<li><p>But there is still a drawback in that a single perceptron can only be used to implement linearly separable functions.</p></li>
-<li><p>Artificial Neural Networks improve on this by introducing <em>Activation Functions</em></p></li>
+<li><p>It must be noted however that <em>a single artificial neurone, even with a different activation function, still cannot model no-linear separable problems like XOR.</em></p></li>
 </ul>
 </section>
 <section id="activation-in-biological-neurons" class="slide level2">
@@ -665,7 +689,7 @@
 <li>Analogously, <em>activation functions</em> in AN are functions to decide if the AN it is activated or not.</li>
 <li>AN’s activation function is a mathematical function applied to the neuron’s input to produce an output.
 <ul>
-<li>In practice it extends to complicated functions that can learn complex patterns in the data.</li>
+<li>In practice it may go from simple to complex functions that can learn patterns in the data.</li>
 <li>Activation functions can incorporate non-linearity, improving over linear classifiers.</li>
 </ul></li>
 </ul>
@@ -763,15 +787,15 @@ f(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}
 <section id="the-relu" class="slide level2 smaller">
 <h2>The ReLU</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:55%;">
 <ul>
 <li><p><em>rectified linear unit</em>: <span class="math inline">\(f(z)=\max\{0,z\}\)</span>.</p></li>
 <li><p>Close to a linear: piece-wise <em>linear</em> function with two linear pieces.</p></li>
-<li><p>Outputs are in %(0,)$ , thus not bounded</p></li>
+<li><p>Outputs are in <span class="math inline">\((0,\infty)\)</span> , thus not bounded</p></li>
 <li><p>Half rectified: activation threshold at 0</p></li>
 <li><p>No vanishing gradient problem</p></li>
 </ul>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -794,7 +818,7 @@ f(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}
 <section id="in-words" class="slide level2 smaller">
 <h2>In words</h2>
 <ul>
-<li><p>An ANN takes a vector of input values <span class="math inline">\(x_{1}, \ldots, x_{d}\)</span> and combines it with some weights that are local to the neuron <span class="math inline">\(\left(w_{0}, w_{1}, . ., w_{d}\right)\)</span> to compute a net input <span class="math inline">\(w_{0}+\sum_{i=1}^{d} w_{i} \cdot x_{i}\)</span>.</p></li>
+<li><p>An AN takes a vector of input values <span class="math inline">\(x_{1}, \ldots, x_{d}\)</span> and combines it with some weights that are local to the neuron <span class="math inline">\(\left(w_{0}, w_{1}, . ., w_{d}\right)\)</span> to compute a net input <span class="math inline">\(w_{0}+\sum_{i=1}^{d} w_{i} \cdot x_{i}\)</span>.</p></li>
 <li><p>To compute its output, it then passes the net input through a possibly non-linear univariate activation function <span class="math inline">\(g(\cdot)\)</span>, usually vchosen from a set of options such as <em>Sigmoid</em>, <em>Tanh</em> or <em>ReLU</em> functions</p></li>
 <li><p>To deal with the <em>bias</em>, we create an extra input variable <span class="math inline">\(x_{0}\)</span> with value always equal to 1 , and so the function computed by a single artificial neuron (parameterized by its weights <span class="math inline">\(\mathbf{w}\)</span> ) is:</p></li>
 </ul>
@@ -807,15 +831,19 @@ y(\mathbf{x})=g\left(w_{0}+\sum_{i=1}^{d} w_{i} x_{i}\right)=g\left(\sum_{i=0}^{
 <h1>From neurons to neural networks</h1>
 
 </section>
-<section id="the-basic-neural-network" class="slide level2 smaller">
+<section id="the-basic-neural-network" class="slide level2">
 <h2>The basic neural network</h2>
-<p>Following with the brain analogy one can combine (artificial) neurons to create better learners.</p>
-<p>A simple artificial neural network is usually created by combining two types of modifications to the basic perceptron (AN).</p>
+<div class="font90">
 <ul>
-<li>Stacking several neurons insteads of just one.</li>
-<li>Adding an additional layer of neurons, which is call a <em>hidden</em> layer,</li>
+<li><p>Following with the brain analogy one can combine (artificial) neurons to create better learners.</p></li>
+<li><p>A simple artificial neural network is usually created by combining two types of modifications to the basic perceptron (AN).</p>
+<ul>
+<li><p>Stacking several neurons insteads of just one.</p></li>
+<li><p>Adding an additional layer of neurons, which is call a <em>hidden</em> layer,</p></li>
+</ul></li>
+<li><p>This yields a system where <em>the output of a neuron can be the input of another</em> in many different ways.</p></li>
 </ul>
-<p>This yields a system where the output of a can be the input of another in many different ways.</p>
+</div>
 </section>
 <section id="an-artificial-neural-network" class="slide level2">
 <h2>An Artificial Neural network</h2>
@@ -841,6 +869,7 @@ y(\mathbf{x})=g\left(w_{0}+\sum_{i=1}^{d} w_{i} x_{i}\right)=g\left(\sum_{i=0}^{
 </section>
 <section id="how-an-ann-works" class="slide level2">
 <h2>How an ANN works</h2>
+<div class="font90">
 <p>An ANN is a predictive model (a <em>learner</em>) whose properties and behaviour can be well characterized.</p>
 <!-- In practice this means: -->
 <ul>
@@ -851,14 +880,16 @@ y(\mathbf{x})=g\left(w_{0}+\sum_{i=1}^{d} w_{i} x_{i}\right)=g\left(\sum_{i=0}^{
 <li>This is done by <em>training the ANN</em>.</li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section id="training-the-ann" class="slide level2 smaller">
+<section id="training-the-ann" class="slide level2">
 <h2>Training the ANN</h2>
+<div class="font80">
 <ul>
-<li><p>In order for the ANN to perform well, the training process aims at finding the best possible parameter values for the learning task defined by the fnctions. This is done by</p>
+<li><p>The training process aims at finding <em>the best possible parameter values</em> for the learning task defined by the fnctions. This is done by</p>
 <ul>
 <li>Selecting an appropriate (convex) loss function,</li>
-<li>Finding those weights that minimize a the total <em>cost</em> function (avg. loss).</li>
+<li>Finding weights that minimize the total <em>cost</em> function (avg. loss).</li>
 </ul></li>
 <li><p>This is usually done using some iterative optimization procedure such as <em>gradient descent</em>.</p>
 <ul>
@@ -867,18 +898,26 @@ y(\mathbf{x})=g\left(w_{0}+\sum_{i=1}^{d} w_{i} x_{i}\right)=g\left(\sum_{i=0}^{
 <li>The evaluation of derivatives is simplified thanks to <em>Backpropagation</em>.</li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section id="forward-propagation" class="slide level2 smaller">
+<section id="forward-propagation" class="slide level2 smaller scrollable">
 <h2>Forward propagation</h2>
-<p>As described above the process that encompasses the computations required to go from the input values to the final output is known as <em>forward propagation</em>.</p>
-<p>The weights are combined with the input to produce the final output.</p>
-<p>Each node, <span class="math inline">\(a_i^{(2)}\)</span> of the hidden layer opperates on all nodes of the input values</p>
+<p>The process that encompasses the computations required to go from the input values to the final output is known as <em>forward propagation</em>.</p>
+<!-- The  weights are combined with the input to produce the final output. -->
+<p>For the ANN with 3 input values and 3 neurons in the hidden layer we have:</p>
+<ol type="1">
+<li>Each node, <span class="math inline">\(a_i^{(2)}\)</span> of the hidden layer opperates on all nodes of the input values</li>
+</ol>
+<div class="font90">
 <p><span class="math display">\[\begin{eqnarray}
 a_1^{(2)}&amp;=&amp;f(\theta_{10}^{(1)}+\theta_{11}^{(1)}x_1+\theta_{12}^{(1)}x_2+\theta_{13}^{(1)}x_3)\\
 a_2^{(2)}&amp;=&amp;f(\theta_{20}^{(1)}+\theta_{21}^{(1)}x_1+\theta_{22}^{(1)}x_2+\theta_{23}^{(1)}x_3)\\
 a_3^{(2)}&amp;=&amp;f(\theta_{30}^{(1)}+\theta_{31}^{(1)}x_1+\theta_{32}^{(1)}x_2+\theta_{33}^{(1)}x_3))
 \end{eqnarray}\]</span></p>
-<p>The output of the hidden layer is transformed through the activation function:</p>
+</div>
+<ol start="2" type="1">
+<li>Output of hidden layer is transformed by the activation function:</li>
+</ol>
 <p><span class="math display">\[
 h_{\Theta}(x)=a_1^{(3)}=f(\theta_{10}^{(2)}+\theta_{11}^{(2)}a_1^{(2)}+\theta_{12}^{(2)}a_2^{(2)}+\theta_{13}^{(2)}a_3^{(2)}
 \]</span></p>
@@ -1011,8 +1050,9 @@ f(z_{s_{l+1}}^{(l)})
 <h1>Training Neural Networks</h1>
 
 </section>
-<section id="training-an-ann" class="slide level2 smaller">
+<section id="training-an-ann" class="slide level2">
 <h2>Training an ANN</h2>
+<div class="font80">
 <ul>
 <li><p>An ANN is a predictive model whose properties and behaviour can be mathematically characterized.</p></li>
 <li><p>In practice this means:</p>
@@ -1023,9 +1063,10 @@ f(z_{s_{l+1}}^{(l)})
 <li><p><em>Training</em> the network is done by</p>
 <ul>
 <li>Selecting an appropriate (convex) loss function,</li>
-<li>Finding those weights that minimize a the total <em>cost</em> function (avg loss).</li>
+<li>Finding weights that minimize a the total <em>cost</em> function (avg loss).</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="the-tools-for-training" class="slide level2">
 <h2>The tools for training</h2>
@@ -1038,63 +1079,84 @@ f(z_{s_{l+1}}^{(l)})
 </ul></li>
 </ul>
 </section>
-<section id="a-loss-function-for-optimization" class="slide level2">
-<h2>A loss function for optimization</h2>
-<p>Depending on the form of the activation function we may decide to use one or another form of loss function.</p>
+<section id="loss-functions-for-optimization" class="slide level2 smaller">
+<h2>Loss functions for optimization</h2>
+<p>Depending on the activation function it may be advisable to use one or another form of loss function.</p>
 <ul>
-<li><p>At first an idea may be to use <em>squared error loss</em>: <span class="math display">\[
-  l(h_\theta(x),y)=\left (y-\frac{1}{1+e^{-\theta^\intercal x}}\right )^2
+<li><p>A typical choice may be <em>quadratic (or square) error loss</em>: <span class="math display">\[
+l(h_\theta(x),y)=\left (y-\frac{1}{1+e^{-\theta^\intercal x}}\right )^2
 \]</span></p></li>
-<li><p>However it happens to be that, given a sigmoid activation function, the resulting loss function <a href="https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c">* is not a convex problem*</a> which means that MSE is not appropriate.</p></li>
-<li><p>Quadratic loss may be used, for instance, with ReLu activation.</p></li>
+<li><p>Given a sigmoid AF, the squared error loss <a href="https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c"><em>is not a convex problem</em></a> so that MSE is not appropriate.</p></li>
+<li><p>Quadratic loss may be used with ReLu activation.</p></li>
 </ul>
+<!-- ## Illustrating non-convexity {.smaller} -->
+<!-- ```{r, eval=FALSE, echo=TRUE} -->
+<!-- library(plot3D) -->
+<!-- # Define the squared error loss function -->
+<!-- squared_error <- function(y, y_hat) { -->
+<!--   return(0.5 * (y - y_hat)^2) -->
+<!-- } -->
+<!-- # Define the logistic activation function -->
+<!-- logistic <- function(z) { -->
+<!--   return(1 / (1 + exp(-z))) -->
+<!-- } -->
+<!-- # Generate data -->
+<!-- x <- seq(-10, 10, length.out = 200) -->
+<!-- y <- seq(-10, 10, length.out = 200) -->
+<!-- z <- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y))) -->
+<!-- # Plot the exaggerated loss surface -->
+<!-- persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue", -->
+<!--         ticktype = "detailed", xlab = "Weight 1", ylab = "Weight 2", zlab = "Loss") -->
+<!-- ``` -->
+<!-- ## Illustrating non-convexity {.smaller} -->
+<!-- ```{r echo=FALSE} -->
+<!-- library(plot3D) -->
+<!-- # Define the squared error loss function -->
+<!-- squared_error <- function(y, y_hat) { -->
+<!--   return(0.5 * (y - y_hat)^2) -->
+<!-- } -->
+<!-- # Define the logistic activation function -->
+<!-- logistic <- function(z) { -->
+<!--   return(1 / (1 + exp(-z))) -->
+<!-- } -->
+<!-- # Generate data -->
+<!-- x <- seq(-10, 10, length.out = 200) -->
+<!-- y <- seq(-10, 10, length.out = 200) -->
+<!-- z <- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y))) -->
+<!-- # Plot the exaggerated loss surface -->
+<!-- persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue", ticktype = "detailed", xlab = "Weight 1", ylab = "Weight 2", zlab = "Loss") -->
+<!-- ``` -->
 </section>
-<section id="illustrating-non-convexity" class="slide level2 smaller">
-<h2>Illustrating non-convexity</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(plot3D)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co"># Define the squared error loss function</span></span>
-<span id="cb1-4"><a></a>squared_error <span class="ot">&lt;-</span> <span class="cf">function</span>(y, y_hat) {</span>
-<span id="cb1-5"><a></a>  <span class="fu">return</span>(<span class="fl">0.5</span> <span class="sc">*</span> (y <span class="sc">-</span> y_hat)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb1-6"><a></a>}</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="co"># Define the logistic activation function</span></span>
-<span id="cb1-9"><a></a>logistic <span class="ot">&lt;-</span> <span class="cf">function</span>(z) {</span>
-<span id="cb1-10"><a></a>  <span class="fu">return</span>(<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>z)))</span>
-<span id="cb1-11"><a></a>}</span>
-<span id="cb1-12"><a></a></span>
-<span id="cb1-13"><a></a><span class="co"># Generate data</span></span>
-<span id="cb1-14"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
-<span id="cb1-15"><a></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
-<span id="cb1-16"><a></a>z <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, <span class="at">FUN =</span> <span class="cf">function</span>(x, y) <span class="fu">squared_error</span>(<span class="dv">1</span>, <span class="fu">logistic</span>(x <span class="sc">+</span> y)))</span>
-<span id="cb1-17"><a></a></span>
-<span id="cb1-18"><a></a><span class="co"># Plot the exaggerated loss surface</span></span>
-<span id="cb1-19"><a></a><span class="fu">persp3D</span>(x, y, z, <span class="at">theta =</span> <span class="dv">30</span>, <span class="at">phi =</span> <span class="dv">30</span>, <span class="at">expand =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb1-20"><a></a>        <span class="at">ticktype =</span> <span class="st">"detailed"</span>, <span class="at">xlab =</span> <span class="st">"Weight 1"</span>, <span class="at">ylab =</span> <span class="st">"Weight 2"</span>, <span class="at">zlab =</span> <span class="st">"Loss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="illustrating-non-convexity-1" class="slide level2 smaller">
-<h2>Illustrating non-convexity</h2>
-
-<img data-src="C3.1-Introduction_to_ANN-Slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
 <section id="cross-entropy-loss-function" class="slide level2 smaller">
 <h2>Cross-entropy loss function</h2>
+<ul>
+<li>A common loss function to use with ANNs is Cross-entropy defined as:</li>
+</ul>
+<div class="font80">
 <p><span class="math display">\[
     l(h_\theta(x),y)=\big{\{}\begin{array}{ll}
     -\log h_\theta(x) &amp; \textrm{if }y=1\\
     -\log(1-h_\theta(x))&amp; \textrm{if }y=0
     \end{array}
 \]</span></p>
-<p>This function can also be written as:</p>
+</div>
+<ul>
+<li>This function can also be written as:</li>
+</ul>
 <p><span class="math display">\[
 l(h_\theta(x),y)=-y\log h_\theta(x) - (1-y)\log(1-h_\theta(x))
 \]</span></p>
-<p>Using cross-entropy loss, the cost function is of the form:</p>
-<p><span class="math display">\[\begin{eqnarray*}
-    J(\theta)=-\frac{1}{n}\big[\sum_{i=1}^n&amp;&amp;(y^{(i)}\log h_\theta(x^{(i)})+\\ &amp;&amp;(1-y^{(i)})\log(1-h_\theta(x^{(i)}))\big]
-\end{eqnarray*}\]</span></p>
-<p>Now, this is a convex optimization problem.</p>
+<ul>
+<li>Using cross-entropy loss, the cost function is of the form:</li>
+</ul>
+<div class="font80">
+<p><span class="math display">\[
+  J(\theta)=-\frac{1}{n}\left[\sum_{i=1}^n (y^{(i)}\log h_\theta(x^{(i)})+ (1-y^{(i)})\log(1-h_\theta(x^{(i)}))\right]
+\]</span></p>
+</div>
+<ul>
+<li>Now, this is a convex optimization problem.</li>
+</ul>
 </section>
 <section id="regularized-cross-entropy" class="slide level2">
 <h2>Regularized cross entropy</h2>
@@ -1601,16 +1663,16 @@ J(\theta+\Delta\theta)\approx J(\theta)+\nabla J(\theta)^\intercal\Delta\theta
 <h2>A predictive ANN</h2>
 <p>We use the <code>neuralnet</code> package to build a simple neural network to predict if a type of stock pays dividends or not.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(neuralnet)) </span>
-<span id="cb2-2"><a></a>  <span class="fu">install.packages</span>(<span class="st">"neuralnet"</span>, <span class="at">dep=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(neuralnet)) </span>
+<span id="cb1-2"><a></a>  <span class="fu">install.packages</span>(<span class="st">"neuralnet"</span>, <span class="at">dep=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data-for-the-example" class="slide level2">
 <h2>Data for the example</h2>
 <p>And use the <code>dividendinfo.csv</code> dataset from <a href="https://github.com/MGCodesandStats/datasets" class="uri">https://github.com/MGCodesandStats/datasets</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/MGCodesandStats/datasets/master/dividendinfo.csv"</span>)</span>
-<span id="cb3-2"><a></a><span class="fu">str</span>(mydata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/MGCodesandStats/datasets/master/dividendinfo.csv"</span>)</span>
+<span id="cb2-2"><a></a><span class="fu">str</span>(mydata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   200 obs. of  6 variables:
  $ dividend       : int  0 1 1 0 1 1 1 0 1 1 ...
@@ -1625,57 +1687,57 @@ J(\theta+\Delta\theta)\approx J(\theta)+\nabla J(\theta)^\intercal\Delta\theta
 <section id="data-pre-processing" class="slide level2">
 <h2>Data pre-processing</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb5-2"><a></a>  <span class="fu">return</span> ((x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)))</span>
-<span id="cb5-3"><a></a>}</span>
-<span id="cb5-4"><a></a>normData <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(mydata, normalize))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb4-2"><a></a>  <span class="fu">return</span> ((x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)))</span>
+<span id="cb4-3"><a></a>}</span>
+<span id="cb4-4"><a></a>normData <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(mydata, normalize))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="test-and-training-sets" class="slide level2">
 <h2>Test and training sets</h2>
 <p>Finally we break our data in a test and a training set:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>perc2Train <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span></span>
-<span id="cb6-2"><a></a>ssize <span class="ot">&lt;-</span> <span class="fu">nrow</span>(normData)</span>
-<span id="cb6-3"><a></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb6-4"><a></a>data_rows <span class="ot">&lt;-</span> <span class="fu">floor</span>(perc2Train <span class="sc">*</span>ssize)</span>
-<span id="cb6-5"><a></a>train_indices <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>ssize), data_rows)</span>
-<span id="cb6-6"><a></a>trainset <span class="ot">&lt;-</span> normData[train_indices,]</span>
-<span id="cb6-7"><a></a>testset <span class="ot">&lt;-</span> normData[<span class="sc">-</span>train_indices,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>perc2Train <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span></span>
+<span id="cb5-2"><a></a>ssize <span class="ot">&lt;-</span> <span class="fu">nrow</span>(normData)</span>
+<span id="cb5-3"><a></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb5-4"><a></a>data_rows <span class="ot">&lt;-</span> <span class="fu">floor</span>(perc2Train <span class="sc">*</span>ssize)</span>
+<span id="cb5-5"><a></a>train_indices <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>ssize), data_rows)</span>
+<span id="cb5-6"><a></a>trainset <span class="ot">&lt;-</span> normData[train_indices,]</span>
+<span id="cb5-7"><a></a>testset <span class="ot">&lt;-</span> normData[<span class="sc">-</span>train_indices,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="training-a-neural-network" class="slide level2">
 <h2>Training a neural network</h2>
 <p>We train a simple NN with two hidden layers, with 4 and 2 neurons respectively.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co">#Neural Network</span></span>
-<span id="cb7-2"><a></a><span class="fu">library</span>(neuralnet)</span>
-<span id="cb7-3"><a></a>nn <span class="ot">&lt;-</span> <span class="fu">neuralnet</span>(dividend <span class="sc">~</span> fcfps <span class="sc">+</span> earnings_growth <span class="sc">+</span> de <span class="sc">+</span> mcap <span class="sc">+</span> current_ratio, </span>
-<span id="cb7-4"><a></a>                <span class="at">data=</span>trainset, </span>
-<span id="cb7-5"><a></a>                <span class="at">hidden=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>), </span>
-<span id="cb7-6"><a></a>                <span class="at">linear.output=</span><span class="cn">FALSE</span>, </span>
-<span id="cb7-7"><a></a>                <span class="at">threshold=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co">#Neural Network</span></span>
+<span id="cb6-2"><a></a><span class="fu">library</span>(neuralnet)</span>
+<span id="cb6-3"><a></a>nn <span class="ot">&lt;-</span> <span class="fu">neuralnet</span>(dividend <span class="sc">~</span> fcfps <span class="sc">+</span> earnings_growth <span class="sc">+</span> de <span class="sc">+</span> mcap <span class="sc">+</span> current_ratio, </span>
+<span id="cb6-4"><a></a>                <span class="at">data=</span>trainset, </span>
+<span id="cb6-5"><a></a>                <span class="at">hidden=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>), </span>
+<span id="cb6-6"><a></a>                <span class="at">linear.output=</span><span class="cn">FALSE</span>, </span>
+<span id="cb6-7"><a></a>                <span class="at">threshold=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="network-plot" class="slide level2">
 <h2>Network plot</h2>
 <p>The output of the procedure is a neural network with estimated weights</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">plot</span>(nn, <span class="at">rep =</span> <span class="st">"best"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">plot</span>(nn, <span class="at">rep =</span> <span class="st">"best"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="C3.1-Introduction_to_ANN-Slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
+<img data-src="C3.1-Introduction_to_ANN-Slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
 <section id="predictions" class="slide level2">
 <h2>Predictions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>temp_test <span class="ot">&lt;-</span> <span class="fu">subset</span>(testset, <span class="at">select =</span></span>
-<span id="cb9-2"><a></a>                      <span class="fu">c</span>(<span class="st">"fcfps"</span>,<span class="st">"earnings_growth"</span>, </span>
-<span id="cb9-3"><a></a>                        <span class="st">"de"</span>, <span class="st">"mcap"</span>, <span class="st">"current_ratio"</span>))</span>
-<span id="cb9-4"><a></a>nn.results <span class="ot">&lt;-</span> <span class="fu">compute</span>(nn, temp_test)</span>
-<span id="cb9-5"><a></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">actual =</span> </span>
-<span id="cb9-6"><a></a>                  testset<span class="sc">$</span>dividend, </span>
-<span id="cb9-7"><a></a>                  <span class="at">prediction =</span> nn.results<span class="sc">$</span>net.result)</span>
-<span id="cb9-8"><a></a><span class="fu">head</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>temp_test <span class="ot">&lt;-</span> <span class="fu">subset</span>(testset, <span class="at">select =</span></span>
+<span id="cb8-2"><a></a>                      <span class="fu">c</span>(<span class="st">"fcfps"</span>,<span class="st">"earnings_growth"</span>, </span>
+<span id="cb8-3"><a></a>                        <span class="st">"de"</span>, <span class="st">"mcap"</span>, <span class="st">"current_ratio"</span>))</span>
+<span id="cb8-4"><a></a>nn.results <span class="ot">&lt;-</span> <span class="fu">compute</span>(nn, temp_test)</span>
+<span id="cb8-5"><a></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">actual =</span> </span>
+<span id="cb8-6"><a></a>                  testset<span class="sc">$</span>dividend, </span>
+<span id="cb8-7"><a></a>                  <span class="at">prediction =</span> nn.results<span class="sc">$</span>net.result)</span>
+<span id="cb8-8"><a></a><span class="fu">head</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   actual   prediction
 9       1 0.9919213885
@@ -1690,10 +1752,10 @@ J(\theta+\Delta\theta)\approx J(\theta)+\nabla J(\theta)^\intercal\Delta\theta
 <section id="model-evaluation" class="slide level2">
 <h2>Model evaluation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>roundedresults<span class="ot">&lt;-</span><span class="fu">sapply</span>(results,round,<span class="at">digits=</span><span class="dv">0</span>)</span>
-<span id="cb11-2"><a></a>roundedresultsdf<span class="ot">=</span><span class="fu">data.frame</span>(roundedresults)</span>
-<span id="cb11-3"><a></a><span class="fu">attach</span>(roundedresultsdf)</span>
-<span id="cb11-4"><a></a><span class="fu">table</span>(actual,prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>roundedresults<span class="ot">&lt;-</span><span class="fu">sapply</span>(results,round,<span class="at">digits=</span><span class="dv">0</span>)</span>
+<span id="cb10-2"><a></a>roundedresultsdf<span class="ot">=</span><span class="fu">data.frame</span>(roundedresults)</span>
+<span id="cb10-3"><a></a><span class="fu">attach</span>(roundedresultsdf)</span>
+<span id="cb10-4"><a></a><span class="fu">table</span>(actual,prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      prediction
 actual  0  1
