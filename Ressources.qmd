@@ -1,0 +1,56 @@
+---
+title: "References and Ressources"
+---
+
+# References 
+
+## Tree and Ensemble based methods
+
+- Breiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.
+
+- Brandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site
+
+- Efron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site
+
+- Hastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.
+
+- James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer.
+
+## Artificial Neural Networks
+
+- Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site
+
+- LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.
+
+- Chollet, F. (2018). Deep learning with Python. Manning Publications.
+
+- Chollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications.
+
+# Some interesting online resources
+
+## Statistical/Machine Learning in General
+
+- [Google's Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)
+
+- [Applied Data Mining and Statistical Learning (Penn Statte-University)](https://online.stat.psu.edu/stat508/)
+
+- [R for statistical learning](https://daviddalpiaz.github.io/r4sl/)
+
+- [Introduction to Statistical Learning (ISL)]()
+
+## Decision Trees
+
+- [Decision Trees free course (9 videos). By Analytics Vidhya](https://www.youtube.com/playlist?list=PLdKd-j64gDcC5TCZEqODMZtAotCfm5Zkh)
+
+- [An Introduction to Recursive Partitioning Using the RPART Routines](https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf)
+
+## Neural Networks
+
+- [Introduction to Artificial Neural Networks](https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf)
+
+- [The Neural network Playground](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.45726&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
+
+
+This page has been created as Quarto Website project.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

@@ -407,7 +407,7 @@
     "href": "index.html#some-interesting-online-resources",
     "title": "Introduction to Statistical Learning",
     "section": "Some interesting online resources",
-    "text": "Some interesting online resources\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nAn Introduction to Recursive Partitioning Using the RPART Routines\nIntroduction to Artificial Neural Networks\n\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "text": "Some interesting online resources\n\nStatistical/Machine Learning in General\n\nGoogle’s Machine Learning Crash Course\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nIntroduction to Statistical Learning (ISL)\n\n\n\nDecision Trees\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nAn Introduction to Recursive Partitioning Using the RPART Routines\n\n\n\nNeural Networks\n\nIntroduction to Artificial Neural Networks\n\n-The Neural network Playground\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
     "crumbs": [
       "Home",
       "Introduction",
@@ -5425,6 +5425,90 @@
       "Home",
       "Artificial Neural Networks",
       "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Training an ANN",
+    "text": "Training an ANN\n\n\nSource: Overview of a Neural Network’s Learning Process",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "Ressources.html",
+    "href": "Ressources.html",
+    "title": "References and Ressources",
+    "section": "",
+    "text": "Breiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.\nBrandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site\nEfron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer.\n\n\n\n\n\nGoodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site\nLeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.\nChollet, F. (2018). Deep learning with Python. Manning Publications.\nChollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications.",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
+  },
+  {
+    "objectID": "Ressources.html#tree-and-ensemble-based-methods",
+    "href": "Ressources.html#tree-and-ensemble-based-methods",
+    "title": "References and Ressources",
+    "section": "",
+    "text": "Breiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.\nBrandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site\nEfron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer.",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
+  },
+  {
+    "objectID": "Ressources.html#artificial-neural-networks",
+    "href": "Ressources.html#artificial-neural-networks",
+    "title": "References and Ressources",
+    "section": "",
+    "text": "Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site\nLeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.\nChollet, F. (2018). Deep learning with Python. Manning Publications.\nChollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications.",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
+  },
+  {
+    "objectID": "Ressources.html#statisticalmachine-learning-in-general",
+    "href": "Ressources.html#statisticalmachine-learning-in-general",
+    "title": "References and Ressources",
+    "section": "Statistical/Machine Learning in General",
+    "text": "Statistical/Machine Learning in General\n\nGoogle’s Machine Learning Crash Course\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nIntroduction to Statistical Learning (ISL)",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
+  },
+  {
+    "objectID": "Ressources.html#decision-trees",
+    "href": "Ressources.html#decision-trees",
+    "title": "References and Ressources",
+    "section": "Decision Trees",
+    "text": "Decision Trees\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nAn Introduction to Recursive Partitioning Using the RPART Routines",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
+  },
+  {
+    "objectID": "Ressources.html#neural-networks",
+    "href": "Ressources.html#neural-networks",
+    "title": "References and Ressources",
+    "section": "Neural Networks",
+    "text": "Neural Networks\n\nIntroduction to Artificial Neural Networks\nThe Neural network Playground\n\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
     ]
   }
 ]

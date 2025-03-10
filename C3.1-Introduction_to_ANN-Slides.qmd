@@ -723,6 +723,16 @@ $$
 
 :::
 
+## Training an ANN
+
+```{r, fig.align='center'}
+knitr::include_graphics("images/ANN-Training.png")
+```
+
+::: font80
+Source: [Overview of a Neural Network’s Learning Process](https://medium.com/data-science-365/overview-of-a-neural-networks-learning-process-61690a502fa)
+:::
+
 ## The tools for training
 
 - Training an ANN is usually done using some iterative optimization procedure such as *Gradient Descent*.
