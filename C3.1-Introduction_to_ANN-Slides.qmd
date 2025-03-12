@@ -1452,6 +1452,13 @@ knitr::include_graphics("images/GradientDescentTypes.png")
 
 :::
 
+# Python ANN example
+
+- The presentation [Introduction to Neural Networks](https://drive.google.com/file/d/1IXHQ2SNaJHGGEspnKJ4bojOeSFWpfDDs/view?usp=drive_link) contains an introduction to ANNs with a detailed example on how to implement an ANN **from scratch** using Python.
+
+- Lab [Lab-C3.1-IrisANN.ipynb](labs/Lab-C3.1-IrisANN.ipynb) contains the Python notebook required to run the example.
+
+
 # An example using R
 
 ## A predictive ANN
