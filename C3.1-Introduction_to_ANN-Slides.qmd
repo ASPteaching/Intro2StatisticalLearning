@@ -285,7 +285,7 @@ This first attempt to emulate neurons succeeded but with limitations:
 [![](images/McCullaughVSRosenblattPerceptron.png){width="100%"}](https://towardsdatascience.com/perceptron-the-artificial-neuron-4d8c70d5cc8d)
 
 
-## COMPARISON BETWEEN THE TWO
+## Comparison between the two
 
 The Perceptron represents an improvement over McCullough-Pitts' neuron:
 
@@ -438,23 +438,99 @@ knitr::include_graphics("images/ReLUFunction.png")
 
 ![](images/ActivationFunctions.png){width="100%"}.
 
-## Putting it all together
+## Softmax Activation Function {.smaller}
+
+- **Softmax** is an activation function used in the **output layer** of classification models, especially for **multi-class problems**.
+
+- It converts raw scores (logits) into **probabilities**, ensuring that $\sum_{i=1}^{N} P(y_i) = 1$
+  where $P(y_i)$ is the predicted probability for class $i$.
+
+- Given an input vector $z$, *Softmax* transforms it as:
+  $$
+  \sigma(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{N} e^{z_j}}
+  $$
+  - The exponentiation **amplifies differences**, making the highest value more dominant.
+  - The normalization **ensures that probabilities sum to 1**.
+
+<!-- - It is thoroughfully used in classification problems because -->
+<!--   - It allows interpreting outputs as **class probabilities**. -->
+<!--   - It ensures a **clear decision boundary** between classes. -->
+<!--   - It works well for **multi-class classification** problems. -->
+
+
+
+## The Artificial Neuron in Short
 
 ```{r, fig.align='center', out.width="100%"}
 knitr::include_graphics("images/ArtificialNeuron.png")
 ```
 
-## In words {.smaller}
+## The Artificial Neuron in Short {.smaller}
 
 - An AN takes a vector of input values $x_{1}, \ldots, x_{d}$ and combines it with some weights that are local to the neuron $\left(w_{0}, w_{1}, . ., w_{d}\right)$ to compute a net input $w_{0}+\sum_{i=1}^{d} w_{i} \cdot x_{i}$. 
 
-- To compute its output, it then passes the net input through a possibly non-linear univariate activation function $g(\cdot)$, usually vchosen from a set of options such as *Sigmoid*, *Tanh* or *ReLU* functions
+- To compute its output, it then passes the net input through a possibly non-linear univariate activation function $g(\cdot)$, usually chosen from a set of options such as *Sigmoid*, *Tanh* or *ReLU* functions
 
 - To deal with the  *bias*, we create an extra input variable $x_{0}$ with value always equal to 1 , and so the function computed by a single artificial neuron (parameterized by its weights $\mathbf{w}$ ) is:
 
 $$
 y(\mathbf{x})=g\left(w_{0}+\sum_{i=1}^{d} w_{i} x_{i}\right)=g\left(\sum_{i=0}^{d} w_{i} x_{i}\right)=g\left(\mathbf{w}^{\mathbf{T}} \mathbf{x}\right)
 $$
+
+## Perceptron Learning Rule {.smaller}
+
+- The **Perceptron Rule** updates weights based on **misclassified samples**.
+- It ensures convergence **only if data is linearly separable**.
+
+- **Weight Update Formula**
+$$
+w_j \leftarrow w_j + \eta(y - \hat{y})x_j
+$$
+where: 
+
+  - $x_j$ = input feature; $\quad \eta$ = learning rate; 
+
+  - $y$ = true label;  $\quad \hat{y}$=predicted class ($\pm1$);   
+
+- **Key Features**
+  - Uses a **step function** (not differentiable).
+  - Cannot be optimized using **gradient descent**.
+  - Fails to converge if data is **not linearly separable**.
+
+## The Perceptron Decision Rule
+
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("images/PerceptronTrain.png")
+```
+
+
+## The Delta Rule {.smaller}
+
+- Uuses **gradient descent** to minimize the **Sum of Squared Errors (SSE)**.
+
+- It applies to models with **differentiable activation functions**.
+
+- **Weight Update Formula**
+$$
+w_j \leftarrow w_j + \eta(y - h(x))x_j
+$$
+where: 
+
+    - $x_j$ = input feature, $\eta$ = learning rate; 
+
+    - $y$ = true label; $\quad h(x) =$ predicted output.  
+
+- **Key Features**
+  - Works with **continuous activation functions** (e.g., linear in ADALINE).
+  - **Not limited to linearly separable problems**.
+  - Forms the foundation for **gradient-based learning in neural networks**.
+
+## The Delta Rule
+
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("images/AdalineTrainAN.png")
+```
+
 
 # From neurons to neural networks
 
@@ -715,8 +791,8 @@ $$
 
 - In practice this means:
   - The ANN acts by composing a series of linear and non-linear (activation) functions.
-  - These are characterized by their *weights* and *biases*, that need to be *learnt*
-  .
+  - These are characterized by their *weights* and *biases*, that need to be *learnt*.
+  
 - *Training* the network is done by 
   - Selecting an appropriate (convex) loss function,
   - Finding weights that minimize a the total *cost* function (avg loss).
@@ -750,61 +826,9 @@ $$
   l(h_\theta(x),y)=\left (y-\frac{1}{1+e^{-\theta^\intercal x}}\right )^2
 $$
 
-- Given a sigmoid AF, the squared error loss [*is  not a convex problem*](https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c) so that MSE is not appropriate.
+- Given a sigmoid AF, the squared error loss [*is  not a convex problem*](https://community.deeplearning.ai/t/why-mse-is-not-a-good-loss-function-for-logistic-regression/255547) so that MSE is not appropriate.
 
 - Quadratic loss may be used with ReLu activation.
-
-<!-- ## Illustrating non-convexity {.smaller} -->
-
-<!-- ```{r, eval=FALSE, echo=TRUE} -->
-<!-- library(plot3D) -->
-
-<!-- # Define the squared error loss function -->
-<!-- squared_error <- function(y, y_hat) { -->
-<!--   return(0.5 * (y - y_hat)^2) -->
-<!-- } -->
-
-<!-- # Define the logistic activation function -->
-<!-- logistic <- function(z) { -->
-<!--   return(1 / (1 + exp(-z))) -->
-<!-- } -->
-
-<!-- # Generate data -->
-<!-- x <- seq(-10, 10, length.out = 200) -->
-<!-- y <- seq(-10, 10, length.out = 200) -->
-<!-- z <- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y))) -->
-
-<!-- # Plot the exaggerated loss surface -->
-<!-- persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue", -->
-<!--         ticktype = "detailed", xlab = "Weight 1", ylab = "Weight 2", zlab = "Loss") -->
-
-<!-- ``` -->
-
-<!-- ## Illustrating non-convexity {.smaller} -->
-
-<!-- ```{r echo=FALSE} -->
-<!-- library(plot3D) -->
-
-<!-- # Define the squared error loss function -->
-<!-- squared_error <- function(y, y_hat) { -->
-<!--   return(0.5 * (y - y_hat)^2) -->
-<!-- } -->
-
-<!-- # Define the logistic activation function -->
-<!-- logistic <- function(z) { -->
-<!--   return(1 / (1 + exp(-z))) -->
-<!-- } -->
-
-<!-- # Generate data -->
-<!-- x <- seq(-10, 10, length.out = 200) -->
-<!-- y <- seq(-10, 10, length.out = 200) -->
-<!-- z <- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y))) -->
-
-
-<!-- # Plot the exaggerated loss surface -->
-<!-- persp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue", ticktype = "detailed", xlab = "Weight 1", ylab = "Weight 2", zlab = "Loss") -->
-
-<!-- ``` -->
 
 
 ## Cross-entropy loss function {.smaller}
@@ -839,85 +863,104 @@ $$
 
 - Now, this is a convex optimization problem.
 
-## Regularized cross entropy
+<!-- ## Regularized cross entropy -->
 
-In practice we often work with a *regularized version* of the cost function (we don't regularize the bias units)
+<!-- In practice we often work with a *regularized version* of the cost function (we don't regularize the bias units) -->
 
-```{=tex}
+<!-- ```{=tex} -->
+<!-- \begin{eqnarray*} -->
+<!-- J(\Theta)&=&-\frac{1}{n}\big[\sum_{i=1}^n \sum_{k=1}^K y_k^{(i)}\log( h_\theta(x^{(i)}))_k\\ -->
+<!-- &+&(1-y_k^{(i)})\log(1-(h_\theta(x^{(i)}))_k)\big]\\ -->
+<!-- &+&\lambda\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}} -->
+<!-- (\theta_{ji}^{(l)})^2 -->
+<!-- \end{eqnarray*} -->
+<!-- ``` -->
+
+
+## The parameters for tuning
+
+::: font80
+
+- Training a network corresponds to finding the parameters, that is, *the weights* and *the biases*, that minimize the cost function. 
+
+- Althoug weights & biases are respectively matrices and vectors, it is convenient to represent them in a vectorized form stored as a single vector, that will be denoted here, by $\theta$. 
+
+- We may suppose $\theta\in\mathbb{R}^p$, and write the cost function as $J(\theta)$ to emphasize its dependence on the parameters, that is:
+$$
 \begin{eqnarray*}
-J(\Theta)&=&-\frac{1}{n}\big[\sum_{i=1}^n \sum_{k=1}^K y_k^{(i)}\log( h_\theta(x^{(i)}))_k\\
-&+&(1-y_k^{(i)})\log(1-(h_\theta(x^{(i)}))_k)\big]\\
-&+&\lambda\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}}
-(\theta_{ji}^{(l)})^2
+J: \mathbb{R}^p & \rightarrow \mathbb{R}\\
+\theta &  \rightarrow J(\theta)
 \end{eqnarray*}
+$$
+
+:::
+
+## Gradient or *Steepest* Descent {.smaller}
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+- A classical method in optimization to minimize a convex function $J(\theta)$.
+
+- It proceeds iteratively, computing a sequence of vectors $\theta^1, \theta^2, ..., \theta^n$ in $\mathbb{R}^p$ with the aim of converging to a vector that minimizes the cost function. 
+
+:::
+
+::: {.column width='50%'}
+
+<br>
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("images/GradientDescentSchema.png")
 ```
 
+:::
 
-## Gradient Descent 
-
-- Training a network corresponds to choosing the parameters, that is, the weights and biases, that minimize the cost function. 
-
-- The weights and biases take the form of
-matrices and vectors, but at this stage it is convenient to imagine them
-stored as a single vector that we call $\theta$. 
-
-- Generally, we will suppose $\theta\in\mathbb{R}^p$, and write the cost function as $J(\theta)$ to emphasize its dependence on the parameters. So Cost
-$J: \mathbb{R}^p\rightarrow \mathbb{R}$.
+::::
 
 ## Gradient Descent {.smaller}
 
-![Error hyper-surface](images/errorsurface.jpg){width="60%"}
-
-## Gradient Descent {.smaller}
-
-- *Gradient Descent* is a classical method in optimization that is often
-referred to as *steepest descent*.
-
-- Given a function $J(\theta)$ to be minimized, the method proceeds iteratively, computing a sequence of vectors $\theta^1, \theta^2, ..., \theta^n$ in $\mathbb{R}^p$ with the
-aim of converging to a vector that minimizes the cost function. 
+::: font90
 
 - Suppose that our current vector is $\theta$. 
-*How should we choose a perturbation, $\Delta\theta$, so that the next vector, $\theta+\Delta\theta$, represents an improvement, that is: $J(\theta +\Delta\theta) < J(\theta)$?*
+*How should we choose a perturbation, $\Delta\theta$, so that the next vector, $\theta+\Delta\theta$, represents an improvement*, that is: $J(\theta +\Delta\theta) < J(\theta)$?
 
-
-## Gradient Descent {.smaller}
-
-- We proceed by linearization of the cost function using a Taylor approximation
+- *Linearize* the cost function using a Taylor approximation.
 
 - If $\Delta\theta$ is small, then ignoring terms of order $||\Delta\theta||^2$ or higher:
-
 $$
 J(\theta+\Delta\theta)\approx J(\theta)+\sum_{i=1}^p\frac{\partial J(\theta)}{\partial\theta_i}\Delta\theta_i
 $$ 
-
-  - where ${\displaystyle \frac{\partial J(\theta)}{\partial\theta_i}}$ denotes the
-partial derivative of the cost function with respect to the $i$-th weight. 
-
-
-## Gradient Descent {.smaller}
-
-- Let $\nabla J(\theta)\in\mathbb{R}^p$
- denote the *gradient*, i.e. the vector of partial derivatives.
-
+or, equivalently:
+\begin{equation}\label{g2}
+J(\theta+\Delta\theta)\approx J(\theta)+\nabla J(\theta)^\intercal\Delta\theta
+\end{equation}
+where $\nabla J(\theta)\in\mathbb{R}^p$
+ denote the *gradient*, i.e. the vector of partial derivatives:
 \begin{equation}\label{g1}
 \nabla J(\theta)=\left(\frac{\partial J(\theta)}{\partial\theta_1},...,\frac{\partial J(\theta)}{\partial\theta_p}\right)^\intercal
 \end{equation}
 
-- Now the approximation can be written as:
+:::
 
-\begin{equation}\label{g2}
-J(\theta+\Delta\theta)\approx J(\theta)+\nabla J(\theta)^\intercal\Delta\theta
-\end{equation}
+## Gradient Descent
 
-## Gradient Descent 
+::: font80
 
-- Recalling that our aim is to reduce the value of the cost function, 
-- Taylor approximation above motivates the idea of choosing $\Delta\theta$ to *make $\nabla J(\theta)^\intercal\Delta\theta$ negative*, 
-- because this will make the value of $J(\theta+\Delta\theta)$ smaller. 
+- Goal: choose a perturbation, $\Delta\theta$, s.t.: $J(\theta +\Delta\theta) < J(\theta)$
 
-- The bigger in absolute value we can make this negative expression, the smaller will be the value of the cost function.
+- Taylor approximation above suggests that choosing $\Delta\theta$ to *make $\nabla J(\theta)^\intercal\Delta\theta$ negative* will make the value of $J(\theta+\Delta\theta)$ smaller. 
 
-## The Cauchy-Schwarz inequality
+- Indeed it can be shown that the highest possible negative value will  come out when $-\nabla J(\theta)=\Delta\theta$, which leads to the gradient descent formula:
+$$
+\theta \rightarrow \theta-\eta\nabla J(\theta),
+$$
+where $\eta$, the *learning rate* is the size of the step taken at each iteration, which should be small because of Taylor App.
+
+:::
+
+## The Cauchy-Schwarz inequality and Gradient Descent {.smaller}
 
 - The [Cauchy-Schwarz inequality](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality), states that for any $f,g\in\mathbb{R}^p$, we have:
 $$
@@ -925,27 +968,11 @@ $$
 $$ 
 -  Moreover, the two sides are equal if and only if $f$ and $g$ are linearly dependent (meaning they are parallel).
 
-## Back to gradient descent 
-
-- How much can $\nabla J(\theta)^\intercal\Delta\theta$ decrease?
-
 - By Cauchy-Schwarz,biggest possible value for $\nabla J(\theta)^\intercal\Delta\theta$ is the upper bound, $||\nabla J(\theta)||\cdot ||\Delta\theta||$.
   - The equality is only reached when $||\nabla J(\theta)||= ||\Delta\theta||$
-  - The highest possible negative value will  come out when $-\nabla J(\theta)=\Delta\theta$
 
-- That is, *we should choose $\Delta\theta$ to lie in the direction of $-\nabla J(\theta)$*. 
+- This explains why we choose precisely  $-\nabla J(\theta)=\Delta\theta$
 
-
-## Gradient Descent
-
-- Keeping in mind that the Taylor linearization of $J(\theta)$ is an approximation that is relevant only for small $\Delta\theta$, 
-- We will limit ourselves to a small step in that direction, defined by the *learning rate*. $\eta$.
-
-- This leads to the update formula that defines the steepest descent method.
-
-\begin{equation}\label{g3}
-\theta \rightarrow \theta-\eta\nabla J(\theta)
-\end{equation}
 
 ## Gradient Descent {.smaller}
 
@@ -958,183 +985,164 @@ In summary, givent a cost function $J(\theta)$ to be optimized the gradient desc
     $$
 3. **Stop when:** $|J(\theta_{t+1}) - J(\theta_{t})| < \epsilon$
 
-- $\theta_0$ is the initial parameter vector,
-- $\theta_t$ is the parameter vector at iteration $t$,
-- $\eta$ is the learning rate,
-- $\nabla J(\theta_{t})$ is the gradient of the loss function with respect to $\theta$ at iteration $t$,
-- $\epsilon$ is a small positive value indicating the desired level of convergence.
+  - $\theta_0$ is the initial parameter vector,
+  - $\theta_t$ is the parameter vector at iteration $t$,
+  - $\eta$ is the learning rate,
+  - $\nabla J(\theta_{t})$ is the gradient of the loss function with respect to $\theta$ at iteration $t$,
+  - $\epsilon$ is a small positive value indicating the desired level of convergence.
 
-## Computing gradients {.smaller}
+## Gradient descent Illustration
 
-- The gradient method provides a way to optimize weights and biases $(\theta =\{W, b\})$ by minimizing the cost function, $J(\theta)$.
+<!-- ```{r } -->
+<!-- if(!require(animation)) install.packages('animation') -->
+<!-- library(animation) -->
+<!-- ani.options(interval = 0.5, nmax = 10) -->
+<!-- xx = grad.desc() -->
+<!-- ``` -->
 
-- This minimization requires, of course, the computation of an important number of partial derivatives
-$$ 
-\frac{\partial}{\partial\theta_j}J(\theta)
-$$
-- The algorithm used to perform these computation is known as the *backpropagation algorithm*
+
+- Gradient descent is an intuitiva approach that has been thoroughly illustrated in many different ways:
+
+
+![https://assets.yihui.org/figures/animation/example/grad-desc](https://assets.yihui.org/figures/animation/example/grad-desc/demo-a.gif){fig-align="center" width="100%"} 
+
+## Computing Gradients {.smaller}
+
+- The gradient method optimizes weights and biases $\theta =\{W, b\}$ by minimizing the cost function $J(\theta)$.
+- This requires computing partial derivatives:
+  $$
+  \frac{\partial}{\partial\theta_j}J(\theta)
+  $$
+- The algorithm used for this computation is called backpropagation.
 
 ## A short history
 
-- The backpropagation algorithm was originally introduced in the 1970s in a MSc thesis.
-- In 1986 a [paper by Rumelhart, Hinton, and Williams](https://www.nature.com/articles/323533a0) describes several neural networks where backpropagation works far faster than earlier approaches to learning.
-- This improvement in efficiency made it possible to use neural nets to solve problems which had previously been insoluble. 
+- Introduced in the 1970s in an MSc thesis.
+- In 1986, [Rumelhart, Hinton, and Williams](https://www.nature.com/articles/323533a0) demonstrated that backpropagation significantly improves learning speed.
+- This breakthrough enabled neural networks to solve previously intractable problems.
 
+## Backpropagation intuition {.smaller}
 
-<!-- ## Backpropagation intuition {.smaller} -->
+- The term originates from error backpropagation.
+- An artificial neural network computes outputs through forward propagation:
+  - Input values pass through linear and non-linear transformations.
+  - The network produces a prediction.
+- The error (difference between predicted and true value) is:
+  - Propagated backward to compute the error contribution of each neuron.
+  - Used to adjust weights iteratively.
 
-<!-- - A term originated in the expression "Error backpropagation -->
+## Delta rule and error term $\delta$ {.smaller}
 
-<!-- - Recall that the ANN computes its output through  *forward propagation*:  -->
+- The delta rule updates weights based on the error term $\delta_j$, which measures how much neuron $j$ contributes to the error.
+- It is computed as:
+  $$
+  \delta_j = \sigma^{\prime}(z_j) (c_j - y_j)
+  $$
+  where:
+  - $\sigma^{\prime}(z_j)$ is the derivative of the activation function.
+  - $(c_j - y_j)$ is the error in neuron $j$.
 
-<!--   - It takes the input values -->
-<!--   - It applies a series of linear and non-linear  transformations, through the networks layers, to produce the predicted value. -->
+## Weight update $\Delta W$ {.smaller}
 
-<!-- - The output will be different from the known output value in the train set -->
-<!--   - The difference (the "error") is used *backwards* to adjust the weights, -->
-<!--   - So that the error decreases as we iterate the process. -->
+- Once $\delta_j$ is computed, weights are updated using:
+  $$
+  \Delta w_{i}^{j} = \eta \delta_j x_{i}^{j}
+  $$
+  where:
+  - $\eta$ is the learning rate.
+  - $\delta_j$ determines the direction and magnitude of the update.
+  - $x_{i}^{j}$ is the input to neuron $j$.
 
+- In hidden layers, $\delta$ is propagated backward:
+  $$
+  \delta_k = \sigma^{\prime}(z_k) \sum_{j \in S_k} \delta_j w_k^j
+  $$
+  where $S_k$ is the set of output neurons connected to neuron $k$.
 
+## Backpropagation algorithm {.smaller}
 
-<!-- ## The delta rule {.smaller} -->
-
-<!-- - How can we use the error to update the weights using the gradient method? -->
-
-<!-- - The idea is to use the difference between the *real output* and the predicted output ("$\delta$") to update the weights in such a way that in the next iteration the error decrease. -->
-
-<!--   - This difference is computed first for the layer -->
-<!--   - And then is backpropagated to the previous layers until all the weights are recomputed and the process can re-start. -->
-
-
-## Error backpropagation {.smaller}
-
-
-$$
-\begin{equation*}
-\Delta w=\eta(c-y) d \tag{3.21}
-\end{equation*}
-$$
-
-- La regla delta es la base de la retropropagación:
-
-  - $c$ es el valor que indica la clase en el ejemplo de entrenamiento, 
-   
-  - $y$ el valor de la función de salida para la instancia $d$, y 
-    
-  - $\eta$ la tasa o velocidad de aprendizaje (*learning rate*).
-
-- El método utilizado para entrenar este tipo de redes, y basado en la regla delta, se muestra en el algoritmo siguiente (Algoritmo 1).
-
-  - Para que el algoritmo converja es necesario que las clases de los datos sean linealmente separables.
+1. **Forward propagation**  
+   - Compute the network output for a given input.
   
-## Algoritmo 1 (Gradiente) {.smaller}
+2. **Backward propagation**  
+   - Compute $\delta_j$ for each neuron in the output layer.
+   - Propagate $\delta_j$ backward to compute $\delta_k$ for hidden layers.
+   - Update weights using gradient descent.
 
+## Final algorithm {.smaller}
 
-- **Entrada**: $W$ (conjunto de vectores de pesos) y $D$ (conjunto de instancias de entrenamiento) 
-  - mientras $\left(y \not \approx c_{i} \forall\left(d_{i}, c_{i}\right) \in D\right)$ hacer 
-    - para todo $\left(\left(d_{i}, c_{i}\right) \in D\right)$ hacer
+**Input:**  $W$ (weight vectors), $D$ (training dataset).
 
-      - Calcular la salida $y$ de la red cuando la entrada es $d_{i}$
+**Repeat until error is below threshold:**
 
-      - si $\left(y \not \approx c_{i}\right)$ entonces
-        - Modificar el vector de pesos $w^{\prime}=w+\eta(c-y) d_{i}$
+1. Compute network output for each training instance.
 
-      - fin si
+2. For each neuron $j$ in the output layer:
 
-    - fin para
+   - Compute $\delta_j = \sigma^{\prime}(z_j) (c_j - y_j)$
 
-  - fin mientras
+   - Update weights: $\Delta w_i^j = \eta \delta_j x_i^j$
 
-**Devolver**: El conjunto de vectores de pesos $W$
+3. For each neuron $k$ in hidden layers:
 
+   - Compute  $\delta_k = \sigma^{\prime}(z_k) \sum_{j \in S_k} \delta_j w_k^j$
 
-## Retropropagación del error {.smaller}
+   - Update weights : $\Delta w_i^k = \eta \delta_k x_i^k$
 
-- En las redes multicapa no podemos aplicar el algoritmo de entrenamiento visto en la sección anterior. 
+**Output:** Updated weight vectors $W$.
 
-- El problema aparece con los nodos de las capas ocultas: no podemos saber a priori cuáles son los valores de salida correctos.
+<!-- ## Key takeaways {.smaller} -->
 
-- En el caso de una neurona $j$ con función sigmoide, la regla delta es:
+<!-- - $\delta_j$ measures the contribution of each neuron to the total error.   -->
+<!-- - $\Delta W$ updates weights using $\delta_j$ and the learning rate.   -->
+<!-- - Backpropagation propagates $\delta$ backward to update all layers.   -->
 
-$$
-\begin{equation*}
-\Delta w_{i}^{j}=\eta \sigma^{\prime}\left(z^{j}\right)\left(c^{j}-y^{j}\right) x_{i}^{j}, \tag{3.24}
-\end{equation*}
-$$
+## Chain rule in backpropagation {.smaller}
 
-donde:
+- In multi-layer networks, the error signal must be **propagated backward** through multiple layers.
 
-- $\sigma^{\prime}\left(z^{j}\right)$ indica la pendiente (derivada) de la función sigmoide, que representa el factor con que el nodo $j$ puede afectar al error. 
+- The weight update in hidden layers depends not only on the local error but also on how errors propagate from the output layer.
 
+- This is achieved using the **chain rule of calculus**, which decomposes derivatives into simpler components.
 
-## Ajustando los pesos {.smaller}
-
-$$
-\begin{equation*}
-\Delta w_{i}^{j}=\eta \sigma^{\prime}\left(z^{j}\right)\left(c^{j}-y^{j}\right) x_{i}^{j}, \tag{3.24}
-\end{equation*}
-$$
-
-- Si el valor de $\sigma^{\prime}\left(z^{j}\right)$ es pequeño, nos encontramos en los extremos de la función, donde los cambios no afectan demasiado a la salida. 
-- Por el contrario, si el valor es grande, nos encontramos en el centro de la función, donde pequeñas variaciones pueden alterar considerablemente la salida.
-  - $\left(c^{j}-y^{j}\right)$ representa la medida del error que se produce en la neurona $j$.
-  - $x_{i}^{j}$ indica la *responsabilidad* de la entrada $i$ de la neurona $j$ en el error. 
-
-- Cuando este valor es igual a cero, no se modifica el peso, mientras que si es superior a cero, se modifica proporcionalmente a este valor.
-
-## Expresion general de $delta$ {.smaller}
-
-- La $\delta$ que corresponde a la neurona $j$ puede expresarse de forma general para toda neurona, simplificando la notación anterior:
+- That is, the **gradient descent update rule** for the weight is:
 
 $$
-\begin{gather*}
-\delta^{j}=\sigma^{\prime}\left(z^{j}\right)\left(c^{j}-y^{j}\right)  \tag{3.25}\\
-\Delta w_{i}^{j}=\eta \delta^{j} x_{i}^{j} \tag{3.26}
-\end{gather*}
+\Delta w_i^j = -\eta \frac{\partial J}{\partial w_{i}^{j}} = \eta \delta_j x_i^j
+$$
+where the derivative will be computed applying the chain rule.
+
+## Applying the chain rule {.smaller}
+
+- To compute the gradient of the loss function $J$ with respect to a weight $w_{i}^{j}$ connecting neuron $i$ to neuron $j$, we use the chain rule:
+
+$$
+\frac{\partial J}{\partial w_{i}^{j}} =
+\frac{\partial J}{\partial y_j} \cdot
+\frac{\partial y_j}{\partial z_j} \cdot
+\frac{\partial z_j}{\partial w_{i}^{j}}
 $$
 
-- A partir de aquí debemos determinar qué parte del error total se asigna a cada una de las neuronas de las capas ocultas. 
+  - $\frac{\partial J}{\partial y_j}$ measures how the loss changes with respect to the output of neuron $j$.
+  - $\frac{\partial y_j}{\partial z_j} = \sigma^{\prime}(z_j)$ is the derivative of the activation function.
+  - $\frac{\partial z_j}{\partial w_{i}^{j}} = x_i^{j}$ represents the input to the neuron.
 
-- Es decir, debemos definir *cómo modificar los pesos y tasas de aprendizaje de las neuronas de las capas ocultas a partir del error observado en la capa de salida*.
+## Automatic differentiation {.smaller}
 
-## La retropropagación {.smaller}
-
-- El método de retropropagación (backpropagation) se basa en un esquema general de dos pasos:
-
-1. Propagación hacia adelante (*feedforward*), que consiste en introducir una instancia de entrenamiento y obtener la salida de la red neuronal.
-
-2. Propagación hacia atrás (*backpropagation*), que consiste en calcular el error cometido en la capa de salida y propagarlo hacia atrás para calcular los valores delta de las neuronas de las capas ocultas.
-
-- La idea que subyace a este método es relativamente sencilla, y se basa en *propagar el error de forma proporcional a la influencia que ha tenido cada nodo de las capas ocultas en el error final producido por cada una de las neuronas de la capa de salida*.
+- Modern deep learning frameworks do not compute gradients manually.
+- Instead, they use **automatic differentiation** and **computational graphs** to simplify and speed up backpropagation.
 
 
-## El algoritmo (1) {.smaller}
+- A **computational graph** represents the sequence of operations in a neural network as a directed graph.
+  - Each node corresponds to an operation (e.g., addition, multiplication, activation function).
+  - This structure allows efficient **backpropagation** by applying the **chain rule automatically**.
 
-1. El primer paso, que es la propagación hacia adelante, consiste en aplicar el ejemplo a la red y obtener los valores de salida (línea 3 ).
+- **Automatic differentiation (AD)** relies the computational graph to apply the chain rule and compute gradients automatically in the Backwards pass.
 
-2. A continuación, el método inicia la propagación hacia atrás, empezando por la capa de salida. Para cada neurona $j$ de la capa de salida:
-
-  2.1 Se calcula, en primera instancia, el valor $\delta^{j}$ basado en el valor de salida de la red para la neurona $j$ $\left(y^{j}\right)$, el valor de la clase de la instancia $\left(c^{j}\right)$ y la derivada de la función sigmoide $\left(\sigma^{\prime}\left(z^{j}\right)\right)$ (línea 5).
-
-  2.2 A continuación, se modifica el vector de pesos de la neurona de la capa de salida, a partir de la tasa de aprendizaje $(\eta)$, el valor delta de la neurona calculado en el paso anterior $\left(\delta^{j}\right)$ y el factor $x_{i}^{j}$ que indica la responsabilidad de la entrada $i$ de la neurona $j$ en el error (línea 6 ).
-
-## El algoritmo (2) {.smaller}
-
-3. Finalmente, la propagación hacia atrás se aplica a las capas ocultas de la red. Para cada neurona $k$ de las capas ocultas:
-
-  3.1 En primer lugar, se calcula el valor $\delta^{k}$ basado en la derivada de la función sigmoide $\left(\sigma^{\prime}\left(z^{k}\right)\right)$ y el sumatorio del producto de la delta calculada en el paso anterior $\left(\delta^{k}\right)$ por el valor $w_{k}^{j}$, que indica el peso de la conexión entre la neurona $k$ y la neurona $j$ (línea 9). 
-  El conjunto $S_{k}$ está formado por todos los nodos de salida a los que se encuentra conectada la neurona $k$.
-
-  3.2  En el último paso de la iteración, se modifica el vector de pesos de la neurona $k$, a partir de la tasa de aprendizaje $(\eta)$, el valor delta de la neurona calculado en el paso anterior $\left(\delta^{k}\right)$ y el factor $x_{i}^{k}$ que indica la responsabilidad de la entrada $k$ de la neurona $j$ en el error (línea 10).
-
-## El algoritmo
+- Frameworks like **TensorFlow, PyTorch, and JAX** use **reverse-mode differentiation**, which is particularly efficient for functions with many parameters (like neural networks).
 
 
-```{r out.width="150%", fig.align='center'}
-knitr::include_graphics("images/2.1-Introduction_to_ANN-Slides_insertimage_4.png")
-```
-
-## Forward propagation example
+## Tuning a Neural Network
 
 ```{r echo=FALSE}
 Top = 100
@@ -1161,15 +1169,15 @@ Height = 400
 ![](images/img07.gif){.fragment .absolute top=100 left=50 width="800" height="400" }
 
 ![](images/img08.gif){.fragment .absolute top=100 left=50 width="800" height="400" }
-:::
+<!-- ::: -->
 
 
 
-## Backpropagation illustrated
+<!-- ## Backpropagation illustrated -->
 
-![](images/img08.gif){.fragment .absolute top=100 left=50 width="800" height="400"}
+<!-- ![](images/img08.gif){.fragment .absolute top=100 left=50 width="800" height="400"} -->
 
-::: {.r-stack}
+<!-- ::: {.r-stack} -->
 
 ![](images/img09.gif){.fragment .absolute top=100 left=50 width="800" height="400"}
 
@@ -1269,111 +1277,180 @@ knitr::include_graphics("images/2.1-Introduction_to_ANN-Slides_insertimage_5.png
 ```
 
 
-## Gradient descent drawbacks
+## Improving Gradient Descent {.smaller}
 
--   With many parameters and many training points, computing the gradient vector at every iteration of the steepest descent method can be time consuming.
-    - It is mainly due to that we have *to sum across all training points*.
-    - With big data this becomes prohibitive.
+- Training deep neural networks involves **millions of parameters** and **large datasets**.
+- **Computing the full gradient** in every iteration is computationally expensive because:
+  - It requires **summing over all training points**.
+  - The cost grows **linearly with dataset size**.
+- For **large-scale machine learning**, standard gradient descent becomes impractical.
+- To address this, we use **alternative optimization strategies**:
+  - **Gradient Descent Variants**: Control how much data is used per update.
+  - **Gradient Descent Optimizers**: Improve convergence and stability.
+  
+## Improving Gradient Descent
 
-- Several alternatives exist (many indeed).
+```{r}
+knitr::include_graphics("images/ImprovingGradientDescent.png")
+```
 
-## Stochastic Gradient {.smaller}
+::: font80
 
--   A much cheaper alternative is to replace the mean of the individual gradients over all training points *by the gradient at a single, randomly chosen, point*.
+[An overview of gradient descent optimization algorithms](https://arxiv.org/abs/1609.04747?ref=ruder.io)
 
--   This leads to the simplest form of the *stochastic gradient method*:
-  -   Choose an integer $i$ uniformly at random from $\{1,...,n\}$ and update \begin{equation}\label{g4}
-    \theta_j=\theta_j-\eta\frac{\partial}{\partial\theta_j}J(\theta;x^{(i)})
-    \end{equation}
+:::
 
--   $x^{(i)}$ incuded in the notation of $J(\theta;x^{(i)})$ to remark the dependence.
+<!-- ## Stochastic Gradient {.smaller} -->
 
-## Rationale for SGD  {.smaller}
+<!-- -   A much cheaper alternative is to replace the mean of the individual gradients over all training points *by the gradient at a single, randomly chosen, point*. -->
 
-- At each step, the SGD method uses one randomly chosen training point to represent the full training set.
--   As the iteration proceeds, the method sees more training points.
--   So *there is some hope* that this dramatic reduction in cost-per-iteration will be worthwhile overall.
--   Note that, even for very small $\eta$, the update is not guaranteed to reduce the overall cost function because we traded the mean for a single sample.
-  -  Hence, although the phrase stochastic gradient descent is widely used, we prefer to use **stochastic gradient**.
+<!-- -   This leads to the simplest form of the *stochastic gradient method*: -->
+<!--   -   Choose an integer $i$ uniformly at random from $\{1,...,n\}$ and update \begin{equation}\label{g4} -->
+<!--     \theta_j=\theta_j-\eta\frac{\partial}{\partial\theta_j}J(\theta;x^{(i)}) -->
+<!--     \end{equation} -->
 
-## Batch Gradient Descent
+<!-- -   $x^{(i)}$ incuded in the notation of $J(\theta;x^{(i)})$ to remark the dependence. -->
 
-- Batch Gradient Descent computes the error for each  example in the training dataset but the model is updated only after evaluating all examples.
+<!-- ## Rationale for SGD  {.smaller} -->
 
-- As a benefits there is computational efficiency, which produces a stable error gradient and a stable convergence. 
+<!-- - At each step, the SGD method uses one randomly chosen training point to represent the full training set. -->
+<!-- -   As the iteration proceeds, the method sees more training points. -->
+<!-- -   So *there is some hope* that this dramatic reduction in cost-per-iteration will be worthwhile overall. -->
+<!-- -   Note that, even for very small $\eta$, the update is not guaranteed to reduce the overall cost function because we traded the mean for a single sample. -->
+<!--   -  Hence, although the phrase stochastic gradient descent is widely used, we prefer to use **stochastic gradient**. -->
 
-- As drawbacks, the stable error gradient can sometimes result in a state of convergence that isn’t the best the model can achieve. It also requires the entire training dataset to be in memory and available to the algorithm.
+<!-- ## Batch Gradient Descent -->
+
+<!-- ::: font90 -->
+
+<!-- - BGD, like GD, computes the error for each  example in the training dataset, *but the model is updated only after evaluating all examples*. -->
+
+<!-- - As a **benefits** there is computational efficiency, which produces a stable error gradient and a stable convergence.  -->
+
+<!-- - As **drawbacks**, the stable error gradient can sometimes result in a state of convergence that isn’t the best the model can achieve.  -->
+<!--   - It also requires the entire training dataset to be in memory and available to the algorithm. -->
+
+<!-- ::: -->
+
+<!-- ## Mini-Batch GD -->
+
+<!-- ::: font90 -->
+
+<!-- - Mini-batch Gradient Descent (MBGD) divides the training dataset into small batches to compute error and update model coefficients. -->
+
+<!-- - MBGD balances the robustness of stochastic gradient descent with the efficiency of batch gradient descent, making it a prevalent implementation in deep learning. -->
+
+<!-- - A common batch size for MBGD is 32, although it can vary based on the specific problem and data. -->
+
+<!-- ::: -->
 
 
-## Mini-Batch GD
+## Gradient Descent Variants {.smaller}
 
-- Mini-batch Gradient Descent (MBGD) divides the training dataset into small batches to compute error and update model coefficients.
+- Define **how much data is used per update**.
+- Control the **trade-off between computational cost and stability**.
+- Three common approaches:
+  - **Batch Gradient Descent**:
+    - Computes the gradient using the **entire dataset**.
+    - Stable but **slow for large datasets**.
+  - **Stochastic Gradient Descent (SGD)**:
+    - Computes the gradient using **a single training example**.
+    - Faster updates but **high variance**, leading to noisy convergence.
+  - **Mini-Batch Gradient Descent**:
+    - Uses a **subset (mini-batch) of training data** per update.
+    - Balances **speed and stability**.
 
-- MBGD balances the robustness of stochastic gradient descent with the efficiency of batch gradient descent, making it a prevalent implementation in deep learning.
-
-- A common batch size for MBGD is 32, although it can vary based on the specific problem and data.
-
-
-## Types of Gradient Descent
+## Gradient Descent Variants
 
 ```{r out.width="150%", fig.align='center'}
 knitr::include_graphics("images/GradientDescentTypes.png")
 ```
 [Source: Gradient Descent and its Types](https://www.analyticsvidhya.com/blog/2022/07/gradient-descent-and-its-types/)
 
-## Alternative optimizers
+<!-- ## Alternative optimizers -->
 
-- Gradient descent can be improved adopting different strategies
+<!-- - Gradient descent can be improved adopting different strategies -->
 
-- Other optimizers exist that may make the training faster with strategies such as accumulating velocity in relevant directions or adjusting learning rates based on parameter frequency.
+<!-- - Other optimizers exist that may make the training faster with strategies such as accumulating velocity in relevant directions or adjusting learning rates based on parameter frequency. -->
 
--  Overall these optimizers enable quicker convergence and better handling of various data characteristics, making them favorable choices over traditional gradient descent.
+<!-- -  Overall these optimizers enable quicker convergence and better handling of various data characteristics, making them favorable choices over traditional gradient descent. -->
 
-## Momentum
+<!-- ## Momentum -->
 
-  - Accelerates SGD by accumulating momentum in relevant directions, akin to a rolling ball gaining speed downhill.
-  - Increases acceleration for dimensions with consistent gradients, reducing updates for changing gradients, leading to faster convergence and reduced oscillation.
+<!--   - Accelerates SGD by accumulating momentum in relevant directions, akin to a rolling ball gaining speed downhill. -->
+<!--   - Increases acceleration for dimensions with consistent gradients, reducing updates for changing gradients, leading to faster convergence and reduced oscillation. -->
 
-## Adagrad
+<!-- ## Adagrad -->
 
-  - Adapts learning rate based on parameter frequency, making smaller updates for frequent features and larger updates for rare ones, suitable for sparse data.
-  - Efficient for handling sparse data due to its adaptive learning rates.
+<!--   - Adapts learning rate based on parameter frequency, making smaller updates for frequent features and larger updates for rare ones, suitable for sparse data. -->
+<!--   - Efficient for handling sparse data due to its adaptive learning rates. -->
 
-## Adadelta
+<!-- ## Adadelta -->
 
-  - An extension of Adagrad aiming to mitigate its aggressive, monotonically decreasing learning rate.
-  - Restricts accumulated past gradients to a fixed-size window, avoiding over-accumulation.
+<!--   - An extension of Adagrad aiming to mitigate its aggressive, monotonically decreasing learning rate. -->
+<!--   - Restricts accumulated past gradients to a fixed-size window, avoiding over-accumulation. -->
 
-## Adam
+<!-- ## Adam -->
 
-  - Combines momentum optimization with adaptive learning rates, tracking both past gradients' exponential decay and a moving average of gradients.
-  - Recent studies suggest caution with adaptive optimization methods like Adam due to potential generalization issues, prompting exploration of alternatives such as Momentum optimization.
+<!--   - Combines momentum optimization with adaptive learning rates, tracking both past gradients' exponential decay and a moving average of gradients. -->
+<!--   - Recent studies suggest caution with adaptive optimization methods like Adam due to potential generalization issues, prompting exploration of alternatives such as Momentum optimization. -->
 
-## Optimizing the training speed
+## Gradient Descent Optimizers {.smaller}
 
-- Training speed optimization can be based on
+- Improve **learning dynamics** by modifying **how gradients are applied**.
+- Help avoid **local minima, vanishing gradients, and slow convergence**.
+- Common optimizers:
+  - **Momentum**: Uses past gradients to accelerate convergence.
+  - **Adagrad**: Adapts the learning rate per parameter.
+  - **Adadelta & RMSProp**: Improve Adagrad by reducing aggressive decay.
+  - **Adam**: Combines momentum and adaptive learning rates (widely used).
+  - **Nesterov Accelerated Gradient**: Improves Momentum with lookahead updates.
 
-  - Weight inizialization
+
+
+## Optimizing Training Speed {.smaller}
+
+- Training speed can be improved by adjusting key factors that influence convergence.
+
+  - **Weight Initialization**: Properly initializing weights helps prevent vanishing or exploding gradients, leading to faster convergence.
   
-  - Changing learning rate
+  - **Adjusting Learning Rate**: A well-tuned learning rate accelerates training while avoiding instability or slow convergence.
   
-  - Using efficient cost functions
+  - **Using Efficient Cost Functions**: Choosing an appropriate loss function (e.g., cross-entropy for classification) speeds up gradient updates.
+
   
-## Optimizing to avoid overfitting
+## Optimizing to Avoid Overfitting {.smaller}
 
-In order to fight overfitting distinct strategies are common
+- Overfitting occurs when a model learns noise instead of general patterns. Common strategies to prevent it include:
 
-- L2 regularization
+  - **L2 Regularization**: Penalizes large weights to reduce model complexity and improve generalization.
 
-- Early stopping
+  - **Early Stopping**: Stops training when validation loss starts increasing, preventing unnecessary overfitting.
 
-- Dropout
+  - **Dropout**: Randomly disables neurons during training to make the model more robust.
 
-- Data augmentation
+  - **Data Augmentation**: Expands the training set by applying transformations (e.g., rotations, scaling) to improve generalization.
 
-## Summarizing optimization
 
-![Source: Introducción al Deep Learning (UOC)](images/2.1-Introduction_to_ANN-Slides_insertimage_18.png)
+
+## Techniques to Improve Training 
+
+::: font50
+
+| Techniques                        | Performance Improvement | Learning Speed | Overfitting | Description |
+|:---------------------------------:|:----------------------:|:-------------:|:----------:|:-----------------------------------------|
+| Network Architecture              |          X           |       X       |      X     | Adjust layers, neurons andconnections|
+| Epochs, Iterations, and Batch Size |                      |       X       |            | Controls updates per epoch to improve efficiency. |
+| Softmax                           |          X           |               |            | Turns outputs into probabilities|
+| Training Algorithms               |          X           |       X       |            | GD Improvements            |                      |       X       |            | Reduces vanishing/exploding gradient issues. |
+| Learning Rate                     |          X           |       X       |            | Step size in gradient updates. |
+| Cross-Entropy Loss       |                      |       X       |            | Optimized for classification|
+| L2 Regularization                 |                      |       X       |      X     | Penalizes large weights to prevent overfitting. |
+| Early Stopping                    |                      |       X       |            | Stops training when validation loss worsens. |
+| Dropout                            |          X           |               |      X     | Randomly disables neurons to enhance generalization. |
+| Data Augmentation                  |                      |               |      X     | Expands training data by applying transformations. |
+
+:::
 
 # An example using R
 

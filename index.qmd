@@ -135,7 +135,9 @@ They can be tuned in a much more automatical way and have been applied to many c
 
 ### Neural Networks
 
-- [Introduction to Artificial Neural Networks](https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf)
+- [Deep Learning and Neural Networks (Andrew Ng @ Coursera)]() (https://www.coursera.org/learn/neural-networks-deep-learning)
+
+- [The Neural network Zoo](https://www.asimovinstitute.org/neural-network-zoo/)
 
 -[The Neural network Playground](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.45726&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
 

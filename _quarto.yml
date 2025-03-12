@@ -53,6 +53,10 @@ website:
             text: Neural Networks (Slides)
           - href: C3.2-Introduction_to_Deep_Learning-Slides.qmd
             text: Deep Learning (Slides)
+          - href: labs/Lab-C3.1-IrisANN.ipynb
+            text: Species Classification with ANN Lab (Python)
+          - href: labs/Lab-C3.2-DividendPrediction_ANN.qmd
+            text: Dividend Prediction with ANN Lab (R)
 
       - section: "Resources"
         contents:  

@@ -32,6 +32,8 @@ title: "References and Ressources"
 
 - [Google's Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)
 
+- [David Wishart's Machine Learning Course @ Bioinformatics Canada](https://bioinformaticsdotca.github.io/MLE_2023)
+
 - [Applied Data Mining and Statistical Learning (Penn Statte-University)](https://online.stat.psu.edu/stat508/)
 
 - [R for statistical learning](https://daviddalpiaz.github.io/r4sl/)

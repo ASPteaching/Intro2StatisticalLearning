@@ -1,80 +1,87 @@
 [
   {
-    "objectID": "labs/The-caret_package.html",
-    "href": "labs/The-caret_package.html",
-    "title": "The caret package",
+    "objectID": "Ressources.html",
+    "href": "Ressources.html",
+    "title": "References and Ressources",
     "section": "",
-    "text": "options(width=100) \nif(!require(\"knitr\")) install.packages(\"knitr\")\nlibrary(\"knitr\")\n#getOption(\"width\")\nknitr::opts_chunk$set(comment=NA,echo = TRUE, cache=TRUE)"
+    "text": "Breiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.\nBrandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site\nEfron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer.\n\n\n\n\n\nGoodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site\nLeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.\nChollet, F. (2018). Deep learning with Python. Manning Publications.\nChollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications.",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
   },
   {
-    "objectID": "labs/The-caret_package.html#learning-to-use-caret",
-    "href": "labs/The-caret_package.html#learning-to-use-caret",
-    "title": "The caret package",
-    "section": "Learning to use caret",
-    "text": "Learning to use caret\nThere are multiple resources to learn caretthat go from simple tutorials like this one or similars to courses, papers and a book by Max Kuhn, the creator or the package."
+    "objectID": "Ressources.html#tree-and-ensemble-based-methods",
+    "href": "Ressources.html#tree-and-ensemble-based-methods",
+    "title": "References and Ressources",
+    "section": "",
+    "text": "Breiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.\nBrandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site\nEfron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer.",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
   },
   {
-    "objectID": "labs/The-caret_package.html#data-loading",
-    "href": "labs/The-caret_package.html#data-loading",
-    "title": "The caret package",
-    "section": "Data loading",
-    "text": "Data loading\n\nlibrary(\"mlbench\")\ndata(Sonar)\nnames(Sonar)\n\n [1] \"V1\"    \"V2\"    \"V3\"    \"V4\"    \"V5\"    \"V6\"    \"V7\"    \"V8\"    \"V9\"    \"V10\"   \"V11\"   \"V12\"  \n[13] \"V13\"   \"V14\"   \"V15\"   \"V16\"   \"V17\"   \"V18\"   \"V19\"   \"V20\"   \"V21\"   \"V22\"   \"V23\"   \"V24\"  \n[25] \"V25\"   \"V26\"   \"V27\"   \"V28\"   \"V29\"   \"V30\"   \"V31\"   \"V32\"   \"V33\"   \"V34\"   \"V35\"   \"V36\"  \n[37] \"V37\"   \"V38\"   \"V39\"   \"V40\"   \"V41\"   \"V42\"   \"V43\"   \"V44\"   \"V45\"   \"V46\"   \"V47\"   \"V48\"  \n[49] \"V49\"   \"V50\"   \"V51\"   \"V52\"   \"V53\"   \"V54\"   \"V55\"   \"V56\"   \"V57\"   \"V58\"   \"V59\"   \"V60\"  \n[61] \"Class\"\n\n\nThe sonarpackage has 208 data points collected on 60 predictors (energy within a particular frequency band)."
+    "objectID": "Ressources.html#artificial-neural-networks",
+    "href": "Ressources.html#artificial-neural-networks",
+    "title": "References and Ressources",
+    "section": "",
+    "text": "Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site\nLeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.\nChollet, F. (2018). Deep learning with Python. Manning Publications.\nChollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications.",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
   },
   {
-    "objectID": "labs/The-caret_package.html#traintest-splitting",
-    "href": "labs/The-caret_package.html#traintest-splitting",
-    "title": "The caret package",
-    "section": "Train/test splitting",
-    "text": "Train/test splitting\nWe will most of the time want to split the data into two groups: a training set and a test set.\nThis may be done with the createDataPartition function:\n\nset.seed(1234) # Control of data generation\ninTrain &lt;- createDataPartition(y=Sonar$Class, p=.75, list=FALSE)\nstr(inTrain)\n\n int [1:157, 1] 2 3 4 6 7 8 9 11 14 15 ...\n - attr(*, \"dimnames\")=List of 2\n  ..$ : NULL\n  ..$ : chr \"Resample1\"\n\ntraining &lt;- Sonar[inTrain,]\ntesting &lt;- Sonar[-inTrain,]\nnrow(training)\n\n[1] 157\n\n\nOthers similar functions are: createFolds and createResample,"
+    "objectID": "Ressources.html#statisticalmachine-learning-in-general",
+    "href": "Ressources.html#statisticalmachine-learning-in-general",
+    "title": "References and Ressources",
+    "section": "Statistical/Machine Learning in General",
+    "text": "Statistical/Machine Learning in General\n\nGoogle’s Machine Learning Crash Course\nDavid Wishart’s Machine Learning Course @ Bioinformatics Canada\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nIntroduction to Statistical Learning (ISL)",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
   },
   {
-    "objectID": "labs/The-caret_package.html#preprocessing-and-training",
-    "href": "labs/The-caret_package.html#preprocessing-and-training",
-    "title": "The caret package",
-    "section": "Preprocessing and training",
-    "text": "Preprocessing and training\nUsually, before prediction, data may have to be cleaned and pre-processed.\nCaret allows to integrate it with the training step using the train function.\nThis function has multiple parameter such as:\n\nmethod: Can choose from more than 200 models\npreprocess: all type of filtering and transformations\n\n\nCART1Model &lt;- train (Class ~ ., \n                   data=training, \n                   method=\"rpart1SE\",\n                   preProc=c(\"center\",\"scale\"))\nCART1Model\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Bootstrapped (25 reps) \nSummary of sample sizes: 157, 157, 157, 157, 157, 157, ... \nResampling results:\n\n  Accuracy   Kappa   \n  0.6752493  0.350363\n\n\n\nRefining specifications\nMany specifications can be passed using the trainControl instruction.\n\nctrl &lt;- trainControl(method = \"repeatedcv\", repeats=3)\nCART1Model3x10cv &lt;- train (Class ~ ., \n                         data=training, \n                         method=\"rpart1SE\",\n                         trControl=ctrl,\n                         preProc=c(\"center\",\"scale\"))\n\nCART1Model3x10cv\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Cross-Validated (10 fold, repeated 3 times) \nSummary of sample sizes: 141, 142, 142, 141, 141, 142, ... \nResampling results:\n\n  Accuracy   Kappa    \n  0.7087173  0.4168066\n\n\nWe can change the method used by changing the trainControl parameter.\nIn the example below we fit a classification tree with different options:\n\nctrl &lt;- trainControl(method = \"repeatedcv\", repeats=3,\n                     classProbs=TRUE,\n                     summaryFunction=twoClassSummary)\n\nCART1Model3x10cv &lt;- train (Class ~ ., \n                         data=training, \n                         method=\"rpart1SE\", \n                         trControl=ctrl, \n                         metric=\"ROC\", \n                         preProc=c(\"center\",\"scale\"))\n\nCART1Model3x10cv\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Cross-Validated (10 fold, repeated 3 times) \nSummary of sample sizes: 141, 141, 142, 141, 141, 142, ... \nResampling results:\n\n  ROC        Sens   Spec     \n  0.7757068  0.775  0.6869048\n\n\n\nCART2Fit3x10cv &lt;- train (Class ~ ., \n                       data=training, \n                       method=\"rpart\", \n                       trControl=ctrl, \n                       metric=\"ROC\", \n                       preProc=c(\"center\",\"scale\"))\nCART2Fit3x10cv\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Cross-Validated (10 fold, repeated 3 times) \nSummary of sample sizes: 142, 142, 142, 142, 142, 140, ... \nResampling results across tuning parameters:\n\n  cp          ROC        Sens       Spec     \n  0.06849315  0.7033441  0.6851852  0.6779762\n  0.10958904  0.6829282  0.7523148  0.5922619\n  0.47945205  0.5517196  0.8629630  0.2404762\n\nROC was used to select the optimal model using the largest value.\nThe final value used for the model was cp = 0.06849315.\n\nplot(CART2Fit3x10cv)\n\n\n\n\n\n\n\n\n\nCART2Fit3x10cv &lt;- train (Class ~ ., \n                       data=training, \n                       method=\"rpart\", \n                       trControl=ctrl, \n                       metric=\"ROC\",  \n                       tuneLength=10,\n                       preProc=c(\"center\",\"scale\"))\nCART2Fit3x10cv\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Cross-Validated (10 fold, repeated 3 times) \nSummary of sample sizes: 141, 142, 140, 141, 141, 142, ... \nResampling results across tuning parameters:\n\n  cp          ROC        Sens       Spec     \n  0.00000000  0.7375744  0.7305556  0.6220238\n  0.05327245  0.7382523  0.7453704  0.6130952\n  0.10654490  0.6816468  0.7773148  0.5696429\n  0.15981735  0.6787368  0.8092593  0.5482143\n  0.21308980  0.6787368  0.8092593  0.5482143\n  0.26636225  0.6787368  0.8092593  0.5482143\n  0.31963470  0.6787368  0.8092593  0.5482143\n  0.37290715  0.6787368  0.8092593  0.5482143\n  0.42617960  0.6787368  0.8092593  0.5482143\n  0.47945205  0.5748016  0.8680556  0.2815476\n\nROC was used to select the optimal model using the largest value.\nThe final value used for the model was cp = 0.05327245.\n\nplot(CART2Fit3x10cv)"
+    "objectID": "Ressources.html#decision-trees",
+    "href": "Ressources.html#decision-trees",
+    "title": "References and Ressources",
+    "section": "Decision Trees",
+    "text": "Decision Trees\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nAn Introduction to Recursive Partitioning Using the RPART Routines",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
   },
   {
-    "objectID": "labs/The-caret_package.html#predict-confusionmatrix-functions",
-    "href": "labs/The-caret_package.html#predict-confusionmatrix-functions",
-    "title": "The caret package",
-    "section": "Predict & confusionMatrix functions",
-    "text": "Predict & confusionMatrix functions\nTo predict new samples can be used predict function.\n\ntype = prob : to compute class probabilities\ntype = raw : to predict the class\n\nThe confusionMatrix function will compute the confusion matrix and associated statistics for the model fit.\n\nCART2Probs &lt;- predict(CART2Fit3x10cv, newdata = testing, type = \"prob\")\nCART2Classes &lt;- predict(CART2Fit3x10cv, newdata = testing, type = \"raw\")\nconfusionMatrix(data=CART2Classes,testing$Class)\n\nConfusion Matrix and Statistics\n\n          Reference\nPrediction  M  R\n         M 21  5\n         R  6 19\n                                          \n               Accuracy : 0.7843          \n                 95% CI : (0.6468, 0.8871)\n    No Information Rate : 0.5294          \n    P-Value [Acc &gt; NIR] : 0.0001502       \n                                          \n                  Kappa : 0.5681          \n                                          \n Mcnemar's Test P-Value : 1.0000000       \n                                          \n            Sensitivity : 0.7778          \n            Specificity : 0.7917          \n         Pos Pred Value : 0.8077          \n         Neg Pred Value : 0.7600          \n             Prevalence : 0.5294          \n         Detection Rate : 0.4118          \n   Detection Prevalence : 0.5098          \n      Balanced Accuracy : 0.7847          \n                                          \n       'Positive' Class : M"
+    "objectID": "Ressources.html#neural-networks",
+    "href": "Ressources.html#neural-networks",
+    "title": "References and Ressources",
+    "section": "Neural Networks",
+    "text": "Neural Networks\n\nIntroduction to Artificial Neural Networks\nThe Neural network Playground\n\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "crumbs": [
+      "Home",
+      "Resources",
+      "References and Ressources"
+    ]
   },
   {
-    "objectID": "labs/The-caret_package.html#model-comparison",
-    "href": "labs/The-caret_package.html#model-comparison",
-    "title": "The caret package",
-    "section": "Model comparison",
-    "text": "Model comparison\nThe resamplesfunction enable smodel comparison\n\nresamps=resamples(list(CART2=CART2Fit3x10cv,\n                       CART1=CART1Model3x10cv))\nsummary(resamps)\n\n\nCall:\nsummary.resamples(object = resamps)\n\nModels: CART2, CART1 \nNumber of resamples: 30 \n\nROC \n           Min.   1st Qu.    Median      Mean   3rd Qu.     Max. NA's\nCART2 0.5000000 0.6294643 0.7455357 0.7382523 0.8058036 0.952381    0\nCART1 0.5535714 0.7249504 0.7926587 0.7757068 0.8315972 0.937500    0\n\nSens \n           Min.   1st Qu.    Median      Mean 3rd Qu. Max. NA's\nCART2 0.4444444 0.6250000 0.7500000 0.7453704   0.875    1    0\nCART1 0.4444444 0.6666667 0.7777778 0.7750000   0.875    1    0\n\nSpec \n       Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's\nCART2 0.250 0.5714286 0.6250000 0.6130952 0.7142857 0.8750000    0\nCART1 0.375 0.5714286 0.7142857 0.6869048 0.8571429 0.8571429    0\n\nxyplot(resamps,what=\"BlandAltman\")\n\n\n\n\n\n\n\ndiffs&lt;-diff(resamps)\nsummary(diffs)\n\n\nCall:\nsummary.diff.resamples(object = diffs)\n\np-value adjustment: bonferroni \nUpper diagonal: estimates of the difference\nLower diagonal: p-value for H0: difference = 0\n\nROC \n      CART2  CART1   \nCART2        -0.03745\nCART1 0.1598         \n\nSens \n      CART2  CART1   \nCART2        -0.02963\nCART1 0.4514         \n\nSpec \n      CART2   CART1   \nCART2         -0.07381\nCART1 0.02404"
-  },
-  {
-    "objectID": "labs/The-caret_package.html#adaboost",
-    "href": "labs/The-caret_package.html#adaboost",
-    "title": "The caret package",
-    "section": "Adaboost",
-    "text": "Adaboost\nIn this example, we are using the rpart algorithm as the base learner for AdaBoost. We can then use the predict function to make predictions on new data:\n\nlibrary(caret)\nlibrary(mlbench)\n\ndata(BreastCancer)\n\n# Split the data into training and testing sets\nset.seed(123)\ntrainIndex &lt;- createDataPartition(BreastCancer$Class, p = 0.7, list = FALSE)\ntraining &lt;- BreastCancer[trainIndex, ]\ntesting &lt;- BreastCancer[-trainIndex, ]\n\n# Next, set up \n# - the training control and \n# - tuning parameters for the AdaBoost algorithm:\n\nctrl &lt;- trainControl(method = \"repeatedcv\", \n                     number = 10, repeats = 3,\n                     classProbs = TRUE, \n                     summaryFunction = twoClassSummary)\n\nparams &lt;- data.frame(method = \"AdaBoost\", \n                     nIter = 100, \n                     interaction.depth = 1, \n                     shrinkage = 0.1)\n\n#  we are using 10-fold cross-validation with 3 repeats and the twoClassSummary function for evaluation. \n# We are also setting the number of iterations for the AdaBoost algorithm to 100, the maximum interaction depth to 1, and the shrinkage factor to 0.1.\n\n# Use the train function to train the AdaBoost algorithm on the training data and evaluate its performance on the testing data:\n\nadaboost &lt;- train(Class ~ ., data = training, \n                  method = \"rpart\", \n                  trControl = ctrl, \n                  tuneGrid = params)\n\npredictions &lt;- predict(adaboost, newdata = testing)\n\n# Evaluate the performance of the model\nconfusionMatrix(predictions, testData$diagnosis)"
-  },
-  {
-    "objectID": "labs/The-caret_package.html#gradient-boosting",
-    "href": "labs/The-caret_package.html#gradient-boosting",
-    "title": "The caret package",
-    "section": "Gradient boosting",
-    "text": "Gradient boosting\nWe use the gbm method in train() function from the caret package to build a Gradient Boosting model on the Breast Cancer dataset.\n\nlibrary(caret)\nlibrary(gbm)\ndata(BreastCancer)\n\n# Convert the diagnosis column to a binary factor\nBreastCancer$diagnosis &lt;- ifelse(BreastCancer$diagnosis == \"M\", 1, 0)\n\n# Split the dataset into training and testing sets\ntrainIndex &lt;- createDataPartition(BreastCancer$diagnosis, p = 0.7, list = FALSE)\ntrainData &lt;- BreastCancer[trainIndex, ]\ntestData &lt;- BreastCancer[-trainIndex, ]\n\n# Define the training control\nctrl &lt;- trainControl(method = \"cv\", number = 10, classProbs = TRUE, summaryFunction = twoClassSummary)\n\n# Define the Gradient Boosting model\nmodel &lt;- train(diagnosis ~ ., data = trainData, method = \"gbm\", trControl = ctrl,\n               verbose = FALSE, metric = \"ROC\", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01)\n\n# Make predictions on the testing set\npredictions &lt;- predict(model, testData)\n\n# Evaluate the performance of the model\nconfusionMatrix(predictions, testData$diagnosis)"
-  },
-  {
-    "objectID": "labs/The-caret_package.html#xgboost",
-    "href": "labs/The-caret_package.html#xgboost",
-    "title": "The caret package",
-    "section": "XGBoost",
-    "text": "XGBoost\n\nIn this example, we use the xgbTree method in train() function from the caret package to build an XGBoost model on the BreastCancer dataset.\nThe hyperparameters are set to default values, except for parameters:\n\nnrounds,\nmax_depth,\neta, lambda, and\nalpha\n\nThe final performance is evaluated using a confusion matrix.\n\n\nlibrary(caret)\nlibrary(xgboost)\ndata(BreastCancer)\n\n# Convert the diagnosis column to a binary factor\nBreastCancer$diagnosis &lt;- ifelse(BreastCancer$diagnosis == \"M\", 1, 0)\n\n# Split the dataset into training and testing sets\ntrainIndex &lt;- createDataPartition(BreastCancer$diagnosis, p = 0.7, list = FALSE)\ntrainData &lt;- BreastCancer[trainIndex, ]\ntestData &lt;- BreastCancer[-trainIndex, ]\n\n# Define the training control\nctrl &lt;- trainControl(method = \"cv\", number = 10, classProbs = TRUE, summaryFunction = twoClassSummary)\n\n# Define the XGBoost model\nmodel &lt;- train(diagnosis ~ ., \n               data = trainData, \n               method = \"xgbTree\", trControl = ctrl,\n               verbose = FALSE, metric = \"ROC\", \n               nrounds = 1000, max_depth = 3, \n               eta = 0.01, lambda = 1, alpha = 0)\n\n# Make predictions on the testing set\npredictions &lt;- predict(model, testData)\n\n# Evaluate the performance of the model\nconfusionMatrix(predictions, testData$diagnosis)"
-  },
-  {
-    "objectID": "labs/The-caret_package.html#references",
-    "href": "labs/The-caret_package.html#references",
-    "title": "The caret package",
-    "section": "References",
-    "text": "References\n\nOfficial references and resources\n\nCaret tutorial at UseR! 2014\nThe caret package\nJSS Paper\nApplied Predictive Modeling Blog\nCaret cheatsheet in Rstudio cheatsheet page\n\n\n\nOther resources\n\nCaret Package – A Practical Guide to Machine Learning in R -Create predictive models in R with Caret\nCaret R Package for Applied Predictive Modeling"
+    "objectID": "labs/Lab-C3.1-IrisANN.html",
+    "href": "labs/Lab-C3.1-IrisANN.html",
+    "title": "Importing Libraries and Data",
+    "section": "",
+    "text": "Cell 1 Importing libraries\n\n## Upload data from Module 3 data folder: \n\n# data1.csv \n\n# Note, make sure not to upload the data1.csv from Module 2\n\n::: {#cell-4 .cell _cell_guid=‘0bb3fe27-8f88-5516-eefc-649a61ce62ae’ _uuid=‘e9b103b270aa7e62add41bce5fc79b1ed7f2d3a0’ cellView=‘code’ execution_count=2}\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n%matplotlib inline\n:::\nCell 2 Reading the data\n::: {#cell-6 .cell _cell_guid=‘504c384b-1248-0bfa-92d8-0909a505438f’ _uuid=‘8af2462230f4b596a462822bcfaec54ca5e0f362’ executionInfo=‘{“elapsed”:13,“status”:“ok”,“timestamp”:1621967870877,“user”:{“displayName”:“Leif Wilm”,“photoUrl”:““,”userId”:“04857518338297398200”},“user_tz”:360}’ outputId=‘acf66200-dbe9-4d59-bc67-29abcec34fd0’ execution_count=6}\n#read data from csv\niris = pd.read_csv(\"data/IrisData1.csv\")\niris.head()\n\n\n\n\n\n\n\n\nSepal_Length\nSepal_Width\nPetal_Length\nPetal_Width\nSpecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\nIris-setosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\nIris-setosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\nIris-setosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\nIris-setosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\nIris-setosa\n\n\n\n\n\n\n:::\nCell 3 Dataset verification\n\n#Check the dataset to make sure no data is missing and Check the class labels\ndef verify_dataset(data):\n  #if any of the rows have missing value return datas missing\n  data_found = 1\n  for each_column in data.columns:\n    if data[each_column].isnull().any():\n            print(\"Data missing in Column \" + each_column)\n            #if any rows are not missing return Dataset is complete. No missing value\n            quit()\n    if data_found == 1:\n        print(\"Dataset is complete. No missing values. Ok\")\n    return\n\nverify_dataset(iris)\n\nDataset is complete. No missing values. Ok\n\n\nCell 4 One hot encoding function\n::: {#cell-10 .cell _cell_guid=‘ec0bfe6e-c47c-f12f-0a1f-6a461105cf70’ _uuid=‘e624be71b3eb8591ff21ebdb807655ba03a2cabe’ execution_count=9}\n#This function accepts an array of categorical variables and returns the one hot encoding\ndef to_one_hot(Y):\n    n_col = np.amax(Y) + 1\n    binarized = np.zeros((len(Y), n_col))\n    for i in range(len(Y)):\n        binarized[i, Y[i]] = 1.\n    return binarized\n:::\nCell 5 Data normalization function\n\n#Normalize array\ndef normalize(X, axis=-1, order=2):\n    l2 = np.atleast_1d(np.linalg.norm(X, order, axis))\n    l2[l2 == 0] = 1\n    return X / np.expand_dims(l2, axis)\n\nCell 6 Activation function definitions\n\n#sigmoid and its derivative\ndef sigmoid(x):\n    return 1/(1+np.exp(-x))\n\ndef sigmoid_deriv(x):\n    return sigmoid(x)*(1 - sigmoid(x))\n\ndef user_softmax(A):\n    expA = np.exp(A)\n    return expA / expA.sum(axis=1, keepdims=True)\n\nCell 7 Selecting features from a list\n\n'''Change the values below'''\nsepal_length = True\nsepal_width = True\npetal_length = True\npetal_width = True\n'''Change the values above'''\n\nfeature_list = [sepal_length,sepal_width,petal_length,petal_width]\n\nCell 8 Selecting features and running the normalization function\n\n#Specifying the input data \"x\"\ncolumns = ['Sepal_Length', 'Sepal_Width', 'Petal_Length', 'Petal_Width']\nx = pd.DataFrame(iris, columns=columns)\nx = x.to_numpy()\nx = x[:,feature_list]\nx = normalize(x)\n\nCell 9 Labelling output data and applying one hot encoding\n::: {#cell-20 .cell _cell_guid=‘635a6d0f-b62b-a978-21c2-445f994e0458’ _uuid=‘5f737ba55d570d5effe9fbb0f3a1267c4f44fd0a’ execution_count=16}\n#Replace the species with 1,2 or 3 as appropriate\nlabel_dict = dict()\nlabel_dict['0'] = 'setosa'\nlabel_dict['1'] = 'virginica'\nlabel_dict['2'] = 'versicolor'\niris['Species'].replace(['Iris-setosa', 'Iris-virginica', 'Iris-versicolor'], [0, 1, 2], inplace=True)\n\n#Get Output, flatten and encode to one-hot\ncolumns = ['Species']\n\ny = pd.DataFrame(iris, columns=columns)\ny = y.to_numpy()\ny = y.flatten()\ny = to_one_hot(y)\ny\n\narray([[1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [1., 0., 0.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 0., 1.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.],\n       [0., 1., 0.]])\n\n:::\nCell 10 Train test splitting\n\nx_y = pd.DataFrame(np.concatenate((x,y), axis=1))\ndef split_dataset_test_train(data,train_size):\n  data = data.sample(frac=1).reset_index(drop=True)\n  training_data = data.iloc[:int(train_size * len(data))].reset_index(drop=True)\n  testing_data = data.iloc[int(train_size * len(data)):].reset_index(drop=True)\n  return [training_data, testing_data]\n\ntrain_test_data = split_dataset_test_train(x_y,0.7)\nX_train = train_test_data[0].iloc[:,0:4].to_numpy()\nX_test = train_test_data[1].iloc[:,0:4].to_numpy()\n\ny_train = train_test_data[0].iloc[:,-3:].to_numpy()\ny_test = train_test_data[1].iloc[:,-3:].to_numpy()\n\nCell 11 Training function definition\n\ndef training(lr, batch_size, epochs):\n\n  w0 = 2*np.random.random((X_train.shape[1], hidden_size)) - 1 \n  w1 = 2*np.random.random((hidden_size, 3)) - 1 \n\n  bh = np.random.randn(hidden_size)\n  bo = np.random.randn(3)\n\n\n  rem = len(X_train) % batch_size\n  num_batch = len(X_train)//batch_size\n  if rem != 0:\n    num_batch += 1\n\n  #Errors - for graph later\n  errors = []\n\n  for epoch in range(epochs):\n    for curr_batch in range(num_batch):\n        # Finding the current batch\n        batch_start = curr_batch * batch_size\n        batch_end = batch_start + batch_size\n        input_batch = X_train[batch_start:batch_end]\n        \n        # First layer propagation\n        zh = np.dot(input_batch, w0) + bh\n        layer1 = sigmoid(zh)\n\n        # Second layer propagation\n        zo = np.dot(layer1, w1) + bo\n        layer2 = user_softmax(zo)\n\n    ########## Back Propagation\n\n    ########## Phase 1\n        labels_batch = y_train[batch_start:batch_end]\n        layer2_error = layer2 - labels_batch\n        layer2w_delta = np.dot(layer1.T, layer2_error)\n\n        layer2b_delta = layer2_error\n\n    ########## Phases 2\n\n        dcost_dah = np.dot(layer2_error , w1.T)\n        dah_dzh = sigmoid_deriv(zh)\n        \n        layer1_error = dah_dzh * dcost_dah\n        layer1w_delta = np.dot(input_batch.T, layer1_error)\n\n        layer1b_delta = layer1_error\n\n        # Update Weights ================\n\n        w0 -= lr * layer1w_delta\n        bh -= lr * layer1b_delta.sum(axis=0)\n\n        w1 -= lr * layer2w_delta\n        bo -= lr * layer2b_delta.sum(axis=0)\n\n    error = np.mean(np.abs(layer2_error))\n    errors.append(error)\n\n  return [w0,bh,w1,bo], error, errors\n\nCell 12 Evaluation function definition\n\ndef evaluation(params,tst_set):\n  w0 = params[0]\n  bh = params[1]\n  w1 = params[2]\n  bo = params[3]\n\n  # First layer propagation\n  zh = np.dot(tst_set, w0) + bh\n  layer1 = sigmoid(zh)\n\n  # Second layer propagation\n  zo = np.dot(layer1, w1) + bo\n  layer2 = user_softmax(zo)\n\n  return layer2\n\n\nExercise 3.2\nCell 13 Selecting parameters and running the training function\n\n'''Change these values'''\nlearning_rate = 0.01\nbatch_size = 10\nhidden_size = 5\nepochs = 1000\n\ntrained_params, error, errors = training(learning_rate, batch_size, epochs)\n\nCell 14 Displaying the errors from training\n\n#Plot the accuracy chart\naccuracy = (1 - error) * 100\n\nplt.plot(errors)\nplt.xlabel('Training')\nplt.ylabel('Error')\nplt.show()\n        \nprint(\"Training Accuracy \" + str(round(accuracy,2)) + \"%\")\n\n\n\n\n\n\n\n\nTraining Accuracy 91.15%\n\n\nCell 15 Running the evaluation function\n\ny_pred = evaluation(trained_params,X_test)\n\nCell 16 Displaying the confusion matrix\n\ny_actual = pd.Series(y_test.argmax(axis=1))\ny_pred = pd.Series(y_pred.argmax(axis=1))\ncm = pd.crosstab(y_actual,y_pred).to_numpy()\n\nif cm.shape[1]&lt;3:\n  cm = np.concatenate((cm,np.zeros((3,3-cm.shape[1]))),axis=1)\n\ncm_norm = np.array([cm[i][j]/cm[i].sum() for i in range(cm.shape[0]) for j in range(cm.shape[1])])\ncm_norm = cm_norm.reshape(3,3)\n\n\nimport seaborn as sns\nfrom matplotlib.colors import ListedColormap\n\n\ndf_cm = pd.DataFrame(cm_norm, index = ['setosa','virginica','versicolor'],\n                  columns = ['setosa','virginica','versicolor'])\n\n\nplt.figure(figsize = (6,6))\n\nwith sns.axes_style('white'):\n    sns.heatmap(df_cm,\n                cbar=False,\n                square=False,\n                annot=True,\n                annot_kws={\"size\": 20},\n                cmap=ListedColormap(['white']),\n                linewidths=0.5)\n    sns.set(font_scale=1.8)\n\n\n\n\n\n\n\n\n\n\nExercise 3.1\nCell 17 Function for testing flower dimensions\n\n\ndef input_test_seq():\n    sepal_length = float(input('Enter the Sepal length in cm :'))\n    while True:\n        if float(sepal_length)&lt; 0 or float(sepal_length) &gt; 10:\n            print('Inalid Entry. Enter Sepal Length &lt;10 \\n')\n            sepal_length = float(input('Enter the sepal length in cm :'))\n            continue\n        else:\n            break\n\n    sepal_width = float(input('Enter the Sepal width in cm :'))\n    while True:\n        if float(sepal_width) &lt; 0 or float(sepal_width) &gt; 10:\n            print('Invalid entry')\n            sepal_width = float(input('Enter the sepal width in cm :'))\n            continue\n        else:\n            break\n\n    petal_length = float(input('Enter the petal length in cm :'))\n    while True:\n        if float(petal_length) &lt;0 or float(petal_length) &gt; 10:\n            print('Inalid Entry. Please enter value less than 10')\n            petal_length = float(input('Enter the petal length in cm :'))\n            continue\n        else:\n            break\n\n    petal_width = float(input('Enter the petal width in cm :'))\n    while True:\n        if float(petal_width) &lt; 0 or float(petal_width) &gt; 10:\n            print('Invalid entry')\n            petal_width = float(input('Enter the petal width in cm :'))\n            continue\n        else:\n            break\n\n    predict_features = [sepal_length,sepal_width,petal_length,petal_width]\n    predict_features = normalize(predict_features)\n    result_category = evaluation(trained_params,predict_features)\n    result_category = result_category.argmax(axis=1)[0]\n\n    if result_category == 0:\n        value_prediction = \"Iris-setosa\"\n    elif result_category == 1:\n        value_prediction = \"Iris-versicolor\"\n    elif result_category == 2:\n        value_prediction = \"Iris-virginica\"\n    return value_prediction\n\nflower_prediction = input_test_seq()\nprint(\"The flower is most likely\", flower_prediction)\n\nEnter the Sepal length in cm :5.1\nEnter the Sepal width in cm :3.4\nEnter the petal length in cm :1.4\nEnter the petal width in cm :0.2\nThe flower is most likely Iris-setosa",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Species Classification with ANN Lab (Python)"
+    ]
   },
   {
     "objectID": "labs/Lab-C2.2-Decision_Trees-1.html",
@@ -172,7 +179,7 @@
     "href": "labs/Lab-C1.2-knn4classification.html",
     "title": "k-NN for classification",
     "section": "",
-    "text": "Introduction\nThe k-nearest neighbors (k-NN) classifier is a non-parametric method used for classification tasks. Given a new observation ( s ), the method assigns it the most frequent class among its ( k ) nearest neighbors in the training set.\nMathematically, the probability estimate of belonging to class 1 at point ( s ) is:\n\\[\n\\hat{P}_1(s) = \\frac{1}{k} \\sum_{i \\in N_k(s)} I(y_i = 1)\n\\]\nwhere: - ( N_k(s) ) represents the set of ( k ) nearest neighbors of ( s ), - ( I(y_i = 1) ) is an indicator function that equals 1 if the observation belongs to class 1 and 0 otherwise.\nThe predicted class is given by:\n\\[\n\\hat{y}(s) = \\arg\\max_{c} \\hat{P}_c(s)\n\\]\nwhere ( _c(s) ) is the estimated probability of class ( c ).\nIn this document we illustrate how the boundaries of the classifer are affected by the tuning parameter \\(k\\).\n\n\nLoading Data\nWe use a simulated dataset consisting of two-dimensional observations (features x and y) along with their class labels (BLUE / ORANGE).\n\ndf.xy &lt;- read.table(file=\"2clas2dim.csv\", dec=\".\", sep=\";\", header = TRUE)\ndim(df.xy)\n\n[1] 200   3\n\ndf.xy[sample(1:nrow(df.xy),10),]\n\n              x           y  class\n49   1.12821955 -0.72956096   BLUE\n36   0.23090193  0.77797760   BLUE\n165 -0.02438679  2.29309266 ORANGE\n60   0.16520982  0.93360084   BLUE\n68   0.35564860  1.20330520   BLUE\n188  1.04171675  2.36471548 ORANGE\n41   0.77926721 -0.09974683   BLUE\n38   0.91652168  1.21631239   BLUE\n98   2.14415047 -2.61251237   BLUE\n35   1.87323917 -2.18541999   BLUE\n\n\nNow let’s see how Knn works for one point\n\nk &lt;- 40\ns &lt;- 0\nt &lt;- 0\nst &lt;- c(s,t)\n\n# Compute distances between (s,t) and all data points\nd_st_xy &lt;- as.matrix(dist(rbind(st, df.xy[,1:2])))[1, -1]\n\n# Identify the k-th smallest distance\nd_st_xy_k &lt;- sort(d_st_xy, partial=k)[k]\n\n# Identify the indices of the k nearest neighbors\nN_st_k &lt;- unname(which(d_st_xy &lt;= d_st_xy_k))\n\n# Compute probability estimate of class 'ORANGE' at (s,t)\n(pr_1_k_st &lt;- sum(df.xy[N_st_k,3] == 'ORANGE') / k)\n\n[1] 0.25\n\n\nThis code: 1. Defines a test point ( (s,t) = (0,0) ). 2. Computes distances to all training points. 3. Selects the ( k ) nearest neighbors. 4. Estimates the probability of class ‘ORANGE’ at ( (s,t) ).\n\n\nVisualization of k-NN Neighborhood\n\nplot(df.xy[,1:2], col=df.xy$class, pch=1 + 18 * ((1:200) %in% N_st_k), asp=1)\npoints(s, t, pch=\"*\", col=3, cex=3)\n\n\n\n\n\n\n\n\nThis plot:\n\nDisplays the dataset with colors representing different classes.\nHighlights the selected neighbors of the test point ( (s,t) ).\n\n\n\nGeneralizing the k-NN Classifier\nThe process can be encapsulated in a function.\n\nknn.class &lt;- function(st, xy, group, k=3) {\n  d_st_xy &lt;- as.matrix(dist(rbind(st, xy)))[1, -1]\n  d_st_xy_k &lt;- sort(d_st_xy, partial=k)[k]\n  N_st_k &lt;- unname(which(d_st_xy &lt;= d_st_xy_k))\n  return(sum(group[N_st_k] == 1) / k)  # Probability of class 1\n}\n\nThis function: - Computes distances between a test point st and all training points xy. - Identifies the ( k ) nearest neighbors. - Estimates the probability of the test point belonging to class 1.\n\n\nUsing the k-NN Classifier\n\nst &lt;- c(0,0)\ngroup &lt;- as.numeric(df.xy[,3] == 'ORANGE')\nknn.class(st=st, xy=df.xy[,1:2], group=group, k=40)\n\n[1] 0.25\n\n\nThis code predicts the class probability for ( (0,0) ).\n\n\nCreating a Probability Map\n\ns &lt;- t &lt;- seq(-3.5, 3.5, by=.1)\nns &lt;- length(s)\nnt &lt;- length(t)\nhat_p &lt;- matrix(0, nrow=ns, ncol=nt)\n\nk &lt;- 50\n\nfor (i in 1:ns) {\n  for (j in 1:nt) {\n    hat_p[i, j] &lt;- knn.class(st=c(s[i], t[j]), xy=df.xy[,1:2], group=group, k=k)\n  }\n}\n\nThis block: - Defines a grid of test points in the feature space. - Computes class probabilities for each grid point using k-NN.\n\n\nDecision Boundary Visualization\n\nplot(df.xy[,1], df.xy[,2], col=df.xy[,3], asp=1)\ncontour(s, t, hat_p, levels=.5, lwd=2, add=TRUE)\n\n\n\n\n\n\n\n\nThis plot: - Shows the decision boundary where the class probability is 0.5.\n\n\nComparison with Logistic Regression\n\n# Fit logistic regression model\nglm.class &lt;- glm(group ~ x + y, data=df.xy, family=binomial)\nb012 &lt;- coefficients(glm.class)\n\n# Create a new plot to ensure abline() has a base plot\nplot(df.xy[,1], df.xy[,2], col=df.xy[,3], asp=1, main=\"Logistic Regression Decision Boundary\")\n\n# Add decision boundary line\nabline(a = -b012[1]/b012[3], b = -b012[2]/b012[3], lwd=2, col=6)\n\n\n\n\n\n\n\n\nThis fits a logistic regression model and plots its decision boundary for comparison.\n\n\nK-NN classifier is also a flexible classifier\nWe observe that: - k-NN produces a flexible decision boundary, adapting to the local structure of the data. - Larger ( k ) values create smoother boundaries, reducing variance. - Logistic regression assumes a linear boundary, which may not be suitable for non-linear patterns."
+    "text": "Introduction\nThe k-nearest neighbors (k-NN) classifier is a non-parametric method used for classification tasks. Given a new observation ( s ), the method assigns it the most frequent class among its ( k ) nearest neighbors in the training set.\nMathematically, the probability estimate of belonging to class 1 at point ( s ) is:\n\\[\n\\hat{P}_1(s) = \\frac{1}{k} \\sum_{i \\in N_k(s)} I(y_i = 1)\n\\]\nwhere: - ( N_k(s) ) represents the set of ( k ) nearest neighbors of ( s ), - ( I(y_i = 1) ) is an indicator function that equals 1 if the observation belongs to class 1 and 0 otherwise.\nThe predicted class is given by:\n\\[\n\\hat{y}(s) = \\arg\\max_{c} \\hat{P}_c(s)\n\\]\nwhere ( _c(s) ) is the estimated probability of class ( c ).\nIn this document we illustrate how the boundaries of the classifer are affected by the tuning parameter \\(k\\).\n\n\nLoading Data\nWe use a simulated dataset consisting of two-dimensional observations (features x and y) along with their class labels (BLUE / ORANGE).\n\ndf.xy &lt;- read.table(file=\"2clas2dim.csv\", dec=\".\", sep=\";\", header = TRUE)\ndim(df.xy)\n\n[1] 200   3\n\ndf.xy[sample(1:nrow(df.xy),10),]\n\n              x          y  class\n77   1.51801270  1.0507560   BLUE\n140 -1.68953960  1.4116078 ORANGE\n13   1.57474637 -2.5645428   BLUE\n5    1.61471106 -0.1512770   BLUE\n71   0.55693889 -0.3768292   BLUE\n47   0.06784634 -0.4126790   BLUE\n35   1.87323917 -2.1854200   BLUE\n122  0.20496000 -0.4927039 ORANGE\n36   0.23090193  0.7779776   BLUE\n162  1.54156477  2.1132066 ORANGE\n\n\nNow let’s see how Knn works for one point\n\nk &lt;- 40\ns &lt;- 0\nt &lt;- 0\nst &lt;- c(s,t)\n\n# Compute distances between (s,t) and all data points\nd_st_xy &lt;- as.matrix(dist(rbind(st, df.xy[,1:2])))[1, -1]\n\n# Identify the k-th smallest distance\nd_st_xy_k &lt;- sort(d_st_xy, partial=k)[k]\n\n# Identify the indices of the k nearest neighbors\nN_st_k &lt;- unname(which(d_st_xy &lt;= d_st_xy_k))\n\n# Compute probability estimate of class 'ORANGE' at (s,t)\n(pr_1_k_st &lt;- sum(df.xy[N_st_k,3] == 'ORANGE') / k)\n\n[1] 0.25\n\n\nThis code: 1. Defines a test point ( (s,t) = (0,0) ). 2. Computes distances to all training points. 3. Selects the ( k ) nearest neighbors. 4. Estimates the probability of class ‘ORANGE’ at ( (s,t) ).\n\n\nVisualization of k-NN Neighborhood\n\nplot(df.xy[,1:2], col=df.xy$class, pch=1 + 18 * ((1:200) %in% N_st_k), asp=1)\npoints(s, t, pch=\"*\", col=3, cex=3)\n\n\n\n\n\n\n\n\nThis plot:\n\nDisplays the dataset with colors representing different classes.\nHighlights the selected neighbors of the test point ( (s,t) ).\n\n\n\nGeneralizing the k-NN Classifier\nThe process can be encapsulated in a function.\n\nknn.class &lt;- function(st, xy, group, k=3) {\n  d_st_xy &lt;- as.matrix(dist(rbind(st, xy)))[1, -1]\n  d_st_xy_k &lt;- sort(d_st_xy, partial=k)[k]\n  N_st_k &lt;- unname(which(d_st_xy &lt;= d_st_xy_k))\n  return(sum(group[N_st_k] == 1) / k)  # Probability of class 1\n}\n\nThis function: - Computes distances between a test point st and all training points xy. - Identifies the ( k ) nearest neighbors. - Estimates the probability of the test point belonging to class 1.\n\n\nUsing the k-NN Classifier\n\nst &lt;- c(0,0)\ngroup &lt;- as.numeric(df.xy[,3] == 'ORANGE')\nknn.class(st=st, xy=df.xy[,1:2], group=group, k=40)\n\n[1] 0.25\n\n\nThis code predicts the class probability for ( (0,0) ).\n\n\nCreating a Probability Map\n\ns &lt;- t &lt;- seq(-3.5, 3.5, by=.1)\nns &lt;- length(s)\nnt &lt;- length(t)\nhat_p &lt;- matrix(0, nrow=ns, ncol=nt)\n\nk &lt;- 50\n\nfor (i in 1:ns) {\n  for (j in 1:nt) {\n    hat_p[i, j] &lt;- knn.class(st=c(s[i], t[j]), xy=df.xy[,1:2], group=group, k=k)\n  }\n}\n\nThis block: - Defines a grid of test points in the feature space. - Computes class probabilities for each grid point using k-NN.\n\n\nDecision Boundary Visualization\n\nplot(df.xy[,1], df.xy[,2], col=df.xy[,3], asp=1)\ncontour(s, t, hat_p, levels=.5, lwd=2, add=TRUE)\n\n\n\n\n\n\n\n\nThis plot: - Shows the decision boundary where the class probability is 0.5.\n\n\nComparison with Logistic Regression\n\n# Fit logistic regression model\nglm.class &lt;- glm(group ~ x + y, data=df.xy, family=binomial)\nb012 &lt;- coefficients(glm.class)\n\n# Create a new plot to ensure abline() has a base plot\nplot(df.xy[,1], df.xy[,2], col=df.xy[,3], asp=1, main=\"Logistic Regression Decision Boundary\")\n\n# Add decision boundary line\nabline(a = -b012[1]/b012[3], b = -b012[2]/b012[3], lwd=2, col=6)\n\n\n\n\n\n\n\n\nThis fits a logistic regression model and plots its decision boundary for comparison.\n\n\nK-NN classifier is also a flexible classifier\nWe observe that: - k-NN produces a flexible decision boundary, adapting to the local structure of the data. - Larger ( k ) values create smoother boundaries, reducing variance. - Logistic regression assumes a linear boundary, which may not be suitable for non-linear patterns."
   },
   {
     "objectID": "labs/Lab-C.2.4b-BoostingOptimization.html",
@@ -407,7 +414,7 @@
     "href": "index.html#some-interesting-online-resources",
     "title": "Introduction to Statistical Learning",
     "section": "Some interesting online resources",
-    "text": "Some interesting online resources\n\nStatistical/Machine Learning in General\n\nGoogle’s Machine Learning Crash Course\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nIntroduction to Statistical Learning (ISL)\n\n\n\nDecision Trees\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nAn Introduction to Recursive Partitioning Using the RPART Routines\n\n\n\nNeural Networks\n\nIntroduction to Artificial Neural Networks\n\n-The Neural network Playground\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "text": "Some interesting online resources\n\nStatistical/Machine Learning in General\n\nGoogle’s Machine Learning Crash Course\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nIntroduction to Statistical Learning (ISL)\n\n\n\nDecision Trees\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nAn Introduction to Recursive Partitioning Using the RPART Routines\n\n\n\nNeural Networks\n\nDeep Learning and Neural Networks (Andrew Ng @ Coursera) (https://www.coursera.org/learn/neural-networks-deep-learning)\nThe Neural network Zoo\n\n-The Neural network Playground\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
     "crumbs": [
       "Home",
       "Introduction",
@@ -535,11 +542,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#how-does-dl-improve",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#how-does-dl-improve",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#how-does-dl-improve-on-ml",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#how-does-dl-improve-on-ml",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "How does DL improve",
-    "text": "How does DL improve\n\nML and DL Approaches for Brain Disease Diagnosis\n\nDNN: feature extraction and classification without (or with much les) human intervention.\nDNN improves with data availability, without seemingly reaching plateaus.",
+    "section": "How does DL improve on ML",
+    "text": "How does DL improve on ML\n\nML and DL Approaches for Brain Disease Diagnosis\n\nDNN: feature extraction and classification without (or with much les) human intervention.\nDNN improves with data availability, without seemingly reaching plateaus.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -670,8 +677,20 @@
     "objectID": "C3.1-Introduction_to_ANN-Slides.html#comparison-between-the-two-1",
     "href": "C3.1-Introduction_to_ANN-Slides.html#comparison-between-the-two-1",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "COMPARISON BETWEEN THE TWO",
-    "text": "COMPARISON BETWEEN THE TWO\nThe Perceptron represents an improvement over McCullough-Pitts’ neuron:\n\nIt admits real-valued inputs.\nBoth weights and the threshold can be learned.\n\nHowever, there are still limitations:\n\nThe output is determined by a step function, which limits its ability to model complex relationships.\nA single perceptron can only classify linearly separable functions.",
+    "section": "Comparison between the two",
+    "text": "Comparison between the two\nThe Perceptron represents an improvement over McCullough-Pitts’ neuron:\n\nIt admits real-valued inputs.\nBoth weights and the threshold can be learned.\n\nHowever, there are still limitations:\n\nThe output is determined by a step function, which limits its ability to model complex relationships.\nA single perceptron can only classify linearly separable functions.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#ans-and-activation-functions",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#ans-and-activation-functions",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "ANs and Activation Functions",
+    "text": "ANs and Activation Functions\n\nThe Perceptron can be generalized by Artificial Neurones which can use more general functions, called Activation Functions to produce their output.\n\nActivation functions are built in a way that they allow neurons to produce continuous and non-linear outputs.\n\nIt must be noted however that a single artificial neurone, even with a different activation function, still cannot model no-linear separable problems like XOR.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -787,11 +806,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#putting-it-all-together",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#putting-it-all-together",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#softmax-activation-function",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#softmax-activation-function",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Putting it all together",
-    "text": "Putting it all together",
+    "section": "Softmax Activation Function",
+    "text": "Softmax Activation Function\n\nSoftmax is an activation function used in the output layer of classification models, especially for multi-class problems.\nIt converts raw scores (logits) into probabilities, ensuring that \\(\\sum_{i=1}^{N} P(y_i) = 1\\) where \\(P(y_i)\\) is the predicted probability for class \\(i\\).\nGiven an input vector \\(z\\), Softmax transforms it as: \\[\n\\sigma(z_i) = \\frac{e^{z_i}}{\\sum_{j=1}^{N} e^{z_j}}\n\\]\n\nThe exponentiation amplifies differences, making the highest value more dominant.\nThe normalization ensures that probabilities sum to 1.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -799,11 +818,71 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#in-words",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#in-words",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-artificial-neuron-in-short",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-artificial-neuron-in-short",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "In words",
-    "text": "In words\n\nAn AN takes a vector of input values \\(x_{1}, \\ldots, x_{d}\\) and combines it with some weights that are local to the neuron \\(\\left(w_{0}, w_{1}, . ., w_{d}\\right)\\) to compute a net input \\(w_{0}+\\sum_{i=1}^{d} w_{i} \\cdot x_{i}\\).\nTo compute its output, it then passes the net input through a possibly non-linear univariate activation function \\(g(\\cdot)\\), usually vchosen from a set of options such as Sigmoid, Tanh or ReLU functions\nTo deal with the bias, we create an extra input variable \\(x_{0}\\) with value always equal to 1 , and so the function computed by a single artificial neuron (parameterized by its weights \\(\\mathbf{w}\\) ) is:\n\n\\[\ny(\\mathbf{x})=g\\left(w_{0}+\\sum_{i=1}^{d} w_{i} x_{i}\\right)=g\\left(\\sum_{i=0}^{d} w_{i} x_{i}\\right)=g\\left(\\mathbf{w}^{\\mathbf{T}} \\mathbf{x}\\right)\n\\]",
+    "section": "The Artificial Neuron in Short",
+    "text": "The Artificial Neuron in Short",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-artificial-neuron-in-short-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-artificial-neuron-in-short-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Artificial Neuron in Short",
+    "text": "The Artificial Neuron in Short\n\nAn AN takes a vector of input values \\(x_{1}, \\ldots, x_{d}\\) and combines it with some weights that are local to the neuron \\(\\left(w_{0}, w_{1}, . ., w_{d}\\right)\\) to compute a net input \\(w_{0}+\\sum_{i=1}^{d} w_{i} \\cdot x_{i}\\).\nTo compute its output, it then passes the net input through a possibly non-linear univariate activation function \\(g(\\cdot)\\), usually chosen from a set of options such as Sigmoid, Tanh or ReLU functions\nTo deal with the bias, we create an extra input variable \\(x_{0}\\) with value always equal to 1 , and so the function computed by a single artificial neuron (parameterized by its weights \\(\\mathbf{w}\\) ) is:\n\n\\[\ny(\\mathbf{x})=g\\left(w_{0}+\\sum_{i=1}^{d} w_{i} x_{i}\\right)=g\\left(\\sum_{i=0}^{d} w_{i} x_{i}\\right)=g\\left(\\mathbf{w}^{\\mathbf{T}} \\mathbf{x}\\right)\n\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#perceptron-learning-rule",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#perceptron-learning-rule",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Perceptron Learning Rule",
+    "text": "Perceptron Learning Rule\n\nThe Perceptron Rule updates weights based on misclassified samples.\nIt ensures convergence only if data is linearly separable.\nWeight Update Formula \\[\nw_j \\leftarrow w_j + \\eta(y - \\hat{y})x_j\n\\] where:\n\n\\(x_j\\) = input feature; \\(\\quad \\eta\\) = learning rate;\n\\(y\\) = true label; \\(\\quad \\hat{y}\\)=predicted class (\\(\\pm1\\));\n\nKey Features\n\nUses a step function (not differentiable).\nCannot be optimized using gradient descent.\nFails to converge if data is not linearly separable.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-perceptron-decision-rule",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-perceptron-decision-rule",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Perceptron Decision Rule",
+    "text": "The Perceptron Decision Rule",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-delta-rule",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-delta-rule",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Delta Rule",
+    "text": "The Delta Rule\n\nUuses gradient descent to minimize the Sum of Squared Errors (SSE).\nIt applies to models with differentiable activation functions.\nWeight Update Formula \\[\nw_j \\leftarrow w_j + \\eta(y - h(x))x_j\n\\] where:\n\n\\(x_j\\) = input feature, \\(\\eta\\) = learning rate;\n\\(y\\) = true label; \\(\\quad h(x) =\\) predicted output.\n\nKey Features\n\nWorks with continuous activation functions (e.g., linear in ADALINE).\nNot limited to linearly separable problems.\nForms the foundation for gradient-based learning in neural networks.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-delta-rule-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-delta-rule-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Delta Rule",
+    "text": "The Delta Rule",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -995,7 +1074,19 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "Training an ANN",
-    "text": "Training an ANN\n\n\nAn ANN is a predictive model whose properties and behaviour can be mathematically characterized.\nIn practice this means:\n\nThe ANN acts by composing a series of linear and non-linear (activation) functions.\nThese are characterized by their weights and biases, that need to be learnt .\n\nTraining the network is done by\n\nSelecting an appropriate (convex) loss function,\nFinding weights that minimize a the total cost function (avg loss).",
+    "text": "Training an ANN\n\n\nAn ANN is a predictive model whose properties and behaviour can be mathematically characterized.\nIn practice this means:\n\nThe ANN acts by composing a series of linear and non-linear (activation) functions.\nThese are characterized by their weights and biases, that need to be learnt.\n\nTraining the network is done by\n\nSelecting an appropriate (convex) loss function,\nFinding weights that minimize a the total cost function (avg loss).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Training an ANN",
+    "text": "Training an ANN\n\n\nSource: Overview of a Neural Network’s Learning Process",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1015,35 +1106,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#a-loss-function-for-optimization",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#a-loss-function-for-optimization",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#loss-functions-for-optimization",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#loss-functions-for-optimization",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "A loss function for optimization",
-    "text": "A loss function for optimization\nDepending on the activation function we may decide to use one or another form of loss function.\n\nAt first an idea may be to use squared error loss: \\[\n  l(h_\\theta(x),y)=\\left (y-\\frac{1}{1+e^{-\\theta^\\intercal x}}\\right )^2\n\\]\nGiven a sigmoid AF, the squared error loss is not a convex problem which means that MSE is not appropriate.\nQuadratic loss may be used with ReLu activation.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#illustrating-non-convexity",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#illustrating-non-convexity",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Illustrating non-convexity",
-    "text": "Illustrating non-convexity\n\nlibrary(plot3D)\n\n# Define the squared error loss function\nsquared_error &lt;- function(y, y_hat) {\n  return(0.5 * (y - y_hat)^2)\n}\n\n# Define the logistic activation function\nlogistic &lt;- function(z) {\n  return(1 / (1 + exp(-z)))\n}\n\n# Generate data\nx &lt;- seq(-10, 10, length.out = 200)\ny &lt;- seq(-10, 10, length.out = 200)\nz &lt;- outer(x, y, FUN = function(x, y) squared_error(1, logistic(x + y)))\n\n# Plot the exaggerated loss surface\npersp3D(x, y, z, theta = 30, phi = 30, expand = 0.5, col = \"lightblue\",\n        ticktype = \"detailed\", xlab = \"Weight 1\", ylab = \"Weight 2\", zlab = \"Loss\")",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#illustrating-non-convexity-1",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#illustrating-non-convexity-1",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Illustrating non-convexity",
-    "text": "Illustrating non-convexity",
+    "section": "Loss functions for optimization",
+    "text": "Loss functions for optimization\nDepending on the activation function it may be advisable to use one or another form of loss function.\n\nA typical choice may be quadratic (or square) error loss: \\[\nl(h_\\theta(x),y)=\\left (y-\\frac{1}{1+e^{-\\theta^\\intercal x}}\\right )^2\n\\]\nGiven a sigmoid AF, the squared error loss is not a convex problem so that MSE is not appropriate.\nQuadratic loss may be used with ReLu activation.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1063,11 +1130,23 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#regularized-cross-entropy",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#regularized-cross-entropy",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-parameters-for-tuning",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-parameters-for-tuning",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Regularized cross entropy",
-    "text": "Regularized cross entropy\nIn practice we often work with a regularized version of the cost function (we don’t regularize the bias units)\n\\[\\begin{eqnarray*}\nJ(\\Theta)&=&-\\frac{1}{n}\\big[\\sum_{i=1}^n \\sum_{k=1}^K y_k^{(i)}\\log( h_\\theta(x^{(i)}))_k\\\\\n&+&(1-y_k^{(i)})\\log(1-(h_\\theta(x^{(i)}))_k)\\big]\\\\\n&+&\\lambda\\sum_{l=1}^{L-1}\\sum_{i=1}^{s_l}\\sum_{j=1}^{s_{l+1}}\n(\\theta_{ji}^{(l)})^2\n\\end{eqnarray*}\\]",
+    "section": "The parameters for tuning",
+    "text": "The parameters for tuning\n\n\nTraining a network corresponds to finding the parameters, that is, the weights and the biases, that minimize the cost function.\nAlthoug weights & biases are respectively matrices and vectors, it is convenient to represent them in a vectorized form stored as a single vector, that will be denoted here, by \\(\\theta\\).\nWe may suppose \\(\\theta\\in\\mathbb{R}^p\\), and write the cost function as \\(J(\\theta)\\) to emphasize its dependence on the parameters, that is: \\[\n\\begin{eqnarray*}\nJ: \\mathbb{R}^p & \\rightarrow \\mathbb{R}\\\\\n\\theta &  \\rightarrow J(\\theta)\n\\end{eqnarray*}\n\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-or-steepest-descent",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-or-steepest-descent",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient or Steepest Descent",
+    "text": "Gradient or Steepest Descent\n\n\n\nA classical method in optimization to minimize a convex function \\(J(\\theta)\\).\nIt proceeds iteratively, computing a sequence of vectors \\(\\theta^1, \\theta^2, ..., \\theta^n\\) in \\(\\mathbb{R}^p\\) with the aim of converging to a vector that minimizes the cost function.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1079,7 +1158,7 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "Gradient Descent",
-    "text": "Gradient Descent\n\nTraining a network corresponds to choosing the parameters, that is, the weights and biases, that minimize the cost function.\nThe weights and biases take the form of matrices and vectors, but at this stage it is convenient to imagine them stored as a single vector that we call \\(\\theta\\).\nGenerally, we will suppose \\(\\theta\\in\\mathbb{R}^p\\), and write the cost function as \\(J(\\theta)\\) to emphasize its dependence on the parameters. So Cost \\(J: \\mathbb{R}^p\\rightarrow \\mathbb{R}\\).",
+    "text": "Gradient Descent\n\n\nSuppose that our current vector is \\(\\theta\\). How should we choose a perturbation, \\(\\Delta\\theta\\), so that the next vector, \\(\\theta+\\Delta\\theta\\), represents an improvement, that is: \\(J(\\theta +\\Delta\\theta) &lt; J(\\theta)\\)?\nLinearize the cost function using a Taylor approximation.\nIf \\(\\Delta\\theta\\) is small, then ignoring terms of order \\(||\\Delta\\theta||^2\\) or higher: \\[\nJ(\\theta+\\Delta\\theta)\\approx J(\\theta)+\\sum_{i=1}^p\\frac{\\partial J(\\theta)}{\\partial\\theta_i}\\Delta\\theta_i\n\\] or, equivalently: \\[\\begin{equation}\\label{g2}\nJ(\\theta+\\Delta\\theta)\\approx J(\\theta)+\\nabla J(\\theta)^\\intercal\\Delta\\theta\n\\end{equation}\\] where \\(\\nabla J(\\theta)\\in\\mathbb{R}^p\\) denote the gradient, i.e. the vector of partial derivatives: \\[\\begin{equation}\\label{g1}\n\\nabla J(\\theta)=\\left(\\frac{\\partial J(\\theta)}{\\partial\\theta_1},...,\\frac{\\partial J(\\theta)}{\\partial\\theta_p}\\right)^\\intercal\n\\end{equation}\\]",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1091,7 +1170,19 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-1",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "Gradient Descent",
-    "text": "Gradient Descent\n\nError hyper-surface",
+    "text": "Gradient Descent\n\n\nGoal: choose a perturbation, \\(\\Delta\\theta\\), s.t.: \\(J(\\theta +\\Delta\\theta) &lt; J(\\theta)\\)\nTaylor approximation above suggests that choosing \\(\\Delta\\theta\\) to make \\(\\nabla J(\\theta)^\\intercal\\Delta\\theta\\) negative will make the value of \\(J(\\theta+\\Delta\\theta)\\) smaller.\nIndeed it can be shown that the highest possible negative value will come out when \\(-\\nabla J(\\theta)=\\Delta\\theta\\), which leads to the gradient descent formula: \\[\n\\theta \\rightarrow \\theta-\\eta\\nabla J(\\theta),\n\\] where \\(\\eta\\), the learning rate is the size of the step taken at each iteration, which should be small because of Taylor App.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-cauchy-schwarz-inequality-and-gradient-descent",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-cauchy-schwarz-inequality-and-gradient-descent",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Cauchy-Schwarz inequality and Gradient Descent",
+    "text": "The Cauchy-Schwarz inequality and Gradient Descent\n\nThe Cauchy-Schwarz inequality, states that for any \\(f,g\\in\\mathbb{R}^p\\), we have: \\[\n|f^\\intercal g|\\leq ||f||\\cdot ||g||.\n\\]\nMoreover, the two sides are equal if and only if \\(f\\) and \\(g\\) are linearly dependent (meaning they are parallel).\nBy Cauchy-Schwarz,biggest possible value for \\(\\nabla J(\\theta)^\\intercal\\Delta\\theta\\) is the upper bound, \\(||\\nabla J(\\theta)||\\cdot ||\\Delta\\theta||\\).\n\nThe equality is only reached when \\(||\\nabla J(\\theta)||= ||\\Delta\\theta||\\)\n\nThis explains why we choose precisely \\(-\\nabla J(\\theta)=\\Delta\\theta\\)",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1103,91 +1194,19 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-2",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "Gradient Descent",
-    "text": "Gradient Descent\n\nGradient Descent is a classical method in optimization that is often referred to as steepest descent.\nGiven a function \\(J(\\theta)\\) to be minimized, the method proceeds iteratively, computing a sequence of vectors \\(\\theta^1, \\theta^2, ..., \\theta^n\\) in \\(\\mathbb{R}^p\\) with the aim of converging to a vector that minimizes the cost function.\nSuppose that our current vector is \\(\\theta\\). How should we choose a perturbation, \\(\\Delta\\theta\\), so that the next vector, \\(\\theta+\\Delta\\theta\\), represents an improvement, that is: \\(J(\\theta +\\Delta\\theta) &lt; J(\\theta)\\)?",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-3",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-3",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Gradient Descent",
-    "text": "Gradient Descent\n\nWe proceed by linearization of the cost function using a Taylor approximation\nIf \\(\\Delta\\theta\\) is small, then ignoring terms of order \\(||\\Delta\\theta||^2\\) or higher:\n\n\\[\nJ(\\theta+\\Delta\\theta)\\approx J(\\theta)+\\sum_{i=1}^p\\frac{\\partial J(\\theta)}{\\partial\\theta_i}\\Delta\\theta_i\n\\]\n\nwhere \\({\\displaystyle \\frac{\\partial J(\\theta)}{\\partial\\theta_i}}\\) denotes the partial derivative of the cost function with respect to the \\(i\\)-th weight.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-4",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-4",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Gradient Descent",
-    "text": "Gradient Descent\n\nLet \\(\\nabla J(\\theta)\\in\\mathbb{R}^p\\) denote the gradient, i.e. the vector of partial derivatives.\n\n\\[\\begin{equation}\\label{g1}\n\\nabla J(\\theta)=\\left(\\frac{\\partial J(\\theta)}{\\partial\\theta_1},...,\\frac{\\partial J(\\theta)}{\\partial\\theta_p}\\right)^\\intercal\n\\end{equation}\\]\n\nNow the approximation can be written as:\n\n\\[\\begin{equation}\\label{g2}\nJ(\\theta+\\Delta\\theta)\\approx J(\\theta)+\\nabla J(\\theta)^\\intercal\\Delta\\theta\n\\end{equation}\\]",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-5",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-5",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Gradient Descent",
-    "text": "Gradient Descent\n\nRecalling that our aim is to reduce the value of the cost function,\nTaylor approximation above motivates the idea of choosing \\(\\Delta\\theta\\) to make \\(\\nabla J(\\theta)^\\intercal\\Delta\\theta\\) negative,\nbecause this will make the value of \\(J(\\theta+\\Delta\\theta)\\) smaller.\nThe bigger in absolute value we can make this negative expression, the smaller will be the value of the cost function.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-cauchy-schwarz-inequality",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#the-cauchy-schwarz-inequality",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "The Cauchy-Schwarz inequality",
-    "text": "The Cauchy-Schwarz inequality\n\nThe Cauchy-Schwarz inequality, states that for any \\(f,g\\in\\mathbb{R}^p\\), we have: \\[\n|f^\\intercal g|\\leq ||f||\\cdot ||g||.\n\\]\nMoreover, the two sides are equal if and only if \\(f\\) and \\(g\\) are linearly dependent (meaning they are parallel).",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#back-to-gradient-descent",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#back-to-gradient-descent",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Back to gradient descent",
-    "text": "Back to gradient descent\n\nHow much can \\(\\nabla J(\\theta)^\\intercal\\Delta\\theta\\) decrease?\nBy Cauchy-Schwarz,biggest possible value for \\(\\nabla J(\\theta)^\\intercal\\Delta\\theta\\) is the upper bound, \\(||\\nabla J(\\theta)||\\cdot ||\\Delta\\theta||\\).\n\nThe equality is only reached when \\(||\\nabla J(\\theta)||= ||\\Delta\\theta||\\)\nThe highest possible negative value will come out when \\(-\\nabla J(\\theta)=\\Delta\\theta\\)\n\nThat is, we should choose \\(\\Delta\\theta\\) to lie in the direction of \\(-\\nabla J(\\theta)\\).",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-6",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-6",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Gradient Descent",
-    "text": "Gradient Descent\n\nKeeping in mind that the Taylor linearization of \\(J(\\theta)\\) is an approximation that is relevant only for small \\(\\Delta\\theta\\),\nWe will limit ourselves to a small step in that direction, defined by the learning rate. \\(\\eta\\).\nThis leads to the update formula that defines the steepest descent method.\n\n\\[\\begin{equation}\\label{g3}\n\\theta \\rightarrow \\theta-\\eta\\nabla J(\\theta)\n\\end{equation}\\]",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-7",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-7",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Gradient Descent",
     "text": "Gradient Descent\nIn summary, givent a cost function \\(J(\\theta)\\) to be optimized the gradient descent optimization proceeds as follows:\n\nInitialize \\(\\theta_0\\) randomly or with some predetermined values\nRepeat until convergence: \\[\n\\theta_{t+1} = \\theta_{t} - \\eta \\nabla J(\\theta_{t})\n\\]\nStop when: \\(|J(\\theta_{t+1}) - J(\\theta_{t})| &lt; \\epsilon\\)\n\n\n\\(\\theta_0\\) is the initial parameter vector,\n\\(\\theta_t\\) is the parameter vector at iteration \\(t\\),\n\\(\\eta\\) is the learning rate,\n\\(\\nabla J(\\theta_{t})\\) is the gradient of the loss function with respect to \\(\\theta\\) at iteration \\(t\\),\n\\(\\epsilon\\) is a small positive value indicating the desired level of convergence.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-illustration",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-illustration",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient descent Illustration",
+    "text": "Gradient descent Illustration\n\n\n\n\n\n\n\nGradient descent is an intuitiva approach that has been thoroughly illustrated in many different ways:\n\n\nhttps://assets.yihui.org/figures/animation/example/grad-desc",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1198,8 +1217,8 @@
     "objectID": "C3.1-Introduction_to_ANN-Slides.html#computing-gradients",
     "href": "C3.1-Introduction_to_ANN-Slides.html#computing-gradients",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Computing gradients",
-    "text": "Computing gradients\n\nThe gradient method provides a way to optimize weights and biases \\((\\theta =\\{W, b\\})\\) by minimizing the cost function, \\(J(\\theta)\\).\nThis minimization requires, of course, the computation of an important number of partial derivatives \\[\n\\frac{\\partial}{\\partial\\theta_j}J(\\theta)\n\\]\nThe algorithm used to perform these computation is known as the backpropagation algorithm",
+    "section": "Computing Gradients",
+    "text": "Computing Gradients\n\nThe gradient method optimizes weights and biases \\(\\theta =\\{W, b\\}\\) by minimizing the cost function \\(J(\\theta)\\).\nThis requires computing partial derivatives: \\[\n\\frac{\\partial}{\\partial\\theta_j}J(\\theta)\n\\]\nThe algorithm used for this computation is called backpropagation.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1211,7 +1230,7 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#a-short-history",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "A short history",
-    "text": "A short history\n\nThe backpropagation algorithm was originally introduced in the 1970s in a MSc thesis.\nIn 1986 a paper by Rumelhart, Hinton, and Williams describes several neural networks where backpropagation works far faster than earlier approaches to learning.\nThis improvement in efficiency made it possible to use neural nets to solve problems which had previously been insoluble.",
+    "text": "A short history\n\nIntroduced in the 1970s in an MSc thesis.\nIn 1986, Rumelhart, Hinton, and Williams demonstrated that backpropagation significantly improves learning speed.\nThis breakthrough enabled neural networks to solve previously intractable problems.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1219,11 +1238,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#error-backpropagation",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#error-backpropagation",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-intuition",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-intuition",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Error backpropagation",
-    "text": "Error backpropagation\n\\[\n\\begin{equation*}\n\\Delta w=\\eta(c-y) d \\tag{3.21}\n\\end{equation*}\n\\]\n\nLa regla delta es la base de la retropropagación:\n\n\\(c\\) es el valor que indica la clase en el ejemplo de entrenamiento,\n\\(y\\) el valor de la función de salida para la instancia \\(d\\), y\n\\(\\eta\\) la tasa o velocidad de aprendizaje (learning rate).\n\nEl método utilizado para entrenar este tipo de redes, y basado en la regla delta, se muestra en el algoritmo siguiente (Algoritmo 1).\n\nPara que el algoritmo converja es necesario que las clases de los datos sean linealmente separables.",
+    "section": "Backpropagation intuition",
+    "text": "Backpropagation intuition\n\nThe term originates from error backpropagation.\nAn artificial neural network computes outputs through forward propagation:\n\nInput values pass through linear and non-linear transformations.\nThe network produces a prediction.\n\nThe error (difference between predicted and true value) is:\n\nPropagated backward to compute the error contribution of each neuron.\nUsed to adjust weights iteratively.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1231,11 +1250,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#algoritmo-1-gradiente",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#algoritmo-1-gradiente",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#delta-rule-and-error-term-delta",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#delta-rule-and-error-term-delta",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Algoritmo 1 (Gradiente)",
-    "text": "Algoritmo 1 (Gradiente)\n\nEntrada: \\(W\\) (conjunto de vectores de pesos) y \\(D\\) (conjunto de instancias de entrenamiento)\n\nmientras \\(\\left(y \\not \\approx c_{i} \\forall\\left(d_{i}, c_{i}\\right) \\in D\\right)\\) hacer\n\npara todo \\(\\left(\\left(d_{i}, c_{i}\\right) \\in D\\right)\\) hacer\n\nCalcular la salida \\(y\\) de la red cuando la entrada es \\(d_{i}\\)\nsi \\(\\left(y \\not \\approx c_{i}\\right)\\) entonces\n\nModificar el vector de pesos \\(w^{\\prime}=w+\\eta(c-y) d_{i}\\)\n\nfin si\n\nfin para\n\nfin mientras\n\n\nDevolver: El conjunto de vectores de pesos \\(W\\)",
+    "section": "Delta rule and error term \\(\\delta\\)",
+    "text": "Delta rule and error term \\(\\delta\\)\n\nThe delta rule updates weights based on the error term \\(\\delta_j\\), which measures how much neuron \\(j\\) contributes to the error.\nIt is computed as: \\[\n\\delta_j = \\sigma^{\\prime}(z_j) (c_j - y_j)\n\\] where:\n\n\\(\\sigma^{\\prime}(z_j)\\) is the derivative of the activation function.\n\\((c_j - y_j)\\) is the error in neuron \\(j\\).",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1243,11 +1262,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#retropropagación-del-error",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#retropropagación-del-error",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#weight-update-delta-w",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#weight-update-delta-w",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Retropropagación del error",
-    "text": "Retropropagación del error\n\nEn las redes multicapa no podemos aplicar el algoritmo de entrenamiento visto en la sección anterior.\nEl problema aparece con los nodos de las capas ocultas: no podemos saber a priori cuáles son los valores de salida correctos.\nEn el caso de una neurona \\(j\\) con función sigmoide, la regla delta es:\n\n\\[\n\\begin{equation*}\n\\Delta w_{i}^{j}=\\eta \\sigma^{\\prime}\\left(z^{j}\\right)\\left(c^{j}-y^{j}\\right) x_{i}^{j}, \\tag{3.24}\n\\end{equation*}\n\\]\ndonde:\n\n\\(\\sigma^{\\prime}\\left(z^{j}\\right)\\) indica la pendiente (derivada) de la función sigmoide, que representa el factor con que el nodo \\(j\\) puede afectar al error.",
+    "section": "Weight update \\(\\Delta W\\)",
+    "text": "Weight update \\(\\Delta W\\)\n\nOnce \\(\\delta_j\\) is computed, weights are updated using: \\[\n\\Delta w_{i}^{j} = \\eta \\delta_j x_{i}^{j}\n\\] where:\n\n\\(\\eta\\) is the learning rate.\n\\(\\delta_j\\) determines the direction and magnitude of the update.\n\\(x_{i}^{j}\\) is the input to neuron \\(j\\).\n\nIn hidden layers, \\(\\delta\\) is propagated backward: \\[\n\\delta_k = \\sigma^{\\prime}(z_k) \\sum_{j \\in S_k} \\delta_j w_k^j\n\\] where \\(S_k\\) is the set of output neurons connected to neuron \\(k\\).",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1255,11 +1274,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#ajustando-los-pesos",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#ajustando-los-pesos",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-algorithm",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-algorithm",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Ajustando los pesos",
-    "text": "Ajustando los pesos\n\\[\n\\begin{equation*}\n\\Delta w_{i}^{j}=\\eta \\sigma^{\\prime}\\left(z^{j}\\right)\\left(c^{j}-y^{j}\\right) x_{i}^{j}, \\tag{3.24}\n\\end{equation*}\n\\]\n\nSi el valor de \\(\\sigma^{\\prime}\\left(z^{j}\\right)\\) es pequeño, nos encontramos en los extremos de la función, donde los cambios no afectan demasiado a la salida.\nPor el contrario, si el valor es grande, nos encontramos en el centro de la función, donde pequeñas variaciones pueden alterar considerablemente la salida.\n\n\\(\\left(c^{j}-y^{j}\\right)\\) representa la medida del error que se produce en la neurona \\(j\\).\n\\(x_{i}^{j}\\) indica la responsabilidad de la entrada \\(i\\) de la neurona \\(j\\) en el error.\n\nCuando este valor es igual a cero, no se modifica el peso, mientras que si es superior a cero, se modifica proporcionalmente a este valor.",
+    "section": "Backpropagation algorithm",
+    "text": "Backpropagation algorithm\n\nForward propagation\n\nCompute the network output for a given input.\n\nBackward propagation\n\nCompute \\(\\delta_j\\) for each neuron in the output layer.\nPropagate \\(\\delta_j\\) backward to compute \\(\\delta_k\\) for hidden layers.\nUpdate weights using gradient descent.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1267,11 +1286,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#expresion-general-de-delta",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#expresion-general-de-delta",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#final-algorithm",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#final-algorithm",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Expresion general de \\(delta\\)",
-    "text": "Expresion general de \\(delta\\)\n\nLa \\(\\delta\\) que corresponde a la neurona \\(j\\) puede expresarse de forma general para toda neurona, simplificando la notación anterior:\n\n\\[\n\\begin{gather*}\n\\delta^{j}=\\sigma^{\\prime}\\left(z^{j}\\right)\\left(c^{j}-y^{j}\\right)  \\tag{3.25}\\\\\n\\Delta w_{i}^{j}=\\eta \\delta^{j} x_{i}^{j} \\tag{3.26}\n\\end{gather*}\n\\]\n\nA partir de aquí debemos determinar qué parte del error total se asigna a cada una de las neuronas de las capas ocultas.\nEs decir, debemos definir cómo modificar los pesos y tasas de aprendizaje de las neuronas de las capas ocultas a partir del error observado en la capa de salida.",
+    "section": "Final algorithm",
+    "text": "Final algorithm\nInput: \\(W\\) (weight vectors), \\(D\\) (training dataset).\nRepeat until error is below threshold:\n\nCompute network output for each training instance.\nFor each neuron \\(j\\) in the output layer:\n\nCompute \\(\\delta_j = \\sigma^{\\prime}(z_j) (c_j - y_j)\\)\nUpdate weights: \\(\\Delta w_i^j = \\eta \\delta_j x_i^j\\)\n\nFor each neuron \\(k\\) in hidden layers:\n\nCompute \\(\\delta_k = \\sigma^{\\prime}(z_k) \\sum_{j \\in S_k} \\delta_j w_k^j\\)\nUpdate weights : \\(\\Delta w_i^k = \\eta \\delta_k x_i^k\\)\n\n\nOutput: Updated weight vectors \\(W\\).",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1279,11 +1298,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#la-retropropagación",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#la-retropropagación",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#chain-rule-in-backpropagation",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#chain-rule-in-backpropagation",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "La retropropagación",
-    "text": "La retropropagación\n\nEl método de retropropagación (backpropagation) se basa en un esquema general de dos pasos:\n\n\nPropagación hacia adelante (feedforward), que consiste en introducir una instancia de entrenamiento y obtener la salida de la red neuronal.\nPropagación hacia atrás (backpropagation), que consiste en calcular el error cometido en la capa de salida y propagarlo hacia atrás para calcular los valores delta de las neuronas de las capas ocultas.\n\n\nLa idea que subyace a este método es relativamente sencilla, y se basa en propagar el error de forma proporcional a la influencia que ha tenido cada nodo de las capas ocultas en el error final producido por cada una de las neuronas de la capa de salida.",
+    "section": "Chain rule in backpropagation",
+    "text": "Chain rule in backpropagation\n\nIn multi-layer networks, the error signal must be propagated backward through multiple layers.\nThe weight update in hidden layers depends not only on the local error but also on how errors propagate from the output layer.\nThis is achieved using the chain rule of calculus, which decomposes derivatives into simpler components.\nThat is, the gradient descent update rule for the weight is:\n\n\\[\n\\Delta w_i^j = -\\eta \\frac{\\partial J}{\\partial w_{i}^{j}} = \\eta \\delta_j x_i^j\n\\] where the derivative will be computed applying the chain rule.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1291,11 +1310,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#el-algoritmo-1",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#el-algoritmo-1",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#applying-the-chain-rule",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#applying-the-chain-rule",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "El algoritmo (1)",
-    "text": "El algoritmo (1)\n\nEl primer paso, que es la propagación hacia adelante, consiste en aplicar el ejemplo a la red y obtener los valores de salida (línea 3 ).\nA continuación, el método inicia la propagación hacia atrás, empezando por la capa de salida. Para cada neurona \\(j\\) de la capa de salida:\n\n2.1 Se calcula, en primera instancia, el valor \\(\\delta^{j}\\) basado en el valor de salida de la red para la neurona \\(j\\) \\(\\left(y^{j}\\right)\\), el valor de la clase de la instancia \\(\\left(c^{j}\\right)\\) y la derivada de la función sigmoide \\(\\left(\\sigma^{\\prime}\\left(z^{j}\\right)\\right)\\) (línea 5).\n2.2 A continuación, se modifica el vector de pesos de la neurona de la capa de salida, a partir de la tasa de aprendizaje \\((\\eta)\\), el valor delta de la neurona calculado en el paso anterior \\(\\left(\\delta^{j}\\right)\\) y el factor \\(x_{i}^{j}\\) que indica la responsabilidad de la entrada \\(i\\) de la neurona \\(j\\) en el error (línea 6 ).",
+    "section": "Applying the chain rule",
+    "text": "Applying the chain rule\n\nTo compute the gradient of the loss function \\(J\\) with respect to a weight \\(w_{i}^{j}\\) connecting neuron \\(i\\) to neuron \\(j\\), we use the chain rule:\n\n\\[\n\\frac{\\partial J}{\\partial w_{i}^{j}} =\n\\frac{\\partial J}{\\partial y_j} \\cdot\n\\frac{\\partial y_j}{\\partial z_j} \\cdot\n\\frac{\\partial z_j}{\\partial w_{i}^{j}}\n\\]\n\n\\(\\frac{\\partial J}{\\partial y_j}\\) measures how the loss changes with respect to the output of neuron \\(j\\).\n\\(\\frac{\\partial y_j}{\\partial z_j} = \\sigma^{\\prime}(z_j)\\) is the derivative of the activation function.\n\\(\\frac{\\partial z_j}{\\partial w_{i}^{j}} = x_i^{j}\\) represents the input to the neuron.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1303,11 +1322,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#el-algoritmo-2",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#el-algoritmo-2",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#automatic-differentiation",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#automatic-differentiation",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "El algoritmo (2)",
-    "text": "El algoritmo (2)\n\nFinalmente, la propagación hacia atrás se aplica a las capas ocultas de la red. Para cada neurona \\(k\\) de las capas ocultas:\n\n3.1 En primer lugar, se calcula el valor \\(\\delta^{k}\\) basado en la derivada de la función sigmoide \\(\\left(\\sigma^{\\prime}\\left(z^{k}\\right)\\right)\\) y el sumatorio del producto de la delta calculada en el paso anterior \\(\\left(\\delta^{k}\\right)\\) por el valor \\(w_{k}^{j}\\), que indica el peso de la conexión entre la neurona \\(k\\) y la neurona \\(j\\) (línea 9). El conjunto \\(S_{k}\\) está formado por todos los nodos de salida a los que se encuentra conectada la neurona \\(k\\).\n3.2 En el último paso de la iteración, se modifica el vector de pesos de la neurona \\(k\\), a partir de la tasa de aprendizaje \\((\\eta)\\), el valor delta de la neurona calculado en el paso anterior \\(\\left(\\delta^{k}\\right)\\) y el factor \\(x_{i}^{k}\\) que indica la responsabilidad de la entrada \\(k\\) de la neurona \\(j\\) en el error (línea 10).",
+    "section": "Automatic differentiation",
+    "text": "Automatic differentiation\n\nModern deep learning frameworks do not compute gradients manually.\nInstead, they use automatic differentiation and computational graphs to simplify and speed up backpropagation.\nA computational graph represents the sequence of operations in a neural network as a directed graph.\n\nEach node corresponds to an operation (e.g., addition, multiplication, activation function).\nThis structure allows efficient backpropagation by applying the chain rule automatically.\n\nAutomatic differentiation (AD) relies the computational graph to apply the chain rule and compute gradients automatically in the Backwards pass.\nFrameworks like TensorFlow, PyTorch, and JAX use reverse-mode differentiation, which is particularly efficient for functions with many parameters (like neural networks).",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1315,35 +1334,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#el-algoritmo",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#el-algoritmo",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#tuning-a-neural-network",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#tuning-a-neural-network",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "El algoritmo",
-    "text": "El algoritmo",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#forward-propagation-example",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#forward-propagation-example",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Forward propagation example",
-    "text": "Forward propagation example",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-illustrated",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-illustrated",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Backpropagation illustrated",
-    "text": "Backpropagation illustrated",
+    "section": "Tuning a Neural Network",
+    "text": "Tuning a Neural Network",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1435,11 +1430,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-drawbacks",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-drawbacks",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#improving-gradient-descent",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#improving-gradient-descent",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Gradient descent drawbacks",
-    "text": "Gradient descent drawbacks\n\nWith many parameters and many training points, computing the gradient vector at every iteration of the steepest descent method can be time consuming.\n\nIt is mainly due to that we have to sum across all training points.\nWith big data this becomes prohibitive.\n\nSeveral alternatives exist (many indeed).",
+    "section": "Improving Gradient Descent",
+    "text": "Improving Gradient Descent\n\nTraining deep neural networks involves millions of parameters and large datasets.\nComputing the full gradient in every iteration is computationally expensive because:\n\nIt requires summing over all training points.\nThe cost grows linearly with dataset size.\n\nFor large-scale machine learning, standard gradient descent becomes impractical.\nTo address this, we use alternative optimization strategies:\n\nGradient Descent Variants: Control how much data is used per update.\nGradient Descent Optimizers: Improve convergence and stability.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1447,11 +1442,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#stochastic-gradient",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#stochastic-gradient",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#improving-gradient-descent-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#improving-gradient-descent-1",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Stochastic Gradient",
-    "text": "Stochastic Gradient\n\nA much cheaper alternative is to replace the mean of the individual gradients over all training points by the gradient at a single, randomly chosen, point.\nThis leads to the simplest form of the stochastic gradient method:\nChoose an integer \\(i\\) uniformly at random from \\(\\{1,...,n\\}\\) and update \\[\\begin{equation}\\label{g4}\n    \\theta_j=\\theta_j-\\eta\\frac{\\partial}{\\partial\\theta_j}J(\\theta;x^{(i)})\n    \\end{equation}\\]\n\\(x^{(i)}\\) incuded in the notation of \\(J(\\theta;x^{(i)})\\) to remark the dependence.",
+    "section": "Improving Gradient Descent",
+    "text": "Improving Gradient Descent\n\n\nAn overview of gradient descent optimization algorithms",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1459,11 +1454,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#rationale-for-sgd",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#rationale-for-sgd",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-variants",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-variants",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Rationale for SGD",
-    "text": "Rationale for SGD\n\nAt each step, the SGD method uses one randomly chosen training point to represent the full training set.\nAs the iteration proceeds, the method sees more training points.\nSo there is some hope that this dramatic reduction in cost-per-iteration will be worthwhile overall.\nNote that, even for very small \\(\\eta\\), the update is not guaranteed to reduce the overall cost function because we traded the mean for a single sample.\nHence, although the phrase stochastic gradient descent is widely used, we prefer to use stochastic gradient.",
+    "section": "Gradient Descent Variants",
+    "text": "Gradient Descent Variants\n\nDefine how much data is used per update.\nControl the trade-off between computational cost and stability.\nThree common approaches:\n\nBatch Gradient Descent:\n\nComputes the gradient using the entire dataset.\nStable but slow for large datasets.\n\nStochastic Gradient Descent (SGD):\n\nComputes the gradient using a single training example.\nFaster updates but high variance, leading to noisy convergence.\n\nMini-Batch Gradient Descent:\n\nUses a subset (mini-batch) of training data per update.\nBalances speed and stability.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1471,11 +1466,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#batch-gradient-descent",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#batch-gradient-descent",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-variants-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-variants-1",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Batch Gradient Descent",
-    "text": "Batch Gradient Descent\n\nBatch Gradient Descent computes the error for each example in the training dataset but the model is updated only after evaluating all examples.\nAs a benefits there is computational efficiency, which produces a stable error gradient and a stable convergence.\nAs drawbacks, the stable error gradient can sometimes result in a state of convergence that isn’t the best the model can achieve. It also requires the entire training dataset to be in memory and available to the algorithm.",
+    "section": "Gradient Descent Variants",
+    "text": "Gradient Descent Variants\n\nSource: Gradient Descent and its Types",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1483,11 +1478,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#mini-batch-gd",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#mini-batch-gd",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-optimizers",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-optimizers",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Mini-Batch GD",
-    "text": "Mini-Batch GD\n\nMini-batch Gradient Descent (MBGD) divides the training dataset into small batches to compute error and update model coefficients.\nMBGD balances the robustness of stochastic gradient descent with the efficiency of batch gradient descent, making it a prevalent implementation in deep learning.\nA common batch size for MBGD is 32, although it can vary based on the specific problem and data.",
+    "section": "Gradient Descent Optimizers",
+    "text": "Gradient Descent Optimizers\n\nImprove learning dynamics by modifying how gradients are applied.\nHelp avoid local minima, vanishing gradients, and slow convergence.\nCommon optimizers:\n\nMomentum: Uses past gradients to accelerate convergence.\nAdagrad: Adapts the learning rate per parameter.\nAdadelta & RMSProp: Improve Adagrad by reducing aggressive decay.\nAdam: Combines momentum and adaptive learning rates (widely used).\nNesterov Accelerated Gradient: Improves Momentum with lookahead updates.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1495,83 +1490,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#types-of-gradient-descent",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#types-of-gradient-descent",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#optimizing-training-speed",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#optimizing-training-speed",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Types of Gradient Descent",
-    "text": "Types of Gradient Descent\n\nSource: Gradient Descent and its Types",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#alternative-optimizers",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#alternative-optimizers",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Alternative optimizers",
-    "text": "Alternative optimizers\n\nGradient descent can be improved adopting different strategies\nOther optimizers exist that may make the training faster with strategies such as accumulating velocity in relevant directions or adjusting learning rates based on parameter frequency.\nOverall these optimizers enable quicker convergence and better handling of various data characteristics, making them favorable choices over traditional gradient descent.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#momentum",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#momentum",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Momentum",
-    "text": "Momentum\n\nAccelerates SGD by accumulating momentum in relevant directions, akin to a rolling ball gaining speed downhill.\nIncreases acceleration for dimensions with consistent gradients, reducing updates for changing gradients, leading to faster convergence and reduced oscillation.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#adagrad",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#adagrad",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Adagrad",
-    "text": "Adagrad\n\nAdapts learning rate based on parameter frequency, making smaller updates for frequent features and larger updates for rare ones, suitable for sparse data.\nEfficient for handling sparse data due to its adaptive learning rates.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#adadelta",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#adadelta",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Adadelta",
-    "text": "Adadelta\n\nAn extension of Adagrad aiming to mitigate its aggressive, monotonically decreasing learning rate.\nRestricts accumulated past gradients to a fixed-size window, avoiding over-accumulation.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#adam",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#adam",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Adam",
-    "text": "Adam\n\nCombines momentum optimization with adaptive learning rates, tracking both past gradients’ exponential decay and a moving average of gradients.\nRecent studies suggest caution with adaptive optimization methods like Adam due to potential generalization issues, prompting exploration of alternatives such as Momentum optimization.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#optimizing-the-training-speed",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#optimizing-the-training-speed",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Optimizing the training speed",
-    "text": "Optimizing the training speed\n\nTraining speed optimization can be based on\n\nWeight inizialization\nChanging learning rate\nUsing efficient cost functions",
+    "section": "Optimizing Training Speed",
+    "text": "Optimizing Training Speed\n\nTraining speed can be improved by adjusting key factors that influence convergence.\n\nWeight Initialization: Properly initializing weights helps prevent vanishing or exploding gradients, leading to faster convergence.\nAdjusting Learning Rate: A well-tuned learning rate accelerates training while avoiding instability or slow convergence.\nUsing Efficient Cost Functions: Choosing an appropriate loss function (e.g., cross-entropy for classification) speeds up gradient updates.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1582,8 +1505,8 @@
     "objectID": "C3.1-Introduction_to_ANN-Slides.html#optimizing-to-avoid-overfitting",
     "href": "C3.1-Introduction_to_ANN-Slides.html#optimizing-to-avoid-overfitting",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Optimizing to avoid overfitting",
-    "text": "Optimizing to avoid overfitting\nIn order to fight overfitting distinct strategies are common\n\nL2 regularization\nEarly stopping\nDropout\nData augmentation",
+    "section": "Optimizing to Avoid Overfitting",
+    "text": "Optimizing to Avoid Overfitting\n\nOverfitting occurs when a model learns noise instead of general patterns. Common strategies to prevent it include:\n\nL2 Regularization: Penalizes large weights to reduce model complexity and improve generalization.\nEarly Stopping: Stops training when validation loss starts increasing, preventing unnecessary overfitting.\nDropout: Randomly disables neurons during training to make the model more robust.\nData Augmentation: Expands the training set by applying transformations (e.g., rotations, scaling) to improve generalization.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1591,11 +1514,11 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#summarizing-optimization",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#summarizing-optimization",
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#techniques-to-improve-training",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#techniques-to-improve-training",
     "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Summarizing optimization",
-    "text": "Summarizing optimization\n\nSource: Introducción al Deep Learning (UOC)",
+    "section": "Techniques to Improve Training",
+    "text": "Techniques to Improve Training\n\n\n\n\n\n\n\n\n\n\n\nTechniques\nPerformance Improvement\nLearning Speed\nOverfitting\nDescription\n\n\n\n\nNetwork Architecture\nX\nX\nX\nAdjust layers, neurons andconnections\n\n\nEpochs, Iterations, and Batch Size\n\nX\n\nControls updates per epoch to improve efficiency.\n\n\nSoftmax\nX\n\n\nTurns outputs into probabilities\n\n\nTraining Algorithms\nX\nX\n\nGD Improvements\n\n\nLearning Rate\nX\nX\n\nStep size in gradient updates.\n\n\nCross-Entropy Loss\n\nX\n\nOptimized for classification\n\n\nL2 Regularization\n\nX\nX\nPenalizes large weights to prevent overfitting.\n\n\nEarly Stopping\n\nX\n\nStops training when validation loss worsens.\n\n\nDropout\nX\n\nX\nRandomly disables neurons to enhance generalization.\n\n\nData Augmentation\n\n\nX\nExpands training data by applying transformations.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -1707,7 +1630,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1719,7 +1642,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1731,7 +1654,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1743,7 +1666,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1755,7 +1678,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1767,7 +1690,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1779,7 +1702,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1791,7 +1714,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1803,7 +1726,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1815,7 +1738,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1827,7 +1750,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1839,7 +1762,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1851,7 +1774,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1863,7 +1786,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1875,7 +1798,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1887,7 +1810,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1899,7 +1822,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1911,7 +1834,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1923,7 +1846,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1935,7 +1858,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1947,7 +1870,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1959,7 +1882,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1971,7 +1894,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1983,7 +1906,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -1995,7 +1918,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2007,7 +1930,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2019,7 +1942,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2031,7 +1954,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2043,7 +1966,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2055,7 +1978,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2067,7 +1990,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2079,7 +2002,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2091,7 +2014,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2103,7 +2026,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2115,7 +2038,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2127,7 +2050,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2139,7 +2062,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2151,7 +2074,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2163,7 +2086,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2175,7 +2098,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2187,7 +2110,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2199,7 +2122,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2211,7 +2134,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2223,7 +2146,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2235,7 +2158,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2247,7 +2170,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2259,7 +2182,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2271,7 +2194,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2283,7 +2206,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2295,7 +2218,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2307,7 +2230,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2319,7 +2242,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2331,7 +2254,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2343,7 +2266,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2355,7 +2278,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2367,7 +2290,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2379,7 +2302,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2391,7 +2314,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2403,7 +2326,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2415,7 +2338,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2427,7 +2350,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2439,7 +2362,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2451,7 +2374,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2463,7 +2386,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2475,7 +2398,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2487,7 +2410,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2499,7 +2422,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2511,7 +2434,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2523,7 +2446,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2535,7 +2458,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2547,7 +2470,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2559,7 +2482,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2571,7 +2494,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2583,7 +2506,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2595,7 +2518,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2607,7 +2530,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2619,7 +2542,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2631,7 +2554,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2643,7 +2566,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2655,7 +2578,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2667,7 +2590,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2679,7 +2602,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2691,7 +2614,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2703,7 +2626,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2715,7 +2638,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2727,7 +2650,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2739,7 +2662,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2751,7 +2674,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2763,7 +2686,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2775,7 +2698,7 @@
     "crumbs": [
       "Home",
       "Ensemble Methods",
-      "Ensemble Methods"
+      "Ensemble Methods (Slides)"
     ]
   },
   {
@@ -2794,7 +2717,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2806,7 +2729,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2818,7 +2741,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2830,7 +2753,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2842,7 +2765,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2854,7 +2777,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2866,7 +2789,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2878,7 +2801,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2890,7 +2813,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2902,7 +2825,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2914,7 +2837,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2926,7 +2849,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2938,7 +2861,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2950,7 +2873,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2962,7 +2885,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2974,7 +2897,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2986,7 +2909,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -2998,7 +2921,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3010,7 +2933,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3022,7 +2945,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3034,7 +2957,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3046,7 +2969,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3058,7 +2981,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3070,7 +2993,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3082,7 +3005,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3094,7 +3017,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3106,7 +3029,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3118,7 +3041,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3130,7 +3053,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3142,7 +3065,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3154,7 +3077,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3166,7 +3089,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3178,7 +3101,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3190,7 +3113,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3202,7 +3125,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3214,7 +3137,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3226,7 +3149,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3238,7 +3161,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3250,7 +3173,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3262,7 +3185,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3274,7 +3197,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3286,7 +3209,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3298,7 +3221,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3310,7 +3233,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3322,7 +3245,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3334,7 +3257,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3346,7 +3269,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3358,7 +3281,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3370,7 +3293,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3382,7 +3305,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3394,7 +3317,7 @@
     "crumbs": [
       "Home",
       "Introduction",
-      "Model Validation and Resampling"
+      "Model Validation and Resampling (Slides)"
     ]
   },
   {
@@ -3406,7 +3329,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3418,7 +3341,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3430,7 +3353,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3442,7 +3365,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3454,7 +3377,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3466,7 +3389,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3478,7 +3401,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3490,7 +3413,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3502,7 +3425,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3514,7 +3437,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3526,7 +3449,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3538,7 +3461,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3550,7 +3473,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3562,7 +3485,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3574,7 +3497,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3586,7 +3509,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3598,7 +3521,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3610,7 +3533,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3622,7 +3545,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3634,7 +3557,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3646,7 +3569,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3658,7 +3581,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3670,7 +3593,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3682,7 +3605,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3694,7 +3617,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3706,7 +3629,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3718,7 +3641,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3730,7 +3653,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3742,7 +3665,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3754,7 +3677,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3766,7 +3689,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3778,7 +3701,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3790,7 +3713,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3802,7 +3725,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3814,7 +3737,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3826,7 +3749,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3838,7 +3761,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3850,7 +3773,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3862,7 +3785,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3874,7 +3797,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3886,7 +3809,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3898,7 +3821,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3910,7 +3833,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3922,7 +3845,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3934,7 +3857,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3946,7 +3869,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3958,7 +3881,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3970,7 +3893,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3982,7 +3905,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -3994,7 +3917,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4006,7 +3929,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4018,7 +3941,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4030,7 +3953,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4042,7 +3965,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4054,7 +3977,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4066,7 +3989,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4078,7 +4001,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4090,7 +4013,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4102,7 +4025,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4114,7 +4037,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4126,7 +4049,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4138,7 +4061,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4150,7 +4073,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4162,7 +4085,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4174,7 +4097,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4186,7 +4109,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4198,7 +4121,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4210,7 +4133,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4222,7 +4145,7 @@
     "crumbs": [
       "Home",
       "Tree-based Methods",
-      "Decision Trees"
+      "Decision Trees (Slides)"
     ]
   },
   {
@@ -4234,7 +4157,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4246,7 +4169,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4258,7 +4181,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4270,7 +4193,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4282,7 +4205,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4294,7 +4217,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4306,7 +4229,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4318,7 +4241,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4330,7 +4253,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4342,7 +4265,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4354,7 +4277,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4366,7 +4289,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4378,7 +4301,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4390,7 +4313,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4402,7 +4325,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4414,7 +4337,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4426,7 +4349,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4438,7 +4361,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4450,7 +4373,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4462,7 +4385,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4474,7 +4397,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4486,7 +4409,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4498,7 +4421,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4510,7 +4433,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4522,7 +4445,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4534,7 +4457,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4546,7 +4469,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4558,7 +4481,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4570,7 +4493,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4582,7 +4505,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4594,7 +4517,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4606,7 +4529,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4618,7 +4541,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4630,7 +4553,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4642,7 +4565,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4654,7 +4577,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4666,7 +4589,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4678,7 +4601,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4690,7 +4613,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4702,7 +4625,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4714,7 +4637,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4726,7 +4649,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4738,7 +4661,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4750,7 +4673,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4762,7 +4685,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4774,7 +4697,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4786,7 +4709,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4798,7 +4721,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4810,7 +4733,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4822,7 +4745,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4834,7 +4757,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4846,7 +4769,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4858,7 +4781,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4870,7 +4793,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4882,7 +4805,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4894,7 +4817,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4906,7 +4829,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4918,7 +4841,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4930,7 +4853,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4942,7 +4865,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4954,7 +4877,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4966,7 +4889,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4978,7 +4901,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -4990,7 +4913,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -5002,7 +4925,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -5014,7 +4937,7 @@
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
-      "Deep Learning"
+      "Deep Learning (Slides)"
     ]
   },
   {
@@ -5356,159 +5279,188 @@
     ]
   },
   {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#how-does-dl-improve-on-ml",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#how-does-dl-improve-on-ml",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "How does DL improve on ML",
-    "text": "How does DL improve on ML\n\nML and DL Approaches for Brain Disease Diagnosis\n\nDNN: feature extraction and classification without (or with much les) human intervention.\nDNN improves with data availability, without seemingly reaching plateaus.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#comparison-between-the-two-2",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#comparison-between-the-two-2",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Comparison between the two",
-    "text": "Comparison between the two\n\nThis is an improvement because\n\nboth, weights and threshold, can be learned and\nthe inputs can be real values\n\nBut there is still a drawback in that a single perceptron can only be used to implement linearly separable functions.\nArtificial Neural Networks improve on this by introducing Activation Functions",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#ans-and-activation-functions",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#ans-and-activation-functions",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "ANs and Activation Functions",
-    "text": "ANs and Activation Functions\n\nThe Perceptron can be generalized by Artificial Neurones which can use more general functions, called Activation Functions to produce their output.\n\nActivation functions are built in a way that they allow neurons to produce continuous and non-linear outputs.\n\nIt must be noted however that a single artificial neurone, even with a different activation function, still cannot model no-linear separable problems like XOR.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#which-loss-function-for-optimization",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#which-loss-function-for-optimization",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Which loss function for optimization",
-    "text": "Which loss function for optimization\nDepending on the activation function we may decide to use one or another form of loss function.\n\nAt first an idea may be to use squared error loss: \\[\n  l(h_\\theta(x),y)=\\left (y-\\frac{1}{1+e^{-\\theta^\\intercal x}}\\right )^2\n\\]\nGiven a sigmoid AF, the squared error loss is not a convex problem so that MSE is not appropriate.\nQuadratic loss may be used with ReLu activation.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#loss-function-for-optimization",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#loss-function-for-optimization",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Loss function for optimization",
-    "text": "Loss function for optimization\nDepending on the activation function it may be advisable to use one or another form of loss function.\n\nA typical choice may be quadratic (or square) error loss: \\[\nl(h_\\theta(x),y)=\\left (y-\\frac{1}{1+e^{-\\theta^\\intercal x}}\\right )^2\n\\]\nGiven a sigmoid AF, the squared error loss is not a convex problem so that MSE is not appropriate.\nQuadratic loss may be used with ReLu activation.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#loss-functions-for-optimization",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#loss-functions-for-optimization",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Loss functions for optimization",
-    "text": "Loss functions for optimization\nDepending on the activation function it may be advisable to use one or another form of loss function.\n\nA typical choice may be quadratic (or square) error loss: \\[\nl(h_\\theta(x),y)=\\left (y-\\frac{1}{1+e^{-\\theta^\\intercal x}}\\right )^2\n\\]\nGiven a sigmoid AF, the squared error loss is not a convex problem so that MSE is not appropriate.\nQuadratic loss may be used with ReLu activation.",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann-1",
-    "href": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann-1",
-    "title": "ARTIFICIAL NEURAL NETWORKS",
-    "section": "Training an ANN",
-    "text": "Training an ANN\n\n\nSource: Overview of a Neural Network’s Learning Process",
-    "crumbs": [
-      "Home",
-      "Artificial Neural Networks",
-      "Neural Networks (Slides)"
-    ]
-  },
-  {
-    "objectID": "Ressources.html",
-    "href": "Ressources.html",
-    "title": "References and Ressources",
+    "objectID": "labs/The-caret_package.html",
+    "href": "labs/The-caret_package.html",
+    "title": "The caret package",
     "section": "",
-    "text": "Breiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.\nBrandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site\nEfron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer.\n\n\n\n\n\nGoodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site\nLeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.\nChollet, F. (2018). Deep learning with Python. Manning Publications.\nChollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications.",
-    "crumbs": [
-      "Home",
-      "Resources",
-      "References and Ressources"
-    ]
+    "text": "options(width=100) \nif(!require(\"knitr\")) install.packages(\"knitr\")\nlibrary(\"knitr\")\n#getOption(\"width\")\nknitr::opts_chunk$set(comment=NA,echo = TRUE, cache=TRUE)"
   },
   {
-    "objectID": "Ressources.html#tree-and-ensemble-based-methods",
-    "href": "Ressources.html#tree-and-ensemble-based-methods",
-    "title": "References and Ressources",
+    "objectID": "labs/The-caret_package.html#learning-to-use-caret",
+    "href": "labs/The-caret_package.html#learning-to-use-caret",
+    "title": "The caret package",
+    "section": "Learning to use caret",
+    "text": "Learning to use caret\nThere are multiple resources to learn caretthat go from simple tutorials like this one or similars to courses, papers and a book by Max Kuhn, the creator or the package."
+  },
+  {
+    "objectID": "labs/The-caret_package.html#data-loading",
+    "href": "labs/The-caret_package.html#data-loading",
+    "title": "The caret package",
+    "section": "Data loading",
+    "text": "Data loading\n\nlibrary(\"mlbench\")\ndata(Sonar)\nnames(Sonar)\n\n [1] \"V1\"    \"V2\"    \"V3\"    \"V4\"    \"V5\"    \"V6\"    \"V7\"    \"V8\"    \"V9\"    \"V10\"   \"V11\"   \"V12\"  \n[13] \"V13\"   \"V14\"   \"V15\"   \"V16\"   \"V17\"   \"V18\"   \"V19\"   \"V20\"   \"V21\"   \"V22\"   \"V23\"   \"V24\"  \n[25] \"V25\"   \"V26\"   \"V27\"   \"V28\"   \"V29\"   \"V30\"   \"V31\"   \"V32\"   \"V33\"   \"V34\"   \"V35\"   \"V36\"  \n[37] \"V37\"   \"V38\"   \"V39\"   \"V40\"   \"V41\"   \"V42\"   \"V43\"   \"V44\"   \"V45\"   \"V46\"   \"V47\"   \"V48\"  \n[49] \"V49\"   \"V50\"   \"V51\"   \"V52\"   \"V53\"   \"V54\"   \"V55\"   \"V56\"   \"V57\"   \"V58\"   \"V59\"   \"V60\"  \n[61] \"Class\"\n\n\nThe sonarpackage has 208 data points collected on 60 predictors (energy within a particular frequency band)."
+  },
+  {
+    "objectID": "labs/The-caret_package.html#traintest-splitting",
+    "href": "labs/The-caret_package.html#traintest-splitting",
+    "title": "The caret package",
+    "section": "Train/test splitting",
+    "text": "Train/test splitting\nWe will most of the time want to split the data into two groups: a training set and a test set.\nThis may be done with the createDataPartition function:\n\nset.seed(1234) # Control of data generation\ninTrain &lt;- createDataPartition(y=Sonar$Class, p=.75, list=FALSE)\nstr(inTrain)\n\n int [1:157, 1] 2 3 4 6 7 8 9 11 14 15 ...\n - attr(*, \"dimnames\")=List of 2\n  ..$ : NULL\n  ..$ : chr \"Resample1\"\n\ntraining &lt;- Sonar[inTrain,]\ntesting &lt;- Sonar[-inTrain,]\nnrow(training)\n\n[1] 157\n\n\nOthers similar functions are: createFolds and createResample,"
+  },
+  {
+    "objectID": "labs/The-caret_package.html#preprocessing-and-training",
+    "href": "labs/The-caret_package.html#preprocessing-and-training",
+    "title": "The caret package",
+    "section": "Preprocessing and training",
+    "text": "Preprocessing and training\nUsually, before prediction, data may have to be cleaned and pre-processed.\nCaret allows to integrate it with the training step using the train function.\nThis function has multiple parameter such as:\n\nmethod: Can choose from more than 200 models\npreprocess: all type of filtering and transformations\n\n\nCART1Model &lt;- train (Class ~ ., \n                   data=training, \n                   method=\"rpart1SE\",\n                   preProc=c(\"center\",\"scale\"))\nCART1Model\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Bootstrapped (25 reps) \nSummary of sample sizes: 157, 157, 157, 157, 157, 157, ... \nResampling results:\n\n  Accuracy   Kappa   \n  0.6752493  0.350363\n\n\n\nRefining specifications\nMany specifications can be passed using the trainControl instruction.\n\nctrl &lt;- trainControl(method = \"repeatedcv\", repeats=3)\nCART1Model3x10cv &lt;- train (Class ~ ., \n                         data=training, \n                         method=\"rpart1SE\",\n                         trControl=ctrl,\n                         preProc=c(\"center\",\"scale\"))\n\nCART1Model3x10cv\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Cross-Validated (10 fold, repeated 3 times) \nSummary of sample sizes: 141, 142, 142, 141, 141, 142, ... \nResampling results:\n\n  Accuracy   Kappa    \n  0.7087173  0.4168066\n\n\nWe can change the method used by changing the trainControl parameter.\nIn the example below we fit a classification tree with different options:\n\nctrl &lt;- trainControl(method = \"repeatedcv\", repeats=3,\n                     classProbs=TRUE,\n                     summaryFunction=twoClassSummary)\n\nCART1Model3x10cv &lt;- train (Class ~ ., \n                         data=training, \n                         method=\"rpart1SE\", \n                         trControl=ctrl, \n                         metric=\"ROC\", \n                         preProc=c(\"center\",\"scale\"))\n\nCART1Model3x10cv\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Cross-Validated (10 fold, repeated 3 times) \nSummary of sample sizes: 141, 141, 142, 141, 141, 142, ... \nResampling results:\n\n  ROC        Sens   Spec     \n  0.7757068  0.775  0.6869048\n\n\n\nCART2Fit3x10cv &lt;- train (Class ~ ., \n                       data=training, \n                       method=\"rpart\", \n                       trControl=ctrl, \n                       metric=\"ROC\", \n                       preProc=c(\"center\",\"scale\"))\nCART2Fit3x10cv\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Cross-Validated (10 fold, repeated 3 times) \nSummary of sample sizes: 142, 142, 142, 142, 142, 140, ... \nResampling results across tuning parameters:\n\n  cp          ROC        Sens       Spec     \n  0.06849315  0.7033441  0.6851852  0.6779762\n  0.10958904  0.6829282  0.7523148  0.5922619\n  0.47945205  0.5517196  0.8629630  0.2404762\n\nROC was used to select the optimal model using the largest value.\nThe final value used for the model was cp = 0.06849315.\n\nplot(CART2Fit3x10cv)\n\n\n\n\n\n\n\n\n\nCART2Fit3x10cv &lt;- train (Class ~ ., \n                       data=training, \n                       method=\"rpart\", \n                       trControl=ctrl, \n                       metric=\"ROC\",  \n                       tuneLength=10,\n                       preProc=c(\"center\",\"scale\"))\nCART2Fit3x10cv\n\nCART \n\n157 samples\n 60 predictor\n  2 classes: 'M', 'R' \n\nPre-processing: centered (60), scaled (60) \nResampling: Cross-Validated (10 fold, repeated 3 times) \nSummary of sample sizes: 141, 142, 140, 141, 141, 142, ... \nResampling results across tuning parameters:\n\n  cp          ROC        Sens       Spec     \n  0.00000000  0.7375744  0.7305556  0.6220238\n  0.05327245  0.7382523  0.7453704  0.6130952\n  0.10654490  0.6816468  0.7773148  0.5696429\n  0.15981735  0.6787368  0.8092593  0.5482143\n  0.21308980  0.6787368  0.8092593  0.5482143\n  0.26636225  0.6787368  0.8092593  0.5482143\n  0.31963470  0.6787368  0.8092593  0.5482143\n  0.37290715  0.6787368  0.8092593  0.5482143\n  0.42617960  0.6787368  0.8092593  0.5482143\n  0.47945205  0.5748016  0.8680556  0.2815476\n\nROC was used to select the optimal model using the largest value.\nThe final value used for the model was cp = 0.05327245.\n\nplot(CART2Fit3x10cv)"
+  },
+  {
+    "objectID": "labs/The-caret_package.html#predict-confusionmatrix-functions",
+    "href": "labs/The-caret_package.html#predict-confusionmatrix-functions",
+    "title": "The caret package",
+    "section": "Predict & confusionMatrix functions",
+    "text": "Predict & confusionMatrix functions\nTo predict new samples can be used predict function.\n\ntype = prob : to compute class probabilities\ntype = raw : to predict the class\n\nThe confusionMatrix function will compute the confusion matrix and associated statistics for the model fit.\n\nCART2Probs &lt;- predict(CART2Fit3x10cv, newdata = testing, type = \"prob\")\nCART2Classes &lt;- predict(CART2Fit3x10cv, newdata = testing, type = \"raw\")\nconfusionMatrix(data=CART2Classes,testing$Class)\n\nConfusion Matrix and Statistics\n\n          Reference\nPrediction  M  R\n         M 21  5\n         R  6 19\n                                          \n               Accuracy : 0.7843          \n                 95% CI : (0.6468, 0.8871)\n    No Information Rate : 0.5294          \n    P-Value [Acc &gt; NIR] : 0.0001502       \n                                          \n                  Kappa : 0.5681          \n                                          \n Mcnemar's Test P-Value : 1.0000000       \n                                          \n            Sensitivity : 0.7778          \n            Specificity : 0.7917          \n         Pos Pred Value : 0.8077          \n         Neg Pred Value : 0.7600          \n             Prevalence : 0.5294          \n         Detection Rate : 0.4118          \n   Detection Prevalence : 0.5098          \n      Balanced Accuracy : 0.7847          \n                                          \n       'Positive' Class : M"
+  },
+  {
+    "objectID": "labs/The-caret_package.html#model-comparison",
+    "href": "labs/The-caret_package.html#model-comparison",
+    "title": "The caret package",
+    "section": "Model comparison",
+    "text": "Model comparison\nThe resamplesfunction enable smodel comparison\n\nresamps=resamples(list(CART2=CART2Fit3x10cv,\n                       CART1=CART1Model3x10cv))\nsummary(resamps)\n\n\nCall:\nsummary.resamples(object = resamps)\n\nModels: CART2, CART1 \nNumber of resamples: 30 \n\nROC \n           Min.   1st Qu.    Median      Mean   3rd Qu.     Max. NA's\nCART2 0.5000000 0.6294643 0.7455357 0.7382523 0.8058036 0.952381    0\nCART1 0.5535714 0.7249504 0.7926587 0.7757068 0.8315972 0.937500    0\n\nSens \n           Min.   1st Qu.    Median      Mean 3rd Qu. Max. NA's\nCART2 0.4444444 0.6250000 0.7500000 0.7453704   0.875    1    0\nCART1 0.4444444 0.6666667 0.7777778 0.7750000   0.875    1    0\n\nSpec \n       Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's\nCART2 0.250 0.5714286 0.6250000 0.6130952 0.7142857 0.8750000    0\nCART1 0.375 0.5714286 0.7142857 0.6869048 0.8571429 0.8571429    0\n\nxyplot(resamps,what=\"BlandAltman\")\n\n\n\n\n\n\n\ndiffs&lt;-diff(resamps)\nsummary(diffs)\n\n\nCall:\nsummary.diff.resamples(object = diffs)\n\np-value adjustment: bonferroni \nUpper diagonal: estimates of the difference\nLower diagonal: p-value for H0: difference = 0\n\nROC \n      CART2  CART1   \nCART2        -0.03745\nCART1 0.1598         \n\nSens \n      CART2  CART1   \nCART2        -0.02963\nCART1 0.4514         \n\nSpec \n      CART2   CART1   \nCART2         -0.07381\nCART1 0.02404"
+  },
+  {
+    "objectID": "labs/The-caret_package.html#adaboost",
+    "href": "labs/The-caret_package.html#adaboost",
+    "title": "The caret package",
+    "section": "Adaboost",
+    "text": "Adaboost\nIn this example, we are using the rpart algorithm as the base learner for AdaBoost. We can then use the predict function to make predictions on new data:\n\nlibrary(caret)\nlibrary(mlbench)\n\ndata(BreastCancer)\n\n# Split the data into training and testing sets\nset.seed(123)\ntrainIndex &lt;- createDataPartition(BreastCancer$Class, p = 0.7, list = FALSE)\ntraining &lt;- BreastCancer[trainIndex, ]\ntesting &lt;- BreastCancer[-trainIndex, ]\n\n# Next, set up \n# - the training control and \n# - tuning parameters for the AdaBoost algorithm:\n\nctrl &lt;- trainControl(method = \"repeatedcv\", \n                     number = 10, repeats = 3,\n                     classProbs = TRUE, \n                     summaryFunction = twoClassSummary)\n\nparams &lt;- data.frame(method = \"AdaBoost\", \n                     nIter = 100, \n                     interaction.depth = 1, \n                     shrinkage = 0.1)\n\n#  we are using 10-fold cross-validation with 3 repeats and the twoClassSummary function for evaluation. \n# We are also setting the number of iterations for the AdaBoost algorithm to 100, the maximum interaction depth to 1, and the shrinkage factor to 0.1.\n\n# Use the train function to train the AdaBoost algorithm on the training data and evaluate its performance on the testing data:\n\nadaboost &lt;- train(Class ~ ., data = training, \n                  method = \"rpart\", \n                  trControl = ctrl, \n                  tuneGrid = params)\n\npredictions &lt;- predict(adaboost, newdata = testing)\n\n# Evaluate the performance of the model\nconfusionMatrix(predictions, testData$diagnosis)"
+  },
+  {
+    "objectID": "labs/The-caret_package.html#gradient-boosting",
+    "href": "labs/The-caret_package.html#gradient-boosting",
+    "title": "The caret package",
+    "section": "Gradient boosting",
+    "text": "Gradient boosting\nWe use the gbm method in train() function from the caret package to build a Gradient Boosting model on the Breast Cancer dataset.\n\nlibrary(caret)\nlibrary(gbm)\ndata(BreastCancer)\n\n# Convert the diagnosis column to a binary factor\nBreastCancer$diagnosis &lt;- ifelse(BreastCancer$diagnosis == \"M\", 1, 0)\n\n# Split the dataset into training and testing sets\ntrainIndex &lt;- createDataPartition(BreastCancer$diagnosis, p = 0.7, list = FALSE)\ntrainData &lt;- BreastCancer[trainIndex, ]\ntestData &lt;- BreastCancer[-trainIndex, ]\n\n# Define the training control\nctrl &lt;- trainControl(method = \"cv\", number = 10, classProbs = TRUE, summaryFunction = twoClassSummary)\n\n# Define the Gradient Boosting model\nmodel &lt;- train(diagnosis ~ ., data = trainData, method = \"gbm\", trControl = ctrl,\n               verbose = FALSE, metric = \"ROC\", n.trees = 1000, interaction.depth = 3, shrinkage = 0.01)\n\n# Make predictions on the testing set\npredictions &lt;- predict(model, testData)\n\n# Evaluate the performance of the model\nconfusionMatrix(predictions, testData$diagnosis)"
+  },
+  {
+    "objectID": "labs/The-caret_package.html#xgboost",
+    "href": "labs/The-caret_package.html#xgboost",
+    "title": "The caret package",
+    "section": "XGBoost",
+    "text": "XGBoost\n\nIn this example, we use the xgbTree method in train() function from the caret package to build an XGBoost model on the BreastCancer dataset.\nThe hyperparameters are set to default values, except for parameters:\n\nnrounds,\nmax_depth,\neta, lambda, and\nalpha\n\nThe final performance is evaluated using a confusion matrix.\n\n\nlibrary(caret)\nlibrary(xgboost)\ndata(BreastCancer)\n\n# Convert the diagnosis column to a binary factor\nBreastCancer$diagnosis &lt;- ifelse(BreastCancer$diagnosis == \"M\", 1, 0)\n\n# Split the dataset into training and testing sets\ntrainIndex &lt;- createDataPartition(BreastCancer$diagnosis, p = 0.7, list = FALSE)\ntrainData &lt;- BreastCancer[trainIndex, ]\ntestData &lt;- BreastCancer[-trainIndex, ]\n\n# Define the training control\nctrl &lt;- trainControl(method = \"cv\", number = 10, classProbs = TRUE, summaryFunction = twoClassSummary)\n\n# Define the XGBoost model\nmodel &lt;- train(diagnosis ~ ., \n               data = trainData, \n               method = \"xgbTree\", trControl = ctrl,\n               verbose = FALSE, metric = \"ROC\", \n               nrounds = 1000, max_depth = 3, \n               eta = 0.01, lambda = 1, alpha = 0)\n\n# Make predictions on the testing set\npredictions &lt;- predict(model, testData)\n\n# Evaluate the performance of the model\nconfusionMatrix(predictions, testData$diagnosis)"
+  },
+  {
+    "objectID": "labs/The-caret_package.html#references",
+    "href": "labs/The-caret_package.html#references",
+    "title": "The caret package",
+    "section": "References",
+    "text": "References\n\nOfficial references and resources\n\nCaret tutorial at UseR! 2014\nThe caret package\nJSS Paper\nApplied Predictive Modeling Blog\nCaret cheatsheet in Rstudio cheatsheet page\n\n\n\nOther resources\n\nCaret Package – A Practical Guide to Machine Learning in R -Create predictive models in R with Caret\nCaret R Package for Applied Predictive Modeling"
+  },
+  {
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html",
+    "title": "Prediction with (shallow) Neural Networks",
     "section": "",
-    "text": "Breiman, L., Friedman, J., Stone, C. J., & Olshen, R. A. (1984). Classification and regression trees. CRC press.\nBrandon M. Greenwell (202) Tree-Based Methods for Statistical Learning in R. 1st Edition. Chapman and Hall/CRC DOI: https://doi.org/10.1201/9781003089032 Web site\nEfron, B., Hastie T. (2016) Computer Age Statistical Inference. Cambridge University Press. Web site\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction. Springer.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112). Springer.",
+    "text": "We use the neuralnet package to build a simple neural network to predict if a type of stock pays dividends or not.\n\nif (!require(neuralnet)) \n  install.packages(\"neuralnet\", dep=TRUE)\n\nCargando paquete requerido: neuralnet\n\n\n\n\n\nAnd use the dividendinfo.csv dataset from https://github.com/MGCodesandStats/datasets\n\nmydata &lt;- read.csv(\"https://raw.githubusercontent.com/MGCodesandStats/datasets/master/dividendinfo.csv\")\nstr(mydata)\n\n'data.frame':   200 obs. of  6 variables:\n $ dividend       : int  0 1 1 0 1 1 1 0 1 1 ...\n $ fcfps          : num  2.75 4.96 2.78 0.43 2.94 3.9 1.09 2.32 2.5 4.46 ...\n $ earnings_growth: num  -19.25 0.83 1.09 12.97 2.44 ...\n $ de             : num  1.11 1.09 0.19 1.7 1.83 0.46 2.32 3.34 3.15 3.33 ...\n $ mcap           : int  545 630 562 388 684 621 656 351 658 330 ...\n $ current_ratio  : num  0.924 1.469 1.976 1.942 2.487 ...\n\n\n\n\n\n\nnormalize &lt;- function(x) {\n  return ((x - min(x)) / (max(x) - min(x)))\n}\nnormData &lt;- as.data.frame(lapply(mydata, normalize))\n\n\n\n\nFinally we break our data in a test and a training set:\n\nperc2Train &lt;- 2/3\nssize &lt;- nrow(normData)\nset.seed(12345)\ndata_rows &lt;- floor(perc2Train *ssize)\ntrain_indices &lt;- sample(c(1:ssize), data_rows)\ntrainset &lt;- normData[train_indices,]\ntestset &lt;- normData[-train_indices,]\n\n\n\n\nWe train a simple NN with two hidden layers, with 4 and 2 neurons respectively.\n\n#Neural Network\nlibrary(neuralnet)\nnn &lt;- neuralnet(dividend ~ fcfps + earnings_growth + de + mcap + current_ratio, \n                data=trainset, \n                hidden=c(2,1), \n                linear.output=FALSE, \n                threshold=0.01)\n\n\n\n\nThe output of the procedure is a neural network with estimated weights\n\nplot(nn, rep = \"best\")\n\n\n\n\n\n\n\n\n\n\n\n\ntemp_test &lt;- subset(testset, select =\n                      c(\"fcfps\",\"earnings_growth\", \n                        \"de\", \"mcap\", \"current_ratio\"))\nnn.results &lt;- compute(nn, temp_test)\nresults &lt;- data.frame(actual = \n                  testset$dividend, \n                  prediction = nn.results$net.result)\nhead(results)\n\n   actual   prediction\n9       1 0.9919213885\n19      1 0.9769206123\n22      0 0.0002187144\n26      0 0.6093330933\n27      1 0.7454164893\n29      1 0.9515431416\n\n\n\n\n\n\nroundedresults&lt;-sapply(results,round,digits=0)\nroundedresultsdf=data.frame(roundedresults)\nattach(roundedresultsdf)\ntable(actual,prediction)\n\n      prediction\nactual  0  1\n     0 33  3\n     1  4 27",
     "crumbs": [
       "Home",
-      "Resources",
-      "References and Ressources"
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
     ]
   },
   {
-    "objectID": "Ressources.html#artificial-neural-networks",
-    "href": "Ressources.html#artificial-neural-networks",
-    "title": "References and Ressources",
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html#a-predictive-ann",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html#a-predictive-ann",
+    "title": "Prediction with (shallow) Neural Networks",
     "section": "",
-    "text": "Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning (Vol. 1). MIT press. Web site\nLeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.\nChollet, F. (2018). Deep learning with Python. Manning Publications.\nChollet, F. (2023). Deep learning with R . 2nd edition. Manning Publications.",
+    "text": "We use the neuralnet package to build a simple neural network to predict if a type of stock pays dividends or not.\n\nif (!require(neuralnet)) \n  install.packages(\"neuralnet\", dep=TRUE)\n\nCargando paquete requerido: neuralnet",
     "crumbs": [
       "Home",
-      "Resources",
-      "References and Ressources"
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
     ]
   },
   {
-    "objectID": "Ressources.html#statisticalmachine-learning-in-general",
-    "href": "Ressources.html#statisticalmachine-learning-in-general",
-    "title": "References and Ressources",
-    "section": "Statistical/Machine Learning in General",
-    "text": "Statistical/Machine Learning in General\n\nGoogle’s Machine Learning Crash Course\nApplied Data Mining and Statistical Learning (Penn Statte-University)\nR for statistical learning\nIntroduction to Statistical Learning (ISL)",
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html#data-for-the-example",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html#data-for-the-example",
+    "title": "Prediction with (shallow) Neural Networks",
+    "section": "",
+    "text": "And use the dividendinfo.csv dataset from https://github.com/MGCodesandStats/datasets\n\nmydata &lt;- read.csv(\"https://raw.githubusercontent.com/MGCodesandStats/datasets/master/dividendinfo.csv\")\nstr(mydata)\n\n'data.frame':   200 obs. of  6 variables:\n $ dividend       : int  0 1 1 0 1 1 1 0 1 1 ...\n $ fcfps          : num  2.75 4.96 2.78 0.43 2.94 3.9 1.09 2.32 2.5 4.46 ...\n $ earnings_growth: num  -19.25 0.83 1.09 12.97 2.44 ...\n $ de             : num  1.11 1.09 0.19 1.7 1.83 0.46 2.32 3.34 3.15 3.33 ...\n $ mcap           : int  545 630 562 388 684 621 656 351 658 330 ...\n $ current_ratio  : num  0.924 1.469 1.976 1.942 2.487 ...",
     "crumbs": [
       "Home",
-      "Resources",
-      "References and Ressources"
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
     ]
   },
   {
-    "objectID": "Ressources.html#decision-trees",
-    "href": "Ressources.html#decision-trees",
-    "title": "References and Ressources",
-    "section": "Decision Trees",
-    "text": "Decision Trees\n\nDecision Trees free course (9 videos). By Analytics Vidhya\nAn Introduction to Recursive Partitioning Using the RPART Routines",
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html#data-pre-processing",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html#data-pre-processing",
+    "title": "Prediction with (shallow) Neural Networks",
+    "section": "",
+    "text": "normalize &lt;- function(x) {\n  return ((x - min(x)) / (max(x) - min(x)))\n}\nnormData &lt;- as.data.frame(lapply(mydata, normalize))",
     "crumbs": [
       "Home",
-      "Resources",
-      "References and Ressources"
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
     ]
   },
   {
-    "objectID": "Ressources.html#neural-networks",
-    "href": "Ressources.html#neural-networks",
-    "title": "References and Ressources",
-    "section": "Neural Networks",
-    "text": "Neural Networks\n\nIntroduction to Artificial Neural Networks\nThe Neural network Playground\n\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html#test-and-training-sets",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html#test-and-training-sets",
+    "title": "Prediction with (shallow) Neural Networks",
+    "section": "",
+    "text": "Finally we break our data in a test and a training set:\n\nperc2Train &lt;- 2/3\nssize &lt;- nrow(normData)\nset.seed(12345)\ndata_rows &lt;- floor(perc2Train *ssize)\ntrain_indices &lt;- sample(c(1:ssize), data_rows)\ntrainset &lt;- normData[train_indices,]\ntestset &lt;- normData[-train_indices,]",
     "crumbs": [
       "Home",
-      "Resources",
-      "References and Ressources"
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
+    ]
+  },
+  {
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html#training-a-neural-network",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html#training-a-neural-network",
+    "title": "Prediction with (shallow) Neural Networks",
+    "section": "",
+    "text": "We train a simple NN with two hidden layers, with 4 and 2 neurons respectively.\n\n#Neural Network\nlibrary(neuralnet)\nnn &lt;- neuralnet(dividend ~ fcfps + earnings_growth + de + mcap + current_ratio, \n                data=trainset, \n                hidden=c(2,1), \n                linear.output=FALSE, \n                threshold=0.01)",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
+    ]
+  },
+  {
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html#network-plot",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html#network-plot",
+    "title": "Prediction with (shallow) Neural Networks",
+    "section": "",
+    "text": "The output of the procedure is a neural network with estimated weights\n\nplot(nn, rep = \"best\")",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
+    ]
+  },
+  {
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html#predictions",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html#predictions",
+    "title": "Prediction with (shallow) Neural Networks",
+    "section": "",
+    "text": "temp_test &lt;- subset(testset, select =\n                      c(\"fcfps\",\"earnings_growth\", \n                        \"de\", \"mcap\", \"current_ratio\"))\nnn.results &lt;- compute(nn, temp_test)\nresults &lt;- data.frame(actual = \n                  testset$dividend, \n                  prediction = nn.results$net.result)\nhead(results)\n\n   actual   prediction\n9       1 0.9919213885\n19      1 0.9769206123\n22      0 0.0002187144\n26      0 0.6093330933\n27      1 0.7454164893\n29      1 0.9515431416",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
+    ]
+  },
+  {
+    "objectID": "labs/Lab-C3.2-DividendPrediction_ANN.html#model-evaluation",
+    "href": "labs/Lab-C3.2-DividendPrediction_ANN.html#model-evaluation",
+    "title": "Prediction with (shallow) Neural Networks",
+    "section": "",
+    "text": "roundedresults&lt;-sapply(results,round,digits=0)\nroundedresultsdf=data.frame(roundedresults)\nattach(roundedresultsdf)\ntable(actual,prediction)\n\n      prediction\nactual  0  1\n     0 33  3\n     1  4 27",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Dividend Prediction with ANN Lab (R)"
     ]
   }
 ]
