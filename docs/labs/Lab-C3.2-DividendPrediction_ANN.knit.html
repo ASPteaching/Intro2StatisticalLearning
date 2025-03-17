@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C3.1-Introduction_to_ANN-Slides.html">Artificial Neural Networks</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C3.2-DividendPrediction_ANN.html">Dividend Prediction with ANN Lab (R)</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Prediction with (shallow) Neural Networks</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab-C3.2-DividendPrediction_ANN.html" class="sidebar-item-text sidebar-link active">
+  <a href="../labs/Lab-C3.2-DividendPrediction_ANN.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dividend Prediction with ANN Lab (R)</span></a>
   </div>
 </li>
@@ -339,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#building-a-nn-with-the-neuralnet-package" id="toc-building-a-nn-with-the-neuralnet-package" class="nav-link active" data-scroll-target="#building-a-nn-with-the-neuralnet-package">Building a NN with the <code>neuralnet</code> package</a>
+  <li><a href="#an-example-using-r" id="toc-an-example-using-r" class="nav-link active" data-scroll-target="#an-example-using-r">An example using R</a>
   <ul class="collapse">
   <li><a href="#a-predictive-ann" id="toc-a-predictive-ann" class="nav-link" data-scroll-target="#a-predictive-ann">A predictive ANN</a></li>
   <li><a href="#data-for-the-example" id="toc-data-for-the-example" class="nav-link" data-scroll-target="#data-for-the-example">Data for the example</a></li>
@@ -352,12 +352,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#full-workflow-using-caret" id="toc-full-workflow-using-caret" class="nav-link" data-scroll-target="#full-workflow-using-caret">Full workflow using <code>Caret</code></a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Lab-C3.2-DividendPrediction_ANN.knit.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C3.1-Introduction_to_ANN-Slides.html">Artificial Neural Networks</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C3.2-DividendPrediction_ANN.html">Dividend Prediction with ANN Lab (R)</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Prediction with (shallow) Neural Networks</h1>
 </div>
@@ -388,8 +388,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="building-a-nn-with-the-neuralnet-package" class="level1">
-<h1>Building a NN with the <code>neuralnet</code> package</h1>
+<section id="an-example-using-r" class="level1">
+<h1>An example using R</h1>
 <section id="a-predictive-ann" class="level2">
 <h2 class="anchored" data-anchor-id="a-predictive-ann">A predictive ANN</h2>
 <p>We use the <code>neuralnet</code> package to build a simple neural network to predict if a type of stock pays dividends or not.</p>

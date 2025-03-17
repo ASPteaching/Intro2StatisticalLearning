@@ -1,10 +1,38 @@
 ---
 title: "Prediction with (shallow) Neural Networks"
-format: html
-editor: visual
+authors:
+- Adapted by EVL, FRC and ASP
+date: "`r Sys.Date()`"
+format:
+    html: 
+      toc: true
+      toc-depth: 3
+      code-fold: show
+      fig-width: 8
+      fig-height: 6
+knit:
+  quarto:
+    chunk_options:
+      echo: true
+      cache: false
+      prompt: false
+      tidy: true
+      comment: NA
+      message: false
+      warning: false
+    knit_options:
+      width: 75
+reference-location: margin
+execute:
+    echo: true
+    message: false
+    warning: false
+bibliography: "../StatisticalLearning.bib"
+editor_options: 
+  chunk_output_type: console
 ---
 
-# An example using R
+# Building a NN with the `neuralnet` package
 
 ## A predictive ANN
 
@@ -51,22 +79,64 @@ testset <- normData[-train_indices,]
 
 We train a simple NN with two hidden layers, with 4 and 2 neurons respectively.
 
+First we deine the parameters and hyperparameters
+
+```{r}
+hidden_layers <- c(4,2)  # Two hidden layers with 4 and 2 neurons
+activation_function <- "logistic"  # Sigmoid
+optimizer <- "rprop+"  # Optimizer
+learning_rate <- 0.01  # Learning rate
+threshold_value <- 0.01  # Convergence  thresholod 
+max_iterations <- 1e6  # Max iterations
+```
+
+
 ```{r echo=TRUE}
-#Neural Network
+# Neural Network
 library(neuralnet)
-nn <- neuralnet(dividend ~ fcfps + earnings_growth + de + mcap + current_ratio, 
+nn <- neuralnet(#dividend ~ .,
+                dividend ~ fcfps + earnings_growth + de + mcap + current_ratio, 
                 data=trainset, 
-                hidden=c(2,1), 
+                hidden=hidden_layers, 
+                act.fct=activation_function, 
+                algorithm=optimizer, 
+                learningrate=learning_rate,
                 linear.output=FALSE, 
-                threshold=0.01)
+                threshold=threshold_value,
+                stepmax=max_iterations)
 ```
 
 ## Network plot
 
-The output of the procedure is a neural network with estimated weights
+The output of the procedure is a neural network with estimated weights.
+
+```{r}
+plot(nn, rep = "best")
+```
+
+
+In order to facilitate visualization we can round decimals to 2 for all weights.
 
 ```{r echo=TRUE}
-plot(nn, rep = "best")
+round_weights <- function(nn_model, decimals=2) {
+  nn_model$weights <- lapply(nn_model$weights, function(layer) {
+    lapply(layer, function(weight_matrix) {
+      if (is.numeric(weight_matrix)) {
+        round(weight_matrix, decimals)
+      } else {
+        weight_matrix
+      }
+    })
+  })
+  return(nn_model)
+}
+
+# Apply function to trained net
+nn_rounded <- round_weights(nn, 2)
+
+# View network with less decimals
+plot(nn_rounded, rep = "best")
+
 ```
 
 ## Predictions
@@ -91,3 +161,97 @@ attach(roundedresultsdf)
 table(actual,prediction)
 ```
 
+The `caret` package can be used to provide a better confusion matrix.
+
+```{r}
+# Round predictions to obtain binary values (0 or 1)
+roundedresults <- sapply(results, round, digits=0)
+roundedresultsdf <- data.frame(roundedresults)
+
+# Convert variables to factors for proper processing in `caret`
+roundedresultsdf$actual <- as.factor(roundedresultsdf$actual)
+roundedresultsdf$prediction <- as.factor(roundedresultsdf$prediction)
+
+# Load caret package (install if not available)
+if (!require(caret)) install.packages("caret", dependencies=TRUE)
+library(caret)
+
+# Generate confusion matrix with advanced metrics
+conf_matrix <- confusionMatrix(roundedresultsdf$prediction, roundedresultsdf$actual)
+
+# Print the confusion matrix and performance metrics
+print(conf_matrix)
+
+```
+
+# Full workflow using `Caret`
+
+The `Caret` package offers an alternative to `neuralnet` to perform a more efficient process.
+
+```{r}
+# Load required libraries (install if necessary)
+if (!require(caret)) install.packages("caret", dependencies=TRUE)
+if (!require(nnet)) install.packages("nnet", dependencies=TRUE)  # Needed for neural networks
+library(caret)
+library(nnet)
+```
+
+Data can be normalized using using caret's `preProcess` function
+
+```{r}
+preproc <- preProcess(mydata, method = c("range"))  # Min-Max normalization
+normData <- predict(preproc, mydata)
+```
+
+Test/Train splitting is automated
+
+```{r}
+# Split data into training (67%) and testing (33%) sets
+set.seed(12345)
+trainIndex <- createDataPartition(normData$dividend, p = 0.67, list = FALSE)
+trainset <- normData[trainIndex,]
+testset <- normData[-trainIndex,]
+```
+
+Model variability can be managed by crossvalidation
+
+```{r}
+ctrl <- trainControl(method = "cv", number = 10)  # 10-fold cross-validation
+```
+
+
+```{r}
+# Train a neural network model using caret's `train` function
+set.seed(12345)
+nn_model <- train(dividend ~ ., data = trainset,
+                  method = "nnet",  # Use neural network model
+                  trControl = ctrl,  # Cross-validation
+                  tuneGrid = expand.grid(size = c(4, 2), decay = 0.01),  # Hidden layers, weight decay
+                  maxit = 1000,  # Max iterations
+                  trace = FALSE)  # Suppress output during training
+
+# Print model summary
+print(nn_model)
+```
+Once the model is trained we can proceed as usually
+
+```{r}
+# Make predictions on test set
+y_pred <- predict(nn_model, testset)
+
+# Convert predictions to binary (0 or 1)
+y_pred_bin <- ifelse(y_pred > 0.5, 1, 0)
+
+# Convert actual values and predictions to factors for confusion matrix
+testset$dividend <- as.factor(testset$dividend)
+y_pred_bin <- as.factor(y_pred_bin)
+
+# Generate confusion matrix and performance metrics
+conf_matrix <- confusionMatrix(y_pred_bin, testset$dividend)
+
+# Print confusion matrix and evaluation metrics
+print(conf_matrix)
+
+```
+
+Notice that the model shows slightly better than the first one, probably due to the fact that it has been minimally optimized.
