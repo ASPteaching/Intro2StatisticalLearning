@@ -1,0 +1,234 @@
+---
+title: "Keras & Sci-Kit-Learn"
+subtitle: 'Frameworks for training ANN'
+format:
+  revealjs: 
+    incremental: false  
+    transition: slide
+    background-transition: fade
+    transition-speed: slow
+    scrollable: true
+    menu:
+      side: left
+      width: half
+      numbers: true
+    slide-number: c/t
+    show-slide-number: all
+    progress: true
+    css: "css4CU.css"
+    theme: sky
+knit:
+  quarto:
+    chunk_options:
+      echo: true
+      cache: false
+      prompt: false
+      tidy: true
+      comment: NA
+      message: false
+      warning: false
+    knit_options:
+      width: 75
+bibliography: "DeepLearning.bib"
+editor_options: 
+  chunk_output_type: console
+---
+
+## Introduction
+
+- There are many libraries that can be used to train and use Neural Networks using Python or R.
+
+- Among the most popular ones we consider **Scikit-Learn** and **Keras** for training neural networks, highlighting their strengths, limitations, and implementation details.
+
+## Scikit-Learn
+
+- Open source Python library for **machine learning**.
+  - Not specific for ANNs or Deep learning
+- It provides a variety of algorithms, with highly efficient implementations and a common interface..
+- Built on top of **NumPy, SciPy, and Matplotlib**.
+
+```{r, fig.align='center', fig.cap="[https://scikit-learn.org/stable/](https://scikit-learn.org/stable/)"}
+knitr::include_graphics("images/scikitlearn.png")
+```
+
+
+## Neural Networks in Scikit-Learn
+
+- SckL implements Multi-Layer Perceptrons (**MLP**) via `MLPClassifier` and `MLPRegressor`.
+
+- Supports **feedforward neural networks** with one or more hidden layers.
+
+- Uses **backpropagation** for training.
+
+- Provides built-in **optimizers** such as **Adam, SGD, and L-BFGS**.
+
+
+## Example: Training an MLP
+
+```python
+from sklearn.neural_network import MLPClassifier
+
+# Define and train an MLP model
+mlp = MLPClassifier(hidden_layer_sizes=(5,), # 5 neurons in hidden layer
+          activation='logistic',  # Sigmoid activation function
+          solver='adam',          # Adam optimizer
+          learning_rate_init=0.01,# Learning rate
+          batch_size=10,          # Batch size
+          max_iter=1000)          # Epochs
+
+mlp.fit(X_train, y_train)
+```
+<!-- ::: font80 -->
+<!--   - Hidden layer size: 5 neurons -->
+<!--   - Activation function: Sigmoid (`logistic`) -->
+<!--   - Optimizer: Adam -->
+<!--   - Batch size: 10 -->
+<!--   - Epochs: 1000 -->
+<!-- ::: -->
+
+## Advantages and Limitations
+
+::: font90
+
+**Advantages**
+
+- Easy to use, simple API.
+- Works well for small and medium datasets.
+- Includes built-in optimization techniques.
+
+**Limitations**
+
+- Not optimized for deep learning.
+- May be slower when compared to specialized frameworks like TensorFlow or PyTorch.
+- Lacks GPU acceleration.
+
+:::
+
+## TensorFlow and Keras
+
+- `TensorFlow` is a deep learning framework
+created by Google and released in 2015
+
+- `Keras` is a neural network library for
+TensorFlow adapted by Google in 2017
+
+- Both provide *APIs* to
+develop and evaluate various ANN and deep
+learning (DNN) models but TensorFlow can be considered of *lower level* than keras.
+
+```{r, fig.align='center', fig.cap="[TensorFlow.org](TensorFlow.org)"}
+knitr::include_graphics("images/kerasTF_1.png")
+```
+
+## TensorFlow vs Keras
+
+- TensorFlow provides detailed control over the computations, while
+
+- Provides **low-level operations** for tensor manipulation and optimization.
+- Requires more **manual setup** for defining models, weights, and optimizers.
+- Offers **greater flexibility** for custom architectures and fine-tuned optimizations.
+
+## Keras as a Higher-Level API
+
+- **Keras** is an API built on top of TensorFlow to simplify neural network creation.
+
+- Provides **predefined layers, loss functions, and optimizers**.
+
+- Requires **less code** and is easier to understand.
+
+- Since TensorFlow 2.0, **Keras (`tf.keras`) is the official high-level API**.
+
+
+## TensorFlow example (Lower-Level)
+
+```python
+import tensorflow as tf
+
+# Define weights and biases manually
+W = tf.Variable(tf.random.normal([4, 3]))
+b = tf.Variable(tf.random.normal([3]))
+
+def model(X):
+    return tf.nn.softmax(tf.matmul(X, W) + b)
+```
+
+- Requires manual tensor operations and model definition.
+
+- More flexible but involves **more coding effort**.
+
+## Keras example (High-Level)
+
+```python
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+model = Sequential([
+    Dense(3, activation='softmax', input_shape=(4,))
+])
+```
+- Uses a **predefined layer-based structure**.
+- No need to manually define weights and operations.
+- **More readable and faster for prototyping.**
+
+## Backk to ANN in Keras
+
+- Supports fully connected networks (**Dense layers**), CNNs, RNNs, etc.
+
+- Uses **backpropagation with automatic differentiation**.
+
+- Can be trained using **CPU or GPU**.
+
+- Highly customizable with various **optimizers**, **loss functions**, and **activation functions**.
+
+## Example: Training an MLP with Keras
+
+```python
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.optimizers import Adam
+
+# Define the neural network model
+model = Sequential([
+    Dense(5, activation='sigmoid', input_shape=(X_train.shape[1],)),
+    Dense(3, activation='softmax')  # Output layer with 3 neurons
+])
+
+# Compile the model
+model.compile(optimizer=Adam(learning_rate=0.01),
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Train the model
+model.fit(X_train, y_train, epochs=1000, batch_size=10, verbose=1)
+```
+## Advantages and Limitations of Keras
+
+**Advantages**
+- Supports deep learning with multiple layers.
+- Works with GPUs for faster training.
+- Flexible and customizable for complex models.
+
+**Limitations**
+- Slower than Scikit-Learn for small neural networks.
+- Requires TensorFlow as a backend.
+- More complex for beginners compared to Scikit-Learn.
+
+
+## Summary
+
+::: font90
+
+- **Scikit-Learn** is ideal for **small, fast, and easy-to-use neural networks**.
+
+- TensorFlow or Keras are better suited than Scikit-Learn for **deep learning and GPU acceleration**.
+
+- **TensorFlow** is **low-level**, providing more **flexibility** and customization.
+
+- **Keras** is **high-level**, offering an easier and faster approach for building models.
+
+- **Use TensorFlow for fine-grained control, and Keras for ease of use and rapid development.**
+ 
+:::
+
+
+
