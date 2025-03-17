@@ -658,7 +658,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#automatic-tuning",
     "title": "Introduction to Deep Learning",
     "section": "Automatic tuning",
-    "text": "Automatic tuning\n\nIn order for these networks to succeed it is important not having to hand-craft the complicated structure of weights and biases required for such hierarchy of layers and functions.\nIn 2006 techniques enabling learning in Deep Neural Nets were developed.\nThese deep learning techniques are based on stochastic gradient descent and backpropagation, but also introduce new ideas.\nIt turns out that equiped with such techniques, deep neural networks perform much better on many problems than shallow neural networks.",
+    "text": "Automatic tuning\n\nIn order for these networks to succeed it is important not having to hand-craft the complicated structure of weights and biases required for such hierarchy of layers and functions.\nIn 2006 techniques enabling learning in Deep Neural Nets (DNNs) were developed.\nThese were based on stochastic gradient descent and backpropagation, but also introduce new ideas.\nEquiped with such techniques, DNNs perform much better on many problems than shallow NNs.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",

@@ -76,7 +76,7 @@ knitr::include_graphics("images/Shallow2Deep_NN.png")
   - Some tasks as digit recognition, could be solved decently well using a "brute force" approach
   - Other more complex tasks, such as distinguishing a human face in an image, where hard to solve witht that "brute" force approach.
   
-- This is often associated to working with structured vs unstructured data
+- This is often associated to working with *structured* vs *unstructured* data
 
 ## Structured-Unstructured data
 
@@ -109,7 +109,7 @@ knitr::include_graphics("images/HumanvsNonHuman.png")
 knitr::include_graphics("images/FaceRecognitionIntuiotion.png")
 ```
 
-## A hierarchy of complexity {.smaller}
+## A hierarchy of complexity 
 
 - Each layer has a more complex task, but it receives better information.
   - If we can solve the sub-problems using ANNs, 
@@ -121,15 +121,15 @@ knitr::include_graphics("images/FaceRecognitionIntuiotion.png")
 
 - Networks with this kind of many-layer structure - two or more hidden layers - are called *deep neural networks*.
 
-## Automatic tuning {.smaller}
+## Automatic tuning 
 
 - In order for these networks to succeed it is important not having to hand-craft the complicated structure of weights and biases required for such hierarchy of layers and functions. 
 
-- In 2006  techniques enabling learning in Deep Neural Nets were developed. 
+- In 2006  techniques enabling learning in Deep Neural Nets (DNNs) were developed. 
 
-- These deep learning techniques are based on stochastic gradient descent and backpropagation, but also introduce new ideas.
+- These were based on stochastic gradient descent and backpropagation, but also introduce new ideas.
 
-- It turns out that equiped with such techniques, deep neural networks perform much better on many problems than shallow neural networks.
+- Equiped with such techniques, DNNs perform much better on many problems than shallow NNs.
 
 ## Shallow vs Deep NNs
 
@@ -138,7 +138,7 @@ knitr::include_graphics("images/ShallowVSDeepNN.png")
 ```
 
 
-# What do we mean by computers vision?
+# Approaching Deep Learning through Computer Vision
 
 ## We want computers that can *see*  {.smaller}
 
