@@ -886,7 +886,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#is-a-given-patch-in-the-image",
     "title": "Introduction to Deep Learning",
     "section": "Is a given patch in the image?",
-    "text": "Is a given patch in the image?\n\nThe key question is how to pick-up the operation that can take\n\na patch and\nan image and\n\nAn decide if the patch is in the image.\nThis operation is the convolution.",
+    "text": "Is a given patch in the image?\n\nGiven a small patch (a small sub-image, also called a filter or kernel)\nThe goal is to check where it appears inside a larger image.\nInstead of comparing every pixel individually, there is an operation that may systematically scans the image and measure how well the patch matches different regions.\nThis operation is called convolution.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -898,7 +898,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#the-convolution-operation",
     "title": "Introduction to Deep Learning",
     "section": "The Convolution Operation",
-    "text": "The Convolution Operation\n\nsource: MIT Course, http://introtodeeplearning.com/, L3\n\nConvolution matches the patch and the image by elementwise multiplication, followed by a sum.\nGiven the filters used (+1/-1) if there is absolute coincidence, as in the example, all multiplications will yield 1, and the sum will be 9.\nTwo completely different patches would add -9.",
+    "text": "The Convolution Operation\n\n\nGiven an input image \\(I\\) and a filter (kernel) \\(K\\), the convolution operation is defined as:\n\\[ (I * K)(i,j) = \\sum_m \\sum_n I(i-m, j-n) K(m,n) \\]\nHere:\n\n\\(I(i,j)\\) represents the pixel value at position \\((i,j)\\) in the image.\n\\(K(m,n)\\) represents the kernel values.\nThe summation runs over the dimensions of the kernel.\nThe result \\((I * K)(i,j)\\) gives a new pixel value after applying the filter at that location.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -910,7 +910,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#the-convolution-operation-1",
     "title": "Introduction to Deep Learning",
     "section": "The Convolution Operation",
-    "text": "The Convolution Operation\n\nSuppose we want to compute the convolution of a 5x5 image and a 3x3 filter.\n\n\n\nsource: MIT Course, http://introtodeeplearning.com/, L3",
+    "text": "The Convolution Operation\n\nsource: MIT Course, http://introtodeeplearning.com/, L3\n\nConvolution matches the patch and the image by elementwise multiplication, followed by a sum.\nGiven the filters used (+1/-1) if there is absolute coincidence, as in the example, all multiplications will yield 1, and the sum will be 9.\nTwo completely different patches would add -9.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -6337,6 +6337,54 @@
     "title": "Introduction to Deep Learning",
     "section": "Models & Applications",
     "text": "Models & Applications\n\nModels: Denoising Autoencoders, Variational Autoencoders (VAEs).\nApplications:\n\nAnomaly detection (fraud detection, industrial defect detection).\nImage denoising and inpainting.\nFeature extraction and dimensionality reduction.\nGenerating synthetic data.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#is-a-given-pattern-in-the-image",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#is-a-given-pattern-in-the-image",
+    "title": "Introduction to Deep Learning",
+    "section": "Is a given pattern in the image?",
+    "text": "Is a given pattern in the image?\n\nGiven a small patch (a small sub-image, also called a filter or kernel)\nThe goal is to check where it appears inside a larger image.\nInstead of comparing every pixel individually, there is an operation that may systematically scans the image and measure how well the patch matches different regions.\nThis operation is called convolution.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#the-convolution-operation-4",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#the-convolution-operation-4",
+    "title": "Introduction to Deep Learning",
+    "section": "The Convolution Operation",
+    "text": "The Convolution Operation",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#visualizing-convolution",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#visualizing-convolution",
+    "title": "Introduction to Deep Learning",
+    "section": "Visualizing Convolution",
+    "text": "Visualizing Convolution\n\n\nConsider a 3×3 kernel applied to a 5x5 image:\n\\[\nI = \\begin{bmatrix} x_{11} & x_{12} & \\dots & x_{15} \\\\\nx_{21} & x_{22} & \\dots & x_{25} \\\\\n\\dots & \\dots & \\dots & \\dots \\\\\nx_{51} & x_{52} & \\dots & x_{55} \\end{bmatrix}, \\quad K = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 1 \\end{bmatrix}\n\\]\nThe kernel slides across the image, performing the weighted sum:\n\nMultiply corresponding elements.\nSum the results.\nStore in a new matrix (feature map).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#visualizing-convolution-1",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#visualizing-convolution-1",
+    "title": "Introduction to Deep Learning",
+    "section": "Visualizing Convolution",
+    "text": "Visualizing Convolution\n\nSuppose we want to compute the convolution of a 5x5 image and a 3x3 filter.\n\n\n\nsource: MIT Course, http://introtodeeplearning.com/, L3",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",

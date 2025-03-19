@@ -635,14 +635,32 @@ knitr::include_graphics("images/aminiCV16.png")
 knitr::include_graphics("images/aminiCV17.png")
 ```
 
-## Is a given patch in the image?
+## Is a given pattern in the image?
 
-- The key question is *how to pick-up the operation* that can take
-  - a patch and 
-  - an image and
-- An decide if the patch is in the image.
+- Given a small patch (a small sub-image, also called a *filter* or *kernel*)
 
-- This operation is the *convolution*.
+- The goal is to check where it appears inside a larger image. 
+
+- Instead of comparing every pixel individually, there is an operation that may systematically scans the image and measure how well the patch matches different regions.
+
+- This operation is called *convolution*.
+
+## The Convolution Operation
+
+::: font80
+
+- Given an input image $I$ and a filter (kernel) $K$, the **convolution operation** is defined as:
+
+  $$ (I * K)(i,j) = \sum_m \sum_n I(i-m, j-n) K(m,n) $$
+
+- Here:
+  - $I(i,j)$ represents the pixel value at position $(i,j)$ in the image.
+  - $K(m,n)$ represents the kernel values.
+  - The summation runs over the dimensions of the kernel.
+  - The result $(I * K)(i,j)$ gives a new pixel value after applying the filter at that location.
+
+:::
+
 
 ## The Convolution Operation
 
@@ -656,7 +674,27 @@ knitr::include_graphics("images/aminiCV18.png")
 - Two completely different patches would add -9.
 :::
 
-## The Convolution Operation
+## Visualizing Convolution
+
+::: font80
+
+- Consider a **3×3 kernel** applied to a 5x5 image:
+
+  $$
+  I = \begin{bmatrix} x_{11} & x_{12} & \dots & x_{15} \\ 
+  x_{21} & x_{22} & \dots & x_{25} \\
+  \dots & \dots & \dots & \dots \\
+  x_{51} & x_{52} & \dots & x_{55} \end{bmatrix}, \quad K = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 1 \end{bmatrix}
+  $$
+
+- The kernel slides across the image, performing the weighted sum:
+  - Multiply corresponding elements.
+  - Sum the results.
+  - Store in a new matrix (feature map).
+
+:::
+
+## Visualizing Convolution
 
 - Suppose we want to compute the convolution of a 5x5 image and a 3x3 filter.
 

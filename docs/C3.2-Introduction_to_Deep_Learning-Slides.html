@@ -1019,19 +1019,32 @@ Alex Sanchez, Ferran Reverter and Esteban Vegas
 <h2>Filters can detect X features</h2>
 
 <img data-src="images/aminiCV17.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p class="caption">source: MIT Course, http://introtodeeplearning.com/, L3</p></section>
-<section id="is-a-given-patch-in-the-image" class="slide level2">
-<h2>Is a given patch in the image?</h2>
+<section id="is-a-given-pattern-in-the-image" class="slide level2">
+<h2>Is a given pattern in the image?</h2>
 <ul>
-<li><p>The key question is <em>how to pick-up the operation</em> that can take</p>
-<ul>
-<li>a patch and</li>
-<li>an image and</li>
-</ul></li>
-<li><p>An decide if the patch is in the image.</p></li>
-<li><p>This operation is the <em>convolution</em>.</p></li>
+<li><p>Given a small patch (a small sub-image, also called a <em>filter</em> or <em>kernel</em>)</p></li>
+<li><p>The goal is to check where it appears inside a larger image.</p></li>
+<li><p>Instead of comparing every pixel individually, there is an operation that may systematically scans the image and measure how well the patch matches different regions.</p></li>
+<li><p>This operation is called <em>convolution</em>.</p></li>
 </ul>
 </section>
 <section id="the-convolution-operation" class="slide level2">
+<h2>The Convolution Operation</h2>
+<div class="font80">
+<ul>
+<li><p>Given an input image <span class="math inline">\(I\)</span> and a filter (kernel) <span class="math inline">\(K\)</span>, the <strong>convolution operation</strong> is defined as:</p>
+<p><span class="math display">\[ (I * K)(i,j) = \sum_m \sum_n I(i-m, j-n) K(m,n) \]</span></p></li>
+<li><p>Here:</p>
+<ul>
+<li><span class="math inline">\(I(i,j)\)</span> represents the pixel value at position <span class="math inline">\((i,j)\)</span> in the image.</li>
+<li><span class="math inline">\(K(m,n)\)</span> represents the kernel values.</li>
+<li>The summation runs over the dimensions of the kernel.</li>
+<li>The result <span class="math inline">\((I * K)(i,j)\)</span> gives a new pixel value after applying the filter at that location.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="the-convolution-operation-1" class="slide level2">
 <h2>The Convolution Operation</h2>
 
 <img data-src="images/aminiCV18.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p class="caption">source: MIT Course, http://introtodeeplearning.com/, L3</p><aside class="notes">
@@ -1052,8 +1065,28 @@ Alex Sanchez, Ferran Reverter and Esteban Vegas
           display:block!important;
       }</style></aside>
 </section>
-<section id="the-convolution-operation-1" class="slide level2">
-<h2>The Convolution Operation</h2>
+<section id="visualizing-convolution" class="slide level2">
+<h2>Visualizing Convolution</h2>
+<div class="font80">
+<ul>
+<li><p>Consider a <strong>3×3 kernel</strong> applied to a 5x5 image:</p>
+<p><span class="math display">\[
+I = \begin{bmatrix} x_{11} &amp; x_{12} &amp; \dots &amp; x_{15} \\
+x_{21} &amp; x_{22} &amp; \dots &amp; x_{25} \\
+\dots &amp; \dots &amp; \dots &amp; \dots \\
+x_{51} &amp; x_{52} &amp; \dots &amp; x_{55} \end{bmatrix}, \quad K = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}
+\]</span></p></li>
+<li><p>The kernel slides across the image, performing the weighted sum:</p>
+<ul>
+<li>Multiply corresponding elements.</li>
+<li>Sum the results.</li>
+<li>Store in a new matrix (feature map).</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="visualizing-convolution-1" class="slide level2">
+<h2>Visualizing Convolution</h2>
 <ul>
 <li>Suppose we want to compute the convolution of a 5x5 image and a 3x3 filter.</li>
 </ul>
