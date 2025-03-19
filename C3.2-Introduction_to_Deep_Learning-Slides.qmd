@@ -229,6 +229,237 @@ The hierarchical approach to solve complex problems -especially with unstructure
 
 :::
 
+## Convolutional Neural Networks
+
+- CNNs are specialized for processing grid-like data, such as images.
+
+- They use convolutional layers to detect spatial hierarchies in data.
+
+- Primary use: **Computer vision** (image classification, object detection, segmentation, etc.).
+
+
+## CNNs Architecture
+
+<br>
+
+![CNN Architecture](https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png)
+
+_Source: Wikipedia_
+
+## CNN Models & Applications
+
+- **Models:** LeNet-5, AlexNet, VGG, ResNet, EfficientNet.
+
+- **Applications:**
+
+  - Medical image analysis (tumor detection, X-ray analysis).
+
+  - Facial recognition.
+
+  - Autonomous vehicles (object detection & tracking).
+
+  - Real-time video processing.
+
+
+## Recurrent NNs (RNNs)
+
+- RNNs contain a hidden state, which allows them to retain information from previous time steps.
+
+- RNNs are able to handle *sequential data* by incorporating information from previous inputs. 
+
+- RNNs are effective in capturing short-term dependencies in sequences.
+
+- Long term dependencies aren't managed weel due to vanishing gradient problem.
+
+<!-- - Vanishing gradient problem, where the influence of earlier inputs diminishes exponentially as the sequence progresses, makes it difficult to capture long-term dependencies. -->
+
+
+## RNN Architectures
+
+<br>
+
+![A Recursive Neural Network](images/RNNs.png)
+
+_Source: [From RNNs to Transformers](https://www.baeldung.com/cs/rnns-transformers-nlp)_
+
+## Models & Applications
+
+- **Models:** Vanilla RNNs, Elman Networks, Jordan Networks.
+
+- **Applications:**
+  
+  - Speech recognition.
+  
+  - Handwriting recognition.
+  
+  - Predictive maintenance in industrial applications.
+  
+  - Time series forecasting (financial data, weather prediction).
+
+
+## Long Short-Term Memory (LSTM)
+
+- LSTM Networks improve over traditional RNNs by solving the **vanishing gradient problem**.
+
+- They introduce memory cells that selectively retain important information over long sequences.
+
+- Primary use: **Long-term dependency learning in sequential data.**
+
+
+## LSTM Architecture
+
+<br>
+
+![LSTM Architecture](images/LSTM.png)
+_Source: [From RNNs to Transformers](https://www.baeldung.com/cs/rnns-transformers-nlp)_
+
+## LSTM Models & Applications
+
+- **Models:** Vanilla LSTMs, Bidirectional LSTMs, Attention-based LSTMs.
+
+- **Applications:**
+
+  - Machine translation.
+  - Speech synthesis.
+  - Music generation.
+  - Sentiment analysis.
+
+## Transformers
+
+- Transformers revolutionized deep learning by replacing sequential processing with **self-attention mechanisms**.
+
+- Self-attention allows the model to weigh the importance of different input tokens when making predictions.
+
+- It can capture long-range dependencies without the need for sequential processing. 
+
+- Primary use: **Natural Language Processing (NLP) & Large-scale sequence modeling.**
+
+
+## Transformer Architecture
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Transformer0.png")
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/Transformer1.png")
+```
+
+:::
+
+::::
+
+## Models & Applications
+
+- **Models:** BERT, GPT, T5, Transformer-XL.
+- **Applications:**
+  - Chatbots (ChatGPT, Bard, Bing AI).
+  - Automated text summarization.
+  - Machine translation (Google Translate, DeepL).
+  - Code generation and AI-assisted programming.
+
+## Autoencoders & Variational AEs
+
+::: font80
+
+- Autoencoders learn to **compress and reconstruct** data by reducing input dimensionality and mapping it to a **latent vector** that represents essential features.
+
+- VAEs introduce **probabilistic modeling**, generating latent representations that allow for controlled data synthesis.
+
+  - Unlike traditional autoencoders, VAEs do not map data to a fixed latent vector but  to a **probability distribution**
+  
+  - This enables smoother interpolations and diverse outputs.
+
+- Primary use: **Dimensionality reduction, anomaly detection, and generative modeling.**
+
+  - VAEs particularly useful in generative tasks, such as creating synthetic images or text.
+
+:::
+
+## Autoencoder & VAE Architectures
+
+<br>
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/AE.png")
+```
+
+:::
+
+::: {.column width='50%'}
+
+```{r, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/VAE.png")
+```
+
+:::
+
+::::
+
+_Source: [AE & VE](http://individual.utoronto.ca/xhuang/blog/ae_vae/ae_vae.html)_
+
+
+## Models & Applications
+
+- **Models:** Denoising Autoencoders, Variational Autoencoders (VAEs).
+
+- **Applications:**
+  - Anomaly detection (fraud detection, industrial defect detection).
+
+  - Image denoising and inpainting.
+
+  - Feature extraction and dimensionality reduction.
+
+  - Generating synthetic data.
+
+
+## Generative Adversarial Networks
+
+- GANs consist of two networks: a generator and a discriminator.
+
+- The generator tries to create realistic data, while the discriminator evaluates authenticity.
+
+- Primary use: **Data generation (images, videos, text, and music).**
+
+## GAN Architecture
+
+<br>
+
+![](images/GAN.png)
+
+::: font80
+
+_Source: [Overview of GAN Structure (Google ML Course)](https://developers.google.com/machine-learning/gan/gan_structure)_
+
+:::
+
+## GAN Models & Applications
+
+- **Models:** DCGAN, CycleGAN, StyleGAN, BigGAN.
+
+- **Applications:**
+
+  - Deepfake generation.
+
+  - Super-resolution (enhancing image quality).
+
+  - Data augmentation for training AI models.
+
+  - Synthetic image and text generation.
+
+
 # Approaching Deep Learning through Computer Vision
 
 ## We want computers that can *see*  {.smaller}

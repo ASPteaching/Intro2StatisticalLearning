@@ -6066,5 +6066,281 @@
       "Artificial Neural Networks",
       "Neural Networks (Slides)"
     ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#convolutional-neural-networks-cnns",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#convolutional-neural-networks-cnns",
+    "title": "Introduction to Deep Learning",
+    "section": "Convolutional Neural Networks (CNNs)",
+    "text": "Convolutional Neural Networks (CNNs)\nOverview\n\nCNNs are specialized for processing grid-like data, such as images.\nThey use convolutional layers to detect spatial hierarchies in data.\nPrimary use: Computer vision (image classification, object detection, segmentation, etc.).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#convolutional-neural-networks",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#convolutional-neural-networks",
+    "title": "Introduction to Deep Learning",
+    "section": "Convolutional Neural Networks",
+    "text": "Convolutional Neural Networks\n\nCNNs are specialized for processing grid-like data, such as images.\nThey use convolutional layers to detect spatial hierarchies in data.\nPrimary use: Computer vision (image classification, object detection, segmentation, etc.).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#cnns-architecture",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#cnns-architecture",
+    "title": "Introduction to Deep Learning",
+    "section": "CNNs Architecture",
+    "text": "CNNs Architecture\n\n\nCNN ArchitectureSource: Wikipedia",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#cnn-models-applications",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#cnn-models-applications",
+    "title": "Introduction to Deep Learning",
+    "section": "CNN Models & Applications",
+    "text": "CNN Models & Applications\n\nModels: LeNet-5, AlexNet, VGG, ResNet, EfficientNet.\nApplications:\n\nMedical image analysis (tumor detection, X-ray analysis).\nFacial recognition.\nAutonomous vehicles (object detection & tracking).\nReal-time video processing.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#recurrent-nns-rnns-transformers",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#recurrent-nns-rnns-transformers",
+    "title": "Introduction to Deep Learning",
+    "section": "Recurrent NNs (RNNs) & Transformers",
+    "text": "Recurrent NNs (RNNs) & Transformers\n\nRNNs process sequential data by maintaining a memory of past inputs.\nTransformers improve over RNNs by using attention mechanisms for parallel processing.\nPrimary use: Natural Language Processing (NLP) & Time Series Analysis.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#rnn-transformer-architectures",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#rnn-transformer-architectures",
+    "title": "Introduction to Deep Learning",
+    "section": "RNN & Transformer Architectures",
+    "text": "RNN & Transformer Architectures\n\nRNN vs TransformerSource: Jay Alammar - “The Illustrated Transformer”",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#models-applications",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#models-applications",
+    "title": "Introduction to Deep Learning",
+    "section": "Models & Applications",
+    "text": "Models & Applications\n\nModels: Vanilla RNNs, Elman Networks, Jordan Networks.\nApplications:\n\nSpeech recognition.\nHandwriting recognition.\nPredictive maintenance in industrial applications.\nTime series forecasting (financial data, weather prediction).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#recurrent-nns-rnns",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#recurrent-nns-rnns",
+    "title": "Introduction to Deep Learning",
+    "section": "Recurrent NNs (RNNs)",
+    "text": "Recurrent NNs (RNNs)\n\nRNNs contain a hidden state, which allows them to retain information from previous time steps.\nRNNs are able to handle sequential data by incorporating information from previous inputs.\nRNNs are effective in capturing short-term dependencies in sequences.\nLong term dependencies aren’t managed weel due to vanishing gradient problem.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#rnn-architectures",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#rnn-architectures",
+    "title": "Introduction to Deep Learning",
+    "section": "RNN Architectures",
+    "text": "RNN Architectures\n\n\nA Recursive Neural NetworkSource: From RNNs to Transformers",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#long-short-term-memory-lstm-networks",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#long-short-term-memory-lstm-networks",
+    "title": "Introduction to Deep Learning",
+    "section": "Long Short-Term Memory (LSTM) Networks",
+    "text": "Long Short-Term Memory (LSTM) Networks\n\nLSTMs improve over traditional RNNs by solving the vanishing gradient problem.\nThey introduce memory cells that selectively retain important information over long sequences.\nPrimary use: Long-term dependency learning in sequential data.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#lstm-architecture",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#lstm-architecture",
+    "title": "Introduction to Deep Learning",
+    "section": "LSTM Architecture",
+    "text": "LSTM Architecture\n\n Source: From RNNs to Transformers",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#lstm-models-applications",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#lstm-models-applications",
+    "title": "Introduction to Deep Learning",
+    "section": "LSTM Models & Applications",
+    "text": "LSTM Models & Applications\n\nModels: Vanilla LSTMs, Bidirectional LSTMs, Attention-based LSTMs.\nApplications:\n\nMachine translation.\nSpeech synthesis.\nMusic generation.\nSentiment analysis.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#long-short-term-memory-lstm",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#long-short-term-memory-lstm",
+    "title": "Introduction to Deep Learning",
+    "section": "Long Short-Term Memory (LSTM)",
+    "text": "Long Short-Term Memory (LSTM)\n\nLSTM Networks improve over traditional RNNs by solving the vanishing gradient problem.\nThey introduce memory cells that selectively retain important information over long sequences.\nPrimary use: Long-term dependency learning in sequential data.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#transformers",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#transformers",
+    "title": "Introduction to Deep Learning",
+    "section": "Transformers",
+    "text": "Transformers\n\nTransformers revolutionized deep learning by replacing sequential processing with self-attention mechanisms.\nSelf-attention allows the model to weigh the importance of different input tokens when making predictions.\nIt can capture long-range dependencies without the need for sequential processing.\nPrimary use: Natural Language Processing (NLP) & Large-scale sequence modeling.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#transformer-architecture",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#transformer-architecture",
+    "title": "Introduction to Deep Learning",
+    "section": "Transformer Architecture",
+    "text": "Transformer Architecture",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#transformer-models-applications",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#transformer-models-applications",
+    "title": "Introduction to Deep Learning",
+    "section": "Transformer Models & Applications",
+    "text": "Transformer Models & Applications\n\nModels: BERT, GPT, T5, Transformer-XL.\nApplications:\n\nChatbots (ChatGPT, Bard, Bing AI).\nAutomated text summarization.\nMachine translation (Google Translate, DeepL).\nCode generation and AI-assisted programming.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#models-applications-1",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#models-applications-1",
+    "title": "Introduction to Deep Learning",
+    "section": "Models & Applications",
+    "text": "Models & Applications\n\nModels: BERT, GPT, T5, Transformer-XL.\nApplications:\n\nChatbots (ChatGPT, Bard, Bing AI).\nAutomated text summarization.\nMachine translation (Google Translate, DeepL).\nCode generation and AI-assisted programming.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#generative-adversarial-networks",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#generative-adversarial-networks",
+    "title": "Introduction to Deep Learning",
+    "section": "Generative Adversarial Networks",
+    "text": "Generative Adversarial Networks\n\nGANs consist of two networks: a generator and a discriminator.\nThe generator tries to create realistic data, while the discriminator evaluates authenticity.\nPrimary use: Data generation (images, videos, text, and music).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#gan-architecture",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#gan-architecture",
+    "title": "Introduction to Deep Learning",
+    "section": "GAN Architecture",
+    "text": "GAN Architecture\n\n\n\nSource: Overview of GAN Structure (Google ML Course)",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#gan-models-applications",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#gan-models-applications",
+    "title": "Introduction to Deep Learning",
+    "section": "GAN Models & Applications",
+    "text": "GAN Models & Applications\n\nModels: DCGAN, CycleGAN, StyleGAN, BigGAN.\nApplications:\n\nDeepfake generation.\nSuper-resolution (enhancing image quality).\nData augmentation for training AI models.\nSynthetic image and text generation.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#autoencoders-variational-aes",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#autoencoders-variational-aes",
+    "title": "Introduction to Deep Learning",
+    "section": "Autoencoders & Variational AEs",
+    "text": "Autoencoders & Variational AEs\n\n\nAutoencoders learn to compress and reconstruct data by reducing input dimensionality and mapping it to a latent vector that represents essential features.\nVAEs introduce probabilistic modeling, generating latent representations that allow for controlled data synthesis.\n\nUnlike traditional autoencoders, VAEs do not map data to a fixed latent vector but to a probability distribution\nThis enables smoother interpolations and diverse outputs.\n\nPrimary use: Dimensionality reduction, anomaly detection, and generative modeling.\n\nVAEs particularly useful in generative tasks, such as creating synthetic images or text.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#autoencoder-vae-architectures",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#autoencoder-vae-architectures",
+    "title": "Introduction to Deep Learning",
+    "section": "Autoencoder & VAE Architectures",
+    "text": "Autoencoder & VAE Architectures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: AE & VE",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#models-applications-2",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#models-applications-2",
+    "title": "Introduction to Deep Learning",
+    "section": "Models & Applications",
+    "text": "Models & Applications\n\nModels: Denoising Autoencoders, Variational Autoencoders (VAEs).\nApplications:\n\nAnomaly detection (fraud detection, industrial defect detection).\nImage denoising and inpainting.\nFeature extraction and dimensionality reduction.\nGenerating synthetic data.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
   }
 ]
