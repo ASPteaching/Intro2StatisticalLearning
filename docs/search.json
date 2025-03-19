@@ -64,7 +64,7 @@
     "href": "Ressources.html#neural-networks",
     "title": "References and Ressources",
     "section": "Neural Networks",
-    "text": "Neural Networks\n\nIntroduction to Artificial Neural Networks\nThe Neural network Playground\n\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "text": "Neural Networks\n\nA collection of Deep Learning Tutorials\nThe Neural network Playground\n\n\nCourses\n\nMIT Deep Learning 6.S191\nCoursera: Neural Networs and Deep Learning\n\n\nThis page has been created as Quarto Website project.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
     "crumbs": [
       "Home",
       "Resources",
@@ -562,7 +562,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#session-outline",
     "title": "Introduction to Deep Learning",
     "section": "Session Outline",
-    "text": "Session Outline\n\nTowards Deep learning\nLearning visual features\n \nConvolutional Neural Networks  \nBuilding and Training CNNs  \nApplications of CNNs",
+    "text": "Session Outline\n\nTowards Deep learning\nLearning visual features\n\n\nConvolutional Neural Networks  \nBuilding and Training CNNs  \nApplications of CNNs",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -574,7 +574,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#deep-neural-networks",
     "title": "Introduction to Deep Learning",
     "section": "Deep Neural Networks",
-    "text": "Deep Neural Networks\n\nNeural Networks may have distinct levels of complexity.\n\n\nSource: ‘Deep Learning’ course, by Andrew Ng in Coursera & deeplearning.ai",
+    "text": "Deep Neural Networks\n\nNeural Networks with such structure are called Deep Neural Networks and are characterized by\n\nbuilding progressively, from simple to complex structures,\nlearning increasingly abstract representations at each layer and\ncapturing higher-level concepts beyond individual features.\n\n\n\n\nIf we are able to break the questions down, further and further through multiple layers we end-up working with sub-networks that answer questions so simple they can easily be answered at the level of single pixels.\nThis is done through a series of many layers, with early layers answering very simple and specific questions about the input, and later layers building up a hierarchy of ever more complex and abstract concepts.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -586,7 +586,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#from-shallow-to-deep-nns",
     "title": "Introduction to Deep Learning",
     "section": "From Shallow to Deep NNs",
-    "text": "From Shallow to Deep NNs\n\n“Deep Neural networks” are NNs with several hidden layers.\nThe real shift, from Shallow to Deep NNs, is not (only) the number of layers.\nThe difference comes from realizing that\n\nSome tasks as digit recognition, could be solved decently well using a “brute force” approach\nOther more complex tasks, such as distinguishing a human face in an image, where hard to solve witht that “brute” force approach.\n\nThis is often associated to working with structured vs unstructured data",
+    "text": "From Shallow to Deep NNs\n\n\n“Deep Neural networks” are NNs with several hidden layers.\nReal shift from Shallow to DNNs did not (only) come arrive from noticing that newtorks with more layers were able to perform better, in spite of their huge number of parameters.\nIt mainly arrived by realizing that\n\nWhile some tasks, such as digit recognition, could be solved decently well using a “brute force” approach,\nOther, more complex, such as distinguishing a human face in an image, are hard to solve witht that “brute” force approach.\nBut can be solved using Deep Neural Networks",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -598,7 +598,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#structured-unstructured-data",
     "title": "Introduction to Deep Learning",
     "section": "Structured-Unstructured data",
-    "text": "Structured-Unstructured data\n\n‘Source: Generative Deep Learning. David Foster (Fig. 2.1)’",
+    "text": "Structured-Unstructured data\n\nProblems that can be better solved using DNNs are often associated with non-structured data.\n\n\n‘Source: Generative Deep Learning. David Foster (Fig. 2.1)’\nShows Tabular Data vs Images/Sound/Video as non structured",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -610,7 +610,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#images-are-unstructured-data",
     "title": "Introduction to Deep Learning",
     "section": "Images are unstructured data",
-    "text": "Images are unstructured data\nTask: Distinguish human from non-human in an image\n\nSource: ‘Neural Networkls and Deep Learning’ course, by Michael Nielsen",
+    "text": "Images are unstructured data\nTask: Distinguish human from non-human in an image\n\nSource: ‘Neural Networkls and Deep Learning’ course, by Michael Nielsen\nShows three image, a kanguro, a child a starry sky",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -634,7 +634,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#a-hierarchy-of-complexity",
     "title": "Introduction to Deep Learning",
     "section": "A hierarchy of complexity",
-    "text": "A hierarchy of complexity\n\nSource: ‘Deep Learning’ course, by Andrew Ng in Coursera & deeplearning.ai",
+    "text": "A hierarchy of complexity\n\nSource: ‘Deep Learning’ course, by Andrew Ng in Coursera & deeplearning.ai\nA hierarchy of image fragments to approach image recognition: (1) We start by trying to find edges in the figure (2) In the parts with edges look around to find face pieces, a nose, an eye, an eyebrow etc. (3) As pices are located, look for their optimal combination in faces.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -646,7 +646,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#a-hierarchy-of-complexity-1",
     "title": "Introduction to Deep Learning",
     "section": "A hierarchy of complexity",
-    "text": "A hierarchy of complexity\n\nEach layer has a more complex task, but it receives better information.\n\nIf we can solve the sub-problems using ANNs,\nPerhaps we can build a neural network for face-detection, by combining the networks for the sub-problems.\n\n\n\n\n\nNetworks with this kind of many-layer structure - two or more hidden layers - are called deep neural networks.",
+    "text": "A hierarchy of complexity\n\nEach layer has a more complex task, but it receives better information.\n\nIf we can solve the sub-problems using ANNs,\nWe may be able to combine those NNs into a bigger network to solve the problem, here face-detection.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -658,7 +658,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#automatic-tuning",
     "title": "Introduction to Deep Learning",
     "section": "Automatic tuning",
-    "text": "Automatic tuning\n\nIn order for these networks to succeed it is important not having to hand-craft the complicated structure of weights and biases required for such hierarchy of layers and functions.\nIn 2006 techniques enabling learning in Deep Neural Nets (DNNs) were developed.\nThese were based on stochastic gradient descent and backpropagation, but also introduce new ideas.\nEquiped with such techniques, DNNs perform much better on many problems than shallow NNs.",
+    "text": "Automatic tuning\n\n\nThe success of Deep Neural Networks (DNNs) is largely due to their ability to automatically learn and adjust the complex hierarchy of representations, without requiring handcrafted feature extraction or manual tuning of weights and biases.\nShift from manual feature engineering to automatic tuning enabled by new or improved techniques such as:\n\nStochastic Gradient Descent (SGD) and Backpropagation: Allow learning optimal parameters through iterative updates.\nBetter Weight Initialization (e.g., Xavier/He initialization): Improve convergence and training stability.\nRegularization techniques (Dropout, Batch Normalization, L2 penalties): Prevent overfitting and stabilized learning.\n\n\n\n\n\nExplicación de “Handcrafted Features” vs. “Automatic Tuning” En los modelos tradicionales de Machine Learning, el éxito dependía en gran medida del diseño manual de características relevantes (features). Este proceso, conocido como Feature Engineering, requería expertos en el dominio del problema que diseñaban y seleccionaban manualmente qué información del conjunto de datos debía ser usada.\n\nEjemplos:\nEn visión por computador, antes de Deep Learning, se usaban métodos como SIFT (Scale-Invariant Feature Transform) o HOG (Histogram of Oriented Gradients) para detectar bordes y texturas en imágenes antes de pasarlas a un clasificador como SVM o Random Forest. En procesamiento de lenguaje natural (NLP), se usaban métodos como TF-IDF o Bag of Words, donde se contaban palabras en un texto sin capturar relaciones sintácticas complejas. Con el Deep Learning:\nEn lugar de diseñar manualmente estas características, las redes neuronales profundas aprenden a extraer automáticamente patrones jerárquicos de los datos mediante su arquitectura en capas. En visión por computador, redes convolucionales (CNNs) aprenden automáticamente desde bordes simples hasta estructuras de alto nivel como caras o objetos enteros. En NLP, Word Embeddings y Transformers han reemplazado los métodos tradicionales, permitiendo que los modelos aprendan el significado de palabras y frases en contexto.",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -670,7 +670,7 @@
     "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#shallow-vs-deep-nns",
     "title": "Introduction to Deep Learning",
     "section": "Shallow vs Deep NNs",
-    "text": "Shallow vs Deep NNs\n\nSource: ‘Deep Learning’ course, by Andrew Ng in Coursera & deeplearning.ai",
+    "text": "Shallow vs Deep NNs\n\nSource: ‘Deep Learning’ course, by Andrew Ng in Coursera & deeplearning.ai\nThe image depicts two figures: - Above (Traditional ML): A cat image -&gt; Handcrafted features –&gt; Learned Classifier–&gt; “Cat” - Below (Deep End-to-End Learning): A cat image -&gt; Learned low-level features –&gt; Learned mid-level features –&gt; Learned high-level features –&gt;Learned Classifier–&gt; “Cat”",
     "crumbs": [
       "Home",
       "Artificial Neural Networks",
@@ -5946,5 +5946,125 @@
     "title": "Prediction with (shallow) Neural Networks",
     "section": "",
     "text": "Code\nroundedresults&lt;-sapply(results,round,digits=0)\nroundedresultsdf=data.frame(roundedresults)\nattach(roundedresultsdf)\ntable(actual,prediction)\n\n\n      prediction\nactual  0  1\n     0 35  1\n     1  7 24\n\n\nThe caret package can be used to provide a better confusion matrix.\n\n\nCode\n# Round predictions to obtain binary values (0 or 1)\nroundedresults &lt;- sapply(results, round, digits=0)\nroundedresultsdf &lt;- data.frame(roundedresults)\n\n# Convert variables to factors for proper processing in `caret`\nroundedresultsdf$actual &lt;- as.factor(roundedresultsdf$actual)\nroundedresultsdf$prediction &lt;- as.factor(roundedresultsdf$prediction)\n\n# Load caret package (install if not available)\nif (!require(caret)) install.packages(\"caret\", dependencies=TRUE)\nlibrary(caret)\n\n# Generate confusion matrix with advanced metrics\nconf_matrix &lt;- confusionMatrix(roundedresultsdf$prediction, roundedresultsdf$actual)\n\n# Print the confusion matrix and performance metrics\nprint(conf_matrix)\n\n\nConfusion Matrix and Statistics\n\n          Reference\nPrediction  0  1\n         0 35  7\n         1  1 24\n                                         \n               Accuracy : 0.8806         \n                 95% CI : (0.7782, 0.947)\n    No Information Rate : 0.5373         \n    P-Value [Acc &gt; NIR] : 1.956e-09      \n                                         \n                  Kappa : 0.7566         \n                                         \n Mcnemar's Test P-Value : 0.0771         \n                                         \n            Sensitivity : 0.9722         \n            Specificity : 0.7742         \n         Pos Pred Value : 0.8333         \n         Neg Pred Value : 0.9600         \n             Prevalence : 0.5373         \n         Detection Rate : 0.5224         \n   Detection Prevalence : 0.6269         \n      Balanced Accuracy : 0.8732         \n                                         \n       'Positive' Class : 0"
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#dnns-may-perform-better",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#dnns-may-perform-better",
+    "title": "Introduction to Deep Learning",
+    "section": "DNNs may perform better",
+    "text": "DNNs may perform better",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#from-ann-to-deep-learning",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#from-ann-to-deep-learning",
+    "title": "Introduction to Deep Learning",
+    "section": "From ANN to Deep learning",
+    "text": "From ANN to Deep learning\n\nWhy Deep Learning Now?\nSource: Alex Amini’s MIT Introduction to Deep Learning’ course\n\n\n3 changes that impulsed the rise of Deep Learning: 1.Big Data, 2-GPUs (Hardware) 3-Software (Optimizers, TensorFlow, …)",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#shallow-neural-networks-limitations",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#shallow-neural-networks-limitations",
+    "title": "Introduction to Deep Learning",
+    "section": "Shallow Neural Networks limitations",
+    "text": "Shallow Neural Networks limitations\n\n\nShallow Networks are successful at solving many problems\nBut they are not free from limitations:\n\nLimited ability to model complex patterns.\nStruggle to capture non-linear relationships\nLimited expressiveness for tasks like image recognition and natural language processing.\nProne to overfiting with small datasets\nInability to learn hierarchichal features",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#shallow-nns-limitations",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#shallow-nns-limitations",
+    "title": "Introduction to Deep Learning",
+    "section": "Shallow NNs limitations",
+    "text": "Shallow NNs limitations\n\n\nShallow Networks are successful at solving many problems\nBut they are not free from limitations:\n\nLimited ability to model complex patterns.\nStruggle to capture non-linear relationships\nLimited expressiveness for tasks like image recognition and natural language processing.\nProne to overfiting with small datasets\nInability to learn hierarchichal features",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#from-ann-to-deep-learning-1",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#from-ann-to-deep-learning-1",
+    "title": "Introduction to Deep Learning",
+    "section": "From ANN to Deep learning",
+    "text": "From ANN to Deep learning\n\nWhy Deep Learning Now?\nSource: Alex Amini’s MIT Introduction to Deep Learning’ course",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#neural-networks",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#neural-networks",
+    "title": "Introduction to Deep Learning",
+    "section": "Neural Networks",
+    "text": "Neural Networks\n\nANNs may have distinct levels of complexity.\n\n\nSource: ‘Deep Learning’ course, by Andrew Ng in Coursera & deeplearning.ai\nShow several ANNs, from a logistic regression (perceptron), to 1, 2 and 5 multilayer NNs",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#fexample-face-recognition",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#fexample-face-recognition",
+    "title": "Introduction to Deep Learning",
+    "section": "FExample: Face recognition",
+    "text": "FExample: Face recognition\n\nCan be attacked similarly to the digit identification,\nCost of training would be much higher.\nAlternatively: try to solve the problem hierarchically.\n\nWe start by trying to find edges in the figure\nIn the parts with edges look around to find face pieces, a nose, an eye, an eyebrow …\nAs pices are located, look for their optimal combination.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#deep-learning-architectures",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#deep-learning-architectures",
+    "title": "Introduction to Deep Learning",
+    "section": "Deep Learning Architectures",
+    "text": "Deep Learning Architectures\n\nThe hierarchical approach to solve complex problems -especially with unstructured data- leads to the development of diverse deep learning architectures, each designed to tackle specific challenges.\n\nConvolutional Neural Networks (CNNs) for image and spatial data processing.\n\nRecurrent Neural Networks (RNNs) & Transformers for sequential data: time series, natural language processing.\n\nAutoencoders & Variational Autoencoders (VAEs): for unsupervised learning, anomaly detection, and data compression.\n\nGenerative Adversarial Networks (GANs) For generating realistic synthetic data including: images, text, and audio.\n\nGraph Neural Networks (GNNs): to process relational and structured data, such as social networks and molecular structures.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.2-Introduction_to_Deep_Learning-Slides.html#example-face-recognition",
+    "href": "C3.2-Introduction_to_Deep_Learning-Slides.html#example-face-recognition",
+    "title": "Introduction to Deep Learning",
+    "section": "Example: Face recognition",
+    "text": "Example: Face recognition\n\nCan be attacked similarly to the digit identification,\nCost of training would be much higher.\nAlternatively: try to solve the problem hierarchically.\n\nWe start by trying to find edges in the figure\nIn the parts with edges look around to find face pieces, a nose, an eye, an eyebrow …\nAs pieces are located, look for their optimal combination.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Deep Learning (Slides)"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#python-ann-example",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#python-ann-example",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Python ANN example",
+    "text": "Python ANN example\n\nLab Lab-C3.1-IrisANN-Modular contains a detailed example and a Python notebook on building a NN from scratch.\nLab Lab-C3.1-Dividend Prediction shows how to use R to build and use a Neural network.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks (Slides)"
+    ]
   }
 ]

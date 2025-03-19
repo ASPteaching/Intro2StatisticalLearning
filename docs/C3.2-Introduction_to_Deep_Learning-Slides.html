@@ -404,95 +404,248 @@ Alex Sanchez, Ferran Reverter and Esteban Vegas
 </div>
 
 </section>
-<section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
-
-</section>
-<section id="session-outline" class="slide level2 scrollable">
-<h2>Session Outline</h2>
-<ol type="1">
-<li><p>Towards Deep learning</p></li>
-<li><p>Learning visual features</p>
-<p><!-- Convolution and Padding --> <!-- Filters, Strides, and Channels --></p></li>
-<li><p>Convolutional Neural Networks <!-- Max Pooling and Average Pooling --> <!-- Downsampling and Translation Invariance --></p></li>
-<li><p>Building and Training CNNs <!-- Architecture Design and Hyperparameter Tuning --> <!-- Transfer Learning and Fine-Tuning --></p></li>
-<li><p>Applications of CNNs <!-- Object Detection and Segmentation --> <!-- Image Classification and Captioning --> <!-- Face Recognition and Style Transfer --></p></li>
-</ol>
-</section>
-<section id="deep-neural-networks" class="slide level2 smaller">
-<h2>Deep Neural Networks</h2>
+<section id="neural-networks" class="slide level2">
+<h2>Neural Networks</h2>
 <ul>
-<li>Neural Networks may have distinct levels of <em>complexity</em>.</li>
+<li>ANNs may have distinct levels of <em>complexity</em>.</li>
 </ul>
 
-<img data-src="images/Shallow2Deep_NN.png" width="526" class="r-stretch quarto-figure-center"><p class="caption">Source: ‘Deep Learning’ course, by Andrew Ng in Coursera &amp; deeplearning.ai</p></section>
-<section id="from-shallow-to-deep-nns" class="slide level2 smaller">
+<img data-src="images/Shallow2Deep_NN.png" width="526" class="r-stretch quarto-figure-center"><p class="caption">Source: ‘Deep Learning’ course, by Andrew Ng in Coursera &amp; deeplearning.ai</p><aside class="notes">
+<p>Show several ANNs, from a logistic regression (perceptron), to 1, 2 and 5 multilayer NNs</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="shallow-nns-limitations" class="slide level2">
+<h2>Shallow NNs limitations</h2>
+<div class="font80">
+<ul>
+<li><p>Shallow Networks are successful at solving many problems</p></li>
+<li><p>But they are not free from limitations:</p>
+<ul>
+<li><p>Limited ability to model complex patterns.</p></li>
+<li><p>Struggle to capture non-linear relationships</p></li>
+<li><p>Limited expressiveness for tasks like image recognition and natural language processing.</p></li>
+<li><p>Prone to overfiting with small datasets</p></li>
+<li><p>Inability to learn hierarchichal features</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="from-ann-to-deep-learning" class="slide level2">
+<h2>From ANN to Deep learning</h2>
+
+<img data-src="images/WhyDLNow.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Why Deep Learning Now?</p><div class="font90">
+<p>Source: <a href="introtodeeplearning.com">Alex Amini’s MIT Introduction to Deep Learning’ course</a></p>
+</div>
+<aside class="notes">
+<p>3 changes that impulsed the rise of Deep Learning: 1.Big Data, 2-GPUs (Hardware) 3-Software (Optimizers, TensorFlow, …)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="from-shallow-to-deep-nns" class="slide level2">
 <h2>From Shallow to Deep NNs</h2>
+<div class="font80">
 <ul>
 <li><p>“Deep Neural networks” are NNs with several hidden layers.</p></li>
-<li><p>The real shift, from Shallow to Deep NNs, is not (only) the number of layers.</p></li>
-<li><p>The difference comes from realizing that</p>
+<li><p>Real shift from Shallow to DNNs did not (only) come arrive from noticing that newtorks with more layers were able to perform better, in spite of their huge number of parameters.</p></li>
+<li><p>It mainly arrived by realizing that</p>
 <ul>
-<li>Some tasks as digit recognition, could be solved decently well using a “brute force” approach</li>
-<li>Other more complex tasks, such as distinguishing a human face in an image, where hard to solve witht that “brute” force approach.</li>
+<li><p>While some tasks, such as digit recognition, could be solved decently well using a “brute force” approach,</p></li>
+<li><p>Other, more complex, such as distinguishing a human face in an image, are hard to solve witht that “brute” force approach.</p></li>
+<li><p>But can be solved using Deep Neural Networks</p></li>
 </ul></li>
-<li><p>This is often associated to working with <em>structured</em> vs <em>unstructured</em> data</p></li>
 </ul>
+</div>
 </section>
 <section id="structured-unstructured-data" class="slide level2">
 <h2>Structured-Unstructured data</h2>
+<ul>
+<li>Problems that can be better solved using DNNs are often associated with non-structured data.</li>
+</ul>
 
-<img data-src="images/structuredVsUnstructuredData.png" width="331" class="r-stretch quarto-figure-center"><p class="caption">‘Source: Generative Deep Learning. David Foster (Fig. 2.1)’</p></section>
+<img data-src="images/structuredVsUnstructuredData.png" width="331" class="r-stretch quarto-figure-center"><p class="caption">‘Source: Generative Deep Learning. David Foster (Fig. 2.1)’</p><aside class="notes">
+<p>Shows Tabular Data vs Images/Sound/Video as non structured</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="images-are-unstructured-data" class="slide level2">
 <h2>Images are unstructured data</h2>
 <p><em>Task: Distinguish human from non-human in an image</em></p>
 
-<img data-src="images/HumanvsNonHuman.png" width="308" class="r-stretch quarto-figure-center"><p class="caption">Source: ‘Neural Networkls and Deep Learning’ course, by Michael Nielsen</p></section>
-<section id="face-recognition-problem" class="slide level2 smaller">
-<h2>Face recognition problem</h2>
+<img data-src="images/HumanvsNonHuman.png" width="308" class="r-stretch quarto-figure-center"><p class="caption">Source: ‘Neural Networkls and Deep Learning’ course, by Michael Nielsen</p><aside class="notes">
+<p>Shows three image, a kanguro, a child a starry sky</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-face-recognition" class="slide level2">
+<h2>Example: Face recognition</h2>
 <ul>
-<li><p>This can be attacked as the digit recognition problem (output of “yes” and “no”), although the cost of training the network would be much higher.</p></li>
-<li><p>An alternative approach may be to try to solve the problem hierarchically.</p>
+<li><p>Can be attacked similarly to the digit identification,</p></li>
+<li><p>Cost of training would be <em>much higher</em>.</p></li>
+<li><p>Alternatively: try to solve the problem <em>hierarchically</em>.</p>
 <ul>
-<li>We start by tying to find edges in the figure</li>
-<li>In the parts with edges we “look around” to find face pieces, a nose, an eye, an eyebrow …</li>
-<li>As we locate the pieces we look for their optimal combination.</li>
+<li>We start by <em>trying to find edges</em> in the figure</li>
+<li>In the parts with edges <em>look around</em> to find face pieces, a nose, an eye, an eyebrow …</li>
+<li>As pieces are located, look for their <em>optimal combination</em>.</li>
 </ul></li>
 </ul>
 </section>
 <section id="a-hierarchy-of-complexity" class="slide level2">
 <h2>A hierarchy of complexity</h2>
 
-<img data-src="images/FaceRecognitionIntuiotion.png" width="332" class="r-stretch quarto-figure-center"><p class="caption">Source: ‘Deep Learning’ course, by Andrew Ng in Coursera &amp; deeplearning.ai</p></section>
+<img data-src="images/FaceRecognitionIntuiotion.png" width="332" class="r-stretch quarto-figure-center"><p class="caption">Source: ‘Deep Learning’ course, by Andrew Ng in Coursera &amp; deeplearning.ai</p><aside class="notes">
+<p>A hierarchy of image fragments to approach image recognition: (1) We start by <em>trying to find edges</em> in the figure (2) In the parts with edges <em>look around</em> to find face pieces, a nose, an eye, an eyebrow etc. (3) As pices are located, look for their <em>optimal combination</em> in faces.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="a-hierarchy-of-complexity-1" class="slide level2">
 <h2>A hierarchy of complexity</h2>
 <ul>
-<li>Each layer has a more complex task, but it receives better information.
+<li><p>Each layer has a more complex task, but it receives better information.</p>
 <ul>
-<li>If we can solve the sub-problems using ANNs,</li>
-<li>Perhaps we can build a neural network for face-detection, by combining the networks for the sub-problems.</li>
+<li><p>If we can solve the sub-problems using ANNs,</p></li>
+<li><p>We may be able <em>to combine those NNs into a bigger network</em> to solve the problem, here face-detection.</p></li>
 </ul></li>
 </ul>
-<!-- - If we are able to break the questions down, further and further through multiple layers we end-up working with sub-networks that answer questions so simple they can easily be answered at the level of single pixels.  -->
-<!-- - This is done through a series of many layers, with early layers answering very simple and specific questions about the input, and later layers building up a hierarchy of ever more complex and abstract concepts.  -->
-<ul>
-<li>Networks with this kind of many-layer structure - two or more hidden layers - are called <em>deep neural networks</em>.</li>
-</ul>
 </section>
-<section id="automatic-tuning" class="slide level2">
-<h2>Automatic tuning</h2>
+<section id="deep-neural-networks" class="slide level2">
+<h2>Deep Neural Networks</h2>
 <ul>
-<li><p>In order for these networks to succeed it is important not having to hand-craft the complicated structure of weights and biases required for such hierarchy of layers and functions.</p></li>
-<li><p>In 2006 techniques enabling learning in Deep Neural Nets (DNNs) were developed.</p></li>
-<li><p>These were based on stochastic gradient descent and backpropagation, but also introduce new ideas.</p></li>
-<li><p>Equiped with such techniques, DNNs perform much better on many problems than shallow NNs.</p></li>
+<li>Neural Networks with such structure are called <em>Deep Neural Networks</em> and are characterized by
+<ul>
+<li><em>building progressively</em>, from simple to complex structures,</li>
+<li><em>learning increasingly abstract representations at each layer</em> and</li>
+<li><em>capturing higher-level concepts beyond individual features</em>.</li>
+</ul></li>
 </ul>
+<aside class="notes">
+<ul>
+<li><p>If we are able to break the questions down, further and further through multiple layers we end-up working with sub-networks that answer questions so simple they can easily be answered at the level of single pixels.</p></li>
+<li><p>This is done through a series of many layers, with early layers answering very simple and specific questions about the input, and later layers building up a hierarchy of ever more complex and abstract concepts.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="automatic-tuning" class="slide level2 scrollable">
+<h2>Automatic tuning</h2>
+<div class="font80">
+<ul>
+<li><p>The success of Deep Neural Networks (DNNs) is largely due to their <em>ability to automatically learn and adjust the complex hierarchy of representations</em>, without requiring handcrafted feature extraction or manual tuning of weights and biases.</p></li>
+<li><p>Shift from manual feature engineering to automatic tuning enabled by new or improved techniques such as:</p>
+<ul>
+<li><p><strong>Stochastic Gradient Descent (SGD) and Backpropagation</strong>: Allow learning optimal parameters through iterative updates.</p></li>
+<li><p><strong>Better Weight Initialization</strong> (e.g., <em>Xavier/He initialization</em>): Improve convergence and training stability.</p></li>
+<li><p><strong>Regularization techniques</strong> (<em>Dropout, Batch Normalization, L2 penalties</em>): Prevent overfitting and stabilized learning.</p></li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<ol start="2" type="1">
+<li>Explicación de “Handcrafted Features” vs.&nbsp;“Automatic Tuning” En los modelos tradicionales de Machine Learning, el éxito dependía en gran medida del diseño manual de características relevantes (features). Este proceso, conocido como Feature Engineering, requería expertos en el dominio del problema que diseñaban y seleccionaban manualmente qué información del conjunto de datos debía ser usada.</li>
+</ol>
+<p>Ejemplos:</p>
+<p>En visión por computador, antes de Deep Learning, se usaban métodos como SIFT (Scale-Invariant Feature Transform) o HOG (Histogram of Oriented Gradients) para detectar bordes y texturas en imágenes antes de pasarlas a un clasificador como SVM o Random Forest. En procesamiento de lenguaje natural (NLP), se usaban métodos como TF-IDF o Bag of Words, donde se contaban palabras en un texto sin capturar relaciones sintácticas complejas. Con el Deep Learning:</p>
+<p>En lugar de diseñar manualmente estas características, las redes neuronales profundas aprenden a extraer automáticamente patrones jerárquicos de los datos mediante su arquitectura en capas. En visión por computador, redes convolucionales (CNNs) aprenden automáticamente desde bordes simples hasta estructuras de alto nivel como caras o objetos enteros. En NLP, Word Embeddings y Transformers han reemplazado los métodos tradicionales, permitiendo que los modelos aprendan el significado de palabras y frases en contexto.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="shallow-vs-deep-nns" class="slide level2">
 <h2>Shallow vs Deep NNs</h2>
 
-<img data-src="images/ShallowVSDeepNN.png" width="418" class="r-stretch quarto-figure-center"><p class="caption">Source: ‘Deep Learning’ course, by Andrew Ng in Coursera &amp; deeplearning.ai</p></section></section>
+<img data-src="images/ShallowVSDeepNN.png" width="418" class="r-stretch quarto-figure-center"><p class="caption">Source: ‘Deep Learning’ course, by Andrew Ng in Coursera &amp; deeplearning.ai</p><aside class="notes">
+<p>The image depicts two figures: - Above (Traditional ML): A cat image -&gt; Handcrafted features –&gt; Learned Classifier–&gt; “Cat” - Below (Deep End-to-End Learning): A cat image -&gt; Learned low-level features –&gt; Learned mid-level features –&gt; Learned high-level features –&gt;Learned Classifier–&gt; “Cat”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="deep-learning-architectures" class="slide level2">
+<h2>Deep Learning Architectures</h2>
+<div class="font80">
+<p>The hierarchical approach to solve complex problems -especially with unstructured data- leads to the development of diverse deep learning architectures, each designed to tackle specific challenges.</p>
+<ul>
+<li><strong>Convolutional Neural Networks (CNNs)</strong> for image and spatial data processing.<br>
+</li>
+<li><strong>Recurrent Neural Networks (RNNs) &amp; Transformers</strong> for sequential data: time series, natural language processing.<br>
+</li>
+<li><strong>Autoencoders &amp; Variational Autoencoders (VAEs)</strong>: for unsupervised learning, anomaly detection, and data compression.<br>
+</li>
+<li><strong>Generative Adversarial Networks (GANs)</strong> For generating realistic synthetic data including: images, text, and audio.<br>
+</li>
+<li><strong>Graph Neural Networks (GNNs)</strong>: to process relational and structured data, such as social networks and molecular structures.</li>
+</ul>
+</div>
+</section>
 <section>
 <section id="approaching-deep-learning-through-computer-vision" class="title-slide slide level1 center">
 <h1>Approaching Deep Learning through Computer Vision</h1>
