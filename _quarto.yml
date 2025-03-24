@@ -21,40 +21,44 @@ website:
           - href: index.qmd
             text: Home
           - href: C0-Intro2StatLearn-PD_AS.qmd
-            text: Course presentation (Slides)
+            text: Course presentation
           - href: C1.1-SupervisedLearning-PD_AS.qmd
-            text: Overview of Supervised Learning (Slides)
+            text: Supervised Learning
           - href: C1.2-Model_validation_and_Resampling.qmd
-            text: Model Validation and Resampling (Slides)
+            text: Validation and Resampling
+          - href: Lab-C1.1-knn.Rmd
+            text: Lab-C1.1-KNN
 
       - section: "Tree-based Methods"
         contents:
           - href: C2.1-DecisionTrees-Slides.qmd
-            text: Decision Trees (Slides)
-          - href: labs/CART-Examples.html
-            text: Classification and Regression Trees (Lab)
-          - href: labs/Lab-C2.3-Py-ISLch08-baggboost.ipynb
-            text: Decision Trees Lab (Python)
+            text: Decision Trees
+          - href: labs/Lab-C2.1-CART.Rmd
+            text: Lab-C2.1-CART (R)
+          - href: labs/Lab-C2.2-Py-ISLch08-baggboost.ipynb
+            text: Lab-C2.2-CART (from ISLR) (Python)
 
       - section: "Ensemble Methods"
         contents:
           - href: C2.2-Ensemble_Methods-Slides.qmd
-            text: Ensemble Methods (Slides)
-          - href: labs/Lab-C.2.4-Ensembles-1RF.qmd
-            text: Random Forest Lab
-          - href: labs/Lab-C.2.4-Boosting.qmd
-            text: Boosting Lab
-          - href: labs/Lab-C.2.4b-BoostingOptimization.qmd
-            text: Boosting Optimization Lab
+            text: Ensemble Methods
+          - href: labs/Lab-C2.3-Random_Forests.qmd
+            text: Lab -C2.3-Random Forest
+          - href: labs/Lab-C2.4-Boosting.qmd
+            text: Lab-C2.4-Boosting
+          - href: labs/Lab-C2.5-The-caret_package.qmd
+            text: Lab-C2.5-Caret
 
       - section: "Artificial Neural Networks"
         contents:
           - href: C3.1-Introduction_to_ANN-Slides.qmd
-            text: Neural Networks (Slides)
+            text: Neural Networks
           - href: C3.1b-Introduction_to_Keras_and_Scikit-Learn-Slides.qmd
-            text: C3.1b-Introduction to Keras and Scikit-Learn for ANN
+            text: Keras and Scikit-Learn
           - href: C3.2-Introduction_to_Deep_Learning-Slides.qmd
-            text: Deep Learning (Slides)
+            text: Deep Learning
+          - href: C3.3-C3.3-Convolutional_Neural_Networks-Slides.qmd
+            text: Convolutional Neural Networks
           - href: labs/Lab-C3.1b-IrisANN-Modular.ipynb
             text: Species Classification with ANN Lab (Python)
           - href: labs/Lab-C3.1b-IrisANN-Training-ScikitLearn.ipynb
