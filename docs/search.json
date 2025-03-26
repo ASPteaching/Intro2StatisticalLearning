@@ -661,5 +661,125 @@
       "Introduction",
       "Home"
     ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "Keras is an open-source software library that provides a Python interface for artificial neural networks. It works with TensorFlow, JAX, and PyTorch interchangeably.\nKeras, as a high level library, allows to easily define complex ANN architectures to experiment on your data. Keras also supports GPU, which becomes essential for processing huge amount of data and developing machine learning models.\nAmong Keras characteristics that make it an attractive option for DL are: - User friendly, with a simple, consistent interface optimized for common use cases - Modular and Composable, with easy to connect configutrable building-blocks - Easy to extend, adding new moduels and classes\n\n\n\nKeras runs on top of TensorFlow, which can be installed using pip:\npip install tensorflow\nOnce TensorFlow is installed, Keras can be accessed directly as tensorflow.keras.\n\n\nStarting with Keras 3, the Keras API supports running the same code with different computation engines called backends. You can choose between:\n\n\"tensorflow\" → uses TensorFlow as the backend.\n\"jax\" → uses JAX, a high-performance numerical computing library from Google.\n\"torch\" → uses PyTorch as the backend.\n\n\n\n\nThe backend is the engine that performs the mathematical operations and model training. In earlier versions, Keras relied only on TensorFlow (via tensorflow.keras). Now, you can switch backends without changing your model code.\n\n\n\nIt means that the code you write using keras.Model, keras.layers.Dense, etc., works the same regardless of the backend. You can swap the backend and the entire notebook will still run without changes.\n\n\n\nYou can set the backend in your script using:\nimport keras\nkeras.config.set_backend(\"tensorflow\")  # or \"jax\" or \"torch\"\n\n\n## The problem to solve\n\nIn this lab we build a simple Convolutional Neural Network to classify images using the\nCIFAR-10 dataset.\n\nThe CIFAR-10 dataset is a collection of images commonly used for training machine learning and computer vision models.\n\nIt consists of 60000 color images divided into 10 different classes. Each image is 32 by 32 pixels in size and has three color channels red, green, and blue.\n\nThe dataset is split into 50000 training images and 10000 test images.\n\nThe 10 classes represent different object categories:\nairplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck.\n\nCIFAR-10 is widely used as a benchmark for image classification tasks due to its manageable size and variety of image content.\n\n## Keras Workflow Overview\n\nKeras follows a simple and consistent workflow that makes it easy to build and train deep learning models. Below are the typical steps you will follow when working with Keras:\n\n1. **Importing libraries and loading data**  \n   Load and preprocess the dataset, including normalization and label encoding if needed.\n\n2. **Defining the model**  \n   Choose the model architecture using either the Sequential or Functional API, and add layers.\n\n3. **Compiling the model**  \n   Specify the loss function, optimizer, and evaluation metrics.\n\n4. **Training the model**  \n   Use the `fit()` method to train the model with training data. You can also include validation data, callbacks, and early stopping.\n\n5. **Evaluating the model**  \n   Use the `evaluate()` method to measure performance on a test set.\n\n6. **Making predictions**  \n   Use the `predict()` method on new or unseen data.\n\n7. **Saving and loading the model**  \n   Save your trained model to reuse later or deploy it in production.\n\n8. **(Optional) Tuning and visualization**  \n   Monitor training progress with plots or tools like TensorBoard, and tune hyperparameters for better performance.\n\n## Step 1a: Import Libraries\n\n::: {#5de7e855 .cell}\n``` {.python .cell-code}\nimport tensorflow as tf\nfrom tensorflow.keras import layers, models\nfrom tensorflow.keras.datasets import cifar10\nfrom tensorflow.keras.utils import to_categorical\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport os\nimport datetime\n:::\n## Step 1b: Load Data\n\n\n# Load CIFAR-10 dataset\n(x_train, y_train), (x_test, y_test) = cifar10.load_data()\n\n# Normalize pixel values to the range [0, 1]\nx_train, x_test = x_train / 255.0, x_test / 255.0\n\n# Convert class labels to one-hot encoding\ny_train_cat = to_categorical(y_train, 10)\ny_test_cat = to_categorical(y_test, 10)\n\nNameError: name 'cifar10' is not defined\n\n\n\n\n\n\nWe define a simple convolutional neural network using the Keras Sequential API. The model includes convolutional and pooling layers, followed by dense layers.\n\nmodel = models.Sequential([\n    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),\n    layers.MaxPooling2D((2, 2)),\n\n    layers.Conv2D(64, (3, 3), activation='relu'),\n    layers.MaxPooling2D((2, 2)),\n\n    layers.Conv2D(64, (3, 3), activation='relu'),\n\n    layers.Flatten(),\n    layers.Dense(64, activation='relu'),\n    layers.Dense(10, activation='softmax')  # 10 classes\n])\n\n\n\n\nWe compile the model using the Adam optimizer, categorical crossentropy loss (since we have multiple classes), and accuracy as our evaluation metric.\n\nmodel.compile(optimizer='adam',\n              loss='categorical_crossentropy',\n              metrics=['accuracy'])\n\n\n\n\nWe add: - EarlyStopping to prevent overfitting. - ModelCheckpoint to save the best model. - TensorBoard to visualize training metrics.\n\nlog_dir = os.path.join(\"logs\", datetime.datetime.now().strftime(\"%Y%m%d-%H%M%S\"))\ntensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)\n\nearly_stop = tf.keras.callbacks.EarlyStopping(patience=3, restore_best_weights=True)\n\ncheckpoint = tf.keras.callbacks.ModelCheckpoint(\n    \"best_cifar10_model.keras\", save_best_only=True, monitor=\"val_accuracy\"\n)\n\n\n\n\nWe train the model using the fit method with a validation split, and apply the callbacks we defined earlier.\n\nhistory = model.fit(\n    x_train, y_train_cat,\n    epochs=20,\n    batch_size=64,\n    validation_split=0.1,\n    callbacks=[tensorboard_callback, early_stop, checkpoint],\n    verbose=2\n)\n\n# Save the trained model for further use\nmodel.save(\"cnn_cifar10_model.keras\")\n\n\nEpoch 1/20\n704/704 - 57s - 81ms/step - accuracy: 0.4190 - loss: 1.5954 - val_accuracy: 0.5150 - val_loss: 1.3420\nEpoch 2/20\n704/704 - 57s - 81ms/step - accuracy: 0.5531 - loss: 1.2526 - val_accuracy: 0.5732 - val_loss: 1.2063\nEpoch 3/20\n704/704 - 55s - 78ms/step - accuracy: 0.6098 - loss: 1.1035 - val_accuracy: 0.6300 - val_loss: 1.0420\nEpoch 4/20\n704/704 - 82s - 117ms/step - accuracy: 0.6460 - loss: 1.0068 - val_accuracy: 0.6190 - val_loss: 1.0761\nEpoch 5/20\n704/704 - 81s - 115ms/step - accuracy: 0.6750 - loss: 0.9270 - val_accuracy: 0.6740 - val_loss: 0.9465\nEpoch 6/20\n704/704 - 83s - 118ms/step - accuracy: 0.6981 - loss: 0.8651 - val_accuracy: 0.6898 - val_loss: 0.9185\nEpoch 7/20\n704/704 - 81s - 115ms/step - accuracy: 0.7199 - loss: 0.8058 - val_accuracy: 0.7020 - val_loss: 0.8644\nEpoch 8/20\n704/704 - 83s - 118ms/step - accuracy: 0.7350 - loss: 0.7640 - val_accuracy: 0.7022 - val_loss: 0.8736\nEpoch 9/20\n704/704 - 81s - 115ms/step - accuracy: 0.7480 - loss: 0.7215 - val_accuracy: 0.7090 - val_loss: 0.8693\nEpoch 10/20\n704/704 - 84s - 119ms/step - accuracy: 0.7603 - loss: 0.6819 - val_accuracy: 0.7120 - val_loss: 0.8826\n\n\n\n\n\nWe evaluate the model on the test set to obtain final loss and accuracy.\n\ntest_loss, test_acc = model.evaluate(x_test, y_test_cat, verbose=2)\nprint(f\"\\nTest accuracy: {test_acc:.4f}\")\n\n313/313 - 4s - 11ms/step - accuracy: 0.6955 - loss: 0.8920\n\nTest accuracy: 0.6955\n\n\n\n\n\nWe use the model to predict test labels, then plot a confusion matrix to visualize performance across all classes.\n\n\n\ny_pred = model.predict(x_test)\ny_pred_classes = np.argmax(y_pred, axis=1)\ny_true = y_test.flatten()\n\ncm = confusion_matrix(y_true, y_pred_classes)\ndisp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[\n    'airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck'\n])\ndisp.plot(xticks_rotation=45)\nplt.title(\"Confusion Matrix on Test Set\")\nplt.show()\n\n313/313 ━━━━━━━━━━━━━━━━━━━━ 5s 16ms/step\n\n\n\n\n\n\n\n\n\n\n\n\nWe plot the training and validation accuracy and loss over epochs to understand model learning behavior.\n\n\nplt.figure(figsize=(12, 4))\n\n# Accuracy\nplt.subplot(1, 2, 1)\nplt.plot(history.history[\"accuracy\"], label=\"Train\")\nplt.plot(history.history[\"val_accuracy\"], label=\"Validation\")\nplt.title(\"Model Accuracy\")\nplt.xlabel(\"Epoch\")\nplt.ylabel(\"Accuracy\")\nplt.legend()\n\n# Loss\nplt.subplot(1, 2, 2)\nplt.plot(history.history[\"loss\"], label=\"Train\")\nplt.plot(history.history[\"val_loss\"], label=\"Validation\")\nplt.title(\"Model Loss\")\nplt.xlabel(\"Epoch\")\nplt.ylabel(\"Loss\")\nplt.legend()\n\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#introduction",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#introduction",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "Keras is an open-source software library that provides a Python interface for artificial neural networks. It works with TensorFlow, JAX, and PyTorch interchangeably.\nKeras, as a high level library, allows to easily define complex ANN architectures to experiment on your data. Keras also supports GPU, which becomes essential for processing huge amount of data and developing machine learning models.\nAmong Keras characteristics that make it an attractive option for DL are: - User friendly, with a simple, consistent interface optimized for common use cases - Modular and Composable, with easy to connect configutrable building-blocks - Easy to extend, adding new moduels and classes",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#installation-and-setup",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#installation-and-setup",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "Keras runs on top of TensorFlow, which can be installed using pip:\npip install tensorflow\nOnce TensorFlow is installed, Keras can be accessed directly as tensorflow.keras.\n\n\nStarting with Keras 3, the Keras API supports running the same code with different computation engines called backends. You can choose between:\n\n\"tensorflow\" → uses TensorFlow as the backend.\n\"jax\" → uses JAX, a high-performance numerical computing library from Google.\n\"torch\" → uses PyTorch as the backend.\n\n\n\n\nThe backend is the engine that performs the mathematical operations and model training. In earlier versions, Keras relied only on TensorFlow (via tensorflow.keras). Now, you can switch backends without changing your model code.\n\n\n\nIt means that the code you write using keras.Model, keras.layers.Dense, etc., works the same regardless of the backend. You can swap the backend and the entire notebook will still run without changes.\n\n\n\nYou can set the backend in your script using:\nimport keras\nkeras.config.set_backend(\"tensorflow\")  # or \"jax\" or \"torch\"\n\n\n## The problem to solve\n\nIn this lab we build a simple Convolutional Neural Network to classify images using the\nCIFAR-10 dataset.\n\nThe CIFAR-10 dataset is a collection of images commonly used for training machine learning and computer vision models.\n\nIt consists of 60000 color images divided into 10 different classes. Each image is 32 by 32 pixels in size and has three color channels red, green, and blue.\n\nThe dataset is split into 50000 training images and 10000 test images.\n\nThe 10 classes represent different object categories:\nairplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck.\n\nCIFAR-10 is widely used as a benchmark for image classification tasks due to its manageable size and variety of image content.\n\n## Keras Workflow Overview\n\nKeras follows a simple and consistent workflow that makes it easy to build and train deep learning models. Below are the typical steps you will follow when working with Keras:\n\n1. **Importing libraries and loading data**  \n   Load and preprocess the dataset, including normalization and label encoding if needed.\n\n2. **Defining the model**  \n   Choose the model architecture using either the Sequential or Functional API, and add layers.\n\n3. **Compiling the model**  \n   Specify the loss function, optimizer, and evaluation metrics.\n\n4. **Training the model**  \n   Use the `fit()` method to train the model with training data. You can also include validation data, callbacks, and early stopping.\n\n5. **Evaluating the model**  \n   Use the `evaluate()` method to measure performance on a test set.\n\n6. **Making predictions**  \n   Use the `predict()` method on new or unseen data.\n\n7. **Saving and loading the model**  \n   Save your trained model to reuse later or deploy it in production.\n\n8. **(Optional) Tuning and visualization**  \n   Monitor training progress with plots or tools like TensorBoard, and tune hyperparameters for better performance.\n\n## Step 1a: Import Libraries\n\n::: {#5de7e855 .cell}\n``` {.python .cell-code}\nimport tensorflow as tf\nfrom tensorflow.keras import layers, models\nfrom tensorflow.keras.datasets import cifar10\nfrom tensorflow.keras.utils import to_categorical\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport os\nimport datetime\n:::\n## Step 1b: Load Data\n\n\n# Load CIFAR-10 dataset\n(x_train, y_train), (x_test, y_test) = cifar10.load_data()\n\n# Normalize pixel values to the range [0, 1]\nx_train, x_test = x_train / 255.0, x_test / 255.0\n\n# Convert class labels to one-hot encoding\ny_train_cat = to_categorical(y_train, 10)\ny_test_cat = to_categorical(y_test, 10)\n\nNameError: name 'cifar10' is not defined",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-2-define-the-model",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-2-define-the-model",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "We define a simple convolutional neural network using the Keras Sequential API. The model includes convolutional and pooling layers, followed by dense layers.\n\nmodel = models.Sequential([\n    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),\n    layers.MaxPooling2D((2, 2)),\n\n    layers.Conv2D(64, (3, 3), activation='relu'),\n    layers.MaxPooling2D((2, 2)),\n\n    layers.Conv2D(64, (3, 3), activation='relu'),\n\n    layers.Flatten(),\n    layers.Dense(64, activation='relu'),\n    layers.Dense(10, activation='softmax')  # 10 classes\n])",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-3-compile-the-model",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-3-compile-the-model",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "We compile the model using the Adam optimizer, categorical crossentropy loss (since we have multiple classes), and accuracy as our evaluation metric.\n\nmodel.compile(optimizer='adam',\n              loss='categorical_crossentropy',\n              metrics=['accuracy'])",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-3b-set-up-callbacks-early-stopping-checkpointing-tensorboard",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-3b-set-up-callbacks-early-stopping-checkpointing-tensorboard",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "We add: - EarlyStopping to prevent overfitting. - ModelCheckpoint to save the best model. - TensorBoard to visualize training metrics.\n\nlog_dir = os.path.join(\"logs\", datetime.datetime.now().strftime(\"%Y%m%d-%H%M%S\"))\ntensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)\n\nearly_stop = tf.keras.callbacks.EarlyStopping(patience=3, restore_best_weights=True)\n\ncheckpoint = tf.keras.callbacks.ModelCheckpoint(\n    \"best_cifar10_model.keras\", save_best_only=True, monitor=\"val_accuracy\"\n)",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-4-train-the-model",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-4-train-the-model",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "We train the model using the fit method with a validation split, and apply the callbacks we defined earlier.\n\nhistory = model.fit(\n    x_train, y_train_cat,\n    epochs=20,\n    batch_size=64,\n    validation_split=0.1,\n    callbacks=[tensorboard_callback, early_stop, checkpoint],\n    verbose=2\n)\n\n# Save the trained model for further use\nmodel.save(\"cnn_cifar10_model.keras\")\n\n\nEpoch 1/20\n704/704 - 57s - 81ms/step - accuracy: 0.4190 - loss: 1.5954 - val_accuracy: 0.5150 - val_loss: 1.3420\nEpoch 2/20\n704/704 - 57s - 81ms/step - accuracy: 0.5531 - loss: 1.2526 - val_accuracy: 0.5732 - val_loss: 1.2063\nEpoch 3/20\n704/704 - 55s - 78ms/step - accuracy: 0.6098 - loss: 1.1035 - val_accuracy: 0.6300 - val_loss: 1.0420\nEpoch 4/20\n704/704 - 82s - 117ms/step - accuracy: 0.6460 - loss: 1.0068 - val_accuracy: 0.6190 - val_loss: 1.0761\nEpoch 5/20\n704/704 - 81s - 115ms/step - accuracy: 0.6750 - loss: 0.9270 - val_accuracy: 0.6740 - val_loss: 0.9465\nEpoch 6/20\n704/704 - 83s - 118ms/step - accuracy: 0.6981 - loss: 0.8651 - val_accuracy: 0.6898 - val_loss: 0.9185\nEpoch 7/20\n704/704 - 81s - 115ms/step - accuracy: 0.7199 - loss: 0.8058 - val_accuracy: 0.7020 - val_loss: 0.8644\nEpoch 8/20\n704/704 - 83s - 118ms/step - accuracy: 0.7350 - loss: 0.7640 - val_accuracy: 0.7022 - val_loss: 0.8736\nEpoch 9/20\n704/704 - 81s - 115ms/step - accuracy: 0.7480 - loss: 0.7215 - val_accuracy: 0.7090 - val_loss: 0.8693\nEpoch 10/20\n704/704 - 84s - 119ms/step - accuracy: 0.7603 - loss: 0.6819 - val_accuracy: 0.7120 - val_loss: 0.8826",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-5-evaluate-the-model",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-5-evaluate-the-model",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "We evaluate the model on the test set to obtain final loss and accuracy.\n\ntest_loss, test_acc = model.evaluate(x_test, y_test_cat, verbose=2)\nprint(f\"\\nTest accuracy: {test_acc:.4f}\")\n\n313/313 - 4s - 11ms/step - accuracy: 0.6955 - loss: 0.8920\n\nTest accuracy: 0.6955",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-6-make-predictions-and-plot-confusion-matrix",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-6-make-predictions-and-plot-confusion-matrix",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "We use the model to predict test labels, then plot a confusion matrix to visualize performance across all classes.\n\n\n\ny_pred = model.predict(x_test)\ny_pred_classes = np.argmax(y_pred, axis=1)\ny_true = y_test.flatten()\n\ncm = confusion_matrix(y_true, y_pred_classes)\ndisp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[\n    'airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck'\n])\ndisp.plot(xticks_rotation=45)\nplt.title(\"Confusion Matrix on Test Set\")\nplt.show()\n\n313/313 ━━━━━━━━━━━━━━━━━━━━ 5s 16ms/step",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
+  },
+  {
+    "objectID": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-8-visualize-training-history",
+    "href": "labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html#step-8-visualize-training-history",
+    "title": "Introduction to Deep Learning with Keras and tensorFlow",
+    "section": "",
+    "text": "We plot the training and validation accuracy and loss over epochs to understand model learning behavior.\n\n\nplt.figure(figsize=(12, 4))\n\n# Accuracy\nplt.subplot(1, 2, 1)\nplt.plot(history.history[\"accuracy\"], label=\"Train\")\nplt.plot(history.history[\"val_accuracy\"], label=\"Validation\")\nplt.title(\"Model Accuracy\")\nplt.xlabel(\"Epoch\")\nplt.ylabel(\"Accuracy\")\nplt.legend()\n\n# Loss\nplt.subplot(1, 2, 2)\nplt.plot(history.history[\"loss\"], label=\"Train\")\nplt.plot(history.history[\"val_loss\"], label=\"Validation\")\nplt.title(\"Model Loss\")\nplt.xlabel(\"Epoch\")\nplt.ylabel(\"Loss\")\nplt.legend()\n\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Lab-C3.3-Image-Classification-with-CNN"
+    ]
   }
 ]

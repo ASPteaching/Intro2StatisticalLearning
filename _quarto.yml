@@ -43,7 +43,7 @@ website:
           - href: C2.2-Ensemble_Methods-Slides.qmd
             text: Ensemble Methods
           - href: labs/Lab-C2.3-Random_Forests.qmd
-            text: Lab -C2.3-Random Forest
+            text: Lab-C2.3-Random Forest
           - href: labs/Lab-C2.4-Boosting.qmd
             text: Lab-C2.4-Boosting
           - href: labs/Lab-C2.5-The-caret_package.qmd
@@ -67,6 +67,8 @@ website:
             text: Species Classification with ANN using Keras
           - href: labs/Lab-C3.2-DividendPrediction_ANN.qmd
             text: Dividend Prediction with ANN Lab (R)
+          - href: labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.ipynb
+            text: Lab-C3.3-Image-Classification-with-CNN 
 
       - section: "Resources"
         contents:  

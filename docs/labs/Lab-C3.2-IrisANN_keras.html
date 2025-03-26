@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lab-c3.2-irisann_keras – Introduction to Statistical Learning</title>
+<title>Introduction to Statistical Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -141,17 +141,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -164,9 +164,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -205,9 +205,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Tree-based Methods</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -234,9 +234,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Ensemble Methods</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab-C2.3-Random_Forests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab -C2.3-Random Forest</span></a>
+ <span class="menu-text">Lab-C2.3-Random Forest</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -269,9 +269,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Artificial Neural Networks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -292,6 +292,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../C3.2-Introduction_to_Deep_Learning-Slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deep Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../C3.3-Convolutional_Neural_Networks-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutional Neural Networks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -318,13 +324,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Dividend Prediction with ANN Lab (R)</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C3.3-Image-Classification-with-CNN</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Resources</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -389,7 +401,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note, make sure not to upload the data1.csv from Module 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002411053,&quot;user_tz&quot;:360,&quot;elapsed&quot;:142,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="10">
+<div id="cell-3" class="cell" data-executioninfo="{&quot;elapsed&quot;:142,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002411053,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -397,7 +409,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 2 Reading the data</font></p><font color="blue">
-<div id="cell-5" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002411741,&quot;user_tz&quot;:360,&quot;elapsed&quot;:6,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-outputid="ffe0a96a-1391-495e-909a-5b3e46a5fd2c" data-execution_count="11">
+<div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002411741,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-outputid="ffe0a96a-1391-495e-909a-5b3e46a5fd2c" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read data from csv</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> pd.read_csv(<span class="st">"data1.csv"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>iris.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -405,7 +417,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -464,7 +476,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 </div>
 </div>
 <p><font color="blue">Cell 3 Dataset verification</font></p><font color="blue">
-<div id="cell-7" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002411741,&quot;user_tz&quot;:360,&quot;elapsed&quot;:5,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-outputid="39a051d4-b830-4c6f-ccd9-f233e7dae9c8" data-execution_count="12">
+<div id="cell-7" class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002411741,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-outputid="39a051d4-b830-4c6f-ccd9-f233e7dae9c8" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Check the dataset to make sure no data is missing and Check the class labels</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> verify_dataset(data):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#if any of the rows have missing value return datas missing</span></span>
@@ -487,7 +499,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <pre><code>Dataset is complete. No missing values</code></pre>
 </div>
 </div>
-<div id="cell-8" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002411741,&quot;user_tz&quot;:360,&quot;elapsed&quot;:3,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="13">
+<div id="cell-8" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002411741,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Normalize array</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> normalize(X, axis<span class="op">=-</span><span class="dv">1</span>, order<span class="op">=</span><span class="dv">2</span>):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    l2 <span class="op">=</span> np.atleast_1d(np.linalg.norm(X, order, axis))</span>
@@ -496,7 +508,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X <span class="op">/</span> np.expand_dims(l2, axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 4 One hot encoding function</font></p><font color="blue">
-<div id="cell-10" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412265,&quot;user_tz&quot;:360,&quot;elapsed&quot;:7,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="14">
+<div id="cell-10" class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412265,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This function accepts an array of categorical variables and returns the one hot encoding</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_one_hot(Y):</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    n_col <span class="op">=</span> np.amax(Y) <span class="op">+</span> <span class="dv">1</span></span>
@@ -506,7 +518,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> binarized</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 5 Selecting features from a list</font></p><font color="blue">
-<div id="cell-12" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412266,&quot;user_tz&quot;:360,&quot;elapsed&quot;:7,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="15">
+<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412266,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Selecting the features that will be used for training and testing</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Changing the values allows the user to see the impact of omitting certain features</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -520,7 +532,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>feature_list <span class="op">=</span> [sepal_length,sepal_width,petal_length,petal_width]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 6 Selecting features and running the normalization function</font></p><font color="blue">
-<div id="cell-14" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412266,&quot;user_tz&quot;:360,&quot;elapsed&quot;:7,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-outputid="7d4f0cd1-88fc-4bc9-ea9e-4a77cfa138a4" data-execution_count="16">
+<div id="cell-14" class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412266,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-outputid="7d4f0cd1-88fc-4bc9-ea9e-4a77cfa138a4" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> preprocessing</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -559,7 +571,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 </div>
 </div>
 <p><font color="blue">Cell 7 Labelling output data and applying one hot encoding</font></p><font color="blue">
-<div id="cell-16" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412267,&quot;user_tz&quot;:360,&quot;elapsed&quot;:7,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="17">
+<div id="cell-16" class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412267,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a dictionary that relates each species to a label (integer)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>label_dict <span class="op">=</span> <span class="bu">dict</span>()</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>label_dict[<span class="st">'0'</span>] <span class="op">=</span> <span class="st">'setosa'</span></span>
@@ -580,7 +592,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> to_one_hot(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 8 Train test splitting</font></p><font color="blue">
-<div id="cell-18" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412268,&quot;user_tz&quot;:360,&quot;elapsed&quot;:8,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="18">
+<div id="cell-18" class="cell" data-executioninfo="{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002412268,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Placing the processed x and y back into a data frame</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x_y <span class="op">=</span> pd.DataFrame(np.concatenate((x,y), axis<span class="op">=</span><span class="dv">1</span>))</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -606,7 +618,7 @@ A function is implemented to predict the class of a set of user-entered measurem
 <span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> train_test_data[<span class="dv">1</span>].iloc[:,<span class="op">-</span><span class="dv">3</span>:].to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 9 Importing the Keras libraries, creating the model framework, and adding input and hidden layer</font></p><font color="blue">
-<div id="cell-20" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002413214,&quot;user_tz&quot;:360,&quot;elapsed&quot;:953,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="19">
+<div id="cell-20" class="cell" data-executioninfo="{&quot;elapsed&quot;:953,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002413214,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.python.keras.layers <span class="im">import</span> Dense</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.python.keras <span class="im">import</span> Sequential</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -618,15 +630,15 @@ A function is implemented to predict the class of a set of user-entered measurem
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#classifier.add(Dense(units = 6, kernel_initializer='random_uniform', activation = 'relu') )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 10 Adding the output layer</font></p><font color="blue">
-<div id="cell-22" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002413216,&quot;user_tz&quot;:360,&quot;elapsed&quot;:4,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="20">
+<div id="cell-22" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002413216,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>classifier.add(Dense(units <span class="op">=</span> <span class="dv">3</span>, kernel_initializer<span class="op">=</span><span class="st">'random_uniform'</span>, activation <span class="op">=</span> <span class="st">'sigmoid'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 11 Compiling the model</font></p><font color="blue">
-<div id="cell-24" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002413217,&quot;user_tz&quot;:360,&quot;elapsed&quot;:4,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="21">
+<div id="cell-24" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002413217,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>classifier.<span class="bu">compile</span>(optimizer <span class="op">=</span> <span class="st">'adam'</span>, loss <span class="op">=</span> <span class="st">'categorical_crossentropy'</span>, metrics <span class="op">=</span> [<span class="st">'accuracy'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 12 Training the model on the training data</font></p><font color="blue">
-<div id="cell-26" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002416405,&quot;user_tz&quot;:360,&quot;elapsed&quot;:3191,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-outputid="0279b662-ea73-415d-9f81-f8d1cb7158d7" data-execution_count="22">
+<div id="cell-26" class="cell" data-executioninfo="{&quot;elapsed&quot;:3191,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002416405,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-outputid="0279b662-ea73-415d-9f81-f8d1cb7158d7" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>classifier.fit(X_train, y_train,  epochs <span class="op">=</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 1/100
@@ -835,12 +847,12 @@ Epoch 100/100
 </div>
 </div>
 <p><font color="blue">Cell 13 Training the model on the training data</font></p><font color="blue">
-<div id="cell-28" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002416405,&quot;user_tz&quot;:360,&quot;elapsed&quot;:8,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-execution_count="23">
+<div id="cell-28" class="cell" data-executioninfo="{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002416405,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Predicting flower species using the test set</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> classifier.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><font color="blue">Cell 14 Training the model on the training data</font></p><font color="blue">
-<div id="cell-30" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002416783,&quot;user_tz&quot;:360,&quot;elapsed&quot;:219,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-outputid="446c7696-cfcd-4db4-8042-657daeaf0eb7" data-execution_count="24">
+<div id="cell-30" class="cell" data-executioninfo="{&quot;elapsed&quot;:219,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002416783,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-outputid="446c7696-cfcd-4db4-8042-657daeaf0eb7" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating the normalized confusion matrix</span></span>
@@ -869,7 +881,7 @@ Epoch 100/100
 </div>
 </div>
 </div>
-<div id="cell-31" class="cell" data-executioninfo="{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002425904,&quot;user_tz&quot;:360,&quot;elapsed&quot;:9135,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;}}" data-outputid="d24f7b1a-20c8-4908-81a1-18034f6ae9e5" data-execution_count="25">
+<div id="cell-31" class="cell" data-executioninfo="{&quot;elapsed&quot;:9135,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1622002425904,&quot;user&quot;:{&quot;displayName&quot;:&quot;Leif Wilm&quot;,&quot;photoUrl&quot;:&quot;&quot;,&quot;userId&quot;:&quot;04857518338297398200&quot;},&quot;user_tz&quot;:360}" data-outputid="d24f7b1a-20c8-4908-81a1-18034f6ae9e5" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> input_test_seq():</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    sepal_length <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">'Enter the Sepal length in cm : '</span>))</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
@@ -979,7 +991,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1011,47 +1034,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1086,11 +1069,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
