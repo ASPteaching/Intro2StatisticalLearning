@@ -648,8 +648,6 @@ knitr::include_graphics("images/ANN-Example-1.png")
 ```
 
 
-
-
 ## Eficient Forward propagation
 
 - The way input data is transformed, through a series of weightings and transformations, until the ouput layer is called   *forward propagation*.
