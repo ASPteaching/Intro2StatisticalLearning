@@ -781,5 +781,1217 @@
       "Artificial Neural Networks",
       "Lab-C3.3-Image-Classification-with-CNN"
     ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#historical-background-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#historical-background-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Historical Background (1)",
+    "text": "Historical Background (1)\n\nIn the post-pandemic world, a lightning rise of AI, with a mess of realities and promises is impacting society.\nSince the emergence -and rapid growth- of Large Language Models and Generative AI everybody has an experience, an opinion, or a fear on the topic.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#is-it-just-machine-learning",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#is-it-just-machine-learning",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Is it just machine learning?",
+    "text": "Is it just machine learning?\n\nMany tasks performed by AI can be described as Predictive as seen in Recommendation systems, Image recognition or Natural language processing.\nHowever, AI is broader than just prediction systems\nGenerative AI is also able to generate new content.\nBoth, predictive and generative capabilities of AI have far-reaching implications beyond technologies, including ethical or social aspects.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#ai-anns-and-deep-learning",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#ai-anns-and-deep-learning",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "AI, ANNs and Deep learning",
+    "text": "AI, ANNs and Deep learning\n\nIn many contexts, talking about AI means talking about Deep Learning (DL).\nDL is the dominant paradigm in modern (2026) AI and is behind applications such as self-driving cars, voice assistants, and medical diagnosis systems.\nDL originates in the field of Artificial Neural Networks\nDL extends the basic principles of ANNs by:\n\nAdding complex architectures and algorithms and\nEnabling scalable learning from large data",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-early-history-of-ai-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-early-history-of-ai-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The early history of AI (1)",
+    "text": "The early history of AI (1)\n\n\n\n\n\n\nA Quick History of AI, ML and DL",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#milestones-in-the-history-of-dl",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#milestones-in-the-history-of-dl",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Milestones in the history of DL",
+    "text": "Milestones in the history of DL\nWe can see several hints worth to account for:\n\nThe Perceptron and the first Artificial Neural Network: the basic building blocks.\nThe Multilayered perceptron and back-propagation: complex architectures to improve the capabilities.\nDeep Neural Networks, with many hidden layers, and auto-tunability capabilities.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#from-ann-to-deep-learning",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#from-ann-to-deep-learning",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "From ANN to Deep learning",
+    "text": "From ANN to Deep learning\n\nWhy Deep Learning Now?\nSource: Alex Amini’s MIT Introduction to Deep Learning’ course",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#success-stories",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#success-stories",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Success stories",
+    "text": "Success stories\nSuccess stories such as\n\nthe development of self-driving cars,\nthe use of AI in medical diagnosis, and\nonline shopping personalized recommendations\n\nhave also contributed to the widespread adoption of AI.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#not-to-talk-abou-the-fears",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#not-to-talk-abou-the-fears",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Not to talk abou the fears",
+    "text": "Not to talk abou the fears\n\n\n\nAI also comes with fears from multiple sources from science fiction to religion\n\nMass unemployment\nLoss of privacity\nAI bias\nAI fakes\nOr, simply, AI takeover",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#back-to-science",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#back-to-science",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Back to science",
+    "text": "Back to science\nWhere/How does it all fit?",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#ai-ml-dl",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#ai-ml-dl",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "AI, ML, DL …",
+    "text": "AI, ML, DL …\n\nArtificial intelligence: Ability of a computer to perform tasks commonly associated with intelligent beings.\nMachine learning: study of algorithms that learn from examples and experience instead of relying on hard-coded rules and make predictions on new data\nDeep learning: sub field of ML focusing on learning data representations as successive successive layers of increasingly meaningful representations.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#how-does-dl-improve-on-ml",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#how-does-dl-improve-on-ml",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "How does DL improve on ML",
+    "text": "How does DL improve on ML\n\nML and DL Approaches for Brain Disease Diagnosis\n\nDNN: feature extraction and classification without (or with much les) human intervention.\nDNN improves with data availability, without seemingly reaching plateaus.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#size-does-matter",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#size-does-matter",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Size does matter!",
+    "text": "Size does matter!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPerformance comparison between Deep Learning and other ML algorithmsDL modeling from large amounts of data can increase the performance",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-impact-of-deep-learning",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-impact-of-deep-learning",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The impact of Deep learning",
+    "text": "The impact of Deep learning\n\nNear-human-level image classification\nNear-human-level speech transcription\nNear-human-level handwriting transcription\nDramatically improved machine translation\nDramatically improved text-to-speech conversion\nDigital assistants such as Google Assistant and Amazon Alexa\nNear-human-level autonomous driving\nImproved ad targeting, as used by Google, Baidu, or Bing\nImproved search results on the web\nAbility to answer natural language questions\nSuperhuman Go playing",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#not-all-that-glitters-is-gold",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#not-all-that-glitters-is-gold",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Not all that glitters is gold …",
+    "text": "Not all that glitters is gold …\n\nAccording to F. Chollet, the developer of Keras,\n\n“we shouldn’t believe the short-term hype, but should believe in the long-term vision.\nIt may take a while for AI to be deployed to its true potential—a potential the full extent of which no one has yet dared to dream\nbut AI is coming, and it will transform our world in a fantastic way”.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#emulating-biological-neurons",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#emulating-biological-neurons",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Emulating biological neurons",
+    "text": "Emulating biological neurons\n\n\n\n\n\n\n\nA biological Neuron\n\n\n\n\n\n\n\n\n\n\nMuCulloch & Pitts proposal\n\n\n\n\n\n\n\nFirst model of an artifial neurone proposed by Mc Cullough & Pitts in 1943\nThey aimed at building a mathematical model of a neurone.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#mc-culloughs-neuron",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#mc-culloughs-neuron",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Mc Cullough’s neuron",
+    "text": "Mc Cullough’s neuron\n\nThe neuron can be divided into two parts:\n\n\\(g\\): combines the input signals,\n\\(f\\): yields final output from the aggregated value.\n\nThe neuron computes: \\[\ny = f(g(x_1,\\dots,x_n)).\n\\]\n\n\n\nThe neuron first aggregates, \\(g()\\), the inputs, \\(\\mathbb(x)\\), and then\nApplies decision rule \\(f()\\) to produce a binary output \\(y \\in \\{0,1\\}\\).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#limitations",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#limitations",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Limitations",
+    "text": "Limitations\nThis first attempt to emulate neurons succeeded but with limitations:\n\nWhat about non-Boolean (say, real) inputs?\nWhat if all inputs are not equal?\nWhat if we want to assign more importance to some inputs?\nWhat about functions which are not linearly separable? Say XOR function",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#overcoming-the-limitations",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#overcoming-the-limitations",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Overcoming the limitations",
+    "text": "Overcoming the limitations\n\nTo overcome these limitations Rosenblatt, proposed the perceptron model, or artificial neuron, in 1958.\nGeneralizes McCullough-Pitts neuron in that weights and thresholds can be learnt over time.\n\nIt takes a weighted sum of the inputs and\nIt sets the output to iff the sum is more than an arbitrary threshold (\\(\\theta\\)).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#rosenblatts-perceptron",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#rosenblatts-perceptron",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Rosenblatt’s perceptron",
+    "text": "Rosenblatt’s perceptron",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#rosenblatts-perceptron-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#rosenblatts-perceptron-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Rosenblatt’s perceptron",
+    "text": "Rosenblatt’s perceptron\n\n\nInstead of hand coding the thresholding parameter \\(\\theta\\),\nIt is added as one of the inputs, with the weight \\(w_0=-\\theta\\).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#comparison-between-the-two",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#comparison-between-the-two",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Comparison between the two",
+    "text": "Comparison between the two",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#comparison-between-the-two-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#comparison-between-the-two-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Comparison between the two",
+    "text": "Comparison between the two\nThe Perceptron represents an improvement over McCullough-Pitts’ neuron:\n\nIt admits real-valued inputs.\nBoth weights and the threshold can be learned.\n\nHowever, there are still limitations:\n\nThe output is determined by a step function, which limits its ability to model complex relationships.\nA single perceptron can only classify linearly separable functions.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#ans-and-activation-functions",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#ans-and-activation-functions",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "ANs and Activation Functions",
+    "text": "ANs and Activation Functions\n\nThe Perceptron can be generalized by Artificial Neurones which use functions, called Activation Functions (AFs) to produce their output.\nAFs are built in a way that they allow neurons to produce continuous and non-linear outputs.\nIt must be noted however that a single AN, even with a different AF, still cannot model non-linear separable problems: Non-linearity is in the output, no in the input",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#activation-in-biological-neurons",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#activation-in-biological-neurons",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Activation in biological neurons",
+    "text": "Activation in biological neurons\n\nBiological neurons are specialized cells that transmit signals to communicate with each other.\nNeuron’s activation is based on releasing neurotransmitters, chemicals that transmit signals between nerve cells.\n\nWhen the signal reaching the neuron exceeds a certain threshold, it releases neurotransmitters to continue the communication process.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#activation-functions-in-an",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#activation-functions-in-an",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Activation functions in AN",
+    "text": "Activation functions in AN\n\nAnalogously, activation functions in AN are functions to decide if the AN it is activated or not.\nAN’s activation function is a mathematical function applied to the neuron’s input to produce an output.\n\nIn practice it may go from simple to complex functions that can learn patterns in the data.\nActivation functions can incorporate non-linearity, improving over linear classifiers.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#activation-function",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#activation-function",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Activation function",
+    "text": "Activation function",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#artificial-neuron",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#artificial-neuron",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Artificial Neuron",
+    "text": "Artificial Neuron\nWith all these ideas in mind we can now define an Artificial Neuron as a computational unit that :\n\ntakes as input \\(x=(x_0,x_1,x_2,x_3),\\ (x_0 = +1 \\equiv bias)\\),\noutputs \\(h_{\\theta}(x) = f(\\theta^\\intercal x) = f(\\sum_i \\theta_ix_i)\\),\nwhere \\(f:\\mathbb{R}\\mapsto \\mathbb{R}\\) is called the activation function.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#activation-functions",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#activation-functions",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Activation functions",
+    "text": "Activation functions\n\n\nGoal of activation function is to provide the neuron with the capability of producing the required outputs.\nFlexible enough to produce\n\nEither linear or non-linear transformations.\nOutput in the desired range ([0,1], {-1,1}, \\(\\mathbb{R}^+\\)…)\n\nUsually chosen from a (small) set of possibilities.\n\nSigmoid function\nHyperbolic tangent, or tanh, function\nReLU",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-sigmoid-function",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-sigmoid-function",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The sigmoid function",
+    "text": "The sigmoid function\n\n\n\\[\nf(z)=\\frac{1}{1+e^{-z}}\n\\]\n\nOutput real values \\(\\in (0,1)\\).\nNatural interpretations as probability",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-hyperbolic-tangent",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-hyperbolic-tangent",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "the hyperbolic tangent",
+    "text": "the hyperbolic tangent\n\n\nAlso called tanh, function:\n\\[\nf(z)=\\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}\n\\]\n\noutputs are zero-centered and bounded in −1,1\nscaled and shifted Sigmoid\nstronger gradient but still has vanishing gradient problem\nIts derivative is \\(f'(z)=1-(f(z))^2\\).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-relu",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-relu",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The ReLU",
+    "text": "The ReLU\n\n\n\nrectified linear unit: \\(f(z)=\\max\\{0,z\\}\\).\nClose to a linear: piece-wise linear function with two linear pieces.\nOutputs are in \\((0,\\infty)\\) , thus not bounded\nHalf rectified: activation threshold at 0\nNo vanishing gradient problem",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#more-activation-functions",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#more-activation-functions",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "More activation functions",
+    "text": "More activation functions\n.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#softmax-activation-function",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#softmax-activation-function",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Softmax Activation Function",
+    "text": "Softmax Activation Function\n\nSoftmax is an activation function used in the output layer of classification models, especially for multi-class problems.\nIt converts raw scores (logits) into probabilities, ensuring that \\(\\sum_{i=1}^{N} P(y_i) = 1\\) where \\(P(y_i)\\) is the predicted probability for class \\(i\\).\nGiven an input vector \\(z\\), Softmax transforms it as: \\[\n\\sigma(z_i) = \\frac{e^{z_i}}{\\sum_{j=1}^{N} e^{z_j}}\n\\]\n\nThe exponentiation amplifies differences, making the highest value more dominant.\nThe normalization ensures that probabilities sum to 1.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-artificial-neuron-in-short",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-artificial-neuron-in-short",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Artificial Neuron in Short",
+    "text": "The Artificial Neuron in Short",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-artificial-neuron-in-short-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-artificial-neuron-in-short-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Artificial Neuron in Short",
+    "text": "The Artificial Neuron in Short\n\nAn AN takes a vector of input values \\(x_{1}, \\ldots, x_{d}\\) and combines it with some weights that are local to the neuron \\(\\left(w_{0}, w_{1}, . ., w_{d}\\right)\\) to compute a net input \\(w_{0}+\\sum_{i=1}^{d} w_{i} \\cdot x_{i}\\).\nTo compute its output, it then passes the net input through a possibly non-linear univariate activation function \\(g(\\cdot)\\), usually chosen from a set of options such as Sigmoid, Tanh or ReLU functions\nTo deal with the bias, we create an extra input variable \\(x_{0}\\) with value always equal to 1 , and so the function computed by a single artificial neuron (parameterized by its weights \\(\\mathbf{w}\\) ) is:\n\n\\[\ny(\\mathbf{x})=g\\left(w_{0}+\\sum_{i=1}^{d} w_{i} x_{i}\\right)=g\\left(\\sum_{i=0}^{d} w_{i} x_{i}\\right)=g\\left(\\mathbf{w}^{\\mathbf{T}} \\mathbf{x}\\right)\n\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#perceptron-learning-rule",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#perceptron-learning-rule",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Perceptron Learning Rule",
+    "text": "Perceptron Learning Rule\n\nThe Perceptron Rule updates weights based on misclassified samples.\nIt ensures convergence only if data is linearly separable.\nWeight Update Formula \\[\nw_j \\leftarrow w_j + \\eta(y - \\hat{y})x_j\n\\] where:\n\n\\(x_j\\) = input feature; \\(\\quad \\eta\\) = learning rate;\n\\(y\\) = true label; \\(\\quad \\hat{y}\\)=predicted class (\\(\\pm1\\));\n\nKey Features\n\nUses a step function (not differentiable).\nCannot be optimized using gradient descent.\nFails to converge if data is not linearly separable.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-perceptron-decision-rule",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-perceptron-decision-rule",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Perceptron Decision Rule",
+    "text": "The Perceptron Decision Rule",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-delta-rule",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-delta-rule",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Delta Rule",
+    "text": "The Delta Rule\n\nUuses gradient descent to minimize the Sum of Squared Errors (SSE).\nIt applies to models with differentiable activation functions.\nWeight Update Formula \\[\nw_j \\leftarrow w_j + \\eta(y - h(x))x_j\n\\] where:\n\n\\(x_j\\) = input feature, \\(\\eta\\) = learning rate;\n\\(y\\) = true label; \\(\\quad h(x) =\\) predicted output.\n\nKey Features\n\nWorks with continuous activation functions (e.g., linear in ADALINE).\nNot limited to linearly separable problems.\nForms the foundation for gradient-based learning in neural networks.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-delta-rule-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-delta-rule-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Delta Rule",
+    "text": "The Delta Rule",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-basic-neural-network",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-basic-neural-network",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The basic neural network",
+    "text": "The basic neural network\n\n\nContinuing with the brain analogy one can combine (artificial) neurons to create better learners.\nA simple artificial neural network is created by two types of modifications to the basic Artificial Neuron.\n\nStacking several neurons insteads of just one.\nAdding an additional layer of neurons, which is call a hidden layer,\n\nThis yields a system where the output of a neuron can be the input of another in many different ways.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#an-artificial-neural-network",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#an-artificial-neural-network",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "An Artificial Neural network",
+    "text": "An Artificial Neural network",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-architecture-of-ann",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-architecture-of-ann",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The architecture of ANN",
+    "text": "The architecture of ANN\nIn this figure, we have used circles to also denote the inputs to the network.\n\nCircles labeled +1 are bias units, and correspond to the intercept term.\nThe leftmost layer of the network is called the input layer.\nThe rightmost layer of the network is called the output layer.\nThe middle layer of nodes is called the hidden layer, because its values are not observed in the training set.\n\nBias nodes are not counted when stating the neuron size.\nWith all this in mind our example neural network has three layers with:\n\n3 input units (not counting the bias unit),\n3 hidden units,\n\n1 output unit.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#how-an-ann-works",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#how-an-ann-works",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "How an ANN works",
+    "text": "How an ANN works\n\nAn ANN is a predictive model (a learner) whose properties and behaviour can be well characterized.\n\n\nIt operates through a process known as forward propagation, which encompasses the information flow from the input layer to the output layer.\nForward propagation is performed by composing a series of linear and non-linear (activation) functions.\nThese are characterized (parametrized) by their weights and biases, that need to be learnt.\n\nThis is done by training the ANN.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#training-the-ann",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#training-the-ann",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Training the ANN",
+    "text": "Training the ANN\n\n\nThe training process aims at finding the best possible parameter values for the learning task defined by the fnctions. This is done by\n\nSelecting an appropriate (convex) loss function,\nFinding weights that minimize the total cost function (avg. loss).\n\nThis is usually done using some iterative optimization procedure such as gradient descent.\n\nThis requires evaluating derivatives in a huge number of points.\nSuch high number may be reduced by Stochastic Gradient Descent.\nThe evaluation of derivatives is simplified thanks to Backpropagation.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#forward-propagation",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#forward-propagation",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Forward propagation",
+    "text": "Forward propagation\nThe process that encompasses the computations required to go from the input values to the final output is known as forward propagation.\n\nFor the ANN with 3 input values and 3 neurons in the hidden layer we have:\n\nEach node, \\(a_i^{(2)}\\) of the hidden layer opperates on all nodes of the input values\n\n\n\\[\\begin{eqnarray}\na_1^{(2)}&=&f(\\theta_{10}^{(1)}+\\theta_{11}^{(1)}x_1+\\theta_{12}^{(1)}x_2+\\theta_{13}^{(1)}x_3)\\\\\na_2^{(2)}&=&f(\\theta_{20}^{(1)}+\\theta_{21}^{(1)}x_1+\\theta_{22}^{(1)}x_2+\\theta_{23}^{(1)}x_3)\\\\\na_3^{(2)}&=&f(\\theta_{30}^{(1)}+\\theta_{31}^{(1)}x_1+\\theta_{32}^{(1)}x_2+\\theta_{33}^{(1)}x_3))\n\\end{eqnarray}\\]\n\n\nOutput of hidden layer is transformed by the activation function:\n\n\\[\nh_{\\Theta}(x)=a_1^{(3)}=f(\\theta_{10}^{(2)}+\\theta_{11}^{(2)}a_1^{(2)}+\\theta_{12}^{(2)}a_2^{(2)}+\\theta_{13}^{(2)}a_3^{(2)}\n\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#a-compact-notation-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#a-compact-notation-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "A compact notation (1)",
+    "text": "A compact notation (1)\nLet \\(z_i^{(l)}\\) denote the total weighted sum of inputs to unit \\(i\\) in layer \\(l\\):\n\\[\nz_i^{(2)}=\\theta_{i0}^{(1)}+\\theta_{i1}^{(1)}x_1+\\theta_{i2}^{(1)}x_2+\\theta_{i3}^{(1)}x_3,\n\\] the output becomes: \\(a_i^{(l)}=f(z_i^{(l)})\\).\nExtending the activation function \\(f(\\cdot)\\) to apply elementwise to vectors:\n\\[\n    f([z_1,z_2,z_3]) = [f(z_1), f(z_2),f(z_3)],\n\\] we can write the previous equations more compactly as:\n\\[\\begin{eqnarray}\nz^{(2)}&=&\\Theta^{(1)}x\\nonumber\\\\\na^{(2)}&=&f(z^{(2)})\\nonumber\\\\\nz^{(3)}&=&\\Theta^{(2)}a^{(2)}\\nonumber\\\\\nh_{\\Theta}(x)&=&a^{(3)}=f(z^{(3)})\\nonumber\n\\end{eqnarray}\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#a-compact-notation-2",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#a-compact-notation-2",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "A compact notation (2)",
+    "text": "A compact notation (2)\nMore generally, recalling that we also use \\(a^{(1)}=x\\) to also denote the values from the input layer,\nGiven layer \\(l\\)’s activations \\(a^{(l)}\\), we can compute layer \\(l+1\\)’s activations \\(a^{(l+1)}\\) as:\n\\[\\begin{equation}\nz^{(l+1)}=\\Theta^{(l)}a^{(l)}\n\\label{eqforZs}\n\\end{equation}\\]\n\\[\\begin{equation}\na^{(l+1)}=f(z^{(l+1)})\n\\label{eqforAs}\n\\end{equation}\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#a-compact-notation-3",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#a-compact-notation-3",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "A compact notation (3)",
+    "text": "A compact notation (3)\nThis can be used to provide a matrix representation for the weighted sum of inputs of all neurons:\n\\[\nz^{(l+1)}=\n\\begin{bmatrix}\nz_1^{(l+1)}\\\\\nz_2^{(l+1)}\\\\\n\\vdots\\\\\nz_{s_{l+1}}^{(l)}\n\\end{bmatrix}=\n\\begin{bmatrix}\n\\theta_{10}^{(l)}& \\theta_{11}^{(l)}&\\theta_{12}^{(l)}&...&\\theta_{1s_{l}}^{(l)}&\\\\\n\\theta_{20}^{(l)}& \\theta_{21}^{(l)}&\\theta_{22}^{(l)}&...&\\theta_{2s_{l}}^{(l)}&\\\\\n\\vdots & \\vdots& \\vdots & \\vdots & \\vdots\\\\\n\\theta_{s_{l+1}0}^{(l)}& \\theta_{s_{l+1}1}^{(l)}&\\theta_{s_{l+1}2}^{(l)}&...&\\theta_{s_{l+1}s_{l}}^{(l)}&\\\\\n\\end{bmatrix}\n\\cdot\\begin{bmatrix}\n1\\\\\na_1^{(l)}\\\\\na_2^{(l)}\\\\\n\\vdots\\\\\na_{s_l}^{(l)}\n\\end{bmatrix}\n\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#a-compact-notation-4",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#a-compact-notation-4",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "A compact notation (4)",
+    "text": "A compact notation (4)\nSo that, the activation is then:\n\\[\na^{(l+1)}=\n\\begin{bmatrix}\na_1^{(l+1)}\\\\\na_2^{(l+1)}\\\\\n\\vdots\\\\\na_{s_{l+1}}^{(l)}\n\\end{bmatrix}=f(z^{(l+1)})=\\begin{bmatrix}\nf(z_1^{(l+1)})\\\\\nf(z_2^{(l+1)})\\\\\n\\vdots\\\\\nf(z_{s_{l+1}}^{(l)})\n\\end{bmatrix}\n\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#eficient-forward-propagation",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#eficient-forward-propagation",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Eficient Forward propagation",
+    "text": "Eficient Forward propagation\n\nThe way input data is transformed, through a series of weightings and transformations, until the ouput layer is called forward propagation.\nBy organizing parameters in matrices, and using matrix-vector operations, fast linear algebra routines can be used to perform the required calculations in a fast efficent way.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#multiple-architectures-for-ann",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#multiple-architectures-for-ann",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Multiple architectures for ANN",
+    "text": "Multiple architectures for ANN\n\nWe have so far focused on a single hidden layer neural network of the example.\nOne can. however build neural networks with many distinct architectures (meaning patterns of connectivity between neurons), including ones with multiple hidden layers.\nSee here the Neural Network Zoo.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#multiple-architectures-for-ann-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#multiple-architectures-for-ann-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Multiple architectures for ANN",
+    "text": "Multiple architectures for ANN\n\n\n\nWe have so far focused on a single hidden layer neural network of the example\nOne can build neural networks with many distinct architectures (meaning patterns of connectivity between neurons), including ones with multiple hidden layers.\n\n\n The Neural Network Zoo",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#multiple-layer-dense-networks",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#multiple-layer-dense-networks",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Multiple layer dense Networks",
+    "text": "Multiple layer dense Networks\n\nMost common choice is a \\(n_l\\)-layered network:\n\nlayer 1 is the input layer,\nlayer \\(n_l\\) is the output layer,\nand each layer \\(l\\) is densely connected to layer \\(l+1\\).\n\nIn this setting, to compute the output of the network, we can compute all the activations in layer \\(L_2\\), then layer \\(L_3\\), and so on, up to layer \\(L_{nl}\\), using equations seen previously.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#feed-forward-nns",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#feed-forward-nns",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Feed Forward NNs",
+    "text": "Feed Forward NNs\n\nThe type of NN described is called feed-forward neural network (FFNN), since\n\nAll computations are done by Forward propagation\nThe connectivity graph does not have any directed loops or cycles.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Training an ANN",
+    "text": "Training an ANN\n\n\nAn ANN is a predictive model whose properties and behaviour can be mathematically characterized.\nIn practice this means:\n\nThe ANN acts by composing a series of linear and non-linear (activation) functions.\nThese are characterized by their weights and biases, that need to be learnt.\n\nTraining the network is done by\n\nSelecting an appropriate (convex) loss function,\nFinding weights that minimize a the total cost function (avg loss).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#training-an-ann-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Training an ANN",
+    "text": "Training an ANN\n\n\nSource: Overview of a Neural Network’s Learning Process",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-tools-for-training",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-tools-for-training",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The tools for training",
+    "text": "The tools for training\n\nTraining an ANN is usually done using some iterative optimization procedure such as Gradient Descent.\nThis requires evaluating derivatives in a huge number of points.\n\nSuch high number may be reduced by Stochastic Gradient Descent.\nThe evaluation of derivatives is simplified thanks to Backpropagation.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#loss-functions-for-optimization",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#loss-functions-for-optimization",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Loss functions for optimization",
+    "text": "Loss functions for optimization\nDepending on the activation function it may be advisable to use one or another form of loss function.\n\nA typical choice may be quadratic (or square) error loss: \\[\nl(h_\\theta(x),y)=\\left (y-\\frac{1}{1+e^{-\\theta^\\intercal x}}\\right )^2\n\\]\nGiven a sigmoid AF, the squared error loss is not a convex problem so that MSE is not appropriate.\nQuadratic loss may be used with ReLu activation.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#cross-entropy-loss-function",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#cross-entropy-loss-function",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Cross-entropy loss function",
+    "text": "Cross-entropy loss function\n\nA common loss function to use with ANNs is Cross-entropy defined as:\n\n\n\\[\n    l(h_\\theta(x),y)=\\big{\\{}\\begin{array}{ll}\n    -\\log h_\\theta(x) & \\textrm{if }y=1\\\\\n    -\\log(1-h_\\theta(x))& \\textrm{if }y=0\n    \\end{array}\n\\]\n\n\nThis function can also be written as:\n\n\\[\nl(h_\\theta(x),y)=-y\\log h_\\theta(x) - (1-y)\\log(1-h_\\theta(x))\n\\]\n\nUsing cross-entropy loss, the cost function is of the form:\n\n\n\\[\n  J(\\theta)=-\\frac{1}{n}\\left[\\sum_{i=1}^n (y^{(i)}\\log h_\\theta(x^{(i)})+ (1-y^{(i)})\\log(1-h_\\theta(x^{(i)}))\\right]\n\\]\n\n\nNow, this is a convex optimization problem.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-parameters-for-tuning",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-parameters-for-tuning",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The parameters for tuning",
+    "text": "The parameters for tuning\n\n\nTraining a network corresponds to finding the parameters, that is, the weights and the biases, that minimize the cost function.\nAlthoug weights & biases are respectively matrices and vectors, it is convenient to represent them in a vectorized form stored as a single vector, that will be denoted here, by \\(\\theta\\).\nWe may suppose \\(\\theta\\in\\mathbb{R}^p\\), and write the cost function as \\(J(\\theta)\\) to emphasize its dependence on the parameters, that is: \\[\n\\begin{eqnarray*}\nJ: \\mathbb{R}^p & \\rightarrow \\mathbb{R}\\\\\n\\theta &  \\rightarrow J(\\theta)\n\\end{eqnarray*}\n\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-or-steepest-descent",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-or-steepest-descent",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient or Steepest Descent",
+    "text": "Gradient or Steepest Descent\n\n\n\nA classical method in optimization to minimize a convex function \\(J(\\theta)\\).\nIt proceeds iteratively, computing a sequence of vectors \\(\\theta^1, \\theta^2, ..., \\theta^n\\) in \\(\\mathbb{R}^p\\) with the aim of converging to a vector that minimizes the cost function.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent\n\n\nSuppose that our current vector is \\(\\theta\\). How should we choose a perturbation, \\(\\Delta\\theta\\), so that the next vector, \\(\\theta+\\Delta\\theta\\), represents an improvement, that is: \\(J(\\theta +\\Delta\\theta) &lt; J(\\theta)\\)?\nLinearize the cost function using a Taylor approximation.\nIf \\(\\Delta\\theta\\) is small, then ignoring terms of order \\(||\\Delta\\theta||^2\\) or higher: \\[\nJ(\\theta+\\Delta\\theta)\\approx J(\\theta)+\\sum_{i=1}^p\\frac{\\partial J(\\theta)}{\\partial\\theta_i}\\Delta\\theta_i\n\\] or, equivalently: \\[\\begin{equation}\\label{g2}\nJ(\\theta+\\Delta\\theta)\\approx J(\\theta)+\\nabla J(\\theta)^\\intercal\\Delta\\theta\n\\end{equation}\\] where \\(\\nabla J(\\theta)\\in\\mathbb{R}^p\\) denote the gradient, i.e. the vector of partial derivatives: \\[\\begin{equation}\\label{g1}\n\\nabla J(\\theta)=\\left(\\frac{\\partial J(\\theta)}{\\partial\\theta_1},...,\\frac{\\partial J(\\theta)}{\\partial\\theta_p}\\right)^\\intercal\n\\end{equation}\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent\n\n\nGoal: choose a perturbation, \\(\\Delta\\theta\\), s.t.: \\(J(\\theta +\\Delta\\theta) &lt; J(\\theta)\\)\nTaylor approximation above suggests that choosing \\(\\Delta\\theta\\) to make \\(\\nabla J(\\theta)^\\intercal\\Delta\\theta\\) negative will make the value of \\(J(\\theta+\\Delta\\theta)\\) smaller.\nIndeed it can be shown that the highest possible negative value will come out when \\(-\\nabla J(\\theta)=\\Delta\\theta\\), which leads to the gradient descent formula: \\[\n\\theta \\rightarrow \\theta-\\eta\\nabla J(\\theta),\n\\] where \\(\\eta\\), the learning rate is the size of the step taken at each iteration, which should be small because of Taylor App.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-cauchy-schwarz-inequality-and-gradient-descent",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-cauchy-schwarz-inequality-and-gradient-descent",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Cauchy-Schwarz inequality and Gradient Descent",
+    "text": "The Cauchy-Schwarz inequality and Gradient Descent\n\nThe Cauchy-Schwarz inequality, states that for any \\(f,g\\in\\mathbb{R}^p\\), we have: \\[\n|f^\\intercal g|\\leq ||f||\\cdot ||g||.\n\\]\nMoreover, the two sides are equal if and only if \\(f\\) and \\(g\\) are linearly dependent (meaning they are parallel).\nBy Cauchy-Schwarz,biggest possible value for \\(\\nabla J(\\theta)^\\intercal\\Delta\\theta\\) is the upper bound, \\(||\\nabla J(\\theta)||\\cdot ||\\Delta\\theta||\\).\n\nThe equality is only reached when \\(||\\nabla J(\\theta)||= ||\\Delta\\theta||\\)\n\nThis explains why we choose precisely \\(-\\nabla J(\\theta)=\\Delta\\theta\\)",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-2",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-2",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent\nIn summary, givent a cost function \\(J(\\theta)\\) to be optimized the gradient descent optimization proceeds as follows:\n\nInitialize \\(\\theta_0\\) randomly or with some predetermined values\nRepeat until convergence: \\[\n\\theta_{t+1} = \\theta_{t} - \\eta \\nabla J(\\theta_{t})\n\\]\nStop when: \\(|J(\\theta_{t+1}) - J(\\theta_{t})| &lt; \\epsilon\\)\n\n\n\\(\\theta_0\\) is the initial parameter vector,\n\\(\\theta_t\\) is the parameter vector at iteration \\(t\\),\n\\(\\eta\\) is the learning rate,\n\\(\\nabla J(\\theta_{t})\\) is the gradient of the loss function with respect to \\(\\theta\\) at iteration \\(t\\),\n\\(\\epsilon\\) is a small positive value indicating the desired level of convergence.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-illustration",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-illustration",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient descent Illustration",
+    "text": "Gradient descent Illustration\n\n\n\n\n\n\n\nGradient descent is an intuitiva approach that has been thoroughly illustrated in many different ways:\n\n\nhttps://assets.yihui.org/figures/animation/example/grad-desc",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#computing-gradients",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#computing-gradients",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Computing Gradients",
+    "text": "Computing Gradients\n\nThe gradient method optimizes weights and biases \\(\\theta =\\{W, b\\}\\) by minimizing the cost function \\(J(\\theta)\\).\nThis requires computing partial derivatives: \\[\n\\frac{\\partial}{\\partial\\theta_j}J(\\theta)\n\\]\nThe algorithm used for this computation is called backpropagation.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#a-short-history",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#a-short-history",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "A short history",
+    "text": "A short history\n\nIntroduced in the 1970s in an MSc thesis.\nIn 1986, Rumelhart, Hinton, and Williams demonstrated that backpropagation significantly improves learning speed.\nThis breakthrough enabled neural networks to solve previously intractable problems.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-intuition",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-intuition",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Backpropagation intuition",
+    "text": "Backpropagation intuition\n\nThe term originates from error backpropagation.\nAn artificial neural network computes outputs through forward propagation:\n\nInput values pass through linear and non-linear transformations.\nThe network produces a prediction.\n\nThe error (difference between predicted and true value) is:\n\nPropagated backward to compute the error contribution of each neuron.\nUsed to adjust weights iteratively.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#delta-rule-and-error-term-delta",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#delta-rule-and-error-term-delta",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Delta rule and error term \\(\\delta\\)",
+    "text": "Delta rule and error term \\(\\delta\\)\n\nThe delta rule updates weights based on the error term \\(\\delta_j\\), which measures how much neuron \\(j\\) contributes to the error.\nIt is computed as: \\[\n\\delta_j = \\sigma^{\\prime}(z_j) (c_j - y_j)\n\\] where:\n\n\\(\\sigma^{\\prime}(z_j)\\) is the derivative of the activation function.\n\\((c_j - y_j)\\) is the error in neuron \\(j\\).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#weight-update-delta-w",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#weight-update-delta-w",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Weight update \\(\\Delta W\\)",
+    "text": "Weight update \\(\\Delta W\\)\n\nOnce \\(\\delta_j\\) is computed, weights are updated using: \\[\n\\Delta w_{i}^{j} = \\eta \\delta_j x_{i}^{j}\n\\] where:\n\n\\(\\eta\\) is the learning rate.\n\\(\\delta_j\\) determines the direction and magnitude of the update.\n\\(x_{i}^{j}\\) is the input to neuron \\(j\\).\n\nIn hidden layers, \\(\\delta\\) is propagated backward: \\[\n\\delta_k = \\sigma^{\\prime}(z_k) \\sum_{j \\in S_k} \\delta_j w_k^j\n\\] where \\(S_k\\) is the set of output neurons connected to neuron \\(k\\).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-algorithm",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#backpropagation-algorithm",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Backpropagation algorithm",
+    "text": "Backpropagation algorithm\n\nForward propagation\n\nCompute the network output for a given input.\n\nBackward propagation\n\nCompute \\(\\delta_j\\) for each neuron in the output layer.\nPropagate \\(\\delta_j\\) backward to compute \\(\\delta_k\\) for hidden layers.\nUpdate weights using gradient descent.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#final-algorithm",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#final-algorithm",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Final algorithm",
+    "text": "Final algorithm\nInput: \\(W\\) (weight vectors), \\(D\\) (training dataset).\nRepeat until error is below threshold:\n\nCompute network output for each training instance.\nFor each neuron \\(j\\) in the output layer:\n\nCompute \\(\\delta_j = \\sigma^{\\prime}(z_j) (c_j - y_j)\\)\nUpdate weights: \\(\\Delta w_i^j = \\eta \\delta_j x_i^j\\)\n\nFor each neuron \\(k\\) in hidden layers:\n\nCompute \\(\\delta_k = \\sigma^{\\prime}(z_k) \\sum_{j \\in S_k} \\delta_j w_k^j\\)\nUpdate weights : \\(\\Delta w_i^k = \\eta \\delta_k x_i^k\\)\n\n\nOutput: Updated weight vectors \\(W\\).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#chain-rule-in-backpropagation",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#chain-rule-in-backpropagation",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Chain rule in backpropagation",
+    "text": "Chain rule in backpropagation\n\nIn multi-layer networks, the error signal must be propagated backward through multiple layers.\nThe weight update in hidden layers depends not only on the local error but also on how errors propagate from the output layer.\nThis is achieved using the chain rule of calculus, which decomposes derivatives into simpler components.\nThat is, the gradient descent update rule for the weight is:\n\n\\[\n\\Delta w_i^j = -\\eta \\frac{\\partial J}{\\partial w_{i}^{j}} = \\eta \\delta_j x_i^j\n\\] where the derivative will be computed applying the chain rule.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#applying-the-chain-rule",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#applying-the-chain-rule",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Applying the chain rule",
+    "text": "Applying the chain rule\n\nTo compute the gradient of the loss function \\(J\\) with respect to a weight \\(w_{i}^{j}\\) connecting neuron \\(i\\) to neuron \\(j\\), we use the chain rule:\n\n\\[\n\\frac{\\partial J}{\\partial w_{i}^{j}} =\n\\frac{\\partial J}{\\partial y_j} \\cdot\n\\frac{\\partial y_j}{\\partial z_j} \\cdot\n\\frac{\\partial z_j}{\\partial w_{i}^{j}}\n\\]\n\n\\(\\frac{\\partial J}{\\partial y_j}\\) measures how the loss changes with respect to the output of neuron \\(j\\).\n\\(\\frac{\\partial y_j}{\\partial z_j} = \\sigma^{\\prime}(z_j)\\) is the derivative of the activation function.\n\\(\\frac{\\partial z_j}{\\partial w_{i}^{j}} = x_i^{j}\\) represents the input to the neuron.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#automatic-differentiation",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#automatic-differentiation",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Automatic differentiation",
+    "text": "Automatic differentiation\n\nModern deep learning frameworks do not compute gradients manually.\nInstead, they use automatic differentiation and computational graphs to simplify and speed up backpropagation.\nA computational graph represents the sequence of operations in a neural network as a directed graph.\n\nEach node corresponds to an operation (e.g., addition, multiplication, activation function).\nThis structure allows efficient backpropagation by applying the chain rule automatically.\n\nAutomatic differentiation (AD) relies the computational graph to apply the chain rule and compute gradients automatically in the Backwards pass.\nFrameworks like TensorFlow, PyTorch, and JAX use reverse-mode differentiation, which is particularly efficient for functions with many parameters (like neural networks).",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#tuning-a-neural-network",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#tuning-a-neural-network",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Tuning a Neural Network",
+    "text": "Tuning a Neural Network",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#learning-optimization",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#learning-optimization",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Learning optimization",
+    "text": "Learning optimization\n\nThe learning porocess such as it has been derived may be improved in different ways.\n\nPredictions can be be bad and require improvement.\nComputations may be inefficent or slow.\nThe network may overfit and lack generalizability.\n\nThis can be partially soved applying distinct approaches.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#network-architechture",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#network-architechture",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Network architechture",
+    "text": "Network architechture\n\nNetwork performance is affected by many hyperparameters\n\nNetwork topology\nNumber of layers\nNumber of neurons per layer\nActivation function(s)\nWeights initialization procedure\netc.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#hyperparameter-tuning",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#hyperparameter-tuning",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Hyperparameter tuning",
+    "text": "Hyperparameter tuning\n\nHyperparameters selection and tuning may be hard, due simply to dimensionality.\nStandard approaches to search for best parameters combinations are used.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#how-many-hidden-layers",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#how-many-hidden-layers",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "How many (hidden) layers",
+    "text": "How many (hidden) layers\n\nTraditionally considered that one layer may be enough\n\nShallow Networks\n\nPosterior research showed that adding more layers increases efficency\n\nNumber of neurons per layer decreases exponentially\n\nAlthough there is also risk of overfitting",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#epochs-and-iterations",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#epochs-and-iterations",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Epochs and iterations",
+    "text": "Epochs and iterations\n\nIt has been shown that using the whole training set only once may not be enough for training an ANN.\nOne iteration of the training set is known as an epoch.\nThe number of epochs \\(N_E\\), defines how many times we iterate along the whole training set.\n\\(N_E\\) can be fixed, determined by cross-validation or left open and stop the training when it does not improve anymore.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#iterations-and-batches",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#iterations-and-batches",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Iterations and batches",
+    "text": "Iterations and batches\n\nA complementary strategy to increasing the number of epochs is decreasing the number of instances in each iteration.\nThat is, the training set is broken in a number of batches that are trained separately.\n\nBatch learning allows weights to be updated more frequently per epoch.\nThe advantage of batch learning is related to the gradient descent approach used.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#training-in-batches",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#training-in-batches",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Training in batches",
+    "text": "Training in batches",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#improving-gradient-descent",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#improving-gradient-descent",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Improving Gradient Descent",
+    "text": "Improving Gradient Descent\n\nTraining deep neural networks involves millions of parameters and large datasets.\nComputing the full gradient in every iteration is computationally expensive because:\n\nIt requires summing over all training points.\nThe cost grows linearly with dataset size.\n\nFor large-scale machine learning, standard gradient descent becomes impractical.\nTo address this, we use alternative optimization strategies:\n\nGradient Descent Variants: Control how much data is used per update.\nGradient Descent Optimizers: Improve convergence and stability.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#improving-gradient-descent-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#improving-gradient-descent-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Improving Gradient Descent",
+    "text": "Improving Gradient Descent\n\n\nAn overview of gradient descent optimization algorithms",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-variants",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-variants",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient Descent Variants",
+    "text": "Gradient Descent Variants\n\nDefine how much data is used per update.\nControl the trade-off between computational cost and stability.\nThree common approaches:\n\nBatch Gradient Descent:\n\nComputes the gradient using the entire dataset.\nStable but slow for large datasets.\n\nStochastic Gradient Descent (SGD):\n\nComputes the gradient using a single training example.\nFaster updates but high variance, leading to noisy convergence.\n\nMini-Batch Gradient Descent:\n\nUses a subset (mini-batch) of training data per update.\nBalances speed and stability.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-variants-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-variants-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient Descent Variants",
+    "text": "Gradient Descent Variants\n\nSource: Gradient Descent and its Types",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-optimizers",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#gradient-descent-optimizers",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Gradient Descent Optimizers",
+    "text": "Gradient Descent Optimizers\n\nImprove learning dynamics by modifying how gradients are applied.\nHelp avoid local minima, vanishing gradients, and slow convergence.\nCommon optimizers:\n\nMomentum: Uses past gradients to accelerate convergence.\nAdagrad: Adapts the learning rate per parameter.\nAdadelta & RMSProp: Improve Adagrad by reducing aggressive decay.\nAdam: Combines momentum and adaptive learning rates (widely used).\nNesterov Accelerated Gradient: Improves Momentum with lookahead updates.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#optimizing-training-speed",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#optimizing-training-speed",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Optimizing Training Speed",
+    "text": "Optimizing Training Speed\n\nTraining speed can be improved by adjusting key factors that influence convergence.\n\nWeight Initialization: Properly initializing weights helps prevent vanishing or exploding gradients, leading to faster convergence.\nAdjusting Learning Rate: A well-tuned learning rate accelerates training while avoiding instability or slow convergence.\nUsing Efficient Cost Functions: Choosing an appropriate loss function (e.g., cross-entropy for classification) speeds up gradient updates.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#optimizing-to-avoid-overfitting",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#optimizing-to-avoid-overfitting",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Optimizing to Avoid Overfitting",
+    "text": "Optimizing to Avoid Overfitting\n\nOverfitting occurs when a model learns noise instead of general patterns. Common strategies to prevent it include:\n\nL2 Regularization: Penalizes large weights to reduce model complexity and improve generalization.\nEarly Stopping: Stops training when validation loss starts increasing, preventing unnecessary overfitting.\nDropout: Randomly disables neurons during training to make the model more robust.\nData Augmentation: Expands the training set by applying transformations (e.g., rotations, scaling) to improve generalization.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#techniques-to-improve-training",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#techniques-to-improve-training",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Techniques to Improve Training",
+    "text": "Techniques to Improve Training\n\n\n\n\n\n\n\n\n\n\n\nTechniques\nPerformance Improvement\nLearning Speed\nOverfitting\nDescription\n\n\n\n\nNetwork Architecture\nX\nX\nX\nAdjust layers, neurons andconnections\n\n\nEpochs, Iterations, and Batch Size\n\nX\n\nControls updates per epoch to improve efficiency.\n\n\nSoftmax\nX\n\n\nTurns outputs into probabilities\n\n\nTraining Algorithms\nX\nX\n\nGD Improvements\n\n\nLearning Rate\nX\nX\n\nStep size in gradient updates.\n\n\nCross-Entropy Loss\n\nX\n\nOptimized for classification\n\n\nL2 Regularization\n\nX\nX\nPenalizes large weights to prevent overfitting.\n\n\nEarly Stopping\n\nX\n\nStops training when validation loss worsens.\n\n\nDropout\nX\n\nX\nRandomly disables neurons to enhance generalization.\n\n\nData Augmentation\n\n\nX\nExpands training data by applying transformations.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#python-ann-example",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#python-ann-example",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Python ANN example",
+    "text": "Python ANN example\n\nLab Lab-C3.1-IrisANN-Modular contains a detailed example and a Python notebook on building a NN from scratch.\nLab Lab-C3.1-Dividend Prediction shows how to use R to build and use a Neural network.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#how-does-it-all-fit",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#how-does-it-all-fit",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "How does it all fit?",
+    "text": "How does it all fit?",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#mcculloch-pitts-neuron-a-first-formal-model",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#mcculloch-pitts-neuron-a-first-formal-model",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "McCulloch-Pitts neuron: a first formal model",
+    "text": "McCulloch-Pitts neuron: a first formal model\nThe neuron can be understood as a composition of two functions:\n\nan aggregation function \\(g\\), which combines the inputs,\na decision function \\(f\\), which transforms the aggregated value into the output.\n\nGiven binary inputs \\(x_1,\\dots,x_n \\in \\{0,1\\}\\), the model can be written as\n\\[\ny = f(g(x_1,\\dots,x_n)).\n\\]\nA simple and useful choice is to define the aggregation as a weighted sum\n\\[\ng(x_1,\\dots,x_n)=\\sum_{i=1}^n w_i x_i,\n\\]\nand the output as a thresholded response\n\\[\nf(z)=\n\\begin{cases}\n1, & \\text{if } z \\ge \\theta,\\\\\n0, & \\text{if } z &lt; \\theta.\n\\end{cases}\n\\]\nTherefore, the neuron computes\n\\[\ny=\n\\begin{cases}\n1, & \\text{if } \\sum_{i=1}^n w_i x_i \\ge \\theta,\\\\\n0, & \\text{if } \\sum_{i=1}^n w_i x_i &lt; \\theta.\n\\end{cases}\n\\]\nThis model already contains the two key ingredients that will remain in artificial neurons:\n\na linear combination of the inputs,\na non-linear decision rule applied to that combination. ## Limitations\n\nThis first attempt to emulate neurons succeeded but with limitations:\n\nWhat about non-Boolean (say, real) inputs?\nWhat if all inputs are not equal?\nWhat if we want to assign more importance to some inputs?\nWhat about functions which are not linearly separable? Say XOR function",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#from-the-an-to-the-perceptron",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#from-the-an-to-the-perceptron",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "From the AN to the perceptron",
+    "text": "From the AN to the perceptron\nMc Cullogh’s neuron has important limitations:\n\nInputs are binary: \\(x_i \\in \\{0,1\\}\\)\nAll inputs are treated in a fixed way\nThe decision rule is rigid (fixed threshold)\n\nTo build more flexible the perceptron was introduced.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-perceptron",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-perceptron",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Perceptron",
+    "text": "The Perceptron\n\nTo overcome Mc Cullogh’s neuron limitations Rosenblatt, proposed the perceptron model, or artificial neuron, in 1958.\nIt generalizes previous one in that weights and thresholds can be learnt over time.\n\nIt takes a weighted sum of the inputs and\nIt sets the output to 1 if the weighted sum exceeds a threshold \\(\\theta\\), and to 0 otherwise.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#the-perceptron-1",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#the-perceptron-1",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "The Perceptron",
+    "text": "The Perceptron\n\nTo overcome the limitations of artificial neurons, Rosenblatt proposed the perceptron model (1958).\nIt generalizes the McCulloch-Pitts neuron by introducing learnable weights and bias.\nThe perceptron computes\n\n\\[\ny = \\mathbb{1}(w^T x + b \\ge 0)\n\\]",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#limitations-of-the-perceptron",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#limitations-of-the-perceptron",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Limitations of the perceptron",
+    "text": "Limitations of the perceptron\nThe perceptron represents an improvement:\n\nIt admits real-valued inputs.\nBoth weights and the bias can be learned.\n\nHowever, it still has important limitations:\n\nIt defines a linear decision boundary.\nTherefore, it can only classify linearly separable data.",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#biological-vs-artificial-neurons",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#biological-vs-artificial-neurons",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "Biological vs Artificial Neurons",
+    "text": "Biological vs Artificial Neurons\n\nBiological neurons are specialized cells that transmit signals to communicate with each other.\nNeuron’s activation is based on releasing neuro-transmitters, chemicals that flow between nerve cells.\n\nWhen the signal reaching the neuron exceeds a certain threshold, it releases neurotransmitters to continue the communication process.\n\nArtificial Neurons rely on Activation Functions to emulate the activation process of biological neurons",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
+  },
+  {
+    "objectID": "C3.1-Introduction_to_ANN-Slides.html#a-simple-neural-network",
+    "href": "C3.1-Introduction_to_ANN-Slides.html#a-simple-neural-network",
+    "title": "ARTIFICIAL NEURAL NETWORKS",
+    "section": "A simple Neural Network",
+    "text": "A simple Neural Network\n\nExample from youtube: A simple Neural network in 3 minutes",
+    "crumbs": [
+      "Home",
+      "Artificial Neural Networks",
+      "Neural Networks"
+    ]
   }
 ]

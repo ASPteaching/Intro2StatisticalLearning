@@ -40,36 +40,31 @@ editor_options:
 
 -   In the post-pandemic world, a lightning rise of AI, with a mess of realities and promises is impacting society.
 
--   Since ChatGPT entered the scene everybody has an experience, an opinion, or a fear on the topic.
+-   Since the emergence -and rapid growth-  of Large Language Models and Generative AI everybody has an experience, an opinion, or a fear on the topic.
 
 ![](https://bernardmarr.com/wp-content/uploads/2022/04/The-Dangers-Of-Not-Aligning-Artificial-Intelligence-With-Human-Values.jpg){fig-align="center" width="100%"}
 
 ## Is it just machine learning?
 
-- Most tasks performed by AI can be described as Classification or  Prediction used in applications as:
-   
-   - Recommendation systems,
-   - Image recognition, Image generation
-   - Natural language processing
+- Many tasks performed by AI can be described as **Predictive** as seen in *Recommendation systems, Image recognition or Natural language processing*.
 
--   AI relies on machine learning algorithms, to make predictions based on large amounts of data.
+- However, AI is broader than just prediction systems
+- **Generative AI** is also able to generate new content.
 
--   AI has far-reaching implications beyond its predictive capabilities, including ethical, social or technological.
+- Both, predictive and generative capabilities of AI have far-reaching implications beyond technologies, including ethical or social aspects.
 
 ## AI, ANNs and Deep learning
 
 - In many contexts, talking about AI means talking about 
 *Deep Learning (DL)*.
 
-- DL is a successful AI model which has powered many application such as *self-driving cars, voice assistants, and medical diagnosis systems*.
+- DL is the dominant paradigm in modern (2026) AI and is behind applications such as *self-driving cars, voice assistants, and medical diagnosis systems*.
 
 - DL originates in the field of *Artificial Neural Networks*
 
-- But DL extends the basic principles of ANNs by:
-
+- DL extends the basic principles of ANNs by:
     -   Adding complex architectures and algorithms and
-    -   At the same time becoming more automatic
-
+    -   Enabling scalable learning from large data
 
 ## The early history of AI (1)
 
@@ -79,15 +74,15 @@ knitr::include_graphics("images/AIHistory1.jpg")
 ```
 
 
-## Milestones in the history of DL
+<!-- ## Milestones in the history of DL -->
 
-We can see several hints worth to account for:
+<!-- We can see several hints worth to account for: -->
 
--   The **Perceptron** and the first **Artificial Neural Network** where the basic building block was introduced.
+<!-- -   The **Perceptron** and the first **Artificial Neural Network**: the basic building blocks. -->
 
--   The **Multilayered perceptron** and back-propagation where complex architectures were suggested to improve the capabilities.
+<!-- -   The **Multilayered perceptron** and back-propagation: complex architectures to improve the capabilities. -->
 
--   **Deep Neural Networks**, with many hidden layers, and auto-tunability capabilities.
+<!-- -   **Deep Neural Networks**, with many hidden layers, and auto-tunability capabilities. -->
 
 ## From ANN to Deep learning
 
@@ -97,113 +92,93 @@ We can see several hints worth to account for:
 Source: [Alex Amini's MIT Introduction to Deep Learning' course](introtodeeplearning.com)
 :::
 
-## Success stories
+<!-- ## Success stories -->
 
-Success stories such as
+<!-- Success stories such as -->
 
-- the development of self-driving cars,
+<!-- - the development of self-driving cars, -->
 
-- the use of AI in medical diagnosis, and
+<!-- - the use of AI in medical diagnosis, and -->
 
-- online shopping personalized recommendations
+<!-- - online shopping personalized recommendations -->
 
-have also contributed to the widespread adoption of AI.
+<!-- have also contributed to the widespread adoption of AI. -->
 
-## Not to talk abou the fears
+<!-- ## Not to talk abou the fears -->
 
-:::: {.columns}
+<!-- :::: {.columns} -->
 
-::: {.column width='60%'}
-- AI also comes with fears from multiple sources from science fiction to religion
+<!-- ::: {.column width='60%'} -->
+<!-- - AI also comes with fears from multiple sources from science fiction to religion -->
 
-  - Mass unemployment
-  
-  - Loss of privacity
-  
-  - AI bias
-  
-  - AI fakes
-  
-  - Or, simply, AI takeover
+<!--   - Mass unemployment -->
 
-:::
+<!--   - Loss of privacity -->
 
-::: {.column width='40%'}
+<!--   - AI bias -->
 
-<br>
-```{r, fig.align='center'}
-knitr::include_graphics("images/2.1-Introduction_to_ANN-Slides_insertimage_2.png")
-```
+<!--   - AI fakes -->
 
+<!--   - Or, simply, AI takeover -->
 
-:::
+<!-- ::: -->
 
-::::
+<!-- ::: {.column width='40%'} -->
+
+<!-- <br> -->
+<!-- ```{r, fig.align='center'} -->
+<!-- knitr::include_graphics("images/2.1-Introduction_to_ANN-Slides_insertimage_2.png") -->
+<!-- ``` -->
 
 
-## Back to science
+<!-- ::: -->
 
-Where/How does it all fit?
+<!-- :::: -->
+
+
+## How does it all fit?
+
 
 ```{r, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/AI-ML-DL-1.jpg")
+knitr::include_graphics("images/AI-ML-DL-1new.png")
 ```
-
-## AI, ML, DL ...
-
--   **Artificial intelligence**: Ability of a computer to perform tasks commonly associated with intelligent beings.
-
--   **Machine learning**: study of algorithms that learn from examples and experience instead of relying on hard-coded rules and make predictions on new data
-
--   **Deep learning**: sub field of ML focusing on learning data representations as successive successive layers of increasingly meaningful representations.
-
-## How does DL improve on ML
-
-```{r, fig.align='center', out.width="100%", fig.cap="[ML and DL Approaches for Brain Disease Diagnosis](https://ieeexplore.ieee.org/document/9363896)"}
-knitr::include_graphics("images/ML_vs_DL-2.png")
-```
-
-
-::: {.notes}
--   DNN: feature extraction and classification without (or with much les) human intervention.
--   DNN improves with data availability, without seemingly reaching plateaus.
-:::
 
 ## Size does matter!
 
-![An illustration of the performance comparison between deep learning (DL) and other machine learning (ML) algorithms, where DL modeling from large amounts of data can increase the performance](images/PerformanceVsAmountOfData.png){fig-align="center" width="100%"}
+![Performance comparison between Deep Learning and other ML algorithms<br>DL modeling from large amounts of data can increase the performance](images/PerformanceVsAmountOfData.png){fig-align="center" width="100%"}
 
-## The impact of Deep learning {.smaller}
 
--   Near-human-level image classification
+<!-- ## The impact of Deep learning {.smaller} -->
 
--   Near-human-level speech transcription
+<!-- -   Near-human-level image classification -->
 
--   Near-human-level handwriting transcription
+<!-- -   Near-human-level speech transcription -->
 
--   Dramatically improved machine translation
+<!-- -   Near-human-level handwriting transcription -->
 
--   Dramatically improved text-to-speech conversion
+<!-- -   Dramatically improved machine translation -->
 
--   Digital assistants such as Google Assistant and Amazon Alexa
+<!-- -   Dramatically improved text-to-speech conversion -->
 
--   Near-human-level autonomous driving
+<!-- -   Digital assistants such as Google Assistant and Amazon Alexa -->
 
--   Improved ad targeting, as used by Google, Baidu, or Bing
+<!-- -   Near-human-level autonomous driving -->
 
--   Improved search results on the web
+<!-- -   Improved ad targeting, as used by Google, Baidu, or Bing -->
 
--   Ability to answer natural language questions
+<!-- -   Improved search results on the web -->
 
--   Superhuman Go playing
+<!-- -   Ability to answer natural language questions -->
 
-## Not all that glitters is gold ...
+<!-- -   Superhuman Go playing -->
 
--   According to F. Chollet, the developer of Keras,
+<!-- ## Not all that glitters is gold ... -->
 
-    -   "*we shouldn't believe the short-term hype, but should believe in the long-term vision*.
-    -   *It may take a while for AI to be deployed to its true potential---a potential the full extent of which no one has yet dared to dream*
-    -   *but AI is coming, and it will transform our world in a fantastic way*".
+<!-- -   According to F. Chollet, the developer of Keras, -->
+
+<!--     -   "*we shouldn't believe the short-term hype, but should believe in the long-term vision*. -->
+<!--     -   *It may take a while for AI to be deployed to its true potential---a potential the full extent of which no one has yet dared to dream* -->
+<!--     -   *but AI is coming, and it will transform our world in a fantastic way*". -->
 
 # The **A**rtificial **N**eurone
 
@@ -230,43 +205,49 @@ knitr::include_graphics("images/MacCulloghPitts-Neuron.png")
 :::
 
 ::::
-
-- The first model of an artifial neurone was proposed by Mc Cullough & Pitts in 1943
+:::{.font70}
+- First model of an artifial neurone proposed by Mc Cullough & Pitts in 1943
+- They aimed at building a mathematical model of a neurone.
+:::
 
 
 ## Mc Cullough's neuron
 
--   It may be divided into 2 parts.
-    -   The first part, $g$,takes an input (as the dendrites of a neuron would do),
-    -   It performs an aggregation and
-    -   based on the aggregated value the second part, $f$, makes a decision.
+- The neuron can be divided into two parts:
 
-:::{.font70}
-- See [this link for an explanation](https://medium.com/towards-data-science/mcculloch-pitts-model-5fdf65ac5dd1) on how it can emulate logical operations such as AND, OR or NOT, but not XOR.
-- See [this link]() for a nice clarifying example
+  - $g$: combines the input signals,
+  - $f$: yields final output from the aggregated value.
+
+- The neuron computes:
+$$
+y = f(g(x_1,\dots,x_n)).
+$$
+
+:::{.font80}
+  - The neuron first aggregates, $g()$, the inputs, $\mathbb(x)$, and then
+  - Applies decision rule $f()$ to produce a binary output $y \in \{0,1\}$.
 :::
 
-## Limitations
+## From the AN to the perceptron
 
-This first attempt to emulate neurons succeeded but with limitations:
+Mc Cullogh's neuron has important limitations:
 
--   What about non-Boolean (say, real) inputs?
+- Inputs are binary: $x_i \in \{0,1\}$
+- All inputs are treated in a fixed way
+- The decision rule is rigid (fixed threshold)
 
--   What if all inputs are not equal?
+To build more flexible the perceptron was introduced.
 
--   What if we want to assign more importance to some inputs?
 
--   What about functions which are not linearly separable? Say XOR function
+## The Perceptron
 
-## Overcoming the limitations
+-   To overcome Mc Cullogh's neuron limitations Rosenblatt, proposed the perceptron model, or  *artificial neuron*, in 1958.
 
--   To overcome these limitations Rosenblatt, proposed the perceptron model, or  *artificial neuron*, in 1958.
+- It generalizes previous one in that *weights and thresholds can be learnt over time*.
 
--   Generalizes McCullough-Pitts neuron in that *weights and thresholds can be learnt over time*.
-
-    -   It takes a weighted sum of the inputs and
-    -   It sets the output to iff the sum is more than an arbitrary threshold (**$\theta$**).
-
+  - It takes a weighted sum of the inputs and
+  - It sets the output to 1 if the weighted sum exceeds a threshold $\theta$, and to 0 otherwise.
+    
 ## Rosenblatt's perceptron
 
 [![](images/RosenblattPerceptron1.png){width="100%"}](https://towardsdatascience.com/perceptron-the-artificial-neuron-4d8c70d5cc8d)
@@ -280,46 +261,36 @@ This first attempt to emulate neurons succeeded but with limitations:
 
 [![](images/RosenblattPerceptron2.png){width="100%"}](https://towardsdatascience.com/perceptron-the-artificial-neuron-4d8c70d5cc8d)
 
-## Comparison between the two
 
-[![](images/McCullaughVSRosenblattPerceptron.png){width="100%"}](https://towardsdatascience.com/perceptron-the-artificial-neuron-4d8c70d5cc8d)
+## Limitations of the perceptron
 
-
-## Comparison between the two
-
-The Perceptron represents an improvement over McCullough-Pitts' neuron:
+The perceptron represents an improvement:
 
 - It admits real-valued inputs.
-- Both weights and the threshold can be learned.
+- Both weights and the bias can be learned.
 
-However, there are still limitations:
+However, it still has important limitations:
 
-- The output is determined by a **step function**, which limits its ability to model complex relationships.
-- A **single perceptron can only classify linearly separable functions**.
+- It defines a **linear decision boundary**.
+- Therefore, it can only classify **linearly separable data**.
+
 
 ## ANs and Activation Functions
 
-- The Perceptron can be generalized by *Artificial Neurones* which can use more general functions, called *Activation Functions* to produce their output.
+- The Perceptron can be generalized by *Artificial Neurones* which use functions, called *Activation Functions (AFs)* to produce their output.
 
-  - Activation functions are built in a way that they allow neurons to produce continuous and non-linear outputs.
+- AFs are built in a way that they allow neurons to produce *continuous* and *non-linear outputs*.
   
-- It must be noted however that *a single artificial neurone, even with a different activation function, still cannot model no-linear separable problems like XOR.*
+- It must be noted however that a single AN, even with a different AF, still cannot model non-linear separable problems: *Non-linearity is in the output, no in the input*
 
 
+## Biological vs Artificial Neurons
 
+- Biological neurons are specialized cells that transmit signals to communicate with each other.
+- Neuron's activation is based on releasing *neuro-transmitters*, chemicals that flow between nerve cells.
+    - When the signal reaching the neuron exceeds a certain threshold, it releases neurotransmitters to continue the communication process.
+- Artificial Neurons rely on Activation Functions to emulate the activation process of biological neurons
 
-## Activation in biological neurons
-
--   Biological neurons are specialized cells that transmit signals to communicate with each other.
-- Neuron's activation is based on releasing *neurotransmitters*, chemicals that transmit signals between nerve cells.
-    -   When the signal reaching the neuron exceeds a certain threshold, it releases neurotransmitters to continue the communication process.
-
-## Activation functions in AN
-
--   Analogously, *activation functions* in AN are functions to decide if the AN it is activated or not.
--   AN's activation function is a mathematical function applied to the neuron's input to produce an output.
-    -   In practice it may go from simple to complex functions that can learn  patterns in the data.
-    -   Activation functions can incorporate non-linearity, improving over linear classifiers.
 
 ## Activation function
 
@@ -477,72 +448,17 @@ $$
 y(\mathbf{x})=g\left(w_{0}+\sum_{i=1}^{d} w_{i} x_{i}\right)=g\left(\sum_{i=0}^{d} w_{i} x_{i}\right)=g\left(\mathbf{w}^{\mathbf{T}} \mathbf{x}\right)
 $$
 
-## Perceptron Learning Rule {.smaller}
-
-- The **Perceptron Rule** updates weights based on **misclassified samples**.
-- It ensures convergence **only if data is linearly separable**.
-
-- **Weight Update Formula**
-$$
-w_j \leftarrow w_j + \eta(y - \hat{y})x_j
-$$
-where: 
-
-  - $x_j$ = input feature; $\quad \eta$ = learning rate; 
-
-  - $y$ = true label;  $\quad \hat{y}$=predicted class ($\pm1$);   
-
-- **Key Features**
-  - Uses a **step function** (not differentiable).
-  - Cannot be optimized using **gradient descent**.
-  - Fails to converge if data is **not linearly separable**.
-
-## The Perceptron Decision Rule
-
-```{r, fig.align='center', out.width="70%"}
-knitr::include_graphics("images/PerceptronTrain.png")
-```
-
-
-## The Delta Rule {.smaller}
-
-- Uuses **gradient descent** to minimize the **Sum of Squared Errors (SSE)**.
-
-- It applies to models with **differentiable activation functions**.
-
-- **Weight Update Formula**
-$$
-w_j \leftarrow w_j + \eta(y - h(x))x_j
-$$
-where: 
-
-    - $x_j$ = input feature, $\eta$ = learning rate; 
-
-    - $y$ = true label; $\quad h(x) =$ predicted output.  
-
-- **Key Features**
-  - Works with **continuous activation functions** (e.g., linear in ADALINE).
-  - **Not limited to linearly separable problems**.
-  - Forms the foundation for **gradient-based learning in neural networks**.
-
-## The Delta Rule
-
-```{r, fig.align='center', out.width="70%"}
-knitr::include_graphics("images/AdalineTrainAN.png")
-```
-
-
 # From neurons to neural networks
 
 ## The basic neural network
 
 ::: font90
 
-- Following with the brain analogy one can combine (artificial) neurons to create better learners.
+- Continuing with the brain analogy one can combine (artificial) neurons to create better learners.
 
-- A simple artificial neural network is usually created by combining two types of modifications to the basic perceptron (AN).
+- A simple artificial neural network is created by two types of modifications to the basic Artificial Neuron.
 
-  - Stacking several neurons insteads of just one.
+  - *Stacking several neurons* insteads of just one.
   
   - Adding an additional layer of neurons, which is call a *hidden* layer, 
 
@@ -594,21 +510,21 @@ An ANN is a predictive model (a *learner*) whose properties and behaviour  can b
 
 :::
 
-## Training the ANN
+<!-- ## Training the ANN -->
 
-::: font80
+<!-- ::: font80 -->
 
-- The training process aims at finding *the best possible parameter values* for the learning task defined by the fnctions. This is done by
+<!-- - The training process aims at finding *the best possible parameter values* for the learning task defined by the fnctions. This is done by -->
 
-  - Selecting an appropriate (convex) loss function,
-  - Finding weights that minimize the total *cost* function (avg. loss).
+<!--   - Selecting an appropriate (convex) loss function, -->
+<!--   - Finding weights that minimize the total *cost* function (avg. loss). -->
 
-- This is usually done using some iterative optimization procedure such as *gradient descent*.
-  - This requires evaluating derivatives in a huge number of points.
-  - Such high number may be reduced by *Stochastic Gradient Descent*.
-  - The evaluation of derivatives is simplified thanks to *Backpropagation*.
+<!-- - This is usually done using some iterative optimization procedure such as *gradient descent*. -->
+<!--   - This requires evaluating derivatives in a huge number of points. -->
+<!--   - Such high number may be reduced by *Stochastic Gradient Descent*. -->
+<!--   - The evaluation of derivatives is simplified thanks to *Backpropagation*. -->
 
-:::
+<!-- ::: -->
 
 ## Forward propagation {.smaller}
 
@@ -634,96 +550,105 @@ $$
 h_{\Theta}(x)=a_1^{(3)}=f(\theta_{10}^{(2)}+\theta_{11}^{(2)}a_1^{(2)}+\theta_{12}^{(2)}a_2^{(2)}+\theta_{13}^{(2)}a_3^{(2)}
 $$
 
-## A compact notation (1) {.smaller}
+<!-- ## A compact notation (1) {.smaller} -->
 
-Let  $z_i^{(l)}$ denote the total weighted sum of inputs to unit $i$ in layer $l$:
+<!-- Let  $z_i^{(l)}$ denote the total weighted sum of inputs to unit $i$ in layer $l$: -->
 
-$$
-z_i^{(2)}=\theta_{i0}^{(1)}+\theta_{i1}^{(1)}x_1+\theta_{i2}^{(1)}x_2+\theta_{i3}^{(1)}x_3,
-$$ 
-the output becomes: $a_i^{(l)}=f(z_i^{(l)})$.
+<!-- $$ -->
+<!-- z_i^{(2)}=\theta_{i0}^{(1)}+\theta_{i1}^{(1)}x_1+\theta_{i2}^{(1)}x_2+\theta_{i3}^{(1)}x_3, -->
+<!-- $$  -->
+<!-- the output becomes: $a_i^{(l)}=f(z_i^{(l)})$. -->
 
 
-Extending the activation function $f(\cdot)$ to apply elementwise to vectors: 
+<!-- Extending the activation function $f(\cdot)$ to apply elementwise to vectors:  -->
 
-$$
-    f([z_1,z_2,z_3]) = [f(z_1), f(z_2),f(z_3)],
-$$
-we can write the previous equations more compactly as:
+<!-- $$ -->
+<!--     f([z_1,z_2,z_3]) = [f(z_1), f(z_2),f(z_3)], -->
+<!-- $$ -->
+<!-- we can write the previous equations more compactly as: -->
 
-```{=tex}
-\begin{eqnarray}
-z^{(2)}&=&\Theta^{(1)}x\nonumber\\
-a^{(2)}&=&f(z^{(2)})\nonumber\\
-z^{(3)}&=&\Theta^{(2)}a^{(2)}\nonumber\\
-h_{\Theta}(x)&=&a^{(3)}=f(z^{(3)})\nonumber
-\end{eqnarray}
+<!-- ```{=tex} -->
+<!-- \begin{eqnarray} -->
+<!-- z^{(2)}&=&\Theta^{(1)}x\nonumber\\ -->
+<!-- a^{(2)}&=&f(z^{(2)})\nonumber\\ -->
+<!-- z^{(3)}&=&\Theta^{(2)}a^{(2)}\nonumber\\ -->
+<!-- h_{\Theta}(x)&=&a^{(3)}=f(z^{(3)})\nonumber -->
+<!-- \end{eqnarray} -->
+<!-- ``` -->
+
+<!-- ## A compact notation (2)  -->
+
+<!-- More generally, recalling that we also use $a^{(1)}=x$ to also  denote the values from the input layer, -->
+
+<!-- Given layer $l$'s activations $a^{(l)}$, we can compute layer   $l+1$'s activations $a^{(l+1)}$ as: -->
+
+
+<!-- \begin{equation} -->
+<!-- z^{(l+1)}=\Theta^{(l)}a^{(l)} -->
+<!-- \label{eqforZs} -->
+<!-- \end{equation} -->
+
+<!-- \begin{equation} -->
+<!-- a^{(l+1)}=f(z^{(l+1)}) -->
+<!-- \label{eqforAs} -->
+<!-- \end{equation} -->
+
+<!-- ## A compact notation (3) {.smaller} -->
+
+
+<!-- This can be used to provide a matrix representation for the weighted sum -->
+<!-- of inputs of all neurons: -->
+
+<!-- $$ -->
+<!-- z^{(l+1)}= -->
+<!-- \begin{bmatrix} -->
+<!-- z_1^{(l+1)}\\ -->
+<!-- z_2^{(l+1)}\\ -->
+<!-- \vdots\\ -->
+<!-- z_{s_{l+1}}^{(l)} -->
+<!-- \end{bmatrix}= -->
+<!-- \begin{bmatrix} -->
+<!-- \theta_{10}^{(l)}& \theta_{11}^{(l)}&\theta_{12}^{(l)}&...&\theta_{1s_{l}}^{(l)}&\\ -->
+<!-- \theta_{20}^{(l)}& \theta_{21}^{(l)}&\theta_{22}^{(l)}&...&\theta_{2s_{l}}^{(l)}&\\ -->
+<!-- \vdots & \vdots& \vdots & \vdots & \vdots\\ -->
+<!-- \theta_{s_{l+1}0}^{(l)}& \theta_{s_{l+1}1}^{(l)}&\theta_{s_{l+1}2}^{(l)}&...&\theta_{s_{l+1}s_{l}}^{(l)}&\\ -->
+<!-- \end{bmatrix} -->
+<!-- \cdot\begin{bmatrix} -->
+<!-- 1\\ -->
+<!-- a_1^{(l)}\\ -->
+<!-- a_2^{(l)}\\ -->
+<!-- \vdots\\ -->
+<!-- a_{s_l}^{(l)} -->
+<!-- \end{bmatrix} -->
+<!-- $$ -->
+
+<!-- ## A compact notation (4) {.smaller} -->
+
+<!-- So that, the activation is then: -->
+
+<!-- $$ -->
+<!-- a^{(l+1)}= -->
+<!-- \begin{bmatrix} -->
+<!-- a_1^{(l+1)}\\ -->
+<!-- a_2^{(l+1)}\\ -->
+<!-- \vdots\\ -->
+<!-- a_{s_{l+1}}^{(l)} -->
+<!-- \end{bmatrix}=f(z^{(l+1)})=\begin{bmatrix} -->
+<!-- f(z_1^{(l+1)})\\ -->
+<!-- f(z_2^{(l+1)})\\ -->
+<!-- \vdots\\ -->
+<!-- f(z_{s_{l+1}}^{(l)}) -->
+<!-- \end{bmatrix} -->
+<!-- $$ -->
+
+## A simple Neural Network
+
+```{r, fig.cap="[Example from youtube: A simple Neural network in 3 minutes](https://www.youtube.com/watch?v=iyrmwErURJs)", out.width="90%", fig.align='center'}
+knitr::include_graphics("images/ANN-Example-1.png")
 ```
 
-## A compact notation (2) 
-
-More generally, recalling that we also use $a^{(1)}=x$ to also  denote the values from the input layer,
-
-Given layer $l$'s activations $a^{(l)}$, we can compute layer   $l+1$'s activations $a^{(l+1)}$ as:
 
 
-\begin{equation}
-z^{(l+1)}=\Theta^{(l)}a^{(l)}
-\label{eqforZs}
-\end{equation}
-
-\begin{equation}
-a^{(l+1)}=f(z^{(l+1)})
-\label{eqforAs}
-\end{equation}
-
-## A compact notation (3) {.smaller}
-
-
-This can be used to provide a matrix representation for the weighted sum
-of inputs of all neurons:
-
-$$
-z^{(l+1)}=
-\begin{bmatrix}
-z_1^{(l+1)}\\
-z_2^{(l+1)}\\
-\vdots\\
-z_{s_{l+1}}^{(l)}
-\end{bmatrix}=
-\begin{bmatrix}
-\theta_{10}^{(l)}& \theta_{11}^{(l)}&\theta_{12}^{(l)}&...&\theta_{1s_{l}}^{(l)}&\\
-\theta_{20}^{(l)}& \theta_{21}^{(l)}&\theta_{22}^{(l)}&...&\theta_{2s_{l}}^{(l)}&\\
-\vdots & \vdots& \vdots & \vdots & \vdots\\
-\theta_{s_{l+1}0}^{(l)}& \theta_{s_{l+1}1}^{(l)}&\theta_{s_{l+1}2}^{(l)}&...&\theta_{s_{l+1}s_{l}}^{(l)}&\\
-\end{bmatrix}
-\cdot\begin{bmatrix}
-1\\
-a_1^{(l)}\\
-a_2^{(l)}\\
-\vdots\\
-a_{s_l}^{(l)}
-\end{bmatrix}
-$$
-
-## A compact notation (4) {.smaller}
-
-So that, the activation is then:
-
-$$
-a^{(l+1)}=
-\begin{bmatrix}
-a_1^{(l+1)}\\
-a_2^{(l+1)}\\
-\vdots\\
-a_{s_{l+1}}^{(l)}
-\end{bmatrix}=f(z^{(l+1)})=\begin{bmatrix}
-f(z_1^{(l+1)})\\
-f(z_2^{(l+1)})\\
-\vdots\\
-f(z_{s_{l+1}}^{(l)})
-\end{bmatrix}
-$$
 
 ## Eficient Forward propagation
 
