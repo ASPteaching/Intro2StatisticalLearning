@@ -55,18 +55,18 @@ website:
             text: Neural Networks
           - href: C3.1b-Introduction_to_Keras_and_Scikit-Learn-Slides.qmd
             text: Keras and Scikit-Learn
+          - href: labs/Lab-C3.1b-IrisANN-Modular.ipynb
+            text: Lab-C3.1a-Species Classification with ANN Lab (Python)
+          - href: labs/Lab-C3.1b-IrisANN-Training-ScikitLearn.ipynb
+            text: Lab-C3.1b-Species Classification with ANN using Scikit-Learn
+          - href: labs/Lab-C3.1b-IrisANN-Training-Keras.ipynb
+            text: Lab-C3.1c-Species Classification with ANN using Keras
+          - href: labs/Lab-C3.2-DividendPrediction_ANN.qmd
+            text: Dividend Prediction with ANN Lab (R)
           - href: C3.2-Introduction_to_Deep_Learning-Slides.qmd
             text: Deep Learning
           - href: C3.3-Convolutional_Neural_Networks-Slides.qmd
             text: Convolutional Neural Networks
-          - href: labs/Lab-C3.1b-IrisANN-Modular.ipynb
-            text: Species Classification with ANN Lab (Python)
-          - href: labs/Lab-C3.1b-IrisANN-Training-ScikitLearn.ipynb
-            text: Species Classification with ANN using Scikit-Learn
-          - href: labs/Lab-C3.1b-IrisANN-Training-Keras.ipynb
-            text: Species Classification with ANN using Keras
-          - href: labs/Lab-C3.2-DividendPrediction_ANN.qmd
-            text: Dividend Prediction with ANN Lab (R)
           - href: labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.ipynb
             text: Lab-C3.3-Image-Classification-with-CNN 
 
