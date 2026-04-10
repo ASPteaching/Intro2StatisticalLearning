@@ -49,7 +49,7 @@ website:
           - href: labs/Lab-C2.5-The-caret_package.qmd
             text: Lab-C2.5-Caret
 
-      - section: "Artificial Neural Networks"
+      - section: "Neural Networks"
         contents:
           - href: C3.1-Introduction_to_ANN-Slides.qmd
             text: Neural Networks
@@ -62,7 +62,10 @@ website:
           - href: labs/Lab-C3.1b-IrisANN-Training-Keras.ipynb
             text: Lab-C3.1c-Species Classification with ANN using Keras
           - href: labs/Lab-C3.2-DividendPrediction_ANN.qmd
-            text: Dividend Prediction with ANN Lab (R)
+            text: Lab-C3.2-Dividend Prediction with ANN (R)
+            
+      - section: "Deep Learning"
+        contents:
           - href: C3.2-Introduction_to_Deep_Learning-Slides.qmd
             text: Deep Learning
           - href: C3.3-Convolutional_Neural_Networks-Slides.qmd
