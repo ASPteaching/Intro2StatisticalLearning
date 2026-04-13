@@ -748,17 +748,6 @@ y(\mathbf{x})=g\left(w_{0}+\sum_{i=1}^{d} w_{i} x_{i}\right)=g\left(\sum_{i=0}^{
 <li>1 output unit.</li>
 </ul>
 </section>
-<section id="neural-networks-as-functions" class="slide level2">
-<h2>Neural Networks as Functions</h2>
-<p>A neural network defines a parametric function:</p>
-<p><span class="math display">\[
-\hat{y} = f(x; \theta)
-\]</span></p>
-<p>where: - <span class="math inline">\(x\)</span> is the input, - <span class="math inline">\(\hat{y}\)</span> is the output, - <span class="math inline">\(\theta = \{W^{(l)}, b^{(l)}\}_{l=1}^L\)</span> are the parameters.</p>
-<p>The function <span class="math inline">\(f\)</span> is obtained by <em>composing linear and non-linear transformations</em>: <span class="math display">\[
-f(x) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)} (x)
-\]</span></p>
-</section>
 <section id="how-an-ann-works" class="slide level2">
 <h2>How an ANN works</h2>
 <div class="font90">
@@ -767,7 +756,7 @@ f(x) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)} (x)
 <ul>
 <li><p>It operates through a process known as <em>forward propagation</em>, which encompasses the information flow from the input layer to the output layer.</p></li>
 <li><p>Forward propagation is performed by composing a series of linear and non-linear (activation) functions.</p></li>
-<li><p>These are characterized (parametrized) by their <em>weights</em> and <em>biases</em>, that need to be <em>learnt</em>.</p>
+<li><p>These are characterized (parametrized) by their <em>weights</em> and <em>biases</em>, that need to be <em>learned from data</em>.</p>
 <ul>
 <li>This is done by <em>training the ANN</em>.</li>
 </ul></li>
@@ -815,13 +804,11 @@ a^{(l+1)} = f(z^{(l+1)})
 \]</span></p>
 <p>where:</p>
 <ul>
-<li><span class="math inline">\(W^{(l)}\)</span> contains the weights,</li>
-<li><span class="math inline">\(b^{(l)}\)</span> contains the bias terms,</li>
-<li><span class="math inline">\(f(\cdot)\)</span> is applied elementwise.</li>
+<li><p><span class="math inline">\(W^{(l)}\)</span> contains the weights,</p></li>
+<li><p><span class="math inline">\(b^{(l)}\)</span> contains the bias terms,</p></li>
+<li><p><span class="math inline">\(f(\cdot)\)</span> is applied elementwise.</p></li>
+<li><p>This form is used in most implementations.</p></li>
 </ul>
-<blockquote>
-<p>This form is used in most implementations.</p>
-</blockquote>
 </section>
 <section id="forward-propagation-3" class="slide level2 smaller">
 <h2>Forward Propagation (3)</h2>
@@ -842,11 +829,11 @@ a^{(l+1)} = f(z^{(l+1)})
 </li>
 <li><span class="math inline">\(f(\cdot)\)</span>: elementwise</li>
 </ul>
-<blockquote>
-<p>Most common in implementations</p>
-</blockquote>
 </div><div class="column" style="width:50%;">
 <p><strong>Augmented form (bias included)</strong></p>
+<p><span class="math display">\[
+z^{(l+1)} = \Theta^{(l)} \tilde{a}^{(l)}
+\]</span></p>
 <p><span class="math display">\[
 \tilde{a}^{(l)} =
 \begin{bmatrix}
@@ -855,17 +842,11 @@ a^{(l)}
 \end{bmatrix}
 \]</span></p>
 <p><span class="math display">\[
-z^{(l+1)} = \Theta^{(l)} \tilde{a}^{(l)}
-\]</span></p>
-<p><span class="math display">\[
 a^{(l+1)} = f(z^{(l+1)})
 \]</span></p>
 <ul>
 <li><span class="math inline">\(\Theta^{(l)} = [\, b^{(l)} \;\; W^{(l)} \,]\)</span></li>
 </ul>
-<blockquote>
-<p>Same model, more compact notation</p>
-</blockquote>
 </div></div>
 </section>
 <section id="anns-as-compositions" class="slide level2 smaller">
@@ -1037,7 +1018,7 @@ L(\theta) = \prod_{i=1}^n \hat{y}_i^{y_i} (1 - \hat{y}_i)^{1-y_i}
 \]</span></p></li>
 <li><p>Maximizing this likelihood is equivalent to minimizing <span class="math inline">\(- \log  L(\theta)\)</span>, which leads to the cross-entropy loss: <span class="math display">\[
 \ell(y, \hat{y}) = -y \log(\hat{y}) - (1 - y)\log(1 - \hat{y})
-\]</span> WHich should provide a better intuition for this oss function.</p></li>
+\]</span> Which should provide a better intuition for this loss function.</p></li>
 </ul>
 <!-- ## Regularized cross entropy -->
 <!-- In practice we often work with a *regularized version* of the cost function (we don't regularize the bias units) -->

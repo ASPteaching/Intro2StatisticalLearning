@@ -494,23 +494,6 @@ With all this in mind our example neural network has three layers with:
  - 1 output unit.
 
 
-## Neural Networks as Functions
-
-A neural network defines a parametric function:
-
-$$
-\hat{y} = f(x; \theta)
-$$
-
-where:
-- $x$ is the input,
-- $\hat{y}$ is the output,
-- $\theta = \{W^{(l)}, b^{(l)}\}_{l=1}^L$ are the parameters.
-
-The function $f$ is obtained by *composing linear and non-linear transformations*:
-$$
-f(x) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)} (x)
-$$
 
 ## How an ANN works 
 
@@ -524,7 +507,7 @@ An ANN is a predictive model (a *learner*) whose properties and behaviour  can b
 
 - Forward propagation is performed by composing a series of linear and non-linear (activation) functions.
 
-- These are characterized (parametrized) by their *weights* and *biases*, that need to be *learnt*. 
+- These are characterized (parametrized) by their *weights* and *biases*, that need to be *learned from data*. 
   - This is done by *training the ANN*.
 
 :::
@@ -587,7 +570,7 @@ where:
 - $b^{(l)}$ contains the bias terms,
 - $f(\cdot)$ is applied elementwise.
 
-> This form is used in most implementations.
+- This form is used in most implementations.
 
 
 ## Forward Propagation (3) {.smaller}
@@ -611,12 +594,15 @@ $$
 - $b^{(l)}$: bias  
 - $f(\cdot)$: elementwise  
 
-> Most common in implementations
 
 :::
 
 ::: {.column width="50%"}
 **Augmented form (bias included)**
+
+$$
+z^{(l+1)} = \Theta^{(l)} \tilde{a}^{(l)}
+$$
 
 $$
 \tilde{a}^{(l)} =
@@ -627,16 +613,11 @@ a^{(l)}
 $$
 
 $$
-z^{(l+1)} = \Theta^{(l)} \tilde{a}^{(l)}
-$$
-
-$$
 a^{(l+1)} = f(z^{(l+1)})
 $$
 
 - $\Theta^{(l)} = [\, b^{(l)} \;\; W^{(l)} \,]$
 
-> Same model, more compact notation
 :::
 
 ::::
@@ -691,7 +672,6 @@ knitr::include_graphics("images/ANN-Example-1.png")
 - The way input data is transformed, through a series of weightings and transformations, until the ouput layer is called   *forward propagation*.
 
 - By organizing parameters in matrices, and using matrix-vector operations, fast linear algebra routines can be used to perform the required calculations in a fast efficent way.
-
 
 ## Multiple architectures for ANN
 
@@ -827,7 +807,7 @@ $$
 $$
 \ell(y, \hat{y}) = -y \log(\hat{y}) - (1 - y)\log(1 - \hat{y})
 $$
-WHich should provide a better intuition for this oss function.
+Which should provide a better intuition for this loss function.
 
 <!-- ## Regularized cross entropy -->
 

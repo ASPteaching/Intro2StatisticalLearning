@@ -4414,7 +4414,7 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#how-an-ann-works",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "How an ANN works",
-    "text": "How an ANN works\n\nAn ANN is a predictive model (a learner) whose properties and behaviour can be well characterized.\n\n\nIt operates through a process known as forward propagation, which encompasses the information flow from the input layer to the output layer.\nForward propagation is performed by composing a series of linear and non-linear (activation) functions.\nThese are characterized (parametrized) by their weights and biases, that need to be learnt.\n\nThis is done by training the ANN.",
+    "text": "How an ANN works\n\nAn ANN is a predictive model (a learner) whose properties and behaviour can be well characterized.\n\n\nIt operates through a process known as forward propagation, which encompasses the information flow from the input layer to the output layer.\nForward propagation is performed by composing a series of linear and non-linear (activation) functions.\nThese are characterized (parametrized) by their weights and biases, that need to be learned from data.\n\nThis is done by training the ANN.",
     "crumbs": [
       "Home",
       "Neural Networks",
@@ -6482,7 +6482,7 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#forward-propagation-2",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "Forward Propagation (2)",
-    "text": "Forward Propagation (2)\nForward propagation can be written compactly as:\n\\[\nz^{(l+1)} = W^{(l)} a^{(l)} + b^{(l)}\n\\]\n\\[\na^{(l+1)} = f(z^{(l+1)})\n\\]\nwhere:\n\n\\(W^{(l)}\\) contains the weights,\n\\(b^{(l)}\\) contains the bias terms,\n\\(f(\\cdot)\\) is applied elementwise.\n\n\nThis form is used in most implementations.",
+    "text": "Forward Propagation (2)\nForward propagation can be written compactly as:\n\\[\nz^{(l+1)} = W^{(l)} a^{(l)} + b^{(l)}\n\\]\n\\[\na^{(l+1)} = f(z^{(l+1)})\n\\]\nwhere:\n\n\\(W^{(l)}\\) contains the weights,\n\\(b^{(l)}\\) contains the bias terms,\n\\(f(\\cdot)\\) is applied elementwise.\nThis form is used in most implementations.",
     "crumbs": [
       "Home",
       "Neural Networks",
@@ -6494,7 +6494,7 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#forward-propagation-3",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "Forward Propagation (3)",
-    "text": "Forward Propagation (3)\nAn alternative compact notation incorporates the bias into the weight matrix.\n\n\nStandard form (explicit bias)\n\\[\nz^{(l+1)} = W^{(l)} a^{(l)} + b^{(l)}\n\\]\n\\[\na^{(l+1)} = f(z^{(l+1)})\n\\]\n\n\\(W^{(l)}\\): weights\n\n\\(b^{(l)}\\): bias\n\n\\(f(\\cdot)\\): elementwise\n\n\nMost common in implementations\n\n\nAugmented form (bias included)\n\\[\n\\tilde{a}^{(l)} =\n\\begin{bmatrix}\n1 \\\\\na^{(l)}\n\\end{bmatrix}\n\\]\n\\[\nz^{(l+1)} = \\Theta^{(l)} \\tilde{a}^{(l)}\n\\]\n\\[\na^{(l+1)} = f(z^{(l+1)})\n\\]\n\n\\(\\Theta^{(l)} = [\\, b^{(l)} \\;\\; W^{(l)} \\,]\\)\n\n\nSame model, more compact notation",
+    "text": "Forward Propagation (3)\nAn alternative compact notation incorporates the bias into the weight matrix.\n\n\nStandard form (explicit bias)\n\\[\nz^{(l+1)} = W^{(l)} a^{(l)} + b^{(l)}\n\\]\n\\[\na^{(l+1)} = f(z^{(l+1)})\n\\]\n\n\\(W^{(l)}\\): weights\n\n\\(b^{(l)}\\): bias\n\n\\(f(\\cdot)\\): elementwise\n\n\nAugmented form (bias included)\n\\[\nz^{(l+1)} = \\Theta^{(l)} \\tilde{a}^{(l)}\n\\]\n\\[\n\\tilde{a}^{(l)} =\n\\begin{bmatrix}\n1 \\\\\na^{(l)}\n\\end{bmatrix}\n\\]\n\\[\na^{(l+1)} = f(z^{(l+1)})\n\\]\n\n\\(\\Theta^{(l)} = [\\, b^{(l)} \\;\\; W^{(l)} \\,]\\)",
     "crumbs": [
       "Home",
       "Neural Networks",
@@ -6554,7 +6554,7 @@
     "href": "C3.1-Introduction_to_ANN-Slides.html#a-probabilistic-interpretation-1",
     "title": "ARTIFICIAL NEURAL NETWORKS",
     "section": "A probabilistic interpretation",
-    "text": "A probabilistic interpretation\n\nGiven a dataset \\(\\{(x_i, y_i)\\}_{i=1}^n\\), we can measure how well the model fits the data (how likely is the model given the data) through the likelihood: \\[\nL(\\theta) = \\prod_{i=1}^n \\hat{y}_i^{y_i} (1 - \\hat{y}_i)^{1-y_i}\n\\]\nMaximizing this likelihood is equivalent to minimizing \\(- \\log  L(\\theta)\\), which leads to the cross-entropy loss: \\[\n\\ell(y, \\hat{y}) = -y \\log(\\hat{y}) - (1 - y)\\log(1 - \\hat{y})\n\\] WHich should provide a better intuition for this oss function.",
+    "text": "A probabilistic interpretation\n\nGiven a dataset \\(\\{(x_i, y_i)\\}_{i=1}^n\\), we can measure how well the model fits the data (how likely is the model given the data) through the likelihood: \\[\nL(\\theta) = \\prod_{i=1}^n \\hat{y}_i^{y_i} (1 - \\hat{y}_i)^{1-y_i}\n\\]\nMaximizing this likelihood is equivalent to minimizing \\(- \\log  L(\\theta)\\), which leads to the cross-entropy loss: \\[\n\\ell(y, \\hat{y}) = -y \\log(\\hat{y}) - (1 - y)\\log(1 - \\hat{y})\n\\] Which should provide a better intuition for this loss function.",
     "crumbs": [
       "Home",
       "Neural Networks",
