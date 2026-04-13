@@ -493,6 +493,25 @@ With all this in mind our example neural network has three layers with:
  - 3 hidden units,  
  - 1 output unit.
 
+
+## Neural Networks as Functions
+
+A neural network defines a parametric function:
+
+$$
+\hat{y} = f(x; \theta)
+$$
+
+where:
+- $x$ is the input,
+- $\hat{y}$ is the output,
+- $\theta = \{W^{(l)}, b^{(l)}\}_{l=1}^L$ are the parameters.
+
+The function $f$ is obtained by *composing linear and non-linear transformations*:
+$$
+f(x) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)} (x)
+$$
+
 ## How an ANN works 
 
 ::: font90
@@ -526,126 +545,145 @@ An ANN is a predictive model (a *learner*) whose properties and behaviour  can b
 
 <!-- ::: -->
 
-## Forward propagation {.smaller}
+
+## Forward propagation (1) {.smaller}
 
 The process that encompasses the computations required to go from the input values to the final output is known as *forward propagation*.
 
-<!-- The  weights are combined with the input to produce the final output. -->
-
 For the ANN with 3 input values and 3 neurons in the hidden layer we have:
 
-1. Each node, $a_i^{(2)}$ of the hidden layer opperates on all nodes of the input values
-  
+1. Each node $a_i^{(2)}$ of the hidden layer operates on all input values:
+
 ::: font90  
 \begin{eqnarray}
 a_1^{(2)}&=&f(\theta_{10}^{(1)}+\theta_{11}^{(1)}x_1+\theta_{12}^{(1)}x_2+\theta_{13}^{(1)}x_3)\\
 a_2^{(2)}&=&f(\theta_{20}^{(1)}+\theta_{21}^{(1)}x_1+\theta_{22}^{(1)}x_2+\theta_{23}^{(1)}x_3)\\
-a_3^{(2)}&=&f(\theta_{30}^{(1)}+\theta_{31}^{(1)}x_1+\theta_{32}^{(1)}x_2+\theta_{33}^{(1)}x_3))
+a_3^{(2)}&=&f(\theta_{30}^{(1)}+\theta_{31}^{(1)}x_1+\theta_{32}^{(1)}x_2+\theta_{33}^{(1)}x_3)
 \end{eqnarray}
 :::
 
-  2. Output of hidden layer is transformed by the activation function:
-  
+2. Output layer:
 $$
-h_{\Theta}(x)=a_1^{(3)}=f(\theta_{10}^{(2)}+\theta_{11}^{(2)}a_1^{(2)}+\theta_{12}^{(2)}a_2^{(2)}+\theta_{13}^{(2)}a_3^{(2)}
+h_{\Theta}(x)=a_1^{(3)}=f(\theta_{10}^{(2)}+\theta_{11}^{(2)}a_1^{(2)}+\theta_{12}^{(2)}a_2^{(2)}+\theta_{13}^{(2)}a_3^{(2)})
+$$
+The terms $\theta_{i0}^{(l)}$ act as bias parameters.
+
+
+## Forward Propagation (2) {.smaller}
+
+Forward propagation can be written compactly as:
+
+$$
+z^{(l+1)} = W^{(l)} a^{(l)} + b^{(l)}
 $$
 
-<!-- ## A compact notation (1) {.smaller} -->
+$$
+a^{(l+1)} = f(z^{(l+1)})
+$$
 
-<!-- Let  $z_i^{(l)}$ denote the total weighted sum of inputs to unit $i$ in layer $l$: -->
+where:
 
-<!-- $$ -->
-<!-- z_i^{(2)}=\theta_{i0}^{(1)}+\theta_{i1}^{(1)}x_1+\theta_{i2}^{(1)}x_2+\theta_{i3}^{(1)}x_3, -->
-<!-- $$  -->
-<!-- the output becomes: $a_i^{(l)}=f(z_i^{(l)})$. -->
+- $W^{(l)}$ contains the weights,
+- $b^{(l)}$ contains the bias terms,
+- $f(\cdot)$ is applied elementwise.
 
-
-<!-- Extending the activation function $f(\cdot)$ to apply elementwise to vectors:  -->
-
-<!-- $$ -->
-<!--     f([z_1,z_2,z_3]) = [f(z_1), f(z_2),f(z_3)], -->
-<!-- $$ -->
-<!-- we can write the previous equations more compactly as: -->
-
-<!-- ```{=tex} -->
-<!-- \begin{eqnarray} -->
-<!-- z^{(2)}&=&\Theta^{(1)}x\nonumber\\ -->
-<!-- a^{(2)}&=&f(z^{(2)})\nonumber\\ -->
-<!-- z^{(3)}&=&\Theta^{(2)}a^{(2)}\nonumber\\ -->
-<!-- h_{\Theta}(x)&=&a^{(3)}=f(z^{(3)})\nonumber -->
-<!-- \end{eqnarray} -->
-<!-- ``` -->
-
-<!-- ## A compact notation (2)  -->
-
-<!-- More generally, recalling that we also use $a^{(1)}=x$ to also  denote the values from the input layer, -->
-
-<!-- Given layer $l$'s activations $a^{(l)}$, we can compute layer   $l+1$'s activations $a^{(l+1)}$ as: -->
+> This form is used in most implementations.
 
 
-<!-- \begin{equation} -->
-<!-- z^{(l+1)}=\Theta^{(l)}a^{(l)} -->
-<!-- \label{eqforZs} -->
-<!-- \end{equation} -->
+## Forward Propagation (3) {.smaller}
 
-<!-- \begin{equation} -->
-<!-- a^{(l+1)}=f(z^{(l+1)}) -->
-<!-- \label{eqforAs} -->
-<!-- \end{equation} -->
+An alternative compact notation incorporates the bias into the weight matrix.
 
-<!-- ## A compact notation (3) {.smaller} -->
+:::: columns
 
+::: {.column width="50%"}
+**Standard form (explicit bias)**
 
-<!-- This can be used to provide a matrix representation for the weighted sum -->
-<!-- of inputs of all neurons: -->
+$$
+z^{(l+1)} = W^{(l)} a^{(l)} + b^{(l)}
+$$
 
-<!-- $$ -->
-<!-- z^{(l+1)}= -->
-<!-- \begin{bmatrix} -->
-<!-- z_1^{(l+1)}\\ -->
-<!-- z_2^{(l+1)}\\ -->
-<!-- \vdots\\ -->
-<!-- z_{s_{l+1}}^{(l)} -->
-<!-- \end{bmatrix}= -->
-<!-- \begin{bmatrix} -->
-<!-- \theta_{10}^{(l)}& \theta_{11}^{(l)}&\theta_{12}^{(l)}&...&\theta_{1s_{l}}^{(l)}&\\ -->
-<!-- \theta_{20}^{(l)}& \theta_{21}^{(l)}&\theta_{22}^{(l)}&...&\theta_{2s_{l}}^{(l)}&\\ -->
-<!-- \vdots & \vdots& \vdots & \vdots & \vdots\\ -->
-<!-- \theta_{s_{l+1}0}^{(l)}& \theta_{s_{l+1}1}^{(l)}&\theta_{s_{l+1}2}^{(l)}&...&\theta_{s_{l+1}s_{l}}^{(l)}&\\ -->
-<!-- \end{bmatrix} -->
-<!-- \cdot\begin{bmatrix} -->
-<!-- 1\\ -->
-<!-- a_1^{(l)}\\ -->
-<!-- a_2^{(l)}\\ -->
-<!-- \vdots\\ -->
-<!-- a_{s_l}^{(l)} -->
-<!-- \end{bmatrix} -->
-<!-- $$ -->
+$$
+a^{(l+1)} = f(z^{(l+1)})
+$$
 
-<!-- ## A compact notation (4) {.smaller} -->
+- $W^{(l)}$: weights  
+- $b^{(l)}$: bias  
+- $f(\cdot)$: elementwise  
 
-<!-- So that, the activation is then: -->
+> Most common in implementations
 
-<!-- $$ -->
-<!-- a^{(l+1)}= -->
-<!-- \begin{bmatrix} -->
-<!-- a_1^{(l+1)}\\ -->
-<!-- a_2^{(l+1)}\\ -->
-<!-- \vdots\\ -->
-<!-- a_{s_{l+1}}^{(l)} -->
-<!-- \end{bmatrix}=f(z^{(l+1)})=\begin{bmatrix} -->
-<!-- f(z_1^{(l+1)})\\ -->
-<!-- f(z_2^{(l+1)})\\ -->
-<!-- \vdots\\ -->
-<!-- f(z_{s_{l+1}}^{(l)}) -->
-<!-- \end{bmatrix} -->
-<!-- $$ -->
+:::
+
+::: {.column width="50%"}
+**Augmented form (bias included)**
+
+$$
+\tilde{a}^{(l)} =
+\begin{bmatrix}
+1 \\
+a^{(l)}
+\end{bmatrix}
+$$
+
+$$
+z^{(l+1)} = \Theta^{(l)} \tilde{a}^{(l)}
+$$
+
+$$
+a^{(l+1)} = f(z^{(l+1)})
+$$
+
+- $\Theta^{(l)} = [\, b^{(l)} \;\; W^{(l)} \,]$
+
+> Same model, more compact notation
+:::
+
+::::
+
+## ANNs as Compositions {.smaller}
+
+In short, a neural network defines a parametric function:
+
+$$
+\hat{y} = f(x; \theta)
+$$
+
+where $f(\cdot)$ is obtained by *composing a sequence of transformations*:
+
+$$
+f(x) = f^{(L)} \circ f^{(L-1)} \circ \cdots \circ f^{(1)}(x)
+$$
+
+Each layer defines a transformation of the form:
+
+$$
+f^{(l)}(a) = f\big(W^{(l)} a + b^{(l)}\big)
+$$
+
+so that the activations propagate as:
+
+$$
+a^{(l+1)} = f^{(l)}(a^{(l)})
+$$
+
+with: $a^{(1)} = x$ (input layer) and $a^{(L)} = \hat{y}$ (output layer).
+
+<!-- - The parameters of the model are:$ -->
+<!-- \theta = \{W^{(l)}, b^{(l)}\}_{l=1}^{L} -->
+<!-- $ -->
 
 ## A simple Neural Network
 
 ```{r, fig.cap="[Example from youtube: A simple Neural network in 3 minutes](https://www.youtube.com/watch?v=iyrmwErURJs)", out.width="90%", fig.align='center'}
 knitr::include_graphics("images/ANN-Example-1.png")
 ```
+
+## Feed Forward NNs
+
+-   The type of NN described is called feed-forward *neural network (FFNN)*, since
+    -   All computations are done by Forward propagation
+    -   The connectivity graph does not have any directed loops or cycles.
 
 
 ## Eficient Forward propagation
@@ -666,61 +704,19 @@ knitr::include_graphics("images/ANN-Example-1.png")
     Zoo](https://www.asimovinstitute.org/neural-network-zoo/).
 
 
-## Multiple architectures for ANN {.smaller}
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-- We have so far focused on a single hidden layer neural network of the example
-
-- One can build neural networks with many distinct architectures (meaning patterns of connectivity between neurons), including ones with multiple hidden layers.
-
-
-:::
-
-::: {.column width='50%'}
-
-![](images/2.1-Introduction_to_ANN-Slides_insertimage_3.png)
-[The Neural Network Zoo](https://www.asimovinstitute.org/neural-network-zoo/)
-
-:::
-
-::::
-
-
-## Multiple layer dense Networks
-
--   Most common choice is a $n_l$-layered network:
-    -   layer 1 is the input layer,
-    -   layer $n_l$ is the output layer,
-    -   and each layer $l$ is densely connected to layer $l+1$.
--   In this setting, to compute the output of the network, we can compute all the activations in layer $L_2$, then layer $L_3$, and so on, up to layer $L_{nl}$, using equations seen previously.
-
-## Feed Forward NNs
-
--   The type of NN described is called feed-forward *neural network (FFNN)*, since
-    -   All computations are done by Forward propagation
-    -   The connectivity graph does not have any directed loops or cycles.
-
 # Training Neural Networks
 
 
 ## Training an ANN 
 
-::: font80
+An ANN is a predictive model whose properties and behaviour can be mathematically characterized.
 
-- An ANN is a predictive model whose properties and behaviour  can be mathematically characterized.
+- The ANN acts by composing a series of linear and non-linear (activation) functions.
 
-- In practice this means:
-  - The ANN acts by composing a series of linear and non-linear (activation) functions.
-  - These are characterized by their *weights* and *biases*, that need to be *learnt*.
-  
-- *Training* the network is done by 
-  - Selecting an appropriate (convex) loss function,
-  - Finding weights that minimize a the total *cost* function (avg loss).
+- These transformations are characterized by their weights and biases, which need to be learned from data.
 
-:::
+*Training the network* consists in adjusting these parameters so that predictions match -as best as possible- the observed outputs.
+
 
 ## Training an ANN
 
@@ -732,26 +728,40 @@ knitr::include_graphics("images/ANN-Training.png")
 Source: [Overview of a Neural Network’s Learning Process](https://medium.com/data-science-365/overview-of-a-neural-networks-learning-process-61690a502fa)
 :::
 
-## The tools for training
 
-- Training an ANN is usually done using some iterative optimization procedure such as *Gradient Descent*.
+## Measuring Prediction Error {.smaller}
 
-- This requires evaluating derivatives in a huge number of points.
-    - Such high number may be reduced by *Stochastic Gradient Descent*.
-    - The evaluation of derivatives is simplified thanks to *Backpropagation*.
+- To learn the parameters, we need to measure how good the predictions are.
 
-## Loss functions for optimization {.smaller}
+- For a given observation $(x, y)$, we use a loss function, $\ell(y, \hat{y})$  to compare:
 
-Depending on the activation function it may be advisable to use one or another form of loss function.
+  - the true output $y$
+  - the predicted output $\hat{y} = f(x;\theta)$
 
-- A typical choice may be *quadratic  (or square) error loss*:
+- Given a dataset $\{(x_i,y_i)\}_{i=1}^n$, we define the average loss:
+
 $$
-  l(h_\theta(x),y)=\left (y-\frac{1}{1+e^{-\theta^\intercal x}}\right )^2
+J(\theta) = \frac{1}{n} \sum_{i=1}^n \ell(y_i, \hat{y}_i)
 $$
 
-- Given a sigmoid AF, the squared error loss [*is  not a convex problem*](https://community.deeplearning.ai/t/why-mse-is-not-a-good-loss-function-for-logistic-regression/255547) so that MSE is not appropriate.
+- This quantity measures *how well the network fits the data*.
+- $J(\theta)$ is called the **cost (or objective)** function.
 
-- Quadratic loss may be used with ReLu activation.
+## Typical Loss Functions {.smaller}
+
+- The choice of loss function depends on the type of problem.
+
+  - For *regression problems* a common choice is the **squared error**:
+$$
+\ell(y, \hat{y}) = (y - \hat{y})^2
+$$
+
+  - For *classification problems*, we often use loss functions based on probabilities. In particular:
+  
+    - For binary classification:   **cross-entropy**
+    - multiclass classification:  **softmax + cross-entropy**
+
+The loss function should reflect how we measure prediction quality.
 
 
 ## Cross-entropy loss function {.smaller}
@@ -786,6 +796,39 @@ $$
 
 - Now, this is a convex optimization problem.
 
+
+## A probabilistic interpretation {.smaller}
+
+- In binary classification, the network output can be interpreted as a probability:
+
+$$
+\hat{y} \approx P(y = 1 \mid x)
+$$
+
+- Under this interpretation, we associate the model:
+
+$$
+P(y \mid x) = \hat{y}^y (1 - \hat{y})^{1-y}
+$$
+
+  - If $y = 1$, the model assigns probability $\hat{y}$  
+  - If $y = 0$, the model assigns probability $1 - \hat{y}$  
+
+This probabilistic view is not required, but provides a useful way to motivate the choice of loss function.
+
+## A probabilistic interpretation {.smaller}
+
+- Given a dataset $\{(x_i, y_i)\}_{i=1}^n$, we can measure how well the model fits the data (*how likely is the model given the data*) through the likelihood:
+$$
+L(\theta) = \prod_{i=1}^n \hat{y}_i^{y_i} (1 - \hat{y}_i)^{1-y_i}
+$$
+
+- Maximizing this likelihood is equivalent to minimizing $- \log  L(\theta)$, which leads to the cross-entropy loss:
+$$
+\ell(y, \hat{y}) = -y \log(\hat{y}) - (1 - y)\log(1 - \hat{y})
+$$
+WHich should provide a better intuition for this oss function.
+
 <!-- ## Regularized cross entropy -->
 
 <!-- In practice we often work with a *regularized version* of the cost function (we don't regularize the bias units) -->
@@ -800,106 +843,56 @@ $$
 <!-- ``` -->
 
 
-## The parameters for tuning
 
-::: font80
+## From Cost to Optimization {.smaller}
 
-- Training a network corresponds to finding the parameters, that is, *the weights* and *the biases*, that minimize the cost function. 
+- We have defined a cost function:
 
-- Althoug weights & biases are respectively matrices and vectors, it is convenient to represent them in a vectorized form stored as a single vector, that will be denoted here, by $\theta$. 
-
-- We may suppose $\theta\in\mathbb{R}^p$, and write the cost function as $J(\theta)$ to emphasize its dependence on the parameters, that is:
 $$
-\begin{eqnarray*}
-J: \mathbb{R}^p & \rightarrow \mathbb{R}\\
-\theta &  \rightarrow J(\theta)
-\end{eqnarray*}
+J(\theta) = \frac{1}{n} \sum_{i=1}^n \ell(y_i, \hat{y}_i)
 $$
 
-:::
+which measures how well the network fits the data.
 
-## Gradient or *Steepest* Descent {.smaller}
+- The parameters of the model are:
 
-:::: {.columns}
-
-::: {.column width='50%'}
-
-- A classical method in optimization to minimize a convex function $J(\theta)$.
-
-- It proceeds iteratively, computing a sequence of vectors $\theta^1, \theta^2, ..., \theta^n$ in $\mathbb{R}^p$ with the aim of converging to a vector that minimizes the cost function. 
-
-:::
-
-::: {.column width='50%'}
-
-<br>
-
-```{r, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/GradientDescentSchema.png")
-```
-
-:::
-
-::::
-
-## Gradient Descent {.smaller}
-
-::: font90
-
-- Suppose that our current vector is $\theta$. 
-*How should we choose a perturbation, $\Delta\theta$, so that the next vector, $\theta+\Delta\theta$, represents an improvement*, that is: $J(\theta +\Delta\theta) < J(\theta)$?
-
-- *Linearize* the cost function using a Taylor approximation.
-
-- If $\Delta\theta$ is small, then ignoring terms of order $||\Delta\theta||^2$ or higher:
 $$
-J(\theta+\Delta\theta)\approx J(\theta)+\sum_{i=1}^p\frac{\partial J(\theta)}{\partial\theta_i}\Delta\theta_i
-$$ 
-or, equivalently:
-\begin{equation}\label{g2}
-J(\theta+\Delta\theta)\approx J(\theta)+\nabla J(\theta)^\intercal\Delta\theta
-\end{equation}
-where $\nabla J(\theta)\in\mathbb{R}^p$
- denote the *gradient*, i.e. the vector of partial derivatives:
-\begin{equation}\label{g1}
-\nabla J(\theta)=\left(\frac{\partial J(\theta)}{\partial\theta_1},...,\frac{\partial J(\theta)}{\partial\theta_p}\right)^\intercal
-\end{equation}
-
-:::
-
-## Gradient Descent
-
-::: font80
-
-- Goal: choose a perturbation, $\Delta\theta$, s.t.: $J(\theta +\Delta\theta) < J(\theta)$
-
-- Taylor approximation above suggests that choosing $\Delta\theta$ to *make $\nabla J(\theta)^\intercal\Delta\theta$ negative* will make the value of $J(\theta+\Delta\theta)$ smaller. 
-
-- Indeed it can be shown that the highest possible negative value will  come out when $-\nabla J(\theta)=\Delta\theta$, which leads to the gradient descent formula:
+\theta = \{W^{(l)}, b^{(l)}\}_{l=1}^{L}
 $$
-\theta \rightarrow \theta-\eta\nabla J(\theta),
+
+
+- The key question is: *How should we adjust $\theta$ to reduce $J(\theta)$?*
+
+- *Training a network* consists in finding the parameters (weights and biases) that minimize the cost function $J(\theta)$.
+
+
+## Gradient of the Cost Function {.smaller}
+
+- The cost function, $J(\theta)$,  depends on all model parameters.
+
+- To reduce it, we need to understand how it changes when we modify $\theta$.
+  - This is reflected by the derivative or gradient of the function.
+
+- The **gradient** of $J$ is a vector of partial  derivatives defined as:
+
 $$
-where $\eta$, the *learning rate* is the size of the step taken at each iteration, which should be small because of Taylor App.
-
-:::
-
-## The Cauchy-Schwarz inequality and Gradient Descent {.smaller}
-
-- The [Cauchy-Schwarz inequality](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality), states that for any $f,g\in\mathbb{R}^p$, we have:
+\nabla J(\theta) =
+\left(
+\frac{\partial J}{\partial \theta_1}, \dots, \frac{\partial J}{\partial \theta_p}
+\right)
 $$
-|f^\intercal g|\leq ||f||\cdot ||g||.
-$$ 
--  Moreover, the two sides are equal if and only if $f$ and $g$ are linearly dependent (meaning they are parallel).
 
-- By Cauchy-Schwarz,biggest possible value for $\nabla J(\theta)^\intercal\Delta\theta$ is the upper bound, $||\nabla J(\theta)||\cdot ||\Delta\theta||$.
-  - The equality is only reached when $||\nabla J(\theta)||= ||\Delta\theta||$
+- It  indicates how $J(\theta)$ changes with each parameter.
 
-- This explains why we choose precisely  $-\nabla J(\theta)=\Delta\theta$
+- The gradient vector points in the direction of *steepest increase* so:
+
+- To reduce the cost, we move in the direction of steepest decrease, given by $$-\nabla J(\theta)$$
 
 
-## Gradient Descent {.smaller}
 
-In summary, givent a cost function $J(\theta)$ to be optimized the gradient descent optimization proceeds as follows:
+## Gradient Descent Algorithm {.smaller}
+
+To minimize a cost function $J(\theta)$, we proceeds as follows:
 
 1. **Initialize** $\theta_0$ randomly or with some predetermined values
 2. **Repeat until convergence:**
@@ -910,7 +903,7 @@ In summary, givent a cost function $J(\theta)$ to be optimized the gradient desc
 
   - $\theta_0$ is the initial parameter vector,
   - $\theta_t$ is the parameter vector at iteration $t$,
-  - $\eta$ is the learning rate,
+  - $\eta$ is the learning rate, a step size controlling how large each update is.
   - $\nabla J(\theta_{t})$ is the gradient of the loss function with respect to $\theta$ at iteration $t$,
   - $\epsilon$ is a small positive value indicating the desired level of convergence.
 
@@ -924,25 +917,27 @@ In summary, givent a cost function $J(\theta)$ to be optimized the gradient desc
 <!-- ``` -->
 
 
-- Gradient descent is an intuitiva approach that has been thoroughly illustrated in many different ways:
+- Gradient descent is an intuitive approach that has been thoroughly illustrated in many different ways:
 
 
 ![https://assets.yihui.org/figures/animation/example/grad-desc](https://assets.yihui.org/figures/animation/example/grad-desc/demo-a.gif){fig-align="center" width="100%"} 
 
-## Computing Gradients {.smaller}
+## Computing Gradients:  {.smaller}
 
-- The gradient method optimizes weights and biases $\theta =\{W, b\}$ by minimizing the cost function $J(\theta)$.
-- This requires computing partial derivatives:
-  $$
-  \frac{\partial}{\partial\theta_j}J(\theta)
-  $$
-- The algorithm used for this computation is called backpropagation.
+- To apply gradient descent, we need to compute $\nabla J(\theta)$.
 
-## A short history
+- The cost depends on the parameters through multiple layers:
+$$
+x \rightarrow a^{(2)} \rightarrow a^{(3)} \rightarrow \cdots \rightarrow \hat{y}
+$$
 
-- Introduced in the 1970s in an MSc thesis.
-- In 1986, [Rumelhart, Hinton, and Williams](https://www.nature.com/articles/323533a0) demonstrated that backpropagation significantly improves learning speed.
-- This breakthrough enabled neural networks to solve previously intractable problems.
+- Therefore, we must compute derivatives through a composition of functions
+
+- Backpropagation, an algorithm introduced in the 1970s in an MSc thesis applies the chain rule to compute these derivatives efficiently
+
+  - In 1986, [Rumelhart, Hinton, and Williams](https://www.nature.com/articles/323533a0) demonstrated that backpropagation significantly improves learning speed. 
+
+- This **enabled neural networks to solve previously intractable problems**.
 
 ## Backpropagation intuition {.smaller}
 
@@ -954,65 +949,166 @@ In summary, givent a cost function $J(\theta)$ to be optimized the gradient desc
   - Propagated backward to compute the error contribution of each neuron.
   - Used to adjust weights iteratively.
 
-## Delta rule and error term $\delta$ {.smaller}
 
-- The delta rule updates weights based on the error term $\delta_j$, which measures how much neuron $j$ contributes to the error.
-- It is computed as:
-  $$
-  \delta_j = \sigma^{\prime}(z_j) (c_j - y_j)
-  $$
-  where:
-  - $\sigma^{\prime}(z_j)$ is the derivative of the activation function.
-  - $(c_j - y_j)$ is the error in neuron $j$.
+## Backpropagation Notation {.smaller}
 
-## Weight update $\Delta W$ {.smaller}
+- For each layer, define:
 
-- Once $\delta_j$ is computed, weights are updated using:
-  $$
-  \Delta w_{i}^{j} = \eta \delta_j x_{i}^{j}
-  $$
-  where:
-  - $\eta$ is the learning rate.
-  - $\delta_j$ determines the direction and magnitude of the update.
-  - $x_{i}^{j}$ is the input to neuron $j$.
+$$
+z^{(l)} = W^{(l-1)} a^{(l-1)} + b^{(l-1)}
+$$
 
-- In hidden layers, $\delta$ is propagated backward:
-  $$
-  \delta_k = \sigma^{\prime}(z_k) \sum_{j \in S_k} \delta_j w_k^j
-  $$
-  where $S_k$ is the set of output neurons connected to neuron $k$.
+$$
+a^{(l)} = f(z^{(l)})
+$$
 
-## Backpropagation algorithm {.smaller}
+- Define:
 
-1. **Forward propagation**  
-   - Compute the network output for a given input.
+$$
+\delta^{(l)} = \frac{\partial J}{\partial z^{(l)}}
+$$
+
+- $\delta^{(l)}$ measures how the cost changes with respect to the pre-activation  
+
+
+## Output Layer {.smaller}
+
+- Recall: $\delta^{(L)} = \frac{\partial J}{\partial z^{(L)}}$
+
+- The cost depends on $z^{(L)}$ through the activation $a^{(L)}$
+
+- Applying the chain rule:
+
+$$
+\delta^{(L)} =
+\frac{\partial J}{\partial a^{(L)}} \odot f'(z^{(L)})
+$$
+
+- This term depends on:
+  - the loss function  
+  - the activation function  
   
-2. **Backward propagation**  
-   - Compute $\delta_j$ for each neuron in the output layer.
-   - Propagate $\delta_j$ backward to compute $\delta_k$ for hidden layers.
-   - Update weights using gradient descent.
+## Hidden Layers {.smaller}
 
-## Final algorithm {.smaller}
+- The effect of $z^{(l)}$ on the cost is transmitted through the subsequent layers:
 
-**Input:**  $W$ (weight vectors), $D$ (training dataset).
+$$
+z^{(l)} \rightarrow a^{(l)} \rightarrow z^{(l+1)} \rightarrow J
+$$
 
-**Repeat until error is below threshold:**
+- Applying the chain rule:
 
-1. Compute network output for each training instance.
+$$
+\delta^{(l)} =
+(W^{(l)})^T \delta^{(l+1)} \odot f'(z^{(l)})
+$$
 
-2. For each neuron $j$ in the output layer:
+- The term $(W^{(l)})^T \delta^{(l+1)}$ propagates the effect of the cost backwards  
 
-   - Compute $\delta_j = \sigma^{\prime}(z_j) (c_j - y_j)$
+- The term $f'(z^{(l)})$ accounts for the activation function  
 
-   - Update weights: $\Delta w_i^j = \eta \delta_j x_i^j$
 
-3. For each neuron $k$ in hidden layers:
+## Forward vs Backward {.smaller}
 
-   - Compute  $\delta_k = \sigma^{\prime}(z_k) \sum_{j \in S_k} \delta_j w_k^j$
+- Forward propagation:
+  - computes values  
+  - propagates activations layer by layer  
 
-   - Update weights : $\Delta w_i^k = \eta \delta_k x_i^k$
+$$
+x \rightarrow a^{(2)} \rightarrow a^{(3)} \rightarrow \cdots \rightarrow \hat{y}
+$$
 
-**Output:** Updated weight vectors $W$.
+
+- Backward propagation:
+  - computes derivatives  
+  - propagates sensitivities (errors) backwards  
+
+$$
+J \rightarrow \delta^{(L)} \rightarrow \delta^{(L-1)} \rightarrow \cdots \rightarrow \delta^{(1)}
+$$
+
+- Forward: how the network produces predictions  
+
+- Backward: how each parameter affects the cost  
+
+<!-- - Backpropagation applies the chain rule in a structured way -->
+
+## Gradients {.smaller}
+
+- After propagating the derivatives backwards, we can compute the gradients with respect to the model parameters
+
+- Using the chain rule:
+
+$$
+\frac{\partial J}{\partial W^{(l)}} =
+\delta^{(l+1)} (a^{(l)})^T
+$$
+
+$$
+\frac{\partial J}{\partial b^{(l)}} =
+\delta^{(l+1)}
+$$
+
+- These expressions follow directly from the definition of $\delta^{(l)}$
+
+## Backpropagation Summary {.smaller}
+
+- Forward pass:
+  - compute activations layer by layer  
+
+- Backward pass:
+  - propagate derivatives using the chain rule  
+
+- Gradient computation:
+  - obtain derivatives with respect to all parameters  
+
+- Parameter update:
+  - apply gradient descent  
+
+- Backpropagation efficiently computes the gradient $\nabla J(\theta)$
+
+
+## A Key Result (1) {.smaller}
+
+- Consider binary classification with:
+  - sigmoid activation  
+  - cross-entropy loss  
+
+  - Output layer: $a^{(L)} = \hat{y} = \sigma(z^{(L)})
+$
+
+  - Loss: $\ell(y,\hat{y}) = -y \log(\hat{y}) - (1-y)\log(1-\hat{y})
+$
+
+- Using the chain rule:
+
+$$
+\delta^{(L)} = \frac{\partial J}{\partial z^{(L)}} =
+\frac{\partial J}{\partial a^{(L)}} \cdot
+\frac{\partial a^{(L)}}{\partial z^{(L)}}
+$$
+
+## A Key Result (2) {.smaller}
+
+- Computing the derivatives:
+
+$$
+\frac{\partial J}{\partial a^{(L)}} =
+-\frac{y}{\hat{y}} + \frac{1-y}{1-\hat{y}}
+$$
+
+$$
+\frac{\partial a^{(L)}}{\partial z^{(L)}} =
+\hat{y}(1-\hat{y})
+$$
+
+- Combining terms:
+
+$$
+\delta^{(L)} = \hat{y} - y
+$$
+
+- This simple expression greatly simplifies backpropagation
 
 <!-- ## Key takeaways {.smaller} -->
 
@@ -1020,35 +1116,35 @@ In summary, givent a cost function $J(\theta)$ to be optimized the gradient desc
 <!-- - $\Delta W$ updates weights using $\delta_j$ and the learning rate.   -->
 <!-- - Backpropagation propagates $\delta$ backward to update all layers.   -->
 
-## Chain rule in backpropagation {.smaller}
+<!-- ## Chain rule in backpropagation {.smaller} -->
 
-- In multi-layer networks, the error signal must be **propagated backward** through multiple layers.
+<!-- - In multi-layer networks, the error signal must be **propagated backward** through multiple layers. -->
 
-- The weight update in hidden layers depends not only on the local error but also on how errors propagate from the output layer.
+<!-- - The weight update in hidden layers depends not only on the local error but also on how errors propagate from the output layer. -->
 
-- This is achieved using the **chain rule of calculus**, which decomposes derivatives into simpler components.
+<!-- - This is achieved using the **chain rule of calculus**, which decomposes derivatives into simpler components. -->
 
-- That is, the **gradient descent update rule** for the weight is:
+<!-- - That is, the **gradient descent update rule** for the weight is: -->
 
-$$
-\Delta w_i^j = -\eta \frac{\partial J}{\partial w_{i}^{j}} = \eta \delta_j x_i^j
-$$
-where the derivative will be computed applying the chain rule.
+<!-- $$ -->
+<!-- \Delta w_i^j = -\eta \frac{\partial J}{\partial w_{i}^{j}} = \eta \delta_j x_i^j -->
+<!-- $$ -->
+<!-- where the derivative will be computed applying the chain rule. -->
 
-## Applying the chain rule {.smaller}
+<!-- ## Applying the chain rule {.smaller} -->
 
-- To compute the gradient of the loss function $J$ with respect to a weight $w_{i}^{j}$ connecting neuron $i$ to neuron $j$, we use the chain rule:
+<!-- - To compute the gradient of the loss function $J$ with respect to a weight $w_{i}^{j}$ connecting neuron $i$ to neuron $j$, we use the chain rule: -->
 
-$$
-\frac{\partial J}{\partial w_{i}^{j}} =
-\frac{\partial J}{\partial y_j} \cdot
-\frac{\partial y_j}{\partial z_j} \cdot
-\frac{\partial z_j}{\partial w_{i}^{j}}
-$$
+<!-- $$ -->
+<!-- \frac{\partial J}{\partial w_{i}^{j}} = -->
+<!-- \frac{\partial J}{\partial y_j} \cdot -->
+<!-- \frac{\partial y_j}{\partial z_j} \cdot -->
+<!-- \frac{\partial z_j}{\partial w_{i}^{j}} -->
+<!-- $$ -->
 
-  - $\frac{\partial J}{\partial y_j}$ measures how the loss changes with respect to the output of neuron $j$.
-  - $\frac{\partial y_j}{\partial z_j} = \sigma^{\prime}(z_j)$ is the derivative of the activation function.
-  - $\frac{\partial z_j}{\partial w_{i}^{j}} = x_i^{j}$ represents the input to the neuron.
+<!--   - $\frac{\partial J}{\partial y_j}$ measures how the loss changes with respect to the output of neuron $j$. -->
+<!--   - $\frac{\partial y_j}{\partial z_j} = \sigma^{\prime}(z_j)$ is the derivative of the activation function. -->
+<!--   - $\frac{\partial z_j}{\partial w_{i}^{j}} = x_i^{j}$ represents the input to the neuron. -->
 
 ## Automatic differentiation {.smaller}
 
