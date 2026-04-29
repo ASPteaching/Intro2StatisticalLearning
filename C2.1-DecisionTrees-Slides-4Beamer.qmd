@@ -62,16 +62,18 @@ if (!require(mlbench)) install.packages("mlbench", dep=TRUE)
 -   A company may need to decide about investing in new technologies or
     stay with the traditional ones.
 
-In all those cases a decision tree may provide a structured approach to
-decision-making that is based on data and can be easily explained and
-justified.
+In all those cases a decision tree may provide:
+
+- A *structured approach to decision-making*, 
+- **Based on data** 
+- That can be **be easily explained and justified**.
 
 ## An intuitive approach
 
 ::::: columns
 ::: {.column width="40%"}
-Decisions are often based on asking several questions on available
-information whose answers induce binary splits on data that end up with
+Decisions are often based on asking a sequence of yes/no questions -from more general to more specific- based on available
+information, whose answers induce binary splits on data that end up with
 some grouping or classification.
 :::
 
@@ -81,6 +83,93 @@ knitr::include_graphics("images/decTree4HypertensionNew.png")
 ```
 :::
 :::::
+
+This process can be more generically stated in the context of supervised learning.
+
+## General context review: The Prediction Problem.
+
+-   Let $(X, Y)$ be a r.v. with support
+    $\mathcal{X} \times \mathcal{Y} \subseteq \mathbb{R}^{p} \times \mathbb{R}$.
+
+-   General supervised learning or prediction problem:
+
+    -   Training sample:
+        $S=\left\{\left(\boldsymbol{x}_{1}, y_{1}\right), \ldots,\left(\boldsymbol{x}_{n}, y_{n}\right)\right\}$,
+        i.i.d. from $(\boldsymbol{X}, Y)$.
+
+    -   The goal is to define a function (possibly depending on the
+        sample) $h_{S}: \mathcal{X} \mapsto \mathcal{Y}$ such that for a
+        new independent observation $(\boldsymbol{x}_{n+1}, y_{n+1})$ ,
+        from which we only know $\boldsymbol{x}_{n+1}$, it happens that:
+        $$
+        \hat{y}_{n+1}=h_{S}\left(x_{n+1}\right) \text { is close to } y_{n+1} \text { (in some sense). }
+        $$
+
+-   Function $h_{S}$ is generically called a *prediction function*, or depending on the
+    case, *classification* or *regression* function.
+
+## Classification and Regression problems
+
+The prediction function $h_{S}$ is said to describe a *classification*
+or a *regression* problem depending on the case.
+
+-   If $\mathcal{Y} \subseteq \mathbb{R}$ (or $\mathcal{Y}$ an interval)
+    we have a standard *regression problem*.
+
+    -   Example: *Relating Salary and demographic variables*
+
+-   If $\mathcal{Y}=\{0,1\}$ (or, also, $\mathcal{Y}=\{-1,1\}$ ) we have
+    a problem of *binary classification* or discrimination.
+
+    -   Example: *Predicting if a "cured" disease  will recidive (re-appear)*
+
+-   If $\mathcal{Y}=\{1, \ldots, K\}$ (or
+    $\left.\mathcal{Y}=\left\{\boldsymbol{y} \in\{0,1\}^{K}: \sum_{k=1}^{K} y_{k}=1\right\}\right)$
+    we face a of $K$ classes classification problem.
+
+    -   Example: *Classifying a tumor into one of many types*
+
+## Supervised learning
+
+-   Probabilistic model for supervised learning
+
+    -   Response variable $Y$.
+
+    -   Explanatory variables (features)
+        $\boldsymbol{X}=\left(X_{1}, \ldots, X_{p}\right)$.
+
+    -   Data
+        $\left(\boldsymbol{x}_{i}=\left(x_{i 1}, \ldots, x_{i p}\right), y_{i}\right), i=1, \ldots, n$
+        i.i.d. from the random variable $$
+        \left(\boldsymbol{X}=\left(X_{1}, \ldots, X_{p}\right), Y\right) \sim \operatorname{Pr}(\boldsymbol{X}, Y)
+        $$
+
+-   $\operatorname{Pr}(\boldsymbol{X}, \boldsymbol{Y})$ denotes the
+    joint distribution of $\boldsymbol{X}$ and $Y$.
+
+<!--     -   When this joint distribution is continuous, -->
+<!--         $\operatorname{Pr}(\boldsymbol{X}, Y)$ is the joint probability -->
+<!--         density function. -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+-   Main interest is *predicting* $Y$ from $\boldsymbol{X}$.
+
+-   Given the probabilistic model it can be re-stated as *learning the
+    conditional distribution*
+    $\operatorname{Pr}(Y \mid \boldsymbol{X})$.
+
+-   In practice we focus on *learning a conditional location parameter*:
+    $$
+    \mu(\boldsymbol{x})=\underset{\mu}{\operatorname{argmin}} \mathbb{E}(L(Y, \mu) \mid \boldsymbol{X}=\boldsymbol{x}),
+    $$ where $L(y, \hat{y})$, loss function, measures the error of
+    predicting $y$ with $\hat{y}$.
+
+-   For quadratic loss, $L(y, \hat{y})=(y-\hat{y})^{2}, \mu(x)$ is the
+    regression function: $$
+    \mu(\boldsymbol{x})=\mathbb{E}(Y \mid \boldsymbol{X}=\boldsymbol{x})
+    $$
+
 
 ## Introducing decision trees
 
@@ -106,6 +195,56 @@ knitr::include_graphics("images/decTree4HypertensionNew.png")
 
     -   **Regression Trees**, are *regression models* used to predict
         the values of a numerical response variable.
+
+
+## Trees vs Decision Trees
+
+:::::: columns
+:::: {.column width="50%"}
+::: font80
+1.  A tree is a set of nodes and edges organized in a hierarchical
+    fashion.<br> In contrast to a graph, in a tree there are no loops.
+    <!-- Internal nodes are denoted with circles and terminal nodes with squares. -->
+
+<br>
+
+2.  A decision tree is a tree where *each split node stores a boolean
+    test function* to be applied to the incoming data. <br> Each leaf
+    stores the final answer (predictor)
+:::
+::::
+
+::: {.column width="50%"}
+```{r, fig.align='center', out.width="45%"}
+knitr::include_graphics("images/1.1-DecisionTrees-Slides_insertimage_1.png")
+
+knitr::include_graphics("images/1.1-DecisionTrees-Slides_insertimage_2.png")
+```
+:::
+::::::
+
+## Notation used in trees (1)
+
+```{r, fig.align='center', out.width="100%"}
+knitr::include_graphics("images/clipboard-58173806.png")
+
+```
+
+## Notation used in trees (2)
+
+-   A node is denoted by $t$.
+
+-   The left and right child nodes are denoted by $t_{L}$ and         $t_{R}$
+
+-   The collection of all nodes in the tree is denoted $T$
+
+-   The collection of all the leaf nodes is denoted $\tilde{T}$
+
+-   A split will be denoted by $s$.
+
+-   The set of all splits is denoted by $S$.
+
+
 
 <!-- ## A first look at pros and cons   (CREC QUE NO CAL)(-->
 
@@ -151,29 +290,20 @@ knitr::include_graphics("images/decTree4HypertensionNew.png")
 
 <!-- - [See here some examples of each situation!](https://g.co/gemini/share/781b7d88e03a) -->
 
-## Tree building with R
+## Tree-based models in practice
 
-<br>
-
-::: font70
-| **Package** | **Algorithm** | **Dataset size** | **Missing data handling** | **Visual repr** |
-|--------------|--------------|--------------|---------------|----------------|
-| [**`rpart`**](https://cran.r-project.org/web/packages/rpart/index.html) | RPART | Medium to large | Poor | Yes |
-| [**`caret`**](https://topepo.github.io/caret/) | Various | Various | Depends on algorithm | Depends on algorithm |
-| [**`tree`**](https://cran.r-project.org/web/packages/tree/index.html) | CART | Small to medium | Poor | Yes |
+::: font80
+| Package | Language | Role | Notes |
+|--------|----------|------|------|
+| `rpart` | R | CART implementation | Standard tree fitting |
+| `tree` | R | CART (simplified) | Mainly for teaching |
+| `caret` | R | Modeling framework | Unified interface|
+| `scikit-learn` | Python | CART-like trees | Standard in Python ecosystem |
 :::
 
-## Tree building with Python {.smaller}
-
-::: font70
-| **Package** | **Algorithm** | **Dataset size** | **Missing data handling** | **Visual repr** |
-|--------------|--------------|--------------|---------------|----------------|
-| [**`scikit-learn`**](https://scikit-learn.org/stable/modules/tree.html) | CART, ID3, C4.5 | Small to medium | Poor (requires preprocessing) | Yes (`plot_tree()`) |
-| [**`xgboost`**](https://xgboost.readthedocs.io/en/latest/) | Gradient Boosted Trees | Medium to large | Good (handles missing values natively) | Limited (requires external tools) |
-| [**`lightgbm`**](https://lightgbm.readthedocs.io/en/latest/) | Gradient-based One-Side Sampling (GOSS) | Large | Good (handles missing values natively) | Limited (requires external tools) |
-| [**`catboost`**](https://catboost.ai/) | Oblivious Decision Trees | Large | Excellent (handles categorical and missing values natively) | Limited (built-in tools available) |
-| [**`pydotplus`**](https://pypi.org/project/pydotplus/) | Visualization tool | N/A | N/A | Yes (graph-based visualization) |
-:::
+- Most implementations are based on **CART**
+- Focus on **model fitting and prediction**
+- Details of construction will be studied next
 
 # Building Classification Trees
 
@@ -192,75 +322,6 @@ knitr::include_graphics("images/decTree4HypertensionNew.png")
 
     -   How to *evaluate* it?
 
-## Decision Trees are *Supervised Learners*
-
--   Classification / Regression: *Supervised Learning* tasks:
-
--   There is a *learning set*
-    $\mathcal{L}=\{(\mathbf{X_i,Y_i})\}_{i=1}^n$
-
--   And depending of $\mathbf{Y}$ we have:
-
-    -   Classification: $\mathbf{X}\in\mathbb{R}^d,\quad Y\in\{-1,+1\}$
-    -   Regression $\mathbf{X}\in\mathbb{R}^d,\quad Y\in\mathbb{R}$.
-
-## Trees vs Decision Trees
-
-:::::: columns
-:::: {.column width="50%"}
-::: font80
-1.  A tree is a set of nodes and edges organized in a hierarchical
-    fashion.<br> In contrast to a graph, in a tree there are no loops.
-    <!-- Internal nodes are denoted with circles and terminal nodes with squares. -->
-
-<br>
-
-2.  A decision tree is a tree where *each split node stores a boolean
-    test function* to be applied to the incoming data. <br> Each leaf
-    stores the final answer (predictor)
-:::
-::::
-
-::: {.column width="50%"}
-```{r, fig.align='center', out.width="45%"}
-knitr::include_graphics("images/1.1-DecisionTrees-Slides_insertimage_1.png")
-
-knitr::include_graphics("images/1.1-DecisionTrees-Slides_insertimage_2.png")
-```
-:::
-::::::
-
-## Additional notation
-
-:::::: columns
-:::: {.column width="40%"}
-::: font70
-
--   A node is denoted by $t$.
-
--   The left and right child nodes are denoted by $t_{L}$ and         $t_{R}$
-
--   The collection of all nodes in the tree is denoted $T$
-
--   The collection of all the leaf nodes is denoted $\tilde{T}$
-
--   A split will be denoted by $s$.
-
--   The set of all splits is denoted by $S$.
-:::
-::::
-
-::: {.column width="60%"}
-
-<br>
-
-```{r, fig.align='center', out.width="100%"}
-knitr::include_graphics("images/clipboard-58173806.png")
-
-```
-:::
-::::::
-
 
 ## Building a tree
 
@@ -273,21 +334,17 @@ knitr::include_graphics("images/clipboard-58173806.png")
     -   by setting thresholds on the variables values,
     -   that induce paths in the tree,
 
--   The ultimate goal of the tree is to be able to use a combination of
-    the splits to accomplish the learning task with as small an error as
-    possible.
+-   The ultimate goal of the tree is to be able to use a combination of the splits to accomplish the learning task with as small an error as  possible.
 
 ## Trees partition the space
 
 -   *A tree represents a recursive splitting of the space*.
 
-    -   Every node of interest corresponds to one region in the original
-        space.
+    -   Every node of interest corresponds to one region in the original space.
     -   Two child nodes occupy two different regions.
     -   Together, they yield same region as that of the parent node.
 
--   In the end, every leaf node is assigned with a class (or value) and a test
-    point is assigned with the class (or value) of the leaf node it lands in.
+-   In the end, every leaf node is assigned with a class (or value) and a test  point is assigned with the class (or value) of the leaf node it lands in.
 
 ## The tree represents the splitting
 
@@ -332,14 +389,31 @@ Tree building involves the following three elements:
 
 1.  The selection of the splits, i.e., how do we decide which node (region) to split and how to split it?
 
-    -   How to select from the pool of candidate splits?
-    -   What are appropriate *goodness of split* criteria? 
-    
-    - when to declare a node terminal and *stop splitting*?
+  -   How to select from the pool of candidate splits?
+  -   What are appropriate *goodness of split* criteria? 
+  - When to declare a node terminal and *stop splitting*?
 
 2. How to assign each terminal node to a class
 
-3. How to ensure the Tree is the _best possible_ we can build.
+3. How to ensure the tree is the _best possible_ we can build.
+
+
+## Tree construction algorithm (CART)
+
+The most popular algorithm for buildiong trees is CART which can be schemeatically described as follows:
+
+1. Initialize: all data in root node
+
+2. Repeat for each node, until stopping criterion is met
+
+  2.1 Generate candidate splits
+  
+  2.2 Select best split (maximize impurity reduction)
+  
+  2.3 Split node into two children
+
+
+CART is a greedy recursive partitioning algorithm.
 
 ## TB 1.1 - Split selection
 
@@ -371,7 +445,17 @@ Tree building involves the following three elements:
 
 - With this goal in mind  we select splits by  measuring their "goodness of split" using some of the available *Impurity fuctions* introduced later.
 
-## TB 1.2.2 - Good splits vs bad splits
+## TB 1.2.2 - Measuring homogeneity
+
+-   In order to measure homogeneity,or as called here, *purity*, of splits we rely on different *Impurity functions*
+ 
+- These functions allow us to quantify   the extent of *homogeneity* for a region containing data  points from possibly different classes.
+
+  - A region will be more pure or more homogeneous the less variable is the set of points it contains.
+
+  - In the next image regions on the right of the image are homogeneous that is *purer* than the heterogeneous regions on the left.
+
+## TB 1.2.3 - Good splits vs bad splits
 
 ::::::: columns
 :::: fragment
@@ -397,15 +481,7 @@ knitr::include_graphics("images/GoodSplit.png")
 ::::
 :::::::
 
-## TB 1.2.3 - Measuring homogeneity
 
--   In order to measure homogeneity,or as called here, *purity*, of splits we rely on different *Impurity functions*
- 
-- These functions allow us to quantify   the extent of *homogeneity* for a region containing data  points from possibly different classes.
-
-  - A region will be more pure or more homogeneous the less variable is the set of points it contains.
-
-  - In the image in TB 1.2.2 regions on the right of the image are homogeneous that is *purer* than the heterogeneous regions on the left.
   
 ## TB 1.2.4 - Impurity functions
 
@@ -446,10 +522,14 @@ The functions below are commonly used to measure impurity.
 
 ## TB 1.2.5 Impurity functions behavior
 
-<center>![](images/impurity.jpg){width="65%"}</center>
 
+```{r out.width="66%", fig.align='center'}
+knitr::include_graphics("images/impurity.jpg")
+```
 ::: small
-Node impurity functions for the two-class case. The entropy function (rescaled) is the red curve, the Gini index is the green curve, and the resubstitution estimate of the misclassification rate is the blue curve.
+- Red curve: Entropy function (rescaled), 
+- Green curve: Gini index 
+- Blue curve: Resubstitution estimate of the misclassification rate.
 :::
 
 ## TB 1.2.6 - Impurity measure of a split
@@ -473,35 +553,37 @@ $$
 \Phi(s, t)=\Delta i(s, t)=i(t)-p_{R} i\left(t_{R}\right)-p_{L} i\left(t_{L}\right)
 $$
 
--   The best split for the single variable $X_{j}$ is the one that has
-    the largest value of $\Phi(s, t)$ over all $s \in \mathcal{S}_{j}$,
-    the set of possible distinct splits for $X_{j}$.
+-   The best split for the single variable $X_{j}$ is the one that has  the largest value of $\Phi(s, t)$ over all $s \in \mathcal{S}_{j}$, the set of possible distinct splits for $X_{j}$.
+    
+- We choose the split that maximizes impurity reduction, by using a *greedy strategy*: the best split is chosen locally at each step.
 
-## TB 1.2.8 - Impurity score for a node
 
--   The impurity, $i(t)$, of a node is based solely on the estimated
-    posterior probabilities of the classes
 
-    -   That is, *it doesn't account for the size of* $t$.
+<!-- ## TB 1.2.8 - Impurity score for a node -->
 
--   This is done by the *impurity score* of $t$, defined as
-    $I(t)=i(t)\cdot p(t)$, a *weighted impurity measure* of node $t$
-    that takes into account:
+<!-- -   The impurity, $i(t)$, of a node is based solely on the estimated -->
+<!--     posterior probabilities of the classes -->
 
-    -   The estimated posterior probabilities of the classes,
+<!--     -   That is, *it doesn't account for the size of* $t$. -->
 
-    -   The estimated proportion of data that go to node $t$.
+<!-- -   This is done by the *impurity score* of $t$, defined as -->
+<!--     $I(t)=i(t)\cdot p(t)$, a *weighted impurity measure* of node $t$ -->
+<!--     that takes into account: -->
 
-## TB 1.2.9 - Applications of $I(t)$
+<!--     -   The estimated posterior probabilities of the classes, -->
 
--   $I(t)$ can be used to:
-    -   Define the aggregated impurity of a tree, by adding the impurity
-        scores of all terminal leaves.
-    -   Provide a weighted measure of impurity decrease for a split:
-        $\Delta I(s, t)=p(t) \Delta i(s, t)$.
-    -   Define a criteria for stop splitting a tree (see below).
+<!--     -   The estimated proportion of data that go to node $t$. -->
 
-## TB 1.2.10 - Entropy as an impurity measure
+<!-- ## TB 1.2.9 - Applications of $I(t)$ -->
+
+<!-- -   $I(t)$ can be used to: -->
+<!--     -   Define the aggregated impurity of a tree, by adding the impurity -->
+<!--         scores of all terminal leaves. -->
+<!--     -   Provide a weighted measure of impurity decrease for a split: -->
+<!--         $\Delta I(s, t)=p(t) \Delta i(s, t)$. -->
+<!--     -   Define a criteria for stop splitting a tree (see below). -->
+
+## TB 1.2.8 - Entropy as an impurity measure
 
 -   The entropy of a node, $t$, that is split in $n$ child nodes $t_1$, $t_2$, ..., $t_n$, is:
 
@@ -509,19 +591,13 @@ $$
 \Phi_E (\mathbf{p}) = H(\mathbf{t})=-\sum_{i=1}^{n} \underbrace{P\left(t_{i}\right)}_{p_i} \log _{2} P\left(t_{i}\right)
 $$
 
-## TB 1.2.11 - Goodness of split based on entropy
+-   From here, an information gain (that is impurity decrease) measure  can be introduced by comparing:
 
--   From here, an information gain (that is impurity decrease) measure
-    can be introduced.
+  -   the entropy of the parent node before the split to
+  -   that of a weighted sum of the child nodes after the split where,
+    - weights are proportional to the number of observations in each node.
 
--   Information theoretic approach that compares
-
-    -   the entropy of the parent node before the split to
-    -   that of a weighted sum of the child nodes after the split where
-        the weights are proportional to the number of observations in
-        each node.
-
-## TB 1.2.12 - Information gain
+## TB 1.2.9 - Information gain
 
 -   For a split $s$ and a set of observations (a node) $t$, information
     gain is defined as:
@@ -574,6 +650,23 @@ knitr::include_graphics("images/Example2-EntropyCalculation.png")
 knitr::include_graphics("images/Example2-IGCalculation.png")
 ```
 
+## TB. 1.3 Overfitting in trees
+
+As trees grow deeper:
+
+- They fit the training data increasingly well and 
+- Regions become smaller and more specific
+
+However, small regions may contain few observations causing predictions to become unstable and sensitive to noise
+
+This results in_
+
+- Low training error
+- Poor generalization to new data
+
+Altogether yields an idea: *It is probably better to not let the tree grow as much as it can but control its size*.
+
+
 ## TB. 1.3.1 - When to stop growing
 
 -   Maximizing information gain is one possible criteria to choose among
@@ -608,31 +701,72 @@ knitr::include_graphics("images/Example2-IGCalculation.png")
 
 ::: 
 
-# Example 2 Predicting Diabetes Onset
-
 ## Example 2. The PIMA database
 
--   The Pima Indian Diabetes dataset contains 768 individuals (female)
-    and 9 clinical variables.
+-   The Pima Indian Diabetes dataset contains 768 individuals (female) and 9 clinical variables.
+
 
 ```{r}
 data("PimaIndiansDiabetes2", package = "mlbench")
 dplyr::glimpse(PimaIndiansDiabetes2)
 ```
 
+## Why these variables? (medical interlude 1)
+
+- Diabetes is a metabolic disorder related to:
+
+  - Blood sugar regulation
+  - Insulin function
+  - Long-term physiological changes
+
+- Some variables are known to be associated with diabetes risk:
+
+  - Glucose (blood sugar levels)
+  - Insulin (hormone regulating glucose)
+  - Body mass (obesity)
+  - Age (risk increases over time)
+
+- These variables provide indirect evidence of metabolic health
+
+## Interpreting key predictors
+
+- **Glucose**:
+  High values indicate impaired blood sugar control
+
+- **Insulin**:
+  Abnormal levels may reflect sugar is not being controlled (Insuline Resistance).
+
+- **BMI (mass)**:
+  Obesity is a major risk factor for diabetes
+
+- **Age**:
+  Risk increases with cumulative metabolic stress
+
+- **Blood pressure**:
+  Often associated with metabolic syndrome
+
+The model combines these signals to predict diabetes risk
+
+
 ## Example 2. Looking at the data
 
--   These Variables are known to be related with cardiovascular diseases.
--   It seems intuitive to use these variables to decide if a person is  affected by diabetes
-
 ```{r}
-library(magrittr)
-descAll <- as.data.frame(skimr::skim(PimaIndiansDiabetes2))
-desc <- descAll[,c(10:15)]
-rownames(desc) <- descAll$skim_variable
-colnames(desc) <- colnames(desc) %>% stringr::str_replace("numeric.", "")
-desc
+library(tidyverse)
+library(mlbench)
+
+data(PimaIndiansDiabetes2)
+
+vars <- c("glucose", "insulin", "mass", "pressure", "age")
+
+PimaIndiansDiabetes2 %>%
+  select(all_of(vars), diabetes) %>%
+  pivot_longer(-diabetes, names_to = "variable", values_to = "value") %>%
+  ggplot(aes(x = diabetes, y = value)) +
+  geom_boxplot(outlier.alpha = 0.3) +
+  facet_wrap(~variable, scales = "free_y") +
+  theme_minimal()
 ```
+
 
 ## Ex. 2. Building a classification tree
 
@@ -683,30 +817,30 @@ Each node shows: (1) the predicted class ('neg' or 'pos'), (2) the predicted pro
 
 ## TB 2 - Class Assignment
 
--   The decision tree classifies new data points as follows.
+-   A decision tree classifies new data points as follows.
 
-    -   We let a data point pass down the tree and see which leaf node
-        it lands in.
+  - We let a data point pass down the tree and see which leaf node it lands in.
 
-    -   The class of the leaf node is assigned to the new data point.
-        Basically, all the points that land in the same leaf node will
-        be given the same class.
+  - Each leaf node defines a region where all observations share the same class.
 
-    -   This is similar to k-means or any prototype method.
+  - The class of the leaf node is assigned to the new data point: all the points that land in the same leaf node will be given the same class.
 
+- Trees produce *piecewise constant* predictions.
+    
 ## TB 2.1 - Class Assignment Rules
 
 -   A class assignment rule assigns a class $j=1, \cdots, K$ to every
     terminal (leaf) node $t \in \tilde{T}$.
--   The class is assigned to node $t$ is denoted by $\kappa(t)$,
-    -   E.g., if $\kappa(t)=2$, all the points in node $t$ would be
-        assigned to class 2.
--   If we use 0-1 loss, the class assignment rule picks the class with
-    maximum posterior probability:
+-   The class assigned to node $t$ is denoted by $\kappa(t)$,
+    -   E.g., if $\kappa(t)=2$, all  points in node $t$ aree assigned to class 2.
+- Within each node, we estimate class probabilities from the data.
 
+-   If we use 0-1 loss, the class assignment rule picks the class with  maximum posterior probability:
 $$
 \kappa(t)=\arg \max _{j} p(j \mid t)
 $$
+- This rule corresponds to minimizing the 0–1 loss within each node.
+
 
 ## TB 2.2. Estimating the error rate (1)
 
@@ -727,13 +861,12 @@ $$
 -   Denote $R(t)=r(t) p(t)$, that is the miscclassification error rate
     weighted by the probability of the node.
 
--   The resubstitution estimation for the overall misclassification rate
-    $R(T)$ of the tree classifier $T$ is:
-
+-   The resubstitution estimation for the overall misclassification rate   $R(T)$ of the tree classifier $T$ is:
 $$
 R(T)=\sum_{t \in \tilde{T}} R(t)
 $$
 
+- Notice that this estimate is based on training data and may underestimate the true error!
 
 ## Example 2: Individual prediction
 
@@ -770,30 +903,50 @@ mean(predicted.classes == PimaIndiansDiabetes2$diabetes)
 
 # Obtaining best trees
 
+## TB 3. Controlling tree growth
+
+Assuming we wish to controll tree growth there are distinct possible approaches:
+
+- Stop early (pre-pruning)
+- Grow fully and prune later (post-pruning)
+
+CART follows the second approach
+
 ## TB 3.1 Optimizing the Tree
 
--   Trees obtained by looking for optimal splits tend to overfit: good
-    for the data in the tree, but generalize badly and tend to fail more
-    in predictions.
+-   Trees obtained by looking for optimal splits tend to overfit: 
+  - good  for the data in the tree, but
+  - bad for generalizitaon and 
+  - tend to fail more  in predictions.
 
--   In order to reduce complexity and overfitting,<br> while keeping the
-    tree as good as possible, tree *pruning* may be applied.
+- Stopping early may prevent overfitting, but can miss important structure.
 
--   Pruning works *removing branches that are unlikely to improve the
-    accuracy* of the model on new data.
+- In order to reduce complexity and overfitting, while keeping the tree as good as possible, tree *pruning* may be applied.
 
-## TB 3.2 Pruning methods
+-   Pruning works *removing branches that are unlikely to improve the accuracy* of the model on new data.
 
--   There are different pruning methods, but the most common one is the
-    *cost-complexity* pruning algorithm, also known as the *weakest link
-    pruning*.
--   The algorithm works by adding a penalty term to the
-    misclassification rate of the terminal nodes:
+## TB 3.2 CART strategy for pruning
+
+CART uses the followin strategy for building optimal trees
+
+1. Grow a large tree (overfit)
+2. Prune it using a penalty
+3. Select optimal tree size
+
+This is known as *Post-pruning* approach.
+
+
+## TB 3.3 Pruning methods
+
+- There are different pruning methods, but the most common one is to use the   *cost-complexity pruning* algorithm, also known as the *weakest link pruning*.
+
+- The algorithm works by adding a penalty term to the misclassification rate of the terminal nodes:
 
 $$
 R_\alpha(T) =R(T)+\alpha|T|
-$$ where $\alpha$ is the parameter that controls the trade-off between
-tree complexity and accuracy.
+$$ 
+
+- $\alpha$ is the hyper-parameter that controls the trade-off between tree complexity and accuracy.
 
 ## TB 3.3 Cost complexity pruning
 
