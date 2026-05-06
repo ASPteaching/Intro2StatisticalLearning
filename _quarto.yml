@@ -31,12 +31,12 @@ website:
 
       - section: "Tree-based Methods"
         contents:
-          - href: C2.1-DecisionTrees-Slides.qmd
+          - href: C2.1-DecisionTrees-Slides-RevealJS.qmd
             text: Decision Trees
-          - href: labs/Lab-C2.1-CART.Rmd
+          - href: labs/Lab-C2.1-Trees-guided-classification-regression_reduced.Rmd
             text: Lab-C2.1-CART (R)
-          - href: labs/Lab-C2.2-Py-ISLch08-baggboost.ipynb
-            text: Lab-C2.2-CART (from ISLR) (Python)
+          - href: labs/Lab-C2.1-Trees-guided-classification-regression_reduced_python.ipynb
+            text: Lab-C2.1-CART (Python)
 
       - section: "Ensemble Methods"
         contents:
