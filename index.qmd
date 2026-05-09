@@ -14,7 +14,7 @@ course at the [UPC-UB MSc in Statistics and Operations Research (MESIO)](https:/
   4. Tree and Ensemble Methods 
   5. Artificial Neural Networks..
 
-The main reason for creating this page, apart of making it open and facilitatigt the hierrchjichal presentation of the materials, is that some labs may take time to run. So, given that it is not an option to run them in class we provide links to the HTML files obtaind when running the R or Python notebooks provided.
+The main reason for creating this page, apart of making it open and facilitating the hierarchical presentation of the materials, is that some labs may take time to run. So, given that it is not an option to run them in class we provide links to the HTML files obtaind when running the R or Python notebooks provided.
 
 By the other side, in order to make the materials completely reproducible, the page is based on a github repository, which can be cloned or downladed in order for anyone who wishes to play around with the materials and reproduce or improve the examples.
 
