@@ -46,7 +46,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 ```{r}
 # Read data from csv.
 # The file must be in the working directory.
-iris <- read.csv("IrisData1.csv", stringsAsFactors = FALSE)
+iris <- read.csv("data/IrisData1.csv", stringsAsFactors = FALSE)
 
 selected_rows <- c(1, 2, 51, 52, 101, 102)
 iris[selected_rows, ]
