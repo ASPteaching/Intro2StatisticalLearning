@@ -154,5 +154,1794 @@
       "Introduction",
       "Home"
     ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#outline",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#outline",
+    "title": "Ensemble Methods",
+    "section": "Outline",
+    "text": "Outline\n\nIntroduction to Ensembles\nBagging and the Bootstrap\nRandom Forests\nBoosting and its variants",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#weak-learners",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#weak-learners",
+    "title": "Ensemble Methods",
+    "section": "Weak learners",
+    "text": "Weak learners\n\n\nModels that perform only slightly better than random guessing are called weak learners (Bishop 2007).\nWeak learners low predictive accuracy may be due, to the predictor having high bias or high variance.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#trees-may-be-weak-learners",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#trees-may-be-weak-learners",
+    "title": "Ensemble Methods",
+    "section": "Trees may be weak learners",
+    "text": "Trees may be weak learners\n\nTrees use to be sensitive to small changes in training data which lead to very different tree structure.\nThis implies predictions are highly variable\nThis may be explained because they are greedy algorithms making locally optimal decisions at each node without considering the global optimal solution.\n\nThis can lead to suboptimal splits and ultimately a weaker predictive performance.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#theres-room-for-improvement",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#theres-room-for-improvement",
+    "title": "Ensemble Methods",
+    "section": "There’s room for improvement",
+    "text": "There’s room for improvement\n\nIn many situations trees may be a good option (e.g. for simplicity and interpretability)\nBut there are issues that, if solved, may improve performance.\nIt is to be noted, too, that these problems are not unique to trees.\n\nOther simple models such as linear regression may be considered as weakl learners in may situations.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bias-variance-trade-off",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bias-variance-trade-off",
+    "title": "Ensemble Methods",
+    "section": "The bias-variance trade-off",
+    "text": "The bias-variance trade-off\n\nWhen we try to improve weak learners we need to deal with the bias-variance trade-off.\n\n\nThe bias-variance trade-off",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#how-to-deal-with-such-trade-off",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#how-to-deal-with-such-trade-off",
+    "title": "Ensemble Methods",
+    "section": "How to deal with such trade-off",
+    "text": "How to deal with such trade-off\n\nHow can a model be made less variable or less biased without this increasing its bias or variance?\nThere are distinct appraches to deal with this problem\n\nRegularization,\nFeature engineering,\nModel selection\nEnsemble learning",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#ensemble-learners",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#ensemble-learners",
+    "title": "Ensemble Methods",
+    "section": "Ensemble learners",
+    "text": "Ensemble learners\n\nEnsemble learning takes the approach popularly known as “the wisdom of crowds”.\nPredictors, also called, ensembles are built by fitting repeated (weak learners) models on the same data and combining them to form a single result.\nEnsemble learners tend to improve the results obtained with the weak learners they are made of.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#ensemble-methods",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#ensemble-methods",
+    "title": "Ensemble Methods",
+    "section": "Ensemble methods",
+    "text": "Ensemble methods\n\nIf we rely on how they deal with the bias-variance trade-off we can consider distinct groups of ensemble methods:\n\nBagging\nBoosting\nHybrid learners\n\n\nEnsemble methods cheatsheet",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#aggregating-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#aggregating-trees",
+    "title": "Ensemble Methods",
+    "section": "Aggregating Trees",
+    "text": "Aggregating Trees\nOne type of ensembles is made by constructing multiple trees using different types of subsets.\n\nBagging (Bootstrap aggregating)\n\nRandom subsets of observations.\n\nRandom Forests (\\(\\simeq\\) Bagging + Feature Selection)\n\nRandom subsets of observations\n\nRandom subsets of features at each split\n\n\n\n\nThese ensembles reduce variance compared to individual decision trees.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-stacking",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-stacking",
+    "title": "Ensemble Methods",
+    "section": "Boosting & Stacking",
+    "text": "Boosting & Stacking\n\nBoosting or Stacking combine distinct predictors to yield a model with an increasingly smaller error, and so reduce the bias.\nThey differ on if do the combination\n\nsequentially (1) or\nusing a meta-model (2) .",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#hybrid-techniques",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#hybrid-techniques",
+    "title": "Ensemble Methods",
+    "section": "Hybrid Techniques",
+    "text": "Hybrid Techniques\n\nHybrid techniques combine approaches in order to deal with both variance and bias.\nThe approach should be clear from their name:\n\nGradient Boosted Trees with Bagging\nStacked bagging",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-bootstrap-aggregation",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-bootstrap-aggregation",
+    "title": "Ensemble Methods",
+    "section": "Bagging: bootstrap aggregation",
+    "text": "Bagging: bootstrap aggregation\n\nDecision trees suffer from high variance when compared with other methods such as linear regression, especially when \\(n/p\\) is moderately large.\nGiven that this is intrinsic to trees, Breiman (1996) sugested to build multiple trees derived from the same dataset and, somehow, average them.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#averaging-decreases-variance",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#averaging-decreases-variance",
+    "title": "Ensemble Methods",
+    "section": "Averaging decreases variance",
+    "text": "Averaging decreases variance\n\nBagging relies, informally, on the idea that:\n\ngiven \\(X\\sim F()\\), s.t. \\(Var_F(X)=\\sigma^2\\),\ngiven a s.r.s. \\(X_1, ..., X_n\\) from \\(F\\) then\nif \\(\\overline{X}=\\frac{1}{N}\\sum_{i=1}^n X_i\\) then \\(var_F(\\overline{X})=\\sigma^2/n\\).\n\nThat is, relying on the sample mean instead of on simple observations, decreases variance by a factor of \\(n\\).\nBTW this idea is still (approximately) valid for more general statistics where the CLT applies.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#what-means-averaging-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#what-means-averaging-trees",
+    "title": "Ensemble Methods",
+    "section": "What means averaging trees?",
+    "text": "What means averaging trees?\nTwo questions arise here:\n\nHow to go from \\(X\\) to \\(X_1, ..., X_n\\)?\n\n\nThis will be done using bootstrap resampling.\n\n\nWhat means “averaging” in this context.\n\n\nDepending on the type of tree:\n\nAverage predictions for regression trees.\nMajority voting for classification trees.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-bootstrap-aggregation-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-bootstrap-aggregation-1",
+    "title": "Ensemble Methods",
+    "section": "BAGGING: Bootstrap Aggregation",
+    "text": "BAGGING: Bootstrap Aggregation\n\nBreiman (1996) combined the ideas of:\n\nAveraging provides decreased variance estimates,\nBootstrap provides multiple (re)samples.\n\nHe suggested: bootstrap aggregating :\n\nTake resamples from the original training dataset\nLearn the model on each bootstrapped training set\nGet a prediction \\({\\small \\hat f^{*b}(x)}\\) from each model.\n\nAveraging predictions from single bootstrap models improves single prediction/classification.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-predictionclassifier",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-predictionclassifier",
+    "title": "Ensemble Methods",
+    "section": "Bagging prediction/classifier",
+    "text": "Bagging prediction/classifier\n\nFor regression (trees) the bagged estimate is the average prediction at \\(x\\) from these \\(B\\) trees. \\[\n{\\small\n\\hat f_{bag}(x)=\\frac 1B \\sum_{b=1}^B \\hat f^{*b}(x)\n}\n\\]\nFor classification (trees) the bagged classifier selects the class with the most “votes” from the \\(B\\) trees:\n\n\\[\n{\\small\n\\hat G_{bag}(x) = \\arg \\max_k \\hat f_{bag}(x).\n}\n\\]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#resampling-based-estimators",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#resampling-based-estimators",
+    "title": "Ensemble Methods",
+    "section": "Resampling based estimators",
+    "text": "Resampling based estimators\n\nThe bootstrap was introduced as a way to provide standard error estimators.\nWhen used to compute \\(\\hat f_{bag}(x)\\) or \\(\\hat G_{bag}(x)\\), as described above, it provides direct estimators of a characteristic, not of their standard errors.\nHowever, the bagging process can also provide resampling based estimates of the precision of these estimators.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-observations",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-observations",
+    "title": "Ensemble Methods",
+    "section": "Out-Of-Bag observations",
+    "text": "Out-Of-Bag observations\n\nEvery time a bootstrap sample is drawn with replacement, some observations are not selected.\nFor a given tree, these omitted observations are called out-of-bag (OOB) observations.\nOn average, each bootstrap sample leaves out about one third of the observations: \\(\\left(1-\\frac{1}{n}\\right)^n \\approx e^{-1} \\approx 0.368\\)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-error-estimates",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-error-estimates",
+    "title": "Ensemble Methods",
+    "section": "Out-Of-Bag error estimates",
+    "text": "Out-Of-Bag error estimates\nSince each out-of-bag set is not used to train the model, it can be used to evaluate performance.\n\nFind all trees that are not trained by the OOB instance.\nTake the majority vote of these trees for the OOB instance, compared to the true value of the OOB instance.\nCompile OOB error for all instances in the OOB dataset.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#illustration-of-oob-ee",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#illustration-of-oob-ee",
+    "title": "Ensemble Methods",
+    "section": "Illustration of OOB EE",
+    "text": "Illustration of OOB EE\n\nSource: https://www.baeldung.com/cs/random-forests-out-of-bag-error",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-in-r",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-in-r",
+    "title": "Ensemble Methods",
+    "section": "Bagging in R",
+    "text": "Bagging in R\nWe use the AmesHousing dataset on house prices in Ames, IA, to predict the “Sales price” of houses.\n\nStart by splitting the dataset in test/train subsets\nBuild a bagged tree on the train subset and evaluate it on the test subset.\nInterpret the results using “Variable importance”\n\nWe use randomForest package setting mtry to total number of features.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---prepare-data",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---prepare-data",
+    "title": "Ensemble Methods",
+    "section": "Bagging - Prepare data",
+    "text": "Bagging - Prepare data\n\n# Prepare \"clean\" dataset from raw data\names &lt;- AmesHousing::make_ames()\n# Scale response variable to improve readability\names$Sale_Price &lt;- ames$Sale_Price/1000\n# Split in test/training\nset.seed(123)\ntrain &lt;- sample(1:nrow(ames), nrow(ames)/2)\n# split &lt;- rsample::initial_split(ames, prop = 0.7, \n#                        strata = \"Sale_Price\")\names_train  &lt;- ames[train,]\names_test   &lt;- ames[-train,]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---build-bag-of-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---build-bag-of-trees",
+    "title": "Ensemble Methods",
+    "section": "Bagging - Build bag of trees",
+    "text": "Bagging - Build bag of trees\n\nlibrary(randomForest)\nset.seed(12543)\nbag.Ames &lt;- randomForest(Sale_Price ~ ., \n                         data = ames_train, \n                         mtry = ncol(ames_train)-1, \n                         ntree = 100,\n                         importance = TRUE)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---results",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---results",
+    "title": "Ensemble Methods",
+    "section": "Bagging - Results",
+    "text": "Bagging - Results\n\nprint(bag.Ames )\n\n\nCall:\n randomForest(formula = Sale_Price ~ ., data = ames_train, mtry = ncol(ames_train) -      1, ntree = 100, importance = TRUE) \n               Type of random forest: regression\n                     Number of trees: 100\nNo. of variables tried at each split: 80\n\n          Mean of squared residuals: 875.2949\n                    % Var explained: 87.28\n\n\nThe reported MSE is the OOB estimate of prediction error\n\n\n[1] 875.2949",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---prediction-and-accuracy",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---prediction-and-accuracy",
+    "title": "Ensemble Methods",
+    "section": "Bagging - Prediction and accuracy",
+    "text": "Bagging - Prediction and accuracy\n\nyhat.bag &lt;- predict(bag.Ames, newdata = ames_test)\nMSE= mean((yhat.bag -ames_test$Sale_Price)^2)\nplot(yhat.bag, ames_test$Sale_Price, main=c(\"MSE= \", MSE))\nabline(0, 1)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---prediction-and-accuracy-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging---prediction-and-accuracy-1",
+    "title": "Ensemble Methods",
+    "section": "Bagging - Prediction and accuracy",
+    "text": "Bagging - Prediction and accuracy",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#interpetability-the-achiles-heel",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#interpetability-the-achiles-heel",
+    "title": "Ensemble Methods",
+    "section": "Interpetability: The “achiles heel”",
+    "text": "Interpetability: The “achiles heel”\n\nTrees may have a straightforward interpretation,\n\nPlotting the tree provides information about\n\nwhich variables are important\nhow they act on the prediction\n\n\nEnsembles are less intuitive because\n\nthere is no consensus tree.\nnot clear which variables are most important.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#feature-importance-from-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#feature-importance-from-trees",
+    "title": "Ensemble Methods",
+    "section": "Feature importance from Trees",
+    "text": "Feature importance from Trees\n\nTo measure feature importance, the reduction in the loss function (e.g., SSE) attributed to each variable at each split is tabulated.\nThe total reduction in the loss function across all splits by a variable are summed up and used as the total feature importance.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#feature-importance-for-ensembles",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#feature-importance-for-ensembles",
+    "title": "Ensemble Methods",
+    "section": "Feature importance for Ensembles",
+    "text": "Feature importance for Ensembles\n\nVariable importance measures can be extended to an ensemble simply by adding up variable importance over all trees built.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-decorrelating-predictors",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-decorrelating-predictors",
+    "title": "Ensemble Methods",
+    "section": "Random forests: decorrelating predictors",
+    "text": "Random forests: decorrelating predictors\n\nBagged trees, based on re-samples (of the same sample) tend to be highly correlated.\nLeo Breimann, again, introduced a modification to bagging, he called Random forests, that aims at decorrelating trees as follows:\n\nWhen growing a tree from one bootstrap sample,\nAt each split use only a randomly selected subset of predictors.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#split-variable-randomization",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#split-variable-randomization",
+    "title": "Ensemble Methods",
+    "section": "Split variable randomization",
+    "text": "Split variable randomization\n\nWhile growing a decision tree, during the bagging process,\nRandom forests perform split-variable randomization:\n\neach time a split is to be performed,\nthe search for the split variable is limited to a random subset of \\(m_{try}\\) of the original \\(p\\) features.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-1",
+    "title": "Ensemble Methods",
+    "section": "Random forests",
+    "text": "Random forests\n\nSource: AIML.com research",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#how-many-variables-per-split",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#how-many-variables-per-split",
+    "title": "Ensemble Methods",
+    "section": "How many variables per split?",
+    "text": "How many variables per split?\n\n\\(m\\) can be chosen using cross-validation, but\nThe usual recommendation for random selection of variables at each split has been studied by simulation:\n\nFor regression default value is \\(m=p/3\\)\nFor classification default value is \\(m=\\sqrt{p}\\).\n\nIf \\(m=p\\), we have bagging instead of RF.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forest-algorithm-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forest-algorithm-1",
+    "title": "Ensemble Methods",
+    "section": "Random forest algorithm (1)",
+    "text": "Random forest algorithm (1)\n\nRF Algorithm, from ch. 11 in (Boehmke and Greenwell 2020)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forest-algorithm-2",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forest-algorithm-2",
+    "title": "Ensemble Methods",
+    "section": "Random forest algorithm (2)",
+    "text": "Random forest algorithm (2)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-the-box-performance",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-the-box-performance",
+    "title": "Ensemble Methods",
+    "section": "Out-of-the box performance",
+    "text": "Out-of-the box performance\n\nRandom forests tend to provide very good out-of-the-box performance, that is:\n\nAlthough several hyperparameters can be tuned,\nDefault values tend to produce good results.\n\nMoreover, among the more popular machine learning algorithms, RFs have the least variability in their prediction accuracy when tuning (Probst, Wright, and Boulesteix 2019).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-the-box-performance-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-the-box-performance-1",
+    "title": "Ensemble Methods",
+    "section": "Out of the box performance",
+    "text": "Out of the box performance\n\nA random forest trained with all hyperparameters set to their default values can yield an OOB RMSE that is better than many other classifiers, with or without tuning.\nThis combined with good stability and ease-of-use has made it the option of choice for many problems.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-the-box-performance-example",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-the-box-performance-example",
+    "title": "Ensemble Methods",
+    "section": "Out of the box performance example",
+    "text": "Out of the box performance example\n\n# number of features\nn_features &lt;- length(setdiff(names(ames_train), \"Sale_Price\"))\n\n# train a default random forest model\names_rf1 &lt;- ranger(\n  Sale_Price ~ ., \n  data = ames_train,\n  mtry = floor(n_features / 3),\n  respect.unordered.factors = \"order\",\n  seed = 123\n)\n\n# get OOB RMSE\n(default_rmse &lt;- sqrt(ames_rf1$prediction.error))\n## [1] 24859.27",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#tuning-hyperparameters",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#tuning-hyperparameters",
+    "title": "Ensemble Methods",
+    "section": "Tuning hyperparameters",
+    "text": "Tuning hyperparameters\nThere are several parameters that, appropriately tuned, can improve RF performance.\n\n\nNumber of trees in the forest.\nNumber of features to consider at any given split (\\(m_{try}\\)).\nComplexity of each tree.\nSampling scheme.\nSplitting rule to use during tree construction.\n\n\n1 & 2 usually have largest impact on predictive accuracy.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#number-of-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#number-of-trees",
+    "title": "Ensemble Methods",
+    "section": "1. Number of trees",
+    "text": "1. Number of trees\n\n\n\nThe number of trees needs to be sufficiently large to stabilize the error rate.\nMore trees provide more robust and stable error estimates\nBut impact on computation time increases linearly with \\(n_tree\\)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#number-of-features-m_try.",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#number-of-features-m_try.",
+    "title": "Ensemble Methods",
+    "section": "2. Number of features (\\(m_{try}\\)).",
+    "text": "2. Number of features (\\(m_{try}\\)).\n\n\n\n\\(m_{try}\\) helps to balance low tree correlation with reasonable predictive strength.\nSensitive to total number of variables. If high /low, better increase/decrease it.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#complexity-of-each-tree.",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#complexity-of-each-tree.",
+    "title": "Ensemble Methods",
+    "section": "3. Complexity of each tree.",
+    "text": "3. Complexity of each tree.\n\n\n\nThe complexity of underlying trees influences RF performance.\nNode size has strong influence on error and time.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#sampling-scheme.",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#sampling-scheme.",
+    "title": "Ensemble Methods",
+    "section": "4. Sampling scheme.",
+    "text": "4. Sampling scheme.\n\n\n\nDefault: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.\nNode size has strong influence on error and time.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#splitting-rule",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#splitting-rule",
+    "title": "Ensemble Methods",
+    "section": "5. Splitting rule",
+    "text": "5. Splitting rule\n\nDefault splitting rules favor features with many splits, potentially biasing towards certain variable types.\nConditional inference trees offer an alternative to reduce bias, but may not always improve predictive accuracy and have longer training times.\nRandomized splitting rules, like extremely randomized trees (which draw split points completely randomly), improve computational efficiency but may not enhance predictive accuracy and can even reduce it.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#tuning-hyperparameters-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#tuning-hyperparameters-1",
+    "title": "Ensemble Methods",
+    "section": "Tuning hyperparameters",
+    "text": "Tuning hyperparameters\n\nRF are a good example of a common situachion in ML:\n\nAs the number of parameter increases,\nfinding their optimal values requires more effort\nand can even become computationally unfeasible.\n\nAs more complex algorithms with greater number of hyperparameters are introduced tuning strategies should also be considered.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#tuning-strategies",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#tuning-strategies",
+    "title": "Ensemble Methods",
+    "section": "Tuning strategies",
+    "text": "Tuning strategies\n\n\nGrid Search: Systematically searches through (all possible combinations) a predefined grid of hyperparameter values to find the combination that maximizes performance.\nRandom Search: Randomly samples hyperparameter values from predefined distributions. Faster than Grid Search, but less prone to find optimum.\nModel-Based Optimization leverages probabilistic models, often Gaussian processes, to model the objective function and iteratively guide the search for optimal hyperparameters.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-in-bioinformatics",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-in-bioinformatics",
+    "title": "Ensemble Methods",
+    "section": "Random forests in bioinformatics",
+    "text": "Random forests in bioinformatics\n\nRandom forests have been thoroughly used in Bioinformatics (Boulesteix et al. 2012).\nBioinformatics data are often high dimensional with\n\ndozens or (less often) hundreds of samples/individuals\nthousands (or hundreds of thousands) of variables.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#application-of-random-forests",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#application-of-random-forests",
+    "title": "Ensemble Methods",
+    "section": "Application of Random forests",
+    "text": "Application of Random forests\n\nRandom forests provide robust classifiers for:\n\nDistinguishing cancer from non cancer,\nPredicting tumor type in cancer of unknown origin,\nSelecting variables (SNPs) in Genome Wide Association Studies…\n\nSome variation of Random forests are used only for variable selection",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#improving-predictors-iteratively",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#improving-predictors-iteratively",
+    "title": "Ensemble Methods",
+    "section": "Improving predictors iteratively",
+    "text": "Improving predictors iteratively\n\nThe idea of improving weak learners by aggregation has moved historically along two distinct lines:\n\nBuild similar learners on resamples from the original sample and average the predictions.\n\n\nThis entails Bagging and Random Forests\n\n\nBuild a learner progressively, improving it at every step using weak learners, until the desired possible quality is obtained.\n\n\nThis is what Boosting is about.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-vs-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-vs-boosting",
+    "title": "Ensemble Methods",
+    "section": "Bagging vs Boosting",
+    "text": "Bagging vs Boosting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Ensemble Learning: Bagging & Boosting",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#so-what-is-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#so-what-is-boosting",
+    "title": "Ensemble Methods",
+    "section": "So what is Boosting",
+    "text": "So what is Boosting\n\n\nIdea: create a model that is better than any of its individual components by combining their strengths and compensating for their weaknesses.\n\nMultiple weak models are trained sequentially.\nEach new model is trained to improve the errors made by the previous model.\n\nThe final model is a weighted combination of all the models where the weights are determined by the accuracy of each model.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#historical-background",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#historical-background",
+    "title": "Ensemble Methods",
+    "section": "Historical background",
+    "text": "Historical background\n\nThe boosting technique was proposed by Robert Schapire (Schapire 1989) and Yoav Freund in the 1990s.\nThey introduced AdaBoost, the first widely-used Boosting algorithm.\n\nIt achieved significant success in various applications, including face detection and handwriting recognition.\n\nOther Boosting algorithms have become popular: Gradient Boosting, XGBoost, and LightGBM.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost",
+    "title": "Ensemble Methods",
+    "section": "Adaboost",
+    "text": "Adaboost\n\nAdaBoost (Adaptive Boosting) is a direct implementation of the “boosting” idea.\nIt trains models sequentially, new models focusing on correcting the errors of the previous ones.\nFinal Decision is made by combining models, giving more influence to the most reliable ones through\n\nA weighted majority vote (classification) or\nWeighted sum (regression).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#running-adaboost",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#running-adaboost",
+    "title": "Ensemble Methods",
+    "section": "Running Adaboost",
+    "text": "Running Adaboost\n\nAdaboost proceeds iteratively by, at each iteration:\n\nFit the weak learner using initial weights.\nPredict and identify misclassified observations.\nUpdate observation weights:\n\ndecrease for correctly classified\nincrease for misclassified.\n\nAssign a learner weight to the weak learner based on its accuracy.\n\nThe final prediction is a weighted combination of all weak learners.\n\n\n\nAdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight).\n\nUpdating this weight vector will generate a distribution where it will be more likely to extract those samples with higher weight (that is, those that were incorrectly inferred),\nThis sample will be introduced to the next base learner in the sequence and\nThis will be repeated until a stop criterion is met.\nLikewise, each base learner in the sequence will have assigned a weight, the higher the performance, the higher the weight and the greater the impact of this base learner for the final decision.\nFinally, to make a prediction,\n\neach base learner in the sequence will be fed with the test data,\neach of the predictions of each model will be voted (for the classification case) or averaged (for the regression case)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-architecture",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-architecture",
+    "title": "Ensemble Methods",
+    "section": "Adaboost Architecture",
+    "text": "Adaboost Architecture\n\n Source: Ensemble Learning: Bagging & Boosting",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-pseudo-code",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-pseudo-code",
+    "title": "Ensemble Methods",
+    "section": "Adaboost pseudo-code",
+    "text": "Adaboost pseudo-code\n\n\nInitialize sample weights: \\(w_i = 1/N\\), where \\(N\\) = # of training samples.\nFor each iteration \\(t=1,2,\\dots,T\\) do:\n\nTrain weak classifier \\(h_t(x)\\) on training set weighted by \\(w_i\\).\nCompute the weighted error rate: \\[{\\small \\left. \\epsilon_t = \\sum_{i=1}^N w_i I(y_i \\neq h_t(x_i)) \\right/ \\left. \\sum_{i=1}^N w_i\\right. }\\]\nCompute the classifier weight: \\(\\alpha_t = \\frac{1}{2}\\log\\frac{1-\\epsilon_t}{\\epsilon_t}\\).\nUpdate the sample weights: \\(w_i \\leftarrow w_i^{-\\alpha_t I(y_i \\neq h_t(x_i))}\\).\nNormalize the sample weights: \\(w_i \\leftarrow \\frac{w_i}{\\sum_{j=1}^N w_j}\\).\n\nOutput the final classifier: \\(H(x) = \\text{sign}\\left(\\sum_{t=1}^T \\alpha_t h_t(x)\\right)\\).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-applications",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-applications",
+    "title": "Ensemble Methods",
+    "section": "Adaboost applications",
+    "text": "Adaboost applications\n\n source: Evaluating the AdaBoost Algorithm for Biometric-Based Face Recognition",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-has-limitations",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-has-limitations",
+    "title": "Ensemble Methods",
+    "section": "Adaboost has limitations",
+    "text": "Adaboost has limitations\n\nAdaboost was a breakthrough algorithm that significantly improved the accuracy of ML models.\nHowever, Adaboost has its limitations.\n\nIt does not handle continuous variables very well.\nCan be sensitive to noisy data and outliers,\nMay not perform well with complex datasets.\nIts performance can reach a “plateau”: it will no longer improve after a certain number of iterations.\n\nIn order to deal with some of these drawbacks different variants of boosting have been proposed.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting",
+    "title": "Ensemble Methods",
+    "section": "Gradient Boosting",
+    "text": "Gradient Boosting\n\nDeveloped to overcome the limitations of Adaboost.\nTakes a different approach that can be linked with Optimization by Gradient Descent.\nSeveral advantages over Adaboost\n\nCan handle continuous variables much better,\nIt is more robust to noisy data and outliers.\nCan handle complex datasets and\nCan continue to improve its accuracy even after Adaboost’s performance has “plateaued”.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-algorithm",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-algorithm",
+    "title": "Ensemble Methods",
+    "section": "Gradient Boosting Algorithm",
+    "text": "Gradient Boosting Algorithm\n\nTrain a first weak learner \\(f_1\\), which predicts the response variable \\(y\\), and calculate the residuals \\(y - f_1(x)\\).\nNext, train a new model \\(f_2\\), to predict the residuals of the previous model, that is, to correct the errors made by model \\(f_1\\).\n\n\\(f_1(x) \\approx y\\)\n\\(f_2(x) \\approx y - f_1(x)\\)\n\nIterate calculating residuals of the two models together \\(y - f_1(x) - f_2(x)\\) and train a third model \\(f_3\\) to correct them.\n\n\\(f_3(x) \\approx y - f_1(x) - f_2(x)\\)\n\nRepeat the process \\(M\\) times, so that each new model minimizes the residuals (errors) of the previous one.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-may-overfit",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-may-overfit",
+    "title": "Ensemble Methods",
+    "section": "Gradient Boosting may overfit",
+    "text": "Gradient Boosting may overfit\n\nSince the goal of Gradient Boosting is to minimize the residuals iteration by iteration, it is susceptible to overfitting.\nOne way to avoid this problem is by using a regularization value, also known as the learning rate (\\(\\lambda\\)), which limits the influence of each model on the ensemble.\nAs a result of this regularization, more models are needed to form the ensemble, but better results are achieved.\n\n\\(f_1(x) \\approx y\\)\n\\(f_2(x) \\approx y - \\lambda f_1(x)\\)\n\\(f_3(x) \\approx y - \\lambda f_1(x) - \\lambda f_2(x)\\)\n\\(y \\approx \\lambda f_1(x) + \\lambda f_2(x) + \\lambda f_3(x) + \\ldots + \\lambda f_m(x)\\)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-architechture",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-architechture",
+    "title": "Ensemble Methods",
+    "section": "Gradient boosting architechture",
+    "text": "Gradient boosting architechture\n\n Source: Ensemble Learning: Bagging & Boosting",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-pseudo-code",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-pseudo-code",
+    "title": "Ensemble Methods",
+    "section": "Gradient Boosting pseudo-code",
+    "text": "Gradient Boosting pseudo-code\n\nInitialize the model with a constant value: \\(f_0(x) = \\frac{1}{n} \\sum\\limits_{i=1}^{n} y_i\\)\nFor \\(t = 1\\) to \\(T\\):\n\nCompute the negative gradient of the loss function at the current fit: \\(r_{ti} = -\\frac{\\partial L(y_i, f_{t-1}(x_i))}{\\partial f_{t-1}(x_i)}\\)\nTrain a new model to predict the negative gradient values: \\(h(x; \\theta_t) = \\arg\\min\\limits_{h} \\sum\\limits_{i=1}^{n} (r_{ti} - h(x_i; \\theta))^2\\)\nCompute the optimal step size: \\(\\gamma_t = \\arg\\min\\limits_{\\gamma} \\sum\\limits_{i=1}^{n} L(y_i, f_{t-1}(x_i) + \\gamma h(x_i; \\theta_t))\\)\nUpdate the model: \\(f_t(x) = f_{t-1}(x) + \\gamma_t h(x; \\theta_t)\\)\n\nOutput the final model: \\(F(x) = f_T(x)\\)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#relation-with-gradient-descent",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#relation-with-gradient-descent",
+    "title": "Ensemble Methods",
+    "section": "Relation with Gradient Descent",
+    "text": "Relation with Gradient Descent\n\nGradient Boosting can be seen as an extension of Gradient Descent, a popular optimization algorithm used to find the minimum of a function.\n\nIn Gradient Descent, the weights of the model are updated in the opposite direction of the gradient of the cost function.\nIn Gradient Boosting, the new model is trained on the negative gradient of the loss function, which is equivalent to minimizing the loss function in the direction of steepest descent.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-variations",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-variations",
+    "title": "Ensemble Methods",
+    "section": "Gradient Boosting Variations",
+    "text": "Gradient Boosting Variations\n\nMultiple extensions from Gradient Boosting.\nXGBoost\n\nOptimized implementation that uses regularization to control overfitting and provide better accuracy.\nWon many competitions.\n\nLightGBM\n\nRelies on a technique to reduce the number of samples used in each iteration.\nFaster training, good for large datasets.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-applications",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-applications",
+    "title": "Ensemble Methods",
+    "section": "Boosting applications",
+    "text": "Boosting applications\n\nFraud Detection\nImage and Speech Recognition\nAnomaly Detection\nMedical Diagnosis\nAmazon’s recommendation engine\nModels that predict protein structures from amino acid sequences\nPattern identification in fMRI brain scans.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#advantages-of-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#advantages-of-boosting",
+    "title": "Ensemble Methods",
+    "section": "Advantages of Boosting",
+    "text": "Advantages of Boosting\n\nBoosting, like other Ensemble methods, improves the accuracy of weak learners and achieve better predictive performance than individual models.\nBoosting also reduces overfitting by improving the generalization ability of models.\nAvailable in many flavors,\nCan be parallelized\nStrong experience in Real world applications and industry.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#limitations-of-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#limitations-of-boosting",
+    "title": "Ensemble Methods",
+    "section": "Limitations of Boosting",
+    "text": "Limitations of Boosting\n\nCan be computationally expensive, especially when dealing with large datasets and complex models.\nCan be sensitive to noisy data and outliers,\nMay not work well with certain types of data distributions.\nNot so good as “out-of-the-box”: Requires careful tuning of hyperparameters to achieve optimal performance, which can be time-consuming and challenging.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-application-with-r-and-python",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-application-with-r-and-python",
+    "title": "Ensemble Methods",
+    "section": "Boosting application with R and Python",
+    "text": "Boosting application with R and Python\n\nMany R packages implement the many variations of boosting:\n\nada,\nadabag,\nmboost,\ngbm,\nxgboost\nAn interesting option is to rely on the caret package which allows to run the distinct methods with a common interface.\n\nInpython we usually rely on scikit-learn libraries although there are many alternative implementations\n\nScikit-learn ensemble\nhttps://python-course.eu/machine-learning/boosting-algorithm-in-python.php",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bootstrap",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bootstrap",
+    "title": "Ensemble Methods",
+    "section": "The bootstrap",
+    "text": "The bootstrap\n\nBootstrap methods were introduced by Efron (1979) to estimate the standard error of a statistic.\nThe success of the idea lied in that the procedure was presented as automatic, that is:\n\ninstead of having to do complex calculations,\nit allowed to approximate them using computer simulation.\n\nSome called it the end of mathematical statistics.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bootstrap-applications",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bootstrap-applications",
+    "title": "Ensemble Methods",
+    "section": "Bootstrap Applications",
+    "text": "Bootstrap Applications\n\nThe bootstrap has been applied to almost any problem in Statistics.\n\nComputing standard errors, Bias, Quantiles,\nBuilding Confidence intervals,\nDoing Significance tests, …\n\nWe illustrate it with the simplest case: estimating the standard error of an estimator.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#empirical-distribution-function",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#empirical-distribution-function",
+    "title": "Ensemble Methods",
+    "section": "Empirical Distribution Function",
+    "text": "Empirical Distribution Function\n\n\nLet \\(X\\) be a random variable with distribution function \\(F\\),\nLet \\(\\mathbf{X}=X_1,\\ldots,X_n\\) be an i.i.d random sample of \\(F\\) and,\nlet \\(x_1,\\dots, x_n\\) be a realization of \\(\\mathbf{X}\\).\nThe Empirical Cumulative Distribution Function (ECDF) \\[\nF_n(x) = \\frac{1}{n} \\#\\{x_i\\le x: i=1\\dots n\\} = \\frac{1}{n}\n\\sum_{i=1}^n I_{(-\\infty,x]}(x_i),\n\\] is the function that assigns to each real number \\(x\\) the proportion of observed values that are less or equal than \\(x\\).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-ecdf-in-r",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-ecdf-in-r",
+    "title": "Ensemble Methods",
+    "section": "The ECDF in R",
+    "text": "The ECDF in R\n\n\n\nx&lt;- c(2,5,0,11,-1)\nFn &lt;- ecdf(x)\nknots(Fn)\n\n[1] -1  0  2  5 11\n\ncat(\"Fn(3) = \", Fn(3))\n\nFn(3) =  0.6\n\ncat(\"Fn(-2) = \", Fn(-2))\n\nFn(-2) =  0\n\n\n\n\nplot(Fn)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#ecdf-has-good-properties",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#ecdf-has-good-properties",
+    "title": "Ensemble Methods",
+    "section": "ECDF has good properties",
+    "text": "ECDF has good properties\n\n\\(F_n (x)\\) is a cumulative distribution function.\n\\(F_n()\\) is an important DF because it comes to be the best approximation that one can find for the theoretical (population) distribution function, that is: \\[\nF_n(x) \\longrightarrow F(x), \\text { uniformly in } x \\text{ as } n \\rightarrow \\infty.\n\\]\nThis is stated in the Glivenko-Cantelli theorem also know as the Central Theorem of Statistics.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-sample-distribution-function",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-sample-distribution-function",
+    "title": "Ensemble Methods",
+    "section": "The Sample distribution function",
+    "text": "The Sample distribution function\n\n\nGiven a sample, \\(\\mathbf{X}\\) from a certain distribution, \\(X\\),\nConsider it a discrete random variable \\(X_e\\) that sets mass \\(1/n\\) to each of the observed \\(n\\) points \\(x_i\\):\n\n\n\n\n\n\n\n\\(F_n\\) is the distribution (function) of \\(X_e\\).\nFrom here, we notice that generating samples from \\(F_n\\) can be done by randomly taking values from \\(\\mathbf{X}\\) with probability \\(1/n\\)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#plug-in-estimators",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#plug-in-estimators",
+    "title": "Ensemble Methods",
+    "section": "Plug-in estimators",
+    "text": "Plug-in estimators\n\nAssume we want to estimate some parameter \\(\\theta\\), that can be expressed as \\(\\theta (F)\\), where \\(F\\) is the distribution function of each \\(X_i\\) in \\((X_1,X_2,...,X_n)\\).\nFor example, \\(\\theta = E_F(X)=\\theta (F)\\).\nA natural way to estimate \\(\\theta(F)\\) may be to rely on plug-in estimators, where \\(F\\) in \\(\\hat \\theta (F)\\) is substituted by some approximation (estimate) to \\(F\\).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#plug-in-estimators-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#plug-in-estimators-1",
+    "title": "Ensemble Methods",
+    "section": "Plug-in estimators",
+    "text": "Plug-in estimators\n\nA plug-in estimator is obtained by substituting \\(F\\) by an approximation to \\(F\\), call it \\(\\hat F\\) in \\(\\theta(F)\\): \\[\n\\widehat {\\theta (F)}=\\theta(\\hat{F})\n\\]\nGiven that \\(F_n\\) is the best approximation to \\(F\\) a reasonable plug-in estimator is \\(\\theta(F_n)\\).\nCommon sample estimators are, indeed, plug-in estimators.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#some-plug-in-estimators",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#some-plug-in-estimators",
+    "title": "Ensemble Methods",
+    "section": "Some plug-in estimators",
+    "text": "Some plug-in estimators\n\nMany estimators we usally work with are plug-in estimators.\n\n\\[\\begin{eqnarray*}\n\\theta_1 &=& E_F(X)=\\theta (F) \\\\\n\\hat{\\theta_1}&=&\\overline{X}=\\int XdF_n(x)=\\frac\n1n\\sum_{i=1}^nx_i=\\theta (F_n)\n\\\\\n\\theta_2 &=& Med(X)=\\{m:P_F(X\\leq m)=1/2\\}=\n\\theta (F),\n\\\\\n\\hat{\\theta_2}&=&\\widehat{Med}(X)=\\{m:\\frac{\\#x_i\\leq m}n=1/2\\}=\\theta (F_n)\n\\end{eqnarray*}\\]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#precision-of-an-estimate",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#precision-of-an-estimate",
+    "title": "Ensemble Methods",
+    "section": "Precision of an estimate",
+    "text": "Precision of an estimate\n\nA key point, when computing an estimator \\(\\hat \\theta\\) of a parameter \\(\\theta\\), is how precise is \\(\\hat \\theta\\) as an estimator of \\(\\theta\\)?\n\nWith the sample mean, \\(\\overline{X}\\), the standard error estimation is immediate because the variance of the estimator is known: \\(\\sigma_{\\overline{X}}=\\frac{\\sigma (X)}{\\sqrt{n}}\\)\nSo, a natural estimator of the standard error of \\(\\overline{X}\\) is: \\(\\hat\\sigma_{\\overline{X}}=\\frac{\\hat{\\sigma}(X)}{\\sqrt{n}}\\)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#precision-of-an-estimate-2",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#precision-of-an-estimate-2",
+    "title": "Ensemble Methods",
+    "section": "Precision of an estimate (2)",
+    "text": "Precision of an estimate (2)\n\nIf, as in this case, the variance of \\(X\\) (and, here, that of \\(\\overline{X}\\)) is a functional of \\(F\\):\n\n\n\\[\n\\sigma _{\\overline{X}}=\\frac{\\sigma (X)}{\\sqrt{n}}=\\frac{\\sqrt{\\int\n[x-\\int x\\,dF(x)]^2 dF(x)}}{\\sqrt{n}}=\\sigma _{\\overline{X}}(F)\n\\]\n\nthen, the standard error estimator is the same functional applied on \\(F_n\\), that is:\n\n\\[\n\\hat{\\sigma}_{\\overline{X}}=\\frac{\\hat{\\sigma}(X)}{\\sqrt{n}}=\\frac{\\sqrt{1/n\\sum_{i=1}^n(x_i-\\overline{x})^2}}{\\sqrt{n}}=\\sigma\n_{\\overline{X}}(F_n).\n\\]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#standard-error-estimation",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#standard-error-estimation",
+    "title": "Ensemble Methods",
+    "section": "Standard error estimation",
+    "text": "Standard error estimation\n\nThus, a way to obtain a standard error estimator \\(\\widehat{\\sigma}_{\\widehat{\\theta}}\\) of an estimator \\(\\widehat{\\theta}\\) consists on replacing \\(F\\) with \\(F_n\\) in the ``population’’ standard error expression of \\(\\hat \\theta\\), \\(\\displaystyle{\\sigma_{\\hat\n\\theta}= \\sigma_{\\hat \\theta}(F)}\\), whenever it is known.\nIn a schematic form: \\[\n\\sigma_{\\hat \\theta}= \\sigma_{\\hat \\theta}(F) \\Longrightarrow\n\\sigma_{\\hat \\theta}(F_n)= \\widehat{\\sigma}_{\\hat \\theta}.\n\\] That is, the process consists of “plugging-in” \\(F_n\\) in the (known) functional form, \\(\\sigma_{\\hat \\theta}(F)\\) that defines \\(\\sigma_{\\hat \\theta}\\)}.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bootstrap-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bootstrap-1",
+    "title": "Ensemble Methods",
+    "section": "The bootstrap (1)",
+    "text": "The bootstrap (1)\n\nThe previous approach, \\(F\\simeq F_n \\Longrightarrow \\sigma_{\\hat \\theta}(F) \\simeq \\sigma_{\\hat \\theta}(F_n)\\) presents the obvious drawback that, when the functional form \\(\\sigma _{\\hat{\\theta}}(F)\\) is unknown, it is not possible to carry out the substitution of \\(F\\) by \\(F_n\\).\nThis is, for example, the case of standard error of the median or that of the correlation coefficient.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bootstrap-2",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bootstrap-2",
+    "title": "Ensemble Methods",
+    "section": "The bootstrap (2)",
+    "text": "The bootstrap (2)\n\nThe bootstrap method makes it possible to do the desired approximation: \\[\\hat{\\sigma}_{\\hat\\theta} \\simeq \\sigma _{\\hat\\theta}(F_n)\\] without having to to know the form of \\(\\sigma_{\\hat\\theta}(F)\\).\nTo do this,the bootstrap estimates, or directly approaches \\(\\sigma_{\\hat{\\theta}}(F_n)\\) over the sample.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bootstrap-sampling-resampling",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bootstrap-sampling-resampling",
+    "title": "Ensemble Methods",
+    "section": "Bootstrap sampling (resampling)",
+    "text": "Bootstrap sampling (resampling)\n\nThe bootstrap allows to estimate the standard error from samples of \\(F_n\\)\n\n\n\\[\\begin{eqnarray*}\n&&\\mbox{Instead of: } \\\\\n&& \\quad F\\stackrel{s.r.s}{\\longrightarrow }{\\bf X} =\n(X_1,X_2,\\dots, X_n) \\, \\quad (\\hat \\sigma_{\\hat\\theta} =\\underbrace{\\sigma_{\\theta(F_n)}_{unknown})\n\\\\\n&& \\mbox{It is done: } \\\\\n&& \\quad F_n\\stackrel{s.r.s}{\\longrightarrow }\\quad {\\bf X^{*}}=(X_1^{*},X_2^{*},\n\\dots ,X_n^{*}) \\\\\n&& \\quad (\\hat \\sigma_{\\hat\\theta}= \\hat \\sigma_{\\hat \\theta}^* \\simeq \\sigma_{\\hat \\theta}^*=\\sigma_{\\hat \\theta}(F_n)).\n\n\\end{eqnarray*}\\]\n\n\n\n\\(\\sigma_{\\hat \\theta}^*\\) is the bootstrap standard error of \\(\\hat \\theta\\) and\n\\(\\hat \\sigma_{\\hat \\theta}^*\\) the bootstrap estimate of the standard error of \\(\\hat \\theta\\).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-resampling-process",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-resampling-process",
+    "title": "Ensemble Methods",
+    "section": "The resampling process",
+    "text": "The resampling process\n\n\nResampling consists of extracting samples of size \\(n\\) of \\(F_n\\): \\({\\bf X_b^{*}}\\) is a random sample of size \\(n\\) obtained with replacement from the original sample \\({\\bf X}\\).\nSamples \\({\\bf X^*_1, X^*_2, ..., X^*_B }\\), obtained through this procedure are called bootstrap samples or re-samples.\nOn each resample the statistic of interest \\(\\hat \\theta\\) can be computed yielding a bootstrap estimate \\(\\hat \\theta^*_b= s(\\mathbf{x^*_b})\\).\nThe collection of bootstrap estimates obtained form the resampled samples can be used to estimate distinct characteristics of \\(\\hat \\theta\\) such as its standard error, its bias, etc.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#resampling-illustrated",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#resampling-illustrated",
+    "title": "Ensemble Methods",
+    "section": "Resampling illustrated",
+    "text": "Resampling illustrated",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boot.-monte-carlo-algorithm",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boot.-monte-carlo-algorithm",
+    "title": "Ensemble Methods",
+    "section": "Boot. Monte Carlo Algorithm",
+    "text": "Boot. Monte Carlo Algorithm\n\n\nDraw a bootstrap sample, \\({\\bf x}_1^{*}\\) from \\(F_n\\) and compute \\(\\hat{\\theta}({\\bf x}_1^{*})\\).\nRepeat (1) \\(B\\) times yielding \\(\\hat{\\theta}({\\bf x}_2^{*})\\), \\(\\dots\\), \\(\\hat{\\theta}({\\bf x}_B^{*})\\) estimates.\nCompute: \\[\\begin{equation*}\n\\hat{\\sigma}_B (\\hat\\theta)= \\sqrt{\n\\frac{\n     \\sum_{b=1}^B\\left( \\hat{\\theta}(%\n     {\\bf x^{*}_i})-\\overline{\\hat{\\theta}^*}\\right) ^2\n     }{\n     (B-1)\n     }\n}, \\quad \\overline{\\hat{\\theta}^*}\\equiv \\frac 1B\\sum_{b=1}^B\\hat{\\theta}\\left( {\\bf x}%\n_b^{*}\\right)\n\\end{equation*}\\]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bootstrap-estimates-of-se",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bootstrap-estimates-of-se",
+    "title": "Ensemble Methods",
+    "section": "Bootstrap Estimates of SE",
+    "text": "Bootstrap Estimates of SE\n\n\nIdea behind the bootstrap: the standard error of \\(\\hat\\theta\\), \\(\\sigma(\\hat\\theta)\\) can be approximated by the bootstrap estimator of the standard error, \\(\\sigma_B (\\hat\\theta)\\) which:\n\nCoincides with \\(\\sigma_{\\hat\\theta}(F_n)\\), that cannot be evaluated, if the functional form of \\(\\sigma_{\\hat\\theta}(F)\\) is unkown.\nCan be approximated by the Monte Carlo Estimator, \\(\\hat\\sigma_{\\hat\\theta}(F_n)\\), which is evaluated by resampling.\n\n\n\\[\n\\hat{\\sigma}_B(\\hat\\theta)\\left (\\simeq \\sigma_B(\\hat\\theta)=\\sigma_{\\hat\\theta}(F_n)\\right )\\simeq\\hat \\sigma_{\\hat\\theta}(F_n).\n\\]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#summary",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#summary",
+    "title": "Ensemble Methods",
+    "section": "Summary",
+    "text": "Summary\nFrom real world to bootstrap world:\n\n\nAquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#references",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#references",
+    "title": "Ensemble Methods",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\n\n\nBishop, Christopher M. 2007. Pattern Recognition and Machine Learning (Information Science and Statistics). 1st ed. Springer. http://www.amazon.com/Pattern-Recognition-Learning-Information-Statistics/dp/0387310738%3FSubscriptionId%3D13CT5CVB80YFWJEPWS02%26tag%3Dws%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0387310738.\n\n\nBoehmke, Bradley, and Brandon Greenwell. 2020. The r Series Hands-on Machine Learning with r. CRC Press. https://www.routledge.com/Hands-On-Machine-Learning-with-R/Boehmke-Greenwell/p/book/9781138495685.\n\n\nBoulesteix, Anne Laure, Silke Janitza, Jochen Kruppa, and Inke R. König. 2012. “Overview of Random Forest Methodology and Practical Guidance with Emphasis on Computational Biology and Bioinformatics.” Undefined 2 (November): 493–507. https://doi.org/10.1002/WIDM.1072.\n\n\nBreiman, Leo. 1996. “Bagging Predictors.” Machine Learning 24: 123–40. https://doi.org/10.1007/BF00058655/METRICS.\n\n\nEfron, B. 1979. “Bootstrap Methods: Another Look at the Jackknife.” The Annals of Statistics 7 (1): 1–26. https://doi.org/10.1214/aos/1176344552.\n\n\nProbst, Philipp, Marvin N. Wright, and Anne-Laure Boulesteix. 2019. “Hyperparameters and Tuning Strategies for Random Forest.” WIREs Data Mining and Knowledge Discovery 9 (3): e1301. https://doi.org/https://doi.org/10.1002/widm.1301.\n\n\nSchapire, Robert E. 1989. “The Strength of Weak Learnability (Extended Abstract).” In 30th Annual Symposium on Foundations of Computer Science, Research Triangle Park, North Carolina, USA, 30 October - 1 November 1989, 28–33. IEEE Computer Society. https://doi.org/10.1109/SFCS.1989.63451.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html",
+    "title": "Introduction to Ensembles",
+    "section": "",
+    "text": "Introduction to Ensembles\nBagging and the Bootstrap\nRandom Forests\nBoosting and its variants"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#outline",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#outline",
+    "title": "Introduction to Ensembles",
+    "section": "",
+    "text": "Introduction to Ensembles\nBagging and the Bootstrap\nRandom Forests\nBoosting and its variants"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#weak-learners",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#weak-learners",
+    "title": "Introduction to Ensembles",
+    "section": "Weak learners",
+    "text": "Weak learners\n\n\nModels that perform only slightly better than random guessing are called weak learners [@Bishop2007].\nWeak learners low predictive accuracy may be due, to the predictor having high bias or high variance.\n\n\n\nknitr::include_graphics(\"images/1.2-EnsembleMethods_insertimage_1.png\")"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#trees-may-be-weak-learners",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#trees-may-be-weak-learners",
+    "title": "Introduction to Ensembles",
+    "section": "Trees may be weak learners",
+    "text": "Trees may be weak learners\n\nTrees use to be sensitive to small changes in training data which lead to very different tree structure.\nThis implies predictions are highly variable\nThis may be explained because they are greedy algorithms making locally optimal decisions at each node without considering the global optimal solution.\n\nThis can lead to suboptimal splits and ultimately a weaker predictive performance."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#theres-room-for-improvement",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#theres-room-for-improvement",
+    "title": "Introduction to Ensembles",
+    "section": "There’s room for improvement",
+    "text": "There’s room for improvement\n\nIn many situations trees may be a good option (e.g. for simplicity and interpretability)\nBut there are issues that, if solved, may improve performance.\nIt is to be noted, too, that these problems are not unique to trees.\n\nOther simple models such as linear regression may be considered as weakl learners in may situations."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#the-bias-variance-trade-off",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#the-bias-variance-trade-off",
+    "title": "Introduction to Ensembles",
+    "section": "The bias-variance trade-off",
+    "text": "The bias-variance trade-off\n\nWhen we try to improve weak learners we need to deal with the bias-variance trade-off.\n\n\nknitr::include_graphics(\"images/1.2-Ensemble_Methods-Slides_insertimage_1.png\")\n\n\n\n\nThe bias-variance trade-off"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#how-to-deal-with-such-trade-off",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#how-to-deal-with-such-trade-off",
+    "title": "Introduction to Ensembles",
+    "section": "How to deal with such trade-off",
+    "text": "How to deal with such trade-off\n\nHow can a model be made less variable or less biased without this increasing its bias or variance?\nThere are distinct appraches to deal with this problem\n\nRegularization,\nFeature engineering,\nModel selection\nEnsemble learning"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#ensemble-learners",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#ensemble-learners",
+    "title": "Introduction to Ensembles",
+    "section": "Ensemble learners",
+    "text": "Ensemble learners\n\nEnsemble learning takes the approach popularly known as “the wisdom of crowds”.\nPredictors, also called, ensembles are built by fitting repeated (weak learners) models on the same data and combining them to form a single result.\nEnsemble learners tend to improve the results obtained with the weak learners they are made of."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#ensemble-methods",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#ensemble-methods",
+    "title": "Introduction to Ensembles",
+    "section": "Ensemble methods",
+    "text": "Ensemble methods\n\nIf we rely on how they deal with the bias-variance trade-off we can consider distinct groups of ensemble methods:\n\nBagging\nBoosting\nHybrid learners\n\n\nEnsemble methods cheatsheet"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#aggregating-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#aggregating-trees",
+    "title": "Introduction to Ensembles",
+    "section": "Aggregating Trees",
+    "text": "Aggregating Trees\nOne type of ensembles is made by constructing multiple trees using different types of subsets.\n\nBagging (Bootstrap aggregating)\n\nRandom subsets of observations.\n\nRandom Forests (\\(\\simeq\\) Bagging + Feature Selection)\n\nRandom subsets of observations\n\nRandom subsets of features at each split\n\n\n\n\nThese ensembles reduce variance compared to individual decision trees."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#boosting-stacking",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#boosting-stacking",
+    "title": "Introduction to Ensembles",
+    "section": "Boosting & Stacking",
+    "text": "Boosting & Stacking\n\nBoosting or Stacking combine distinct predictors to yield a model with an increasingly smaller error, and so reduce the bias.\nThey differ on if do the combination\n\nsequentially (1) or\nusing a meta-model (2) ."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#hybrid-techniques",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#hybrid-techniques",
+    "title": "Introduction to Ensembles",
+    "section": "Hybrid Techniques",
+    "text": "Hybrid Techniques\n\nHybrid techniques combine approaches in order to deal with both variance and bias.\nThe approach should be clear from their name:\n\nGradient Boosted Trees with Bagging\nStacked bagging"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging-bootstrap-aggregation",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging-bootstrap-aggregation",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging: bootstrap aggregation",
+    "text": "Bagging: bootstrap aggregation\n\nDecision trees suffer from high variance when compared with other methods such as linear regression, especially when \\(n/p\\) is moderately large.\nGiven that this is intrinsic to trees, @Breiman1996 sugested to build multiple trees derived from the same dataset and, somehow, average them."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#averaging-decreases-variance",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#averaging-decreases-variance",
+    "title": "Introduction to Ensembles",
+    "section": "Averaging decreases variance",
+    "text": "Averaging decreases variance\n\nBagging relies, informally, on the idea that:\n\ngiven \\(X\\sim F()\\), s.t. \\(Var_F(X)=\\sigma^2\\),\ngiven a s.r.s. \\(X_1, ..., X_n\\) from \\(F\\) then\nif \\(\\overline{X}=\\frac{1}{N}\\sum_{i=1}^n X_i\\) then \\(var_F(\\overline{X})=\\sigma^2/n\\).\n\nThat is, relying on the sample mean instead of on simple observations, decreases variance by a factor of \\(n\\).\nBTW this idea is still (approximately) valid for more general statistics where the CLT applies."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#what-means-averaging-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#what-means-averaging-trees",
+    "title": "Introduction to Ensembles",
+    "section": "What means averaging trees?",
+    "text": "What means averaging trees?\nTwo questions arise here:\n\nHow to go from \\(X\\) to \\(X_1, ..., X_n\\)?\n\n\nThis will be done using bootstrap resampling.\n\n\nWhat means “averaging” in this context.\n\n\nDepending on the type of tree:\n\nAverage predictions for regression trees.\nMajority voting for classification trees."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging-bootstrap-aggregation-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging-bootstrap-aggregation-1",
+    "title": "Introduction to Ensembles",
+    "section": "BAGGING: Bootstrap Aggregation",
+    "text": "BAGGING: Bootstrap Aggregation\n\n@Breiman1996 combined the ideas of:\n\nAveraging provides decreased variance estimates,\nBootstrap provides multiple (re)samples.\n\nHe suggested: bootstrap aggregating :\n\nTake resamples from the original training dataset\nLearn the model on each bootstrapped training set\nGet a prediction \\({\\small \\hat f^{*b}(x)}\\) from each model.\n\nAveraging predictions from single bootstrap models improves single prediction/classification."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging-predictionclassifier",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging-predictionclassifier",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging prediction/classifier",
+    "text": "Bagging prediction/classifier\n\nFor regression (trees) the bagged estimate is the average prediction at \\(x\\) from these \\(B\\) trees. \\[\n{\\small\n\\hat f_{bag}(x)=\\frac 1B \\sum_{b=1}^B \\hat f^{*b}(x)\n}\n\\]\nFor classification (trees) the bagged classifier selects the class with the most “votes” from the \\(B\\) trees:\n\n\\[\n{\\small\n\\hat G_{bag}(x) = \\arg \\max_k \\hat f_{bag}(x).\n}\n\\]"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#resampling-based-estimators",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#resampling-based-estimators",
+    "title": "Introduction to Ensembles",
+    "section": "Resampling based estimators",
+    "text": "Resampling based estimators\n\nThe bootstrap was introduced as a way to provide standard error estimators.\nWhen used to compute \\(\\hat f_{bag}(x)\\) or \\(\\hat G_{bag}(x)\\), as described above, it provides direct estimators of a characteristic, not of their standard errors.\nHowever, the bagging process can also provide resampling based estimates of the precision of these estimators."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#out-of-bag-observations",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#out-of-bag-observations",
+    "title": "Introduction to Ensembles",
+    "section": "Out-Of-Bag observations",
+    "text": "Out-Of-Bag observations\n\nEvery time a resample is taken with replacement, some observations are omitted, due to the multiple occurring of others.\n\n\nknitr::include_graphics(\"images/oobErrorEstimation.jpg\")\n\n\n\n\n\n\n\n\n\nThese out-of-bag (OOB) observations can be used to build an estimate of prediction error."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#out-of-bag-error-estimates",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#out-of-bag-error-estimates",
+    "title": "Introduction to Ensembles",
+    "section": "Out-Of-Bag error estimates",
+    "text": "Out-Of-Bag error estimates\nSince each out-of-bag set is not used to train the model, it can be used to evaluate performance.\n\nFind all trees that are not trained by the OOB instance.\nTake the majority vote of these trees for the OOB instance, compared to the true value of the OOB instance.\nCompile OOB error for all instances in the OOB dataset."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#illustration-of-oob-ee",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#illustration-of-oob-ee",
+    "title": "Introduction to Ensembles",
+    "section": "Illustration of OOB EE",
+    "text": "Illustration of OOB EE\n\nknitr::include_graphics(\"images/oobErrorEstimation.png\")\n\n\n\n\n\n\n\n\nSource: https://www.baeldung.com/cs/random-forests-out-of-bag-error"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging-in-r",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging-in-r",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging in R",
+    "text": "Bagging in R\n\nWe use the AmesHousing dataset on house prices in Ames, IA, to predict the “Sales price” of houses.\n\n\nStart by splitting the dataset in test/train subsets\nBuild a bagged tree on the train subset and evaluate it on the test subset.\nInterpret the results using “Variable importance”\n\n\nBagging is equivalent to RandomForest if each tree in a Random Forest considers all features at every split.\nSo we use randomForest package setting mtry to total number of features."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging---prepare-data",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging---prepare-data",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging - Prepare data",
+    "text": "Bagging - Prepare data\n\n# Prepare \"clean\" dataset from raw data\names &lt;- AmesHousing::make_ames()\n# Scale response variable to improve readability\names$Sale_Price &lt;- ames$Sale_Price/1000\n# Split in test/training\nset.seed(123)\ntrain &lt;- sample(1:nrow(ames), nrow(ames)/2)\n# split &lt;- rsample::initial_split(ames, prop = 0.7, \n#                        strata = \"Sale_Price\")\names_train  &lt;- ames[train,]\names_test   &lt;- ames[-train,]"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging---build-bag-of-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging---build-bag-of-trees",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging - Build bag of trees",
+    "text": "Bagging - Build bag of trees\n\nlibrary(randomForest)\nset.seed(12543)\nbag.Ames &lt;- randomForest(Sale_Price ~ ., \n                         data = ames_train, \n                         mtry = ncol(ames_train-1), \n                         ntree = 100,\n                         importance = TRUE)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging---results",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging---results",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging - Results",
+    "text": "Bagging - Results\n\nshow(bag.Ames )\n\nCall:\n randomForest(formula = Sale_Price ~ ., data = ames_train, mtry = ncol(ames_train -      1), ntree = 100, importance = TRUE) \n               Type of random forest: regression\n                     Number of trees: 100\nNo. of variables tried at each split: 80\n\n          Mean of squared residuals: 771498315\n                    % Var explained: 87.89"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging---prediction-and-accuracy",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging---prediction-and-accuracy",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging - Prediction and accuracy",
+    "text": "Bagging - Prediction and accuracy\n\nyhat.bag &lt;- predict(bag.Ames, newdata = ames_test)\nMSE= mean((yhat.bag -ames_test$Sale_Price)^2)\nplot(yhat.bag, ames_test$Sale_Price, main=c(\"MSE= \", MSE))\nabline(0, 1)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging---prediction-and-accuracy-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging---prediction-and-accuracy-1",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging - Prediction and accuracy",
+    "text": "Bagging - Prediction and accuracy\n\nknitr::include_graphics(\"images/bag_Ames_fit.png\")"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#interpetability-the-achiles-heel",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#interpetability-the-achiles-heel",
+    "title": "Introduction to Ensembles",
+    "section": "Interpetability: The “achiles heel”",
+    "text": "Interpetability: The “achiles heel”\n\nTrees may have a straightforward interpretation,\n\nPlotting the tree provides information about\n\nwhich variables are important\nhow they act on the prediction\n\n\nEnsembles are less intuitive because\n\nthere is no consensus tree.\nnot clear which variables are most important."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#feature-importance-from-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#feature-importance-from-trees",
+    "title": "Introduction to Ensembles",
+    "section": "Feature importance from Trees",
+    "text": "Feature importance from Trees\n\nTo measure feature importance, the reduction in the loss function (e.g., SSE) attributed to each variable at each split is tabulated.\nThe total reduction in the loss function across all splits by a variable are summed up and used as the total feature importance."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#feature-importance-for-ensembles",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#feature-importance-for-ensembles",
+    "title": "Introduction to Ensembles",
+    "section": "Feature importance for Ensembles",
+    "text": "Feature importance for Ensembles\n\nVariable importance measures can be extended to an ensemble simply by adding up variable importance over all trees built.\n\n\nrequire(dplyr)\nVIP &lt;- importance(bag.Ames) \nVIP &lt;- VIP[order(VIP[,1], decreasing = TRUE),]\nhead(VIP, n=10)\n\n\nknitr::include_graphics(\"images/amesVIP2.png\")"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#random-forests-decorrelating-predictors",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#random-forests-decorrelating-predictors",
+    "title": "Introduction to Ensembles",
+    "section": "Random forests: decorrelating predictors",
+    "text": "Random forests: decorrelating predictors\n\nBagged trees, based on re-samples (of the same sample) tend to be highly correlated.\nLeo Breimann, again, introduced a modification to bagging, he called Random forests, that aims at decorrelating trees as follows:\n\nWhen growing a tree from one bootstrap sample,\nAt each split use only a randomly selected subset of predictors."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#split-variable-randomization",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#split-variable-randomization",
+    "title": "Introduction to Ensembles",
+    "section": "Split variable randomization",
+    "text": "Split variable randomization\n\nWhile growing a decision tree, during the bagging process,\nRandom forests perform split-variable randomization:\n\neach time a split is to be performed,\nthe search for the split variable is limited to a random subset of \\(m_{try}\\) of the original \\(p\\) features."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#random-forests-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#random-forests-1",
+    "title": "Introduction to Ensembles",
+    "section": "Random forests",
+    "text": "Random forests\n\nknitr::include_graphics(\"images/RandomForests2.png\")\n\n\n\n\n\n\n\n\nSource: AIML.com research"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#how-many-variables-per-split",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#how-many-variables-per-split",
+    "title": "Introduction to Ensembles",
+    "section": "How many variables per split?",
+    "text": "How many variables per split?\n\n\\(m\\) can be chosen using cross-validation, but\nThe usual recommendation for random selection of variables at each split has been studied by simulation:\n\nFor regression default value is \\(m=p/3\\)\nFor classification default value is \\(m=\\sqrt{p}\\).\n\nIf \\(m=p\\), we have bagging instead of RF."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#random-forest-algorithm-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#random-forest-algorithm-1",
+    "title": "Introduction to Ensembles",
+    "section": "Random forest algorithm (1)",
+    "text": "Random forest algorithm (1)\n\nknitr::include_graphics(\"images/RandomForestsAlgorithm1.png\")\n\n\n\n\nRF Algorithm, from ch. 11 in [@Boehmke2020]"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#random-forest-algorithm-2",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#random-forest-algorithm-2",
+    "title": "Introduction to Ensembles",
+    "section": "Random forest algorithm (2)",
+    "text": "Random forest algorithm (2)\n\nknitr::include_graphics(\"images/RandomForestsAlgorithm.png\")"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#out-of-the-box-performance",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#out-of-the-box-performance",
+    "title": "Introduction to Ensembles",
+    "section": "Out-of-the box performance",
+    "text": "Out-of-the box performance\n\nRandom forests tend to provide very good out-of-the-box performance, that is:\n\nAlthough several hyperparameters can be tuned,\nDefault values tend to produce good results.\n\nMoreover, among the more popular machine learning algorithms, RFs have the least variability in their prediction accuracy when tuning [@Probst2019]."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#out-of-the-box-performance-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#out-of-the-box-performance-1",
+    "title": "Introduction to Ensembles",
+    "section": "Out of the box performance",
+    "text": "Out of the box performance\n\nA random forest trained with all hyperparameters set to their default values can yield an OOB RMSE that is better than many other classifiers, with or without tuning.\nThis combined with good stability and ease-of-use has made it the option of choice for many problems."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#out-of-the-box-performance-example",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#out-of-the-box-performance-example",
+    "title": "Introduction to Ensembles",
+    "section": "Out of the box performance example",
+    "text": "Out of the box performance example\n\n# number of features\nn_features &lt;- length(setdiff(names(ames_train), \"Sale_Price\"))\n\n# train a default random forest model\names_rf1 &lt;- ranger(\n  Sale_Price ~ ., \n  data = ames_train,\n  mtry = floor(n_features / 3),\n  respect.unordered.factors = \"order\",\n  seed = 123\n)\n\n# get OOB RMSE\n(default_rmse &lt;- sqrt(ames_rf1$prediction.error))\n## [1] 24859.27"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#tuning-hyperparameters",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#tuning-hyperparameters",
+    "title": "Introduction to Ensembles",
+    "section": "Tuning hyperparameters",
+    "text": "Tuning hyperparameters\nThere are several parameters that, appropriately tuned, can improve RF performance.\n\n\nNumber of trees in the forest.\nNumber of features to consider at any given split (\\(m_{try}\\)).\nComplexity of each tree.\nSampling scheme.\nSplitting rule to use during tree construction.\n\n\n1 & 2 usually have largest impact on predictive accuracy."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#number-of-trees",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#number-of-trees",
+    "title": "Introduction to Ensembles",
+    "section": "1. Number of trees",
+    "text": "1. Number of trees\n\nknitr::include_graphics(\"images/RandomForestsHyperparameters1.png\")\n\n\n\n\n\n\n\n\n\n\nThe number of trees needs to be sufficiently large to stabilize the error rate.\nMore trees provide more robust and stable error estimates\nBut impact on computation time increases linearly with \\(n_tree\\)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#number-of-features-m_try.",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#number-of-features-m_try.",
+    "title": "Introduction to Ensembles",
+    "section": "2. Number of features (\\(m_{try}\\)).",
+    "text": "2. Number of features (\\(m_{try}\\)).\n\nknitr::include_graphics(\"images/RandomForestsHyperparameters2.png\")\n\n\n\n\n\n\n\n\n\n\n\\(m_{try}\\) helps to balance low tree correlation with reasonable predictive strength.\nSensitive to total number of variables. If high /low, better increase/decrease it."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#complexity-of-each-tree.",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#complexity-of-each-tree.",
+    "title": "Introduction to Ensembles",
+    "section": "3. Complexity of each tree.",
+    "text": "3. Complexity of each tree.\n\nknitr::include_graphics(\"images/RandomForestsHyperparameters3.png\")\n\n\n\n\n\n\n\n\n\n\nThe complexity of underlying trees influences RF performance.\nNode size has strong influence on error and time."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#sampling-scheme.",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#sampling-scheme.",
+    "title": "Introduction to Ensembles",
+    "section": "4. Sampling scheme.",
+    "text": "4. Sampling scheme.\n\nknitr::include_graphics(\"images/RandomForestsHyperparameters4.png\")\n\n\n\n\n\n\n\n\n\n\nDefault: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.\nNode size has strong influence on error and time."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#splitting-rule",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#splitting-rule",
+    "title": "Introduction to Ensembles",
+    "section": "5. Splitting rule",
+    "text": "5. Splitting rule\n\nDefault splitting rules favor features with many splits, potentially biasing towards certain variable types.\nConditional inference trees offer an alternative to reduce bias, but may not always improve predictive accuracy and have longer training times.\nRandomized splitting rules, like extremely randomized trees (which draw split points completely randomly), improve computational efficiency but may not enhance predictive accuracy and can even reduce it."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#tuning-hyperparameters-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#tuning-hyperparameters-1",
+    "title": "Introduction to Ensembles",
+    "section": "Tuning hyperparameters",
+    "text": "Tuning hyperparameters\n\nRF are a good example of a common situachion in ML:\n\nAs the number of parameter increases,\nfinding their optimal values requires more effort\nand can even become computationally unfeasible.\n\nAs more complex algorithms with greater number of hyperparameters are introduced tuning strategies should also be considered."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#tuning-strategies",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#tuning-strategies",
+    "title": "Introduction to Ensembles",
+    "section": "Tuning strategies",
+    "text": "Tuning strategies\n\n\nGrid Search: Systematically searches through (all possible combinations) a predefined grid of hyperparameter values to find the combination that maximizes performance.\nRandom Search: Randomly samples hyperparameter values from predefined distributions. Faster than Grid Search, but less prone to find optimum.\nModel-Based Optimization leverages probabilistic models, often Gaussian processes, to model the objective function and iteratively guide the search for optimal hyperparameters."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#random-forests-in-bioinformatics",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#random-forests-in-bioinformatics",
+    "title": "Introduction to Ensembles",
+    "section": "Random forests in bioinformatics",
+    "text": "Random forests in bioinformatics\n\nRandom forests have been thoroughly used in Bioinformatics [@Boulesteix2012].\nBioinformatics data are often high dimensional with\n\ndozens or (less often) hundreds of samples/individuals\nthousands (or hundreds of thousands) of variables."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#application-of-random-forests",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#application-of-random-forests",
+    "title": "Introduction to Ensembles",
+    "section": "Application of Random forests",
+    "text": "Application of Random forests\n\nRandom forests provide robust classifiers for:\n\nDistinguishing cancer from non cancer,\nPredicting tumor type in cancer of unknown origin,\nSelecting variables (SNPs) in Genome Wide Association Studies…\n\nSome variation of Random forests are used only for variable selection"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#improving-predictors-iteratively",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#improving-predictors-iteratively",
+    "title": "Introduction to Ensembles",
+    "section": "Improving predictors iteratively",
+    "text": "Improving predictors iteratively\n\nThe idea of improving weak learners by aggregation has moved historically along two distinct lines:\n\nBuild similar learners on resamples from the original sample and average the predictions.\n\n\nThis entails Bagging and Random Forests\n\n\nBuild a learner progressively, improving it at every step using weak learners, until the desired possible quality is obtained.\n\n\nThis is what Boosting is about."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bagging-vs-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging-vs-boosting",
+    "title": "Introduction to Ensembles",
+    "section": "Bagging vs Boosting",
+    "text": "Bagging vs Boosting\n\n\n\nknitr::include_graphics(\"images/baggingVsboosting1.png\")\n\n\n\n\n\n\n\n\n\n\nknitr::include_graphics(\"images/baggingVsboosting2.png\")\n\n\n\n\n\n\n\n\n\n\nSource: Ensemble Learning: Bagging & Boosting"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#so-what-is-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#so-what-is-boosting",
+    "title": "Introduction to Ensembles",
+    "section": "So what is Boosting",
+    "text": "So what is Boosting\n\n\nIdea: create a model that is better than any of its individual components by combining their strengths and compensating for their weaknesses.\n\nMultiple weak models are trained sequentially.\nEach new model is trained to improve the errors made by the previous model.\n\nThe final model is a weighted combination of all the models where the weights are determined by the accuracy of each model."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#historical-background",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#historical-background",
+    "title": "Introduction to Ensembles",
+    "section": "Historical background",
+    "text": "Historical background\n\nThe boosting technique was proposed by Robert Schapire [@Schapire89] and Yoav Freund in the 1990s.\nThey introduced AdaBoost, the first widely-used Boosting algorithm.\n\nIt achieved significant success in various applications, including face detection and handwriting recognition.\n\nOther Boosting algorithms have become popular: Gradient Boosting, XGBoost, and LightGBM."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost",
+    "title": "Introduction to Ensembles",
+    "section": "Adaboost",
+    "text": "Adaboost\n\nAdaBoost (Adaptive Boosting) is a direct implementation of the “boosting” idea.\nIt trains models sequentially, new models focusing on correcting the errors of the previous ones.\nFinal Decision is made by combining models, giving more influence to the most reliable ones through\n\nA weighted majority vote (classification) or\nWeighted sum (regression)."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#running-adaboost",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#running-adaboost",
+    "title": "Introduction to Ensembles",
+    "section": "Running Adaboost",
+    "text": "Running Adaboost\n\nAdaboost proceeds iteratively by, at each iteration:\n\nFit the weak learner using initial weights.\nPredict and identify misclassified observations.\nUpdate observation weights:\n\ndecrease for correctly classified\nincrease for misclassified.\n\nAssign a learner weight to the weak learner based on its accuracy.\n\nThe final prediction is a weighted combination of all weak learners.\n\n\n\nAdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight).\n\nUpdating this weight vector will generate a distribution where it will be more likely to extract those samples with higher weight (that is, those that were incorrectly inferred),\nThis sample will be introduced to the next base learner in the sequence and\nThis will be repeated until a stop criterion is met.\nLikewise, each base learner in the sequence will have assigned a weight, the higher the performance, the higher the weight and the greater the impact of this base learner for the final decision.\nFinally, to make a prediction,\n\neach base learner in the sequence will be fed with the test data,\neach of the predictions of each model will be voted (for the classification case) or averaged (for the regression case)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-architecture",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-architecture",
+    "title": "Introduction to Ensembles",
+    "section": "Adaboost Architecture",
+    "text": "Adaboost Architecture\n\nknitr::include_graphics(\"images/Adaboost.jpeg\")\n\n\n\n\n\n\n\n\n Source: Ensemble Learning: Bagging & Boosting"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-pseudo-code",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-pseudo-code",
+    "title": "Introduction to Ensembles",
+    "section": "Adaboost pseudo-code",
+    "text": "Adaboost pseudo-code\n\n\nInitialize sample weights: \\(w_i = 1/N\\), where \\(N\\) = # of training samples.\nFor each iteration \\(t=1,2,\\dots,T\\) do:\n\nTrain weak classifier \\(h_t(x)\\) on training set weighted by \\(w_i\\).\nCompute the weighted error rate: \\[{\\small \\left. \\epsilon_t = \\sum_{i=1}^N w_i I(y_i \\neq h_t(x_i)) \\right/ \\left. \\sum_{i=1}^N w_i\\right. }\\]\nCompute the classifier weight: \\(\\alpha_t = \\frac{1}{2}\\log\\frac{1-\\epsilon_t}{\\epsilon_t}\\).\nUpdate the sample weights: \\(w_i \\leftarrow w_i^{-\\alpha_t I(y_i \\neq h_t(x_i))}\\).\nNormalize the sample weights: \\(w_i \\leftarrow \\frac{w_i}{\\sum_{j=1}^N w_j}\\).\n\nOutput the final classifier: \\(H(x) = \\text{sign}\\left(\\sum_{t=1}^T \\alpha_t h_t(x)\\right)\\)."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-applications",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-applications",
+    "title": "Introduction to Ensembles",
+    "section": "Adaboost applications",
+    "text": "Adaboost applications\n\nknitr::include_graphics(\"images/Adaboost4FaceRecognition.png\")\n\n\n\n\n\n\n\n\n source: Evaluating the AdaBoost Algorithm for Biometric-Based Face Recognition"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-has-limitations",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-has-limitations",
+    "title": "Introduction to Ensembles",
+    "section": "Adaboost has limitations",
+    "text": "Adaboost has limitations\n\nAdaboost was a breakthrough algorithm that significantly improved the accuracy of ML models.\nHowever, Adaboost has its limitations.\n\nIt does not handle continuous variables very well.\nCan be sensitive to noisy data and outliers,\nMay not perform well with complex datasets.\nIts performance can reach a “plateau”: it will no longer improve after a certain number of iterations.\n\nIn order to deal with some of these drawbacks different variants of boosting have been proposed."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting",
+    "title": "Introduction to Ensembles",
+    "section": "Gradient Boosting",
+    "text": "Gradient Boosting\n\nDeveloped to overcome the limitations of Adaboost.\nTakes a different approach that can be linked with Optimization by Gradient Descent.\nSeveral advantages over Adaboost\n\nCan handle continuous variables much better,\nIt is more robust to noisy data and outliers.\nCan handle complex datasets and\nCan continue to improve its accuracy even after Adaboost’s performance has “plateaued”."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-algorithm",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-algorithm",
+    "title": "Introduction to Ensembles",
+    "section": "Gradient Boosting Algorithm",
+    "text": "Gradient Boosting Algorithm\n\nTrain a first weak learner \\(f_1\\), which predicts the response variable \\(y\\), and calculate the residuals \\(y - f_1(x)\\).\nNext, train a new model \\(f_2\\), to predict the residuals of the previous model, that is, to correct the errors made by model \\(f_1\\).\n\n\\(f_1(x) \\approx y\\)\n\\(f_2(x) \\approx y - f_1(x)\\)\n\nIterate calculating residuals of the two models together \\(y - f_1(x) - f_2(x)\\) and train a third model \\(f_3\\) to correct them.\n\n\\(f_3(x) \\approx y - f_1(x) - f_2(x)\\)\n\nRepeat the process \\(M\\) times, so that each new model minimizes the residuals (errors) of the previous one."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-may-overfit",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-may-overfit",
+    "title": "Introduction to Ensembles",
+    "section": "Gradient Boosting may overfit",
+    "text": "Gradient Boosting may overfit\n\nSince the goal of Gradient Boosting is to minimize the residuals iteration by iteration, it is susceptible to overfitting.\nOne way to avoid this problem is by using a regularization value, also known as the learning rate (\\(\\lambda\\)), which limits the influence of each model on the ensemble.\nAs a result of this regularization, more models are needed to form the ensemble, but better results are achieved.\n\n\\(f_1(x) \\approx y\\)\n\\(f_2(x) \\approx y - \\lambda f_1(x)\\)\n\\(f_3(x) \\approx y - \\lambda f_1(x) - \\lambda f_2(x)\\)\n\\(y \\approx \\lambda f_1(x) + \\lambda f_2(x) + \\lambda f_3(x) + \\ldots + \\lambda f_m(x)\\)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-architechture",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-architechture",
+    "title": "Introduction to Ensembles",
+    "section": "Gradient boosting architechture",
+    "text": "Gradient boosting architechture\n\nknitr::include_graphics(\"images/gradientboosting.jpeg\")\n\n\n\n\n\n\n\n\n Source: Ensemble Learning: Bagging & Boosting"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-pseudo-code",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-pseudo-code",
+    "title": "Introduction to Ensembles",
+    "section": "Gradient Boosting pseudo-code",
+    "text": "Gradient Boosting pseudo-code\n\nInitialize the model with a constant value: \\(f_0(x) = \\frac{1}{n} \\sum\\limits_{i=1}^{n} y_i\\)\nFor \\(t = 1\\) to \\(T\\):\n\nCompute the negative gradient of the loss function at the current fit: \\(r_{ti} = -\\frac{\\partial L(y_i, f_{t-1}(x_i))}{\\partial f_{t-1}(x_i)}\\)\nTrain a new model to predict the negative gradient values: \\(h(x; \\theta_t) = \\arg\\min\\limits_{h} \\sum\\limits_{i=1}^{n} (r_{ti} - h(x_i; \\theta))^2\\)\nCompute the optimal step size: \\(\\gamma_t = \\arg\\min\\limits_{\\gamma} \\sum\\limits_{i=1}^{n} L(y_i, f_{t-1}(x_i) + \\gamma h(x_i; \\theta_t))\\)\nUpdate the model: \\(f_t(x) = f_{t-1}(x) + \\gamma_t h(x; \\theta_t)\\)\n\nOutput the final model: \\(F(x) = f_T(x)\\)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#relation-with-gradient-descent",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#relation-with-gradient-descent",
+    "title": "Introduction to Ensembles",
+    "section": "Relation with Gradient Descent",
+    "text": "Relation with Gradient Descent\n\nGradient Boosting can be seen as an extension of Gradient Descent, a popular optimization algorithm used to find the minimum of a function.\n\nIn Gradient Descent, the weights of the model are updated in the opposite direction of the gradient of the cost function.\nIn Gradient Boosting, the new model is trained on the negative gradient of the loss function, which is equivalent to minimizing the loss function in the direction of steepest descent."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-variations",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#gradient-boosting-variations",
+    "title": "Introduction to Ensembles",
+    "section": "Gradient Boosting Variations",
+    "text": "Gradient Boosting Variations\n\nMultiple extensions from Gradient Boosting.\nXGBoost\n\nOptimized implementation that uses regularization to control overfitting and provide better accuracy.\nWon many competitions.\n\nLightGBM\n\nRelies on a technique to reduce the number of samples used in each iteration.\nFaster training, good for large datasets."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#boosting-applications",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#boosting-applications",
+    "title": "Introduction to Ensembles",
+    "section": "Boosting applications",
+    "text": "Boosting applications\n\nFraud Detection\nImage and Speech Recognition\nAnomaly Detection\nMedical Diagnosis\nAmazon’s recommendation engine\nModels that predict protein structures from amino acid sequences\nPattern identification in fMRI brain scans."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#advantages-of-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#advantages-of-boosting",
+    "title": "Introduction to Ensembles",
+    "section": "Advantages of Boosting",
+    "text": "Advantages of Boosting\n\nBoosting, like other Ensemble methods, improves the accuracy of weak learners and achieve better predictive performance than individual models.\nBoosting also reduces overfitting by improving the generalization ability of models.\nAvailable in many flavors,\nCan be parallelized\nStrong experience in Real world applications and industry."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#limitations-of-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#limitations-of-boosting",
+    "title": "Introduction to Ensembles",
+    "section": "Limitations of Boosting",
+    "text": "Limitations of Boosting\n\nCan be computationally expensive, especially when dealing with large datasets and complex models.\nCan be sensitive to noisy data and outliers,\nMay not work well with certain types of data distributions.\nNot so good as “out-of-the-box”: Requires careful tuning of hyperparameters to achieve optimal performance, which can be time-consuming and challenging."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#boosting-application-with-r-and-python",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#boosting-application-with-r-and-python",
+    "title": "Introduction to Ensembles",
+    "section": "Boosting application with R and Python",
+    "text": "Boosting application with R and Python\n\nMany R packages implement the many variations of boosting:\n\nada,\nadabag,\nmboost,\ngbm,\nxgboost\nAn interesting option is to rely on the caret package which allows to run the distinct methods with a common interface.\n\nInpython we usually rely on scikit-learn libraries although there are many alternative implementations\n\nScikit-learn ensemble\nhttps://python-course.eu/machine-learning/boosting-algorithm-in-python.php"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#the-bootstrap",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#the-bootstrap",
+    "title": "Introduction to Ensembles",
+    "section": "The bootstrap",
+    "text": "The bootstrap\n\nBootstrap methods were introduced by @Efron79 to estimate the standard error of a statistic.\nThe success of the idea lied in that the procedure was presented as automatic, that is:\n\ninstead of having to do complex calculations,\nit allowed to approximate them using computer simulation.\n\nSome called it the end of mathematical statistics."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bootstrap-applications",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bootstrap-applications",
+    "title": "Introduction to Ensembles",
+    "section": "Bootstrap Applications",
+    "text": "Bootstrap Applications\n\nThe bootstrap has been applied to almost any problem in Statistics.\n\nComputing standard errors, Bias, Quantiles,\nBuilding Confidence intervals,\nDoing Significance tests, …\n\nWe illustrate it with the simplest case: estimating the standard error of an estimator."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#empirical-distribution-function",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#empirical-distribution-function",
+    "title": "Introduction to Ensembles",
+    "section": "Empirical Distribution Function",
+    "text": "Empirical Distribution Function\n\n\nLet \\(X\\) be a random variable with distribution function \\(F\\),\nLet \\(\\mathbf{X}=X_1,\\ldots,X_n\\) be an i.i.d random sample of \\(F\\) and,\nlet \\(x_1,\\dots, x_n\\) be a realization of \\(\\mathbf{X}\\).\nThe Empirical Cumulative Distribution Function (ECDF) \\[\nF_n(x) = \\frac{1}{n} \\#\\{x_i\\le x: i=1\\dots n\\} = \\frac{1}{n}\n\\sum_{i=1}^n I_{(-\\infty,x]}(x_i),\n\\] is the function that assigns to each real number \\(x\\) the proportion of observed values that are less or equal than \\(x\\)."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#the-ecdf-in-r",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#the-ecdf-in-r",
+    "title": "Introduction to Ensembles",
+    "section": "The ECDF in R",
+    "text": "The ECDF in R\n\n\n\nx&lt;- c(2,5,0,11,-1)\nFn &lt;- ecdf(x)\nknots(Fn)\n\n[1] -1  0  2  5 11\n\ncat(\"Fn(3) = \", Fn(3))\n\nFn(3) =  0.6\n\ncat(\"Fn(-2) = \", Fn(-2))\n\nFn(-2) =  0\n\n\n\n\nplot(Fn)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#ecdf-has-good-properties",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#ecdf-has-good-properties",
+    "title": "Introduction to Ensembles",
+    "section": "ECDF has good properties",
+    "text": "ECDF has good properties\n\n\\(F_n (x)\\) is a cumulative distribution function.\n\\(F_n()\\) is an important DF because it comes to be the best approximation that one can find for the theoretical (population) distribution function, that is: \\[\nF_n(x) \\longrightarrow F(x), \\text { uniformly in } x \\text{ as } n \\rightarrow \\infty.\n\\]\nThis is stated in the Glivenko-Cantelli theorem also know as the Central Theorem of Statistics."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#the-sample-distribution-function",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#the-sample-distribution-function",
+    "title": "Introduction to Ensembles",
+    "section": "The Sample distribution function",
+    "text": "The Sample distribution function\n\n\nGiven a sample, \\(\\mathbf{X}\\) from a certain distribution, \\(X\\),\nConsider it a discrete random variable \\(X_e\\) that sets mass \\(1/n\\) to each of the observed \\(n\\) points \\(x_i\\):\n\n\n\n\n\n\n\n\\(F_n\\) is the distribution (function) of \\(X_e\\).\nFrom here, we notice that generating samples from \\(F_n\\) can be done by randomly taking values from \\(\\mathbf{X}\\) with probability \\(1/n\\)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#plug-in-estimators",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#plug-in-estimators",
+    "title": "Introduction to Ensembles",
+    "section": "Plug-in estimators",
+    "text": "Plug-in estimators\n\nAssume we want to estimate some parameter \\(\\theta\\), that can be expressed as \\(\\theta (F)\\), where \\(F\\) is the distribution function of each \\(X_i\\) in \\((X_1,X_2,...,X_n)\\).\nFor example, \\(\\theta = E_F(X)=\\theta (F)\\).\nA natural way to estimate \\(\\theta(F)\\) may be to rely on plug-in estimators, where \\(F\\) in \\(\\hat \\theta (F)\\) is substituted by some approximation (estimate) to \\(F\\)."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#plug-in-estimators-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#plug-in-estimators-1",
+    "title": "Introduction to Ensembles",
+    "section": "Plug-in estimators",
+    "text": "Plug-in estimators\n\nA plug-in estimator is obtained by substituting \\(F\\) by an approximation to \\(F\\), call it \\(\\hat F\\) in \\(\\theta(F)\\): \\[\n\\widehat {\\theta (F)}=\\theta(\\hat{F})\n\\]\nGiven that \\(F_n\\) is the best approximation to \\(F\\) a reasonable plug-in estimator is \\(\\theta(F_n)\\).\nCommon sample estimators are, indeed, plug-in estimators."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#some-plug-in-estimators",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#some-plug-in-estimators",
+    "title": "Introduction to Ensembles",
+    "section": "Some plug-in estimators",
+    "text": "Some plug-in estimators\n\nMany estimators we usally work with are plug-in estimators.\n\n\\[\\begin{eqnarray*}\n\\theta_1 &=& E_F(X)=\\theta (F) \\\\\n\\hat{\\theta_1}&=&\\overline{X}=\\int XdF_n(x)=\\frac\n1n\\sum_{i=1}^nx_i=\\theta (F_n)\n\\\\\n\\theta_2 &=& Med(X)=\\{m:P_F(X\\leq m)=1/2\\}=\n\\theta (F),\n\\\\\n\\hat{\\theta_2}&=&\\widehat{Med}(X)=\\{m:\\frac{\\#x_i\\leq m}n=1/2\\}=\\theta (F_n)\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#precision-of-an-estimate",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#precision-of-an-estimate",
+    "title": "Introduction to Ensembles",
+    "section": "Precision of an estimate",
+    "text": "Precision of an estimate\n\nAn key point, when computing an estimator \\(\\hat \\theta\\) of a parameter \\(\\theta\\), is how precise is \\(\\hat \\theta\\) as an estimator of \\(\\theta\\)?\n\nWith the sample mean, \\(\\overline{X}\\), the standard error estimation is immediate because the variance of the estimator is known: \\(\\sigma_\\overline{X}=\\frac{\\sigma (X)}{\\sqrt{n}}\\)\nSo, a natural estimator of the standard error of \\(\\overline{X}\\) is: \\(\\hat\\sigma_\\overline{X}=\\frac{\\hat{\\sigma}(X)}{\\sqrt{n}}\\)"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#precision-of-an-estimate-2",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#precision-of-an-estimate-2",
+    "title": "Introduction to Ensembles",
+    "section": "Precision of an estimate (2)",
+    "text": "Precision of an estimate (2)\n\nIf, as in this case, the variance of \\(X\\) (and, here, that of \\(\\overline{X}\\)) is a functional of \\(F\\):\n\n\n\\[\n\\sigma _{\\overline{X}}=\\frac{\\sigma (X)}{\\sqrt{n}}=\\frac{\\sqrt{\\int\n[x-\\int x\\,dF(x)]^2 dF(x)}}{\\sqrt{n}}=\\sigma _{\\overline{X}}(F)\n\\]\n\nthen, the standard error estimator is the same functional applied on \\(F_n\\), that is:\n\n\\[\n\\hat{\\sigma}_{\\overline{X}}=\\frac{\\hat{\\sigma}(X)}{\\sqrt{n}}=\\frac{\\sqrt{1/n\\sum_{i=1}^n(x_i-\\overline{x})^2}}{\\sqrt{n}}=\\sigma\n_{\\overline{X}}(F_n).\n\\]"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#standard-error-estimation",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#standard-error-estimation",
+    "title": "Introduction to Ensembles",
+    "section": "Standard error estimation",
+    "text": "Standard error estimation\n\nThus, a way to obtain a standard error estimator \\(\\widehat{\\sigma}_{\\widehat{\\theta}}\\) of an estimator \\(\\widehat{\\theta}\\) consists on replacing \\(F\\) with \\(F_n\\) in the ``population’’ standard error expression of \\(\\hat \\theta\\), \\(\\displaystyle{\\sigma_{\\hat\n\\theta}= \\sigma_{\\hat \\theta}(F)}\\), whenever it is known.\nIn a schematic form: \\[\n\\sigma_{\\hat \\theta}= \\sigma_{\\hat \\theta}(F) \\Longrightarrow\n\\sigma_{\\hat \\theta}(F_n)= \\widehat{\\sigma}_{\\hat \\theta}.\n\\] That is, the process consists of “plugging-in” \\(F_n\\) in the (known) functional form, \\(\\sigma_{\\hat \\theta}(F)\\) that defines \\(\\sigma_{\\hat \\theta}\\)}."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#the-bootstrap-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#the-bootstrap-1",
+    "title": "Introduction to Ensembles",
+    "section": "The bootstrap (1)",
+    "text": "The bootstrap (1)\n\nThe previous approach, \\(F\\simeq F_n \\Longrightarrow \\sigma_{\\hat \\theta}(F) \\simeq \\sigma_{\\hat \\theta}(F_n)\\) presents the obvious drawback that, when the functional form \\(\\sigma _{\\hat{\\theta}}(F)\\) is unknown, it is not possible to carry out the substitution of \\(F\\) by \\(F_n\\).\nThis is, for example, the case of standard error of the median or that of the correlation coefficient."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#the-bootstrap-2",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#the-bootstrap-2",
+    "title": "Introduction to Ensembles",
+    "section": "The bootstrap (2)",
+    "text": "The bootstrap (2)\n\nThe bootstrap method makes it possible to do the desired approximation: \\[\\hat{\\sigma}_{\\hat\\theta} \\simeq \\sigma _{\\hat\\theta}(F_n)\\] without having to to know the form of \\(\\sigma_{\\hat\\theta}(F)\\).\nTo do this,the bootstrap estimates, or directly approaches \\(\\sigma_{\\hat{\\theta}}(F_n)\\) over the sample."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bootstrap-sampling-resampling",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bootstrap-sampling-resampling",
+    "title": "Introduction to Ensembles",
+    "section": "Bootstrap sampling (resampling)",
+    "text": "Bootstrap sampling (resampling)\n\nThe bootstrap allows to estimate the standard error from samples of \\(F_n\\)\n\n\n\\[\\begin{eqnarray*}\n&&\\mbox{Instead of: } \\\\\n&& \\quad F\\stackrel{s.r.s}{\\longrightarrow }{\\bf X} =\n(X_1,X_2,\\dots, X_n) \\, \\quad (\\hat \\sigma_{\\hat\\theta} =\\underbrace{\\sigma_\\theta(F_n)}_{unknown})\n\\\\\n&& \\mbox{It is done: } \\\\\n&& \\quad F_n\\stackrel{s.r.s}{\\longrightarrow }\\quad {\\bf X^{*}}=(X_1^{*},X_2^{*},\n\\dots ,X_n^{*}) \\\\\n&& \\quad (\\hat \\sigma_{\\hat\\theta}= \\hat \\sigma_{\\hat \\theta}^* \\simeq \\sigma_{\\hat \\theta}^*=\\sigma_{\\hat \\theta}(F_n)).\n\n\\end{eqnarray*}\\]\n\n\n\n\\(\\sigma_{\\hat \\theta}^*\\) is the bootstrap standard error of \\(\\hat \\theta\\) and\n\\(\\hat \\sigma_{\\hat \\theta}^*\\) the bootstrap estimate of the standard error of \\(\\hat \\theta\\)."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#the-resampling-process",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#the-resampling-process",
+    "title": "Introduction to Ensembles",
+    "section": "The resampling process",
+    "text": "The resampling process\n\n\nResampling consists of extracting samples of size \\(n\\) of \\(F_n\\): \\({\\bf X_b^{*}}\\) is a random sample of size \\(n\\) obtained with replacement from the original sample \\({\\bf X}\\).\nSamples \\({\\bf X^*_1, X^*_2, ..., X^*_B }\\), obtained through this procedure are called bootstrap samples or re-samples.\nOn each resample the statistic of interest \\(\\hat \\theta\\) can be computed yielding a bootstrap estimate \\(\\hat \\theta^*_b= s(\\mathbf{x^*_b})\\).\nThe collection of bootstrap estimates obtained form the resampled samples can be used to estimate distinct characteristics of \\(\\hat \\theta\\) such as its standard error, its bias, etc."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#resampling-illustrated",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#resampling-illustrated",
+    "title": "Introduction to Ensembles",
+    "section": "Resampling illustrated",
+    "text": "Resampling illustrated\n\nknitr::include_graphics(\"images/1.2-Ensemble_Methods-Slides_insertimage_2.png\")"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#boot.-monte-carlo-algorithm",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#boot.-monte-carlo-algorithm",
+    "title": "Introduction to Ensembles",
+    "section": "Boot. Monte Carlo Algorithm",
+    "text": "Boot. Monte Carlo Algorithm\n\n\nDraw a bootstrap sample, \\({\\bf x}_1^{*}\\) from \\(F_n\\) and compute \\(\\hat{\\theta}({\\bf x}_1^{*})\\).\nRepeat (1) \\(B\\) times yielding \\(\\hat{\\theta}({\\bf x}_2^{*})\\), \\(\\dots\\), \\(\\hat{\\theta}({\\bf x}_B^{*})\\) estimates.\nCompute: \\[\\begin{equation*}\n\\hat{\\sigma}_B (\\hat\\theta)= \\sqrt{\n\\frac{\n     \\sum_{b=1}^B\\left( \\hat{\\theta}(%\n     {\\bf x^{*}_i})-\\overline{\\hat{\\theta}^*}\\right) ^2\n     }{\n     (B-1)   \n     }\n}, \\quad \\overline{\\hat{\\theta}^*}\\equiv \\frac 1B\\sum_{b=1}^B\\hat{\\theta}\\left( {\\bf x}%\n_b^{*}\\right)\n\\end{equation*}\\]"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#bootstrap-estimates-of-se",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#bootstrap-estimates-of-se",
+    "title": "Introduction to Ensembles",
+    "section": "Bootstrap Estimates of SE",
+    "text": "Bootstrap Estimates of SE\n\n\nIdea behind the bootstrap: the standard error of \\(\\hat\\theta\\), \\(\\sigma(\\hat\\theta)\\) can be approximated by the bootstrap estimator of the standard error, \\(\\sigma_B (\\hat\\theta)\\) which:\n\nCoincides with \\(\\sigma_{\\hat\\theta}(F_n)\\), that cannot be evaluated, if the functional form of \\(\\sigma_{\\hat\\theta}(F)\\) is unkown.\nCan be approximated by the Monte Carlo Estimator, \\(\\hat\\sigma_{\\hat\\theta}(F_n)\\), which is evaluated by resampling.\n\n\n\\[\n\\hat{\\sigma}_B(\\hat\\theta)\\left (\\simeq \\sigma_B(\\hat\\theta)=\\sigma_{\\hat\\theta}(F_n)\\right )\\simeq\\hat \\sigma_{\\hat\\theta}(F_n).\n\\]"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#summary",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#summary",
+    "title": "Introduction to Ensembles",
+    "section": "Summary",
+    "text": "Summary\nFrom real world to bootstrap world:\n\nknitr::include_graphics(\"images/fromRealWorld2BootstrapWorld.png\")\n\n\n\n\n\n\n\n\n\nAquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#references",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#references",
+    "title": "Introduction to Ensembles",
+    "section": "References",
+    "text": "References"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bootstrap-distribution",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-bootstrap-distribution",
+    "title": "Ensemble Methods",
+    "section": "The bootstrap distribution",
+    "text": "The bootstrap distribution\n\nThe distribution of a statistic computed from re-samples is called the bootstrap distribution,\n\n\n\\[\\begin{eqnarray*}\n\\mathcal {L}(\\hat \\theta)&\\simeq& P_F(\\hat\\theta \\leq t): \\mbox{Sampling distribution of } \\hat \\theta,\\\\\n\\mathcal {L}(\\hat \\theta^*)&\\simeq& P_{F_n}(\\hat\\theta^* \\leq t): \\mbox{Bootstrap distribution of } \\hat \\theta,\n\\end{eqnarray*}\\]\n\n\nThis distribution is usually not known.\nHowever the sampling process and the calculation of the statistics can be approximated using a Monte Carlo Algorithm.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-observations-2",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-observations-2",
+    "title": "Ensemble Methods",
+    "section": "Out-Of-Bag observations (2)",
+    "text": "Out-Of-Bag observations (2)\n\nOn average, each bootstrap sample leaves out about one third of the observations: \\(\\left(1-\\frac{1}{n}\\right)^n \\approx e^{-1} \\approx 0.368\\)",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-samples",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-samples",
+    "title": "Ensemble Methods",
+    "section": "Out-Of-Bag samples",
+    "text": "Out-Of-Bag samples",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-error-estimates-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-error-estimates-1",
+    "title": "Ensemble Methods",
+    "section": "Out-Of-Bag error estimates (1)",
+    "text": "Out-Of-Bag error estimates (1)\n\nSince each out-of-bag set is not used to train the model, it can be used to evaluate performance.\nThe key idea is that OOB status is defined for each observation and each tree.\n\nEach tree is trained using its own bootstrap sample.\nTherefore, each tree has its own OOB observations.\nFor a given observation \\(i\\), we can identify the trees that were trained without using observation \\(i\\).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-error-estimates-1-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#out-of-bag-error-estimates-1-1",
+    "title": "Ensemble Methods",
+    "section": "Out-Of-Bag error estimates (1)",
+    "text": "Out-Of-Bag error estimates (1)\nOOB prediction for observation \\(i\\) is obtained as:\n\nFind all trees for which observation \\(i\\) was out-of-bag.\nPredict \\(y_i\\) using only those trees.\nCombine these predictions by averaging (regression) or majority vote (classification).\nCompare OOB prediction with true value \\(y_i\\).\nAggregate errors over all observations.\n\nOOB error is an internal estimate of the test error.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#external-test-error",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#external-test-error",
+    "title": "Ensemble Methods",
+    "section": "External test error",
+    "text": "External test error\nAlthough OOB error provides an internal estimate of prediction error, we can also evaluate performance using an independent test set.\n\nyhat.bag &lt;- predict(bag.Ames, newdata = ames_test)\nMSE= mean((yhat.bag -ames_test$Sale_Price)^2)\nprint(MSE)\n\n\nHere, predictions are made on completely unseen observations.\nThis is a standard test error estimate, not an OOB estimate.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
   }
 ]

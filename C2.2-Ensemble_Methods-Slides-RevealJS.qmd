@@ -1,0 +1,29 @@
+---
+title: "Ensemble Methods"
+author: "A. Sanchez, F. Reverter and E. Vegas"
+format:
+  revealjs: 
+    incremental: false  
+    transition: slide
+    background-transition: fade
+    transition-speed: slow
+    scrollable: true
+    menu:
+      side: left
+      width: half
+      numbers: true
+    slide-number: c/t
+    show-slide-number: all
+    progress: true
+    css: css4CU.css
+    theme: sky
+    self-contained: true
+#    embed-resources: true
+    self-contained-math: true
+#    suppress-bibliography: true
+bibliography: "StatisticalLearning.bib"
+editor_options: 
+  chunk_output_type: console
+---
+
+{{< include C2.2-Ensemble_Methods-Slides-body.qmd >}}

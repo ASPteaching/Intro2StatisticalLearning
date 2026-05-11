@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to Statistical Learning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Introduction to Statistical Learning</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aspteaching/Intro2StatisticalLearning"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C0-Intro2StatLearn-PD_AS.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course presentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C1.1-SupervisedLearning-PD_AS.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Supervised Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C1.2-Model_validation_and_Resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Validation and Resampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab-C1.1-knn.Rmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C1.1-KNN</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Tree-based Methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C2.1-DecisionTrees-Slides-RevealJS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C2.1-Trees-guided-classification-regression_reduced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.1-CART (R)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C2.1-Trees-guided-classification-regression_reduced_python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.1-CART (Python)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Ensemble Methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C2.2-Ensemble_Methods-Slides-RevealJS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ensemble Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C2.3-Random_Forests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.3-Random Forest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C2.4-Boosting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.4-Boosting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C2.5-The-caret_package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.5-Caret</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Neural Networks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C3.1-Introduction_to_ANN-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C3.1b-Introduction_to_Keras_and_Scikit-Learn-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Keras and Scikit-Learn</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C3.1b-IrisANN-Modular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C3.1a-Species Classification with ANN Lab (Python)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C3.1b-IrisANN-Training-ScikitLearn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C3.1b-Species Classification with ANN using Scikit-Learn</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C3.1b-IrisANN-Training-Keras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C3.1c-Species Classification with ANN using Keras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C3.2-DividendPrediction_ANN.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C3.2-Dividend Prediction with ANN (R)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Deep Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C3.2-Introduction_to_Deep_Learning-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deep Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C3.3-Convolutional_Neural_Networks-Slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutional Neural Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./labs/Lab_C3_3_Introduction_to_Keras_and_CNNs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C3.3-Image-Classification-with-CNN</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ressources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References and Ressources</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ul>
+<li><p>Introduction to Ensembles</p></li>
+<li><p>Bagging and the Bootstrap</p></li>
+<li><p>Random Forests</p></li>
+<li><p>Boosting and its variants</p></li>
+</ul>
+</section>
+<section id="introduction-to-ensembles" class="level1">
+<h1>Introduction to Ensembles</h1>
+<section id="weak-learners" class="level2">
+<h2 class="anchored" data-anchor-id="weak-learners">Weak learners</h2>
+<div class="font80">
+<ul>
+<li><p>Models that perform only slightly better than random guessing are called <em>weak learners</em> <span class="citation" data-cites="Bishop2007">[@Bishop2007]</span>.</p></li>
+<li><p>Weak learners low predictive accuracy may be due, to the predictor having high bias or high variance.</p></li>
+</ul>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/1.2-EnsembleMethods_insertimage_1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/1.2-EnsembleMethods_insertimage_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="trees-may-be-weak-learners" class="level2">
+<h2 class="anchored" data-anchor-id="trees-may-be-weak-learners">Trees may be weak learners</h2>
+<ul>
+<li>Trees use to be sensitive to small changes in training data which lead to very different tree structure.</li>
+<li>This implies predictions are highly variable</li>
+<li>This may be explained because they are <em>greedy algorithms</em> making locally optimal decisions at each node without considering the global optimal solution.
+<ul>
+<li>This can lead to suboptimal splits and ultimately a weaker predictive performance.</li>
+</ul></li>
+</ul>
+</section>
+<section id="theres-room-for-improvement" class="level2">
+<h2 class="anchored" data-anchor-id="theres-room-for-improvement">There’s room for improvement</h2>
+<ul>
+<li><p>In many situations trees may be a good option (e.g.&nbsp;for simplicity and interpretability)</p></li>
+<li><p>But there are issues that, if solved, may improve performance.</p></li>
+<li><p>It is to be noted, too, that these problems are not unique to trees.</p>
+<ul>
+<li>Other simple models such as linear regression may be considered as weakl learners in may situations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-bias-variance-trade-off" class="level2">
+<h2 class="anchored" data-anchor-id="the-bias-variance-trade-off">The bias-variance trade-off</h2>
+<ul>
+<li>When we try to improve weak learners we need to deal with the bias-variance trade-off.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/1.2-Ensemble_Methods-Slides_insertimage_1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/1.2-Ensemble_Methods-Slides_insertimage_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="346"></p>
+<figcaption>The bias-variance trade-off</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-deal-with-such-trade-off" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-deal-with-such-trade-off">How to deal with such trade-off</h2>
+<ul>
+<li><p>How can a model be made less variable or less biased without this increasing its bias or variance?</p></li>
+<li><p>There are distinct appraches to deal with this problem</p>
+<ul>
+<li>Regularization,</li>
+<li>Feature engineering,</li>
+<li>Model selection</li>
+<li>Ensemble learning</li>
+</ul></li>
+</ul>
+</section>
+<section id="ensemble-learners" class="level2">
+<h2 class="anchored" data-anchor-id="ensemble-learners">Ensemble learners</h2>
+<ul>
+<li><p>Ensemble learning takes the approach popularly known as “<em>the wisdom of crowds</em>”.</p></li>
+<li><p>Predictors, also called, <strong>ensembles</strong> are built by fitting repeated (weak learners) models on the same data and combining them to form a single result.</p></li>
+<li><p>Ensemble learners tend to improve the results obtained with the weak learners they are made of.</p></li>
+</ul>
+</section>
+<section id="ensemble-methods" class="level2">
+<h2 class="anchored" data-anchor-id="ensemble-methods">Ensemble methods</h2>
+<ul>
+<li><p>If we rely on how they deal with the bias-variance trade-off we can consider distinct groups of ensemble methods:</p>
+<ul>
+<li><p>Bagging</p></li>
+<li><p>Boosting</p></li>
+<li><p>Hybrid learners</p></li>
+</ul></li>
+</ul>
+<p><a href="https://sites.google.com/view/datascience-cheat-sheets#h.t1jchxvxlgr2">Ensemble methods cheatsheet</a></p>
+</section>
+<section id="aggregating-trees" class="level2">
+<h2 class="anchored" data-anchor-id="aggregating-trees">Aggregating Trees</h2>
+<p>One type of ensembles is made by constructing multiple trees using different types of subsets.</p>
+<ul>
+<li><strong>Bagging</strong> (<em>B</em>ootstrap <em>agg</em>regat<em>ing</em>)
+<ul>
+<li>Random subsets <em>of observations</em>.</li>
+</ul></li>
+<li><strong>Random Forests</strong> (<span class="math inline">\(\simeq\)</span> Bagging + Feature Selection)
+<ul>
+<li>Random subsets of observations<br>
+</li>
+<li>Random subsets of features at each split</li>
+</ul></li>
+</ul>
+<!-- - **Random Patches** -->
+<!--   - Random subsets of both observations and features used to build each tree. -->
+<p>These ensembles reduce variance compared to individual decision trees.</p>
+</section>
+<section id="boosting-stacking" class="level2">
+<h2 class="anchored" data-anchor-id="boosting-stacking">Boosting &amp; Stacking</h2>
+<ul>
+<li><p><strong>Boosting</strong> or <strong>Stacking</strong> combine distinct predictors to yield a model with an increasingly smaller error, and so reduce the bias.</p></li>
+<li><p>They differ on if do the combination</p>
+<ul>
+<li><p>sequentially (1) or</p></li>
+<li><p>using a meta-model (2) .</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="hybrid-techniques" class="level2">
+<h2 class="anchored" data-anchor-id="hybrid-techniques">Hybrid Techniques</h2>
+<ul>
+<li><p><strong>Hybrid techniques</strong> combine approaches in order to deal with both variance and bias.</p></li>
+<li><p>The approach should be clear from their name:</p>
+<ul>
+<li><p><em>Gradient Boosted Trees with Bagging</em></p></li>
+<li><p><em>Stacked bagging</em></p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="bagging-aggregating-predictors" class="level1">
+<h1>Bagging: Aggregating predictors</h1>
+<section id="bagging-bootstrap-aggregation" class="level2">
+<h2 class="anchored" data-anchor-id="bagging-bootstrap-aggregation">Bagging: bootstrap aggregation</h2>
+<ul>
+<li><p>Decision trees suffer from high variance when compared with other methods such as linear regression, especially when <span class="math inline">\(n/p\)</span> is moderately large.</p></li>
+<li><p>Given that this is intrinsic to trees, <span class="citation" data-cites="Breiman1996">@Breiman1996</span> sugested to build multiple trees derived from the same dataset and, somehow, average them.</p></li>
+</ul>
+</section>
+<section id="averaging-decreases-variance" class="level2">
+<h2 class="anchored" data-anchor-id="averaging-decreases-variance">Averaging decreases variance</h2>
+<ul>
+<li><p>Bagging relies, informally, on the idea that:</p>
+<ul>
+<li>given <span class="math inline">\(X\sim F()\)</span>, s.t. <span class="math inline">\(Var_F(X)=\sigma^2\)</span>,</li>
+<li>given a s.r.s. <span class="math inline">\(X_1, ..., X_n\)</span> from <span class="math inline">\(F\)</span> then</li>
+<li>if <span class="math inline">\(\overline{X}=\frac{1}{N}\sum_{i=1}^n X_i\)</span> then <span class="math inline">\(var_F(\overline{X})=\sigma^2/n\)</span>.</li>
+</ul></li>
+<li><p>That is, <em>relying on the sample mean instead of on simple observations, decreases variance by a factor of <span class="math inline">\(n\)</span></em>.</p></li>
+<li><p>BTW this idea is still (approximately) valid for more general statistics where the CLT applies.</p></li>
+</ul>
+</section>
+<section id="what-means-averaging-trees" class="level2">
+<h2 class="anchored" data-anchor-id="what-means-averaging-trees">What means <em>averaging trees</em>?</h2>
+<p>Two questions arise here:</p>
+<ol type="1">
+<li>How to go from <span class="math inline">\(X\)</span> to <span class="math inline">\(X_1, ..., X_n\)</span>?</li>
+</ol>
+<ul>
+<li>This will be done using <em>bootstrap resampling</em>.</li>
+</ul>
+<ol start="2" type="1">
+<li>What means “averaging” in this context.</li>
+</ol>
+<ul>
+<li>Depending on the type of tree:
+<ul>
+<li>Average predictions for regression trees.</li>
+<li>Majority voting for classification trees.</li>
+</ul></li>
+</ul>
+</section>
+<section id="bagging-bootstrap-aggregation-1" class="level2">
+<h2 class="anchored" data-anchor-id="bagging-bootstrap-aggregation-1"><em>BAGG</em>ING: Bootstrap Aggregation</h2>
+<ul>
+<li><span class="citation" data-cites="Breiman1996">@Breiman1996</span> combined the ideas of:
+<ul>
+<li>Averaging provides decreased variance estimates,</li>
+<li>Bootstrap provides multiple (re)samples.</li>
+</ul></li>
+<li>He suggested: <strong>b</strong>ootstrap <strong>agg</strong>regat<strong>ing</strong> :
+<ul>
+<li>Take resamples from the original training dataset</li>
+<li>Learn the model on each bootstrapped training set</li>
+<li>Get a prediction <span class="math inline">\({\small \hat f^{*b}(x)}\)</span> from each model.</li>
+</ul></li>
+<li>Averaging predictions from single bootstrap models improves single prediction/classification.</li>
+</ul>
+</section>
+<section id="bagging-predictionclassifier" class="level2">
+<h2 class="anchored" data-anchor-id="bagging-predictionclassifier">Bagging prediction/classifier</h2>
+<ul>
+<li><p>For regression (trees) the <strong>bagged estimate</strong> is the average prediction at <span class="math inline">\(x\)</span> from these <span class="math inline">\(B\)</span> trees. <span class="math display">\[
+{\small
+\hat f_{bag}(x)=\frac 1B \sum_{b=1}^B \hat f^{*b}(x)
+}
+\]</span></p></li>
+<li><p>For classification (trees) the <strong>bagged classifier</strong> selects the class with the most “votes” from the <span class="math inline">\(B\)</span> trees:</p></li>
+</ul>
+<p><span class="math display">\[
+{\small
+\hat G_{bag}(x) = \arg \max_k \hat f_{bag}(x).
+}
+\]</span></p>
+</section>
+<section id="resampling-based-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="resampling-based-estimators">Resampling <em>based</em> estimators</h2>
+<ul>
+<li>The bootstrap was introduced as a way to provide standard error estimators.</li>
+<li>When used to compute <span class="math inline">\(\hat f_{bag}(x)\)</span> or <span class="math inline">\(\hat G_{bag}(x)\)</span>, as described above, it provides direct estimators of a characteristic, not of their standard errors.</li>
+<li>However, the bagging process <em>can also provide resampling based estimates of the precision of these estimators</em>.</li>
+</ul>
+</section>
+<section id="out-of-bag-observations" class="level2">
+<h2 class="anchored" data-anchor-id="out-of-bag-observations">Out-Of-Bag observations</h2>
+<ul>
+<li>Every time a resample is taken <em>with replacement</em>, some observations are omitted, due to the multiple occurring of others.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/oobErrorEstimation.jpg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/oobErrorEstimation.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>These <em>out-of-bag</em> (OOB) observations can be used to build an estimate of prediction error.</li>
+</ul>
+</section>
+<section id="out-of-bag-error-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="out-of-bag-error-estimates">Out-Of-Bag error estimates</h2>
+<p>Since each out-of-bag set is not used to train the model, it can be used to evaluate performance.</p>
+<ol type="1">
+<li>Find all trees that are not trained by the OOB instance.</li>
+<li>Take the majority vote of these trees for the OOB instance, compared to the true value of the OOB instance.</li>
+<li>Compile OOB error for all instances in the OOB dataset.</li>
+</ol>
+<!-- - For every observation $i=1, ...n$ response can be predicted using each of the trees in which that observation was OOB.  -->
+<!-- - This a variable number (around B/3) of predictions for the ith observation which can be averaged. -->
+<!-- - If $B$ is large this is essentially the LOO cross-validation error. -->
+</section>
+<section id="illustration-of-oob-ee" class="level2">
+<h2 class="anchored" data-anchor-id="illustration-of-oob-ee">Illustration of OOB EE</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/oobErrorEstimation.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/oobErrorEstimation.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="https://www.baeldung.com/cs/random-forests-out-of-bag-error">Source: https://www.baeldung.com/cs/random-forests-out-of-bag-error</a></p>
+</section>
+<section id="bagging-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="bagging-in-r">Bagging in R</h2>
+<ul>
+<li>We use the <code>AmesHousing</code> dataset on house prices in Ames, IA, to predict the “Sales price” of houses.</li>
+</ul>
+<ol type="1">
+<li>Start by splitting the dataset in test/train subsets</li>
+<li>Build a bagged tree on the train subset and evaluate it on the test subset.</li>
+<li>Interpret the results using “Variable importance”</li>
+</ol>
+<ul>
+<li>Bagging is equivalent to RandomForest if each tree in a Random Forest considers all features at every split.</li>
+<li>So we use <code>randomForest</code> package setting <code>mtry</code> to total number of features.</li>
+</ul>
+</section>
+<section id="bagging---prepare-data" class="level2">
+<h2 class="anchored" data-anchor-id="bagging---prepare-data">Bagging - Prepare data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare "clean" dataset from raw data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ames <span class="ot">&lt;-</span> AmesHousing<span class="sc">::</span><span class="fu">make_ames</span>()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale response variable to improve readability</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ames<span class="sc">$</span>Sale_Price <span class="ot">&lt;-</span> ames<span class="sc">$</span>Sale_Price<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split in test/training</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(ames), <span class="fu">nrow</span>(ames)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># split &lt;- rsample::initial_split(ames, prop = 0.7, </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                        strata = "Sale_Price")</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ames_train  <span class="ot">&lt;-</span> ames[train,]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>ames_test   <span class="ot">&lt;-</span> ames[<span class="sc">-</span>train,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bagging---build-bag-of-trees" class="level2">
+<h2 class="anchored" data-anchor-id="bagging---build-bag-of-trees">Bagging - Build bag of trees</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12543</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>bag.Ames <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> <span class="fu">ncol</span>(ames_train<span class="dv">-1</span>), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree =</span> <span class="dv">100</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bagging---results" class="level2">
+<h2 class="anchored" data-anchor-id="bagging---results">Bagging - Results</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show</span>(bag.Ames )</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Call<span class="sc">:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">randomForest</span>(<span class="at">formula =</span> Sale_Price <span class="sc">~</span> ., <span class="at">data =</span> ames_train, <span class="at">mtry =</span> <span class="fu">ncol</span>(ames_train <span class="sc">-</span>      <span class="dv">1</span>), <span class="at">ntree =</span> <span class="dv">100</span>, <span class="at">importance =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>               Type of random forest<span class="sc">:</span> regression</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                     Number of trees<span class="sc">:</span> <span class="dv">100</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">80</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>          Mean of squared residuals<span class="sc">:</span> <span class="dv">771498315</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                    % Var explained<span class="sc">:</span> <span class="fl">87.89</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bagging---prediction-and-accuracy" class="level2">
+<h2 class="anchored" data-anchor-id="bagging---prediction-and-accuracy">Bagging - Prediction and accuracy</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>yhat.bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag.Ames, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>MSE<span class="ot">=</span> <span class="fu">mean</span>((yhat.bag <span class="sc">-</span>ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhat.bag, ames_test<span class="sc">$</span>Sale_Price, <span class="at">main=</span><span class="fu">c</span>(<span class="st">"MSE= "</span>, MSE))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bagging---prediction-and-accuracy-1" class="level2">
+<h2 class="anchored" data-anchor-id="bagging---prediction-and-accuracy-1">Bagging - Prediction and accuracy</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/bag_Ames_fit.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bag_Ames_fit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="interpetability-the-achiles-heel" class="level2">
+<h2 class="anchored" data-anchor-id="interpetability-the-achiles-heel">Interpetability: The “achiles heel”</h2>
+<ul>
+<li>Trees may have a straightforward interpretation,
+<ul>
+<li>Plotting the tree provides information about
+<ul>
+<li>which variables are important</li>
+<li>how they act on the prediction</li>
+</ul></li>
+</ul></li>
+<li>Ensembles are less intuitive because
+<ul>
+<li>there is no consensus tree.</li>
+<li>not clear which variables are most important.</li>
+</ul></li>
+</ul>
+</section>
+<section id="feature-importance-from-trees" class="level2">
+<h2 class="anchored" data-anchor-id="feature-importance-from-trees">Feature importance from Trees</h2>
+<ul>
+<li><p>To measure feature importance, the reduction in the loss function (e.g., SSE) attributed to each variable at each split is tabulated.</p></li>
+<li><p>The total reduction in the loss function across all splits by a variable are summed up and used as the total feature importance.</p></li>
+</ul>
+</section>
+<section id="feature-importance-for-ensembles" class="level2">
+<h2 class="anchored" data-anchor-id="feature-importance-for-ensembles">Feature importance for Ensembles</h2>
+<ul>
+<li>Variable importance measures can be extended to an ensemble simply by adding up variable importance over all trees built.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>VIP <span class="ot">&lt;-</span> <span class="fu">importance</span>(bag.Ames) </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>VIP <span class="ot">&lt;-</span> VIP[<span class="fu">order</span>(VIP[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(VIP, <span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/amesVIP2.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/amesVIP2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="random-forests" class="level1">
+<h1>Random Forests</h1>
+<section id="random-forests-decorrelating-predictors" class="level2">
+<h2 class="anchored" data-anchor-id="random-forests-decorrelating-predictors">Random forests: decorrelating predictors</h2>
+<ul>
+<li>Bagged trees, based on re-samples (of the same sample) tend to be highly correlated.</li>
+<li>Leo Breimann, again, introduced a modification to bagging, he called <em>Random forests</em>, that aims at decorrelating trees as follows:
+<ul>
+<li>When growing a tree from one bootstrap sample,</li>
+<li>At each split use only a randomly selected <em>subset of predictors</em>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="split-variable-randomization" class="level2">
+<h2 class="anchored" data-anchor-id="split-variable-randomization">Split variable randomization</h2>
+<ul>
+<li><p>While growing a decision tree, during the bagging process,</p></li>
+<li><p>Random forests perform <em>split-variable randomization</em>:</p>
+<ul>
+<li>each time a split is to be performed,</li>
+<li>the search for the split variable is limited to a random subset of <span class="math inline">\(m_{try}\)</span> of the original <span class="math inline">\(p\)</span> features.</li>
+</ul></li>
+</ul>
+</section>
+<section id="random-forests-1" class="level2">
+<h2 class="anchored" data-anchor-id="random-forests-1">Random forests</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/RandomForests2.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/RandomForests2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Source: <a href="https://aiml.com/what-is-random-forest-2/">AIML.com research</a></p>
+</section>
+<section id="how-many-variables-per-split" class="level2">
+<h2 class="anchored" data-anchor-id="how-many-variables-per-split">How many variables per split?</h2>
+<ul>
+<li><span class="math inline">\(m\)</span> can be chosen using cross-validation, but</li>
+<li>The usual recommendation for random selection of variables at each split has been studied by simulation:
+<ul>
+<li>For regression default value is <span class="math inline">\(m=p/3\)</span></li>
+<li>For classification default value is <span class="math inline">\(m=\sqrt{p}\)</span>.</li>
+</ul></li>
+<li>If <span class="math inline">\(m=p\)</span>, we have bagging instead of RF.</li>
+</ul>
+</section>
+<section id="random-forest-algorithm-1" class="level2">
+<h2 class="anchored" data-anchor-id="random-forest-algorithm-1">Random forest algorithm (1)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/RandomForestsAlgorithm1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RandomForestsAlgorithm1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>RF Algorithm, from ch.&nbsp;11 in <span class="citation" data-cites="Boehmke2020">[@Boehmke2020]</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="random-forest-algorithm-2" class="level2">
+<h2 class="anchored" data-anchor-id="random-forest-algorithm-2">Random forest algorithm (2)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/RandomForestsAlgorithm.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/RandomForestsAlgorithm.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="out-of-the-box-performance" class="level2">
+<h2 class="anchored" data-anchor-id="out-of-the-box-performance">Out-of-the box performance</h2>
+<ul>
+<li>Random forests tend to provide very good out-of-the-box performance, that is:
+<ul>
+<li>Although several hyperparameters can be tuned,</li>
+<li>Default values tend to produce good results.</li>
+</ul></li>
+<li>Moreover, among the more popular machine learning algorithms, RFs have the least variability in their prediction accuracy when tuning <span class="citation" data-cites="Probst2019">[@Probst2019]</span>.</li>
+</ul>
+</section>
+<section id="out-of-the-box-performance-1" class="level2">
+<h2 class="anchored" data-anchor-id="out-of-the-box-performance-1">Out of the box performance</h2>
+<ul>
+<li>A random forest trained with all hyperparameters set to their default values can yield an OOB RMSE that is better than many other classifiers, with or without tuning.</li>
+<li>This combined with good stability and ease-of-use has made it the option of choice for many problems.</li>
+</ul>
+</section>
+<section id="out-of-the-box-performance-example" class="level2">
+<h2 class="anchored" data-anchor-id="out-of-the-box-performance-example">Out of the box performance example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of features</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>n_features <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">setdiff</span>(<span class="fu">names</span>(ames_train), <span class="st">"Sale_Price"</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># train a default random forest model</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ames_rf1 <span class="ot">&lt;-</span> <span class="fu">ranger</span>(</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> ., </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> ames_train,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mtry =</span> <span class="fu">floor</span>(n_features <span class="sc">/</span> <span class="dv">3</span>),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">respect.unordered.factors =</span> <span class="st">"order"</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">123</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># get OOB RMSE</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>(default_rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(ames_rf1<span class="sc">$</span>prediction.error))</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 24859.27</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tuning-hyperparameters" class="level2">
+<h2 class="anchored" data-anchor-id="tuning-hyperparameters">Tuning hyperparameters</h2>
+<p>There are several parameters that, appropriately tuned, can improve RF performance.</p>
+<div class="font90">
+<ol type="1">
+<li>Number of trees in the forest.</li>
+<li>Number of features to consider at any given split (<span class="math inline">\(m_{try}\)</span>).</li>
+<li>Complexity of each tree.</li>
+<li>Sampling scheme.</li>
+<li>Splitting rule to use during tree construction.</li>
+</ol>
+</div>
+<p>1 &amp; 2 usually have largest impact on predictive accuracy.</p>
+</section>
+<section id="number-of-trees" class="level2">
+<h2 class="anchored" data-anchor-id="number-of-trees">1. Number of trees</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/RandomForestsHyperparameters1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/RandomForestsHyperparameters1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="small">
+<ul>
+<li>The number of trees needs to be sufficiently large to stabilize the error rate.</li>
+<li>More trees provide more robust and stable error estimates</li>
+<li>But impact on computation time increases linearly with <span class="math inline">\(n_tree\)</span></li>
+</ul>
+</div>
+</section>
+<section id="number-of-features-m_try." class="level2">
+<h2 class="anchored" data-anchor-id="number-of-features-m_try.">2. Number of features (<span class="math inline">\(m_{try}\)</span>).</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/RandomForestsHyperparameters2.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/RandomForestsHyperparameters2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="small">
+<ul>
+<li><span class="math inline">\(m_{try}\)</span> helps to balance low tree correlation with reasonable predictive strength.</li>
+<li>Sensitive to total number of variables. If high /low, better increase/decrease it.</li>
+</ul>
+</div>
+</section>
+<section id="complexity-of-each-tree." class="level2">
+<h2 class="anchored" data-anchor-id="complexity-of-each-tree.">3. Complexity of each tree.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/RandomForestsHyperparameters3.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/RandomForestsHyperparameters3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="small">
+<ul>
+<li>The complexity of underlying trees influences RF performance.</li>
+<li>Node size has strong influence on error and time.</li>
+</ul>
+</div>
+</section>
+<section id="sampling-scheme." class="level2">
+<h2 class="anchored" data-anchor-id="sampling-scheme.">4. Sampling scheme.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/RandomForestsHyperparameters4.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/RandomForestsHyperparameters4.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="small">
+<ul>
+<li>Default: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.</li>
+<li>Node size has strong influence on error and time.</li>
+</ul>
+</div>
+</section>
+<section id="splitting-rule" class="level2">
+<h2 class="anchored" data-anchor-id="splitting-rule">5. Splitting rule</h2>
+<ul>
+<li><em>Default splitting rules</em> favor features with many splits, potentially biasing towards certain variable types.</li>
+<li><em>Conditional inference trees</em> offer an alternative to reduce bias, but may not always improve predictive accuracy and have longer training times.</li>
+<li><em>Randomized splitting rules</em>, like <em>extremely randomized trees</em> (which draw split points completely randomly), improve computational efficiency but may not enhance predictive accuracy and can even reduce it.</li>
+</ul>
+</section>
+<section id="tuning-hyperparameters-1" class="level2">
+<h2 class="anchored" data-anchor-id="tuning-hyperparameters-1">Tuning hyperparameters</h2>
+<ul>
+<li>RF are a good example of a common situachion in ML:
+<ul>
+<li>As the number of parameter increases,</li>
+<li>finding their optimal values requires more effort</li>
+<li>and can even become computationally unfeasible.</li>
+</ul></li>
+<li>As more complex algorithms with greater number of hyperparameters are introduced tuning strategies should also be considered.</li>
+</ul>
+</section>
+<section id="tuning-strategies" class="level2">
+<h2 class="anchored" data-anchor-id="tuning-strategies">Tuning strategies</h2>
+<div class="font80">
+<ul>
+<li><p><strong>Grid Search</strong>: Systematically searches through (<em>all possible combinations</em>) a predefined grid of hyperparameter values to find the combination that maximizes performance.</p></li>
+<li><p><strong>Random Search</strong>: Randomly samples hyperparameter values from predefined distributions. Faster than Grid Search, but less prone to find optimum.</p></li>
+<li><p><strong>Model-Based Optimization</strong> leverages probabilistic models, often Gaussian processes, to model the objective function and iteratively guide the search for optimal hyperparameters.</p></li>
+</ul>
+</div>
+</section>
+<section id="random-forests-in-bioinformatics" class="level2">
+<h2 class="anchored" data-anchor-id="random-forests-in-bioinformatics">Random forests in bioinformatics</h2>
+<ul>
+<li>Random forests have been thoroughly used in Bioinformatics <span class="citation" data-cites="Boulesteix2012">[@Boulesteix2012]</span>.</li>
+<li>Bioinformatics data are often high dimensional with
+<ul>
+<li>dozens or (less often) hundreds of samples/individuals</li>
+<li>thousands (or hundreds of thousands) of variables.</li>
+</ul></li>
+</ul>
+</section>
+<section id="application-of-random-forests" class="level2">
+<h2 class="anchored" data-anchor-id="application-of-random-forests">Application of Random forests</h2>
+<ul>
+<li>Random forests provide robust classifiers for:
+<ul>
+<li>Distinguishing cancer from non cancer,</li>
+<li>Predicting tumor type in cancer of unknown origin,</li>
+<li>Selecting variables (SNPs) in Genome Wide Association Studies…</li>
+</ul></li>
+<li>Some variation of Random forests are used only for variable selection</li>
+</ul>
+</section>
+</section>
+<section id="boosting" class="level1">
+<h1>Boosting</h1>
+<section id="improving-predictors-iteratively" class="level2">
+<h2 class="anchored" data-anchor-id="improving-predictors-iteratively">Improving predictors iteratively</h2>
+<ul>
+<li><p>The idea of <em>improving weak learners by aggregation</em> has moved historically along two distinct lines:</p>
+<ol type="1">
+<li>Build similar learners on resamples from the original sample and average the predictions.</li>
+</ol>
+<ul>
+<li>This entails <em>Bagging</em> and <em>Random Forests</em></li>
+</ul>
+<ol start="2" type="1">
+<li>Build a learner progressively, improving it at every step using weak learners, until the desired possible quality is obtained.</li>
+</ol>
+<ul>
+<li>This is what <em>Boosting</em> is about.</li>
+</ul></li>
+</ul>
+</section>
+<section id="bagging-vs-boosting" class="level2">
+<h2 class="anchored" data-anchor-id="bagging-vs-boosting">Bagging vs Boosting</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/baggingVsboosting1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/baggingVsboosting1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/baggingVsboosting2.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/baggingVsboosting2.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Source: <a href="https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/">Ensemble Learning: Bagging &amp; Boosting</a></p>
+</section>
+<section id="so-what-is-boosting" class="level2">
+<h2 class="anchored" data-anchor-id="so-what-is-boosting">So what is Boosting</h2>
+<!-- - Boosting is an ensemble learning technique used in ML for improving the accuracy of *weak learners*. -->
+<ul>
+<li><p>Idea: create a model that is better than any of its individual components by combining their strengths and compensating for their weaknesses.</p>
+<ul>
+<li><p>Multiple weak models are <em>trained sequentially</em>.</p></li>
+<li><p>Each new model is trained to improve the errors made by the previous model.</p></li>
+</ul></li>
+<li><p>The final model is a <em>weighted combination</em> of all the models where the <em>weights are determined by the accuracy of each model</em>.</p></li>
+</ul>
+<!-- - Boosting can be applied to various machine learning algorithms, including decision trees, neural networks, and support vector machines. -->
+</section>
+<section id="historical-background" class="level2">
+<h2 class="anchored" data-anchor-id="historical-background">Historical background</h2>
+<ul>
+<li><p>The <em>boosting technique</em> was proposed by Robert Schapire <span class="citation" data-cites="Schapire89">[@Schapire89]</span> and Yoav Freund in the 1990s.</p></li>
+<li><p>They introduced <em>AdaBoost</em>, the first widely-used Boosting algorithm.</p>
+<ul>
+<li>It achieved significant success in various applications, including <em>face detection</em> and <em>handwriting recognition</em>.</li>
+</ul></li>
+<li><p>Other Boosting algorithms have become popular: <em>Gradient Boosting</em>, <em>XGBoost</em>, and <em>LightGBM</em>.</p></li>
+</ul>
+</section>
+<section id="adaboost" class="level2">
+<h2 class="anchored" data-anchor-id="adaboost">Adaboost</h2>
+<ul>
+<li><p>AdaBoost (<em>Adaptive Boosting</em>) is a direct implementation of the “boosting” idea.</p></li>
+<li><p>It trains models sequentially, new models <em>focusing on correcting the errors of the previous ones</em>.</p></li>
+<li><p>Final Decision is made by <em>combining models</em>, giving more influence to the most reliable ones through</p>
+<ul>
+<li><p>A weighted majority vote (classification) or</p></li>
+<li><p>Weighted sum (regression).</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="running-adaboost" class="level2">
+<h2 class="anchored" data-anchor-id="running-adaboost">Running Adaboost</h2>
+<ul>
+<li><p>Adaboost proceeds iteratively by, at each iteration:</p>
+<ul>
+<li><p>Fit the weak learner using initial weights.</p></li>
+<li><p>Predict and identify misclassified observations.</p></li>
+<li><p>Update <em>observation weights</em>:</p>
+<ul>
+<li><p>decrease for correctly classified</p></li>
+<li><p>increase for misclassified.</p></li>
+</ul></li>
+<li><p>Assign a <em>learner weight</em> to the weak learner based on its accuracy.</p></li>
+</ul></li>
+<li><p>The final prediction is a <em>weighted combination</em> of all weak learners.</p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>AdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight).
+<ul>
+<li>Updating this weight vector will generate a distribution where it will be more likely to extract those samples with higher weight (that is, <em>those that were incorrectly inferred</em>),</li>
+<li>This sample will be introduced to the next base learner in the sequence and</li>
+<li>This will be repeated until a stop criterion is met.</li>
+<li>Likewise, each base learner in the sequence will have assigned a weight, the higher the performance, the higher the weight and the greater the impact of this base learner for the final decision.</li>
+<li>Finally, to make a prediction,
+<ul>
+<li>each base learner in the sequence will be fed with the test data,</li>
+<li>each of the predictions of each model will be voted (for the classification case) or averaged (for the regression case)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="adaboost-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="adaboost-architecture">Adaboost Architecture</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Adaboost.jpeg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Adaboost.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><small> Source: <a href="https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/">Ensemble Learning: Bagging &amp; Boosting</a> </small></p>
+</section>
+<section id="adaboost-pseudo-code" class="level2">
+<h2 class="anchored" data-anchor-id="adaboost-pseudo-code">Adaboost pseudo-code</h2>
+<p><small></small></p><small>
+<ol type="1">
+<li><p>Initialize sample weights: <span class="math inline">\(w_i = 1/N\)</span>, where <span class="math inline">\(N\)</span> = # of training samples.</p></li>
+<li><p>For each iteration <span class="math inline">\(t=1,2,\dots,T\)</span> do:</p>
+<ol type="a">
+<li><p>Train weak classifier <span class="math inline">\(h_t(x)\)</span> on training set weighted by <span class="math inline">\(w_i\)</span>.</p></li>
+<li><p>Compute the weighted error rate: <span class="math display">\[{\small \left. \epsilon_t = \sum_{i=1}^N w_i I(y_i \neq h_t(x_i)) \right/ \left. \sum_{i=1}^N w_i\right. }\]</span></p></li>
+<li><p>Compute the classifier weight: <span class="math inline">\(\alpha_t = \frac{1}{2}\log\frac{1-\epsilon_t}{\epsilon_t}\)</span>.</p></li>
+<li><p>Update the sample weights: <span class="math inline">\(w_i \leftarrow w_i^{-\alpha_t I(y_i \neq h_t(x_i))}\)</span>.</p></li>
+<li><p>Normalize the sample weights: <span class="math inline">\(w_i \leftarrow \frac{w_i}{\sum_{j=1}^N w_j}\)</span>.</p></li>
+</ol></li>
+<li><p>Output the final classifier: <span class="math inline">\(H(x) = \text{sign}\left(\sum_{t=1}^T \alpha_t h_t(x)\right)\)</span>.</p></li>
+</ol>
+</small><p><small></small></p>
+</section>
+<section id="adaboost-applications" class="level2">
+<h2 class="anchored" data-anchor-id="adaboost-applications">Adaboost applications</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/Adaboost4FaceRecognition.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Adaboost4FaceRecognition.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><small> source: <a href="https://doi.org/10.1007/978-981-16-0081-4_67">Evaluating the AdaBoost Algorithm for Biometric-Based Face Recognition</a> </small></p>
+<!-- - Task: to identify whether an image contains a face.  -->
+<!-- - Classifiers were trained on a set of face images and a set of non-face images.  -->
+<!--   - Weak classifiers: decision stump that checks whether a specific feature is present in the image or not.  -->
+<!-- - AdaBoost iteratively trains weak classifiers and assigns higher weights to misclassified samples, leading to a stronger ensemble classifier.  -->
+<!-- - The resulting classifier can then be used to detect faces in new images with high accuracy. -->
+</section>
+<section id="adaboost-has-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="adaboost-has-limitations">Adaboost has limitations</h2>
+<ul>
+<li><p>Adaboost was a breakthrough algorithm that significantly improved the accuracy of ML models.</p></li>
+<li><p>However, Adaboost has its limitations.</p>
+<ul>
+<li><p>It does not handle continuous variables very well.</p></li>
+<li><p>Can be sensitive to noisy data and outliers,</p></li>
+<li><p>May not perform well with complex datasets.</p></li>
+<li><p>Its performance can reach a “plateau”: it will no longer improve after a certain number of iterations.</p></li>
+</ul></li>
+<li><p>In order to deal with some of these drawbacks different variants of boosting have been proposed.</p></li>
+</ul>
+</section>
+<section id="gradient-boosting" class="level2">
+<h2 class="anchored" data-anchor-id="gradient-boosting">Gradient Boosting</h2>
+<ul>
+<li><p>Developed to overcome the limitations of Adaboost.</p></li>
+<li><p>Takes a different approach that can be linked with Optimization by Gradient Descent.</p></li>
+<li><p>Several advantages over Adaboost</p>
+<ul>
+<li><p>Can handle continuous variables much better,</p></li>
+<li><p>It is more robust to noisy data and outliers.</p></li>
+<li><p>Can handle complex datasets and</p></li>
+<li><p>Can continue to improve its accuracy even after Adaboost’s performance has “plateaued”.</p></li>
+</ul></li>
+</ul>
+<!-- ## Gradient boosting generalizes Adaboost -->
+<!-- - It is a generalization of the AdaBoost algorithm that allows the use of *any cost function*, as long as it is differentiable.  -->
+<!-- - The flexibility of this algorithm has made it possible to apply boosting to a multitude of problems (regression, multiple classification, etc.), making it one of the most successful machine learning methods.  -->
+<!-- - While there are various adaptations, the general idea behind all of them is the same: train models sequentially, with each model adjusting the residuals (errors) of the previous models. -->
+</section>
+<section id="gradient-boosting-algorithm" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="gradient-boosting-algorithm">Gradient Boosting Algorithm</h2>
+<ul>
+<li><p>Train a first weak learner <span class="math inline">\(f_1\)</span>, which predicts the response variable <span class="math inline">\(y\)</span>, and calculate the residuals <span class="math inline">\(y - f_1(x)\)</span>.</p></li>
+<li><p>Next, train a new model <span class="math inline">\(f_2\)</span>, to predict the residuals of the previous model, that is, to correct the errors made by model <span class="math inline">\(f_1\)</span>.</p>
+<ul>
+<li><p><span class="math inline">\(f_1(x) \approx y\)</span></p></li>
+<li><p><span class="math inline">\(f_2(x) \approx y - f_1(x)\)</span></p></li>
+</ul></li>
+<li><p>Iterate calculating residuals of the two models together <span class="math inline">\(y - f_1(x) - f_2(x)\)</span> and train a third model <span class="math inline">\(f_3\)</span> to correct them.</p>
+<ul>
+<li><span class="math inline">\(f_3(x) \approx y - f_1(x) - f_2(x)\)</span></li>
+</ul></li>
+<li><p>Repeat the process <span class="math inline">\(M\)</span> times, so that each new model minimizes the residuals (errors) of the previous one.</p></li>
+</ul>
+</section>
+<section id="gradient-boosting-may-overfit" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="gradient-boosting-may-overfit">Gradient Boosting may overfit</h2>
+<ul>
+<li><p>Since the goal of Gradient Boosting is to minimize the residuals iteration by iteration, it is susceptible to overfitting.</p></li>
+<li><p>One way to avoid this problem is by using a regularization value, also known as the learning rate (<span class="math inline">\(\lambda\)</span>), which limits the influence of each model on the ensemble.</p></li>
+<li><p>As a result of this regularization, more models are needed to form the ensemble, but better results are achieved.</p>
+<ul>
+<li><p><span class="math inline">\(f_1(x) \approx y\)</span></p></li>
+<li><p><span class="math inline">\(f_2(x) \approx y - \lambda f_1(x)\)</span></p></li>
+<li><p><span class="math inline">\(f_3(x) \approx y - \lambda f_1(x) - \lambda f_2(x)\)</span></p></li>
+<li><p><span class="math inline">\(y \approx \lambda f_1(x) + \lambda f_2(x) + \lambda f_3(x) + \ldots + \lambda f_m(x)\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="gradient-boosting-architechture" class="level2">
+<h2 class="anchored" data-anchor-id="gradient-boosting-architechture">Gradient boosting architechture</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/gradientboosting.jpeg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/gradientboosting.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><small> Source: <a href="https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/">Ensemble Learning: Bagging &amp; Boosting</a> </small></p>
+</section>
+<section id="gradient-boosting-pseudo-code" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="gradient-boosting-pseudo-code">Gradient Boosting pseudo-code</h2>
+<ol type="1">
+<li>Initialize the model with a constant value: <span class="math inline">\(f_0(x) = \frac{1}{n} \sum\limits_{i=1}^{n} y_i\)</span></li>
+<li>For <span class="math inline">\(t = 1\)</span> to <span class="math inline">\(T\)</span>:
+<ol type="a">
+<li>Compute the negative gradient of the loss function at the current fit: <span class="math inline">\(r_{ti} = -\frac{\partial L(y_i, f_{t-1}(x_i))}{\partial f_{t-1}(x_i)}\)</span></li>
+<li>Train a new model to predict the negative gradient values: <span class="math inline">\(h(x; \theta_t) = \arg\min\limits_{h} \sum\limits_{i=1}^{n} (r_{ti} - h(x_i; \theta))^2\)</span></li>
+<li>Compute the optimal step size: <span class="math inline">\(\gamma_t = \arg\min\limits_{\gamma} \sum\limits_{i=1}^{n} L(y_i, f_{t-1}(x_i) + \gamma h(x_i; \theta_t))\)</span></li>
+<li>Update the model: <span class="math inline">\(f_t(x) = f_{t-1}(x) + \gamma_t h(x; \theta_t)\)</span></li>
+</ol></li>
+<li>Output the final model: <span class="math inline">\(F(x) = f_T(x)\)</span></li>
+</ol>
+</section>
+<section id="relation-with-gradient-descent" class="level2">
+<h2 class="anchored" data-anchor-id="relation-with-gradient-descent">Relation with <em>Gradient Descent</em></h2>
+<ul>
+<li><p>Gradient Boosting can be seen as an extension of Gradient Descent, a popular optimization algorithm used to find the minimum of a function.</p>
+<ul>
+<li><p>In Gradient Descent, the weights of the model are updated in the opposite direction of the gradient of the cost function.</p></li>
+<li><p>In Gradient Boosting, the new model is trained on the negative gradient of the loss function, which is equivalent to minimizing the loss function in the direction of steepest descent.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="gradient-boosting-variations" class="level2">
+<h2 class="anchored" data-anchor-id="gradient-boosting-variations">Gradient Boosting Variations</h2>
+<ul>
+<li><p>Multiple extensions from Gradient Boosting.</p></li>
+<li><p><strong>XGBoost</strong></p>
+<ul>
+<li>Optimized implementation that uses regularization to control overfitting and provide better accuracy.</li>
+<li>Won many competitions.</li>
+</ul></li>
+<li><p><strong>LightGBM</strong></p>
+<ul>
+<li>Relies on a technique to reduce the number of samples used in each iteration.</li>
+<li>Faster training, good for large datasets.</li>
+</ul></li>
+</ul>
+</section>
+<section id="boosting-applications" class="level2">
+<h2 class="anchored" data-anchor-id="boosting-applications">Boosting applications</h2>
+<ul>
+<li><p>Fraud Detection</p></li>
+<li><p>Image and Speech Recognition</p></li>
+<li><p>Anomaly Detection</p></li>
+<li><p>Medical Diagnosis</p></li>
+<li><p>Amazon’s recommendation engine</p></li>
+<li><p>Models that predict protein structures from amino acid sequences</p></li>
+<li><p>Pattern identification in fMRI brain scans.</p></li>
+</ul>
+</section>
+<section id="advantages-of-boosting" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-boosting">Advantages of Boosting</h2>
+<ul>
+<li><p>Boosting, like other Ensemble methods, improves the accuracy of weak learners and achieve better predictive performance than individual models.</p></li>
+<li><p>Boosting also reduces overfitting by improving the generalization ability of models.</p></li>
+<li><p>Available in many flavors,</p></li>
+<li><p>Can be parallelized</p></li>
+<li><p>Strong experience in Real world applications and industry.</p></li>
+</ul>
+</section>
+<section id="limitations-of-boosting" class="level2">
+<h2 class="anchored" data-anchor-id="limitations-of-boosting">Limitations of Boosting</h2>
+<ul>
+<li><p>Can be computationally expensive, especially when dealing with large datasets and complex models.</p></li>
+<li><p>Can be sensitive to noisy data and outliers,</p></li>
+<li><p>May not work well with certain types of data distributions.</p></li>
+<li><p>Not so good as “out-of-the-box”: Requires careful tuning of hyperparameters to achieve optimal performance, which can be time-consuming and challenging.</p></li>
+</ul>
+</section>
+<section id="boosting-application-with-r-and-python" class="level2">
+<h2 class="anchored" data-anchor-id="boosting-application-with-r-and-python">Boosting application with R and Python</h2>
+<ul>
+<li><p>Many R packages implement the many variations of boosting:</p>
+<ul>
+<li><p><a href="https://cran.r-project.org/web/packages/ada">ada</a>,</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/ada">adabag</a>,</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/mboost">mboost</a>,</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/gbm">gbm</a>,</p></li>
+<li><p><a href="https://github.com/dmlc/xgboost/tree/master/R-package">xgboost</a></p></li>
+<li><p>An interesting option is to rely on the <a href="https://cran.r-project.org/web/packages/caret/index.html">caret</a> package which allows to run the distinct methods with a common interface.</p></li>
+</ul></li>
+<li><p>Inpython we usually rely on scikit-learn libraries although there are many alternative implementations</p>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/ensemble.html">Scikit-learn ensemble</a></li>
+<li><a href="https://python-course.eu/machine-learning/boosting-algorithm-in-python.php">https://python-course.eu/machine-learning/boosting-algorithm-in-python.php</a></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="appendix-i-the-bootstrap" class="level1">
+<h1>Appendix I: The Bootstrap</h1>
+<p>These slides have been conserved as an appendix because they were originally added to this chapter, when a section on resampling was not included in previous chapters.</p>
+<p>They can be used as an introduction to the bootstrap, similar to the scond part of the Chapter on Cross-validation and resampling.</p>
+<section id="the-bootstrap" class="level2">
+<h2 class="anchored" data-anchor-id="the-bootstrap">The bootstrap</h2>
+<ul>
+<li><em>Bootstrap</em> methods were introduced by <span class="citation" data-cites="Efron79">@Efron79</span> to estimate the standard error of a statistic.</li>
+<li>The success of the idea lied in that the procedure was presented as <em>automatic</em>, that is:
+<ul>
+<li>instead of having to do complex calculations,</li>
+<li>it allowed to approximate them using computer simulation.</li>
+</ul></li>
+<li>Some called it <em>the end of mathematical statistics</em>.</li>
+</ul>
+</section>
+<section id="bootstrap-applications" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrap-applications">Bootstrap Applications</h2>
+<ul>
+<li><p>The bootstrap has been applied to almost any problem in Statistics.</p>
+<ul>
+<li>Computing standard errors, Bias, Quantiles,</li>
+<li>Building Confidence intervals,</li>
+<li>Doing Significance tests, …</li>
+</ul></li>
+<li><p>We illustrate it with the simplest case: <em>estimating the standard error of an estimator</em>.</p></li>
+</ul>
+</section>
+<section id="empirical-distribution-function" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-distribution-function">Empirical Distribution Function</h2>
+<div class="font80">
+<ul>
+<li>Let <span class="math inline">\(X\)</span> be a random variable with distribution function <span class="math inline">\(F\)</span>,</li>
+<li>Let <span class="math inline">\(\mathbf{X}=X_1,\ldots,X_n\)</span> be an i.i.d random sample of <span class="math inline">\(F\)</span> and,</li>
+<li>let <span class="math inline">\(x_1,\dots, x_n\)</span> be a realization of <span class="math inline">\(\mathbf{X}\)</span>.</li>
+<li>The <em>Empirical Cumulative Distribution Function (ECDF)</em> <span class="math display">\[
+F_n(x) = \frac{1}{n} \#\{x_i\le x: i=1\dots n\} = \frac{1}{n}
+\sum_{i=1}^n I_{(-\infty,x]}(x_i),
+\]</span> is the function that assigns to each real number <span class="math inline">\(x\)</span> the proportion of observed values that are less or equal than <span class="math inline">\(x\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="the-ecdf-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="the-ecdf-in-r">The ECDF in R</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">11</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>Fn <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(x)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">knots</span>(Fn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1  0  2  5 11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Fn(3) = "</span>, <span class="fu">Fn</span>(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Fn(3) =  0.6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Fn(-2) = "</span>, <span class="fu">Fn</span>(<span class="sc">-</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Fn(-2) =  0</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Fn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="C2.2-Ensemble_Methods-Slides-body_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ecdf-has-good-properties" class="level2">
+<h2 class="anchored" data-anchor-id="ecdf-has-good-properties">ECDF has good properties</h2>
+<ul>
+<li><p><span class="math inline">\(F_n (x)\)</span> is a cumulative distribution function.</p></li>
+<li><p><span class="math inline">\(F_n()\)</span> is an important DF because it comes to be <em>the best approximation that one can find for the theoretical (population) distribution function</em>, that is: <span class="math display">\[
+F_n(x) \longrightarrow F(x), \text { uniformly in } x \text{ as } n \rightarrow \infty.
+\]</span></p></li>
+<li><p>This is stated in the Glivenko-Cantelli theorem also know as the <em>Central Theorem of Statistics</em>.</p></li>
+</ul>
+</section>
+<section id="the-sample-distribution-function" class="level2">
+<h2 class="anchored" data-anchor-id="the-sample-distribution-function">The Sample distribution function</h2>
+<div class="font80">
+<ul>
+<li>Given a sample, <span class="math inline">\(\mathbf{X}\)</span> from a certain distribution, <span class="math inline">\(X\)</span>,</li>
+<li>Consider it a discrete random variable <span class="math inline">\(X_e\)</span> that sets mass <span class="math inline">\(1/n\)</span> to each of the observed <span class="math inline">\(n\)</span> points <span class="math inline">\(x_i\)</span>:</li>
+</ul>
+</div>
+<center>
+<img src="images/1.2-Ensemble_Methods-Slides_insertimage_3.png" class="img-fluid">
+</center>
+<div class="font80">
+<ul>
+<li><p><span class="math inline">\(F_n\)</span> is the distribution (function) of <span class="math inline">\(X_e\)</span>.</p></li>
+<li><p>From here, we notice that <em>generating samples from <span class="math inline">\(F_n\)</span> can be done by randomly taking values from <span class="math inline">\(\mathbf{X}\)</span> with probability <span class="math inline">\(1/n\)</span></em></p></li>
+</ul>
+</div>
+</section>
+<section id="plug-in-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="plug-in-estimators">Plug-in estimators</h2>
+<ul>
+<li><p>Assume we want to estimate some parameter <span class="math inline">\(\theta\)</span>, that can be expressed as <span class="math inline">\(\theta (F)\)</span>, where <span class="math inline">\(F\)</span> is the distribution function of each <span class="math inline">\(X_i\)</span> in <span class="math inline">\((X_1,X_2,...,X_n)\)</span>.</p></li>
+<li><p>For example, <span class="math inline">\(\theta = E_F(X)=\theta (F)\)</span>.</p></li>
+<li><p>A <em>natural</em> way to estimate <span class="math inline">\(\theta(F)\)</span> may be to rely on <em>plug-in estimators</em>, where <span class="math inline">\(F\)</span> in <span class="math inline">\(\hat \theta (F)\)</span> is substituted by some approximation (estimate) to <span class="math inline">\(F\)</span>.</p></li>
+</ul>
+</section>
+<section id="plug-in-estimators-1" class="level2">
+<h2 class="anchored" data-anchor-id="plug-in-estimators-1">Plug-in estimators</h2>
+<ul>
+<li>A plug-in estimator is obtained by substituting <span class="math inline">\(F\)</span> by an approximation to <span class="math inline">\(F\)</span>, call it <span class="math inline">\(\hat F\)</span> in <span class="math inline">\(\theta(F)\)</span>: <span class="math display">\[
+\widehat {\theta (F)}=\theta(\hat{F})
+\]</span></li>
+<li>Given that <span class="math inline">\(F_n\)</span> is the best approximation to <span class="math inline">\(F\)</span> a reasonable plug-in estimator is <span class="math inline">\(\theta(F_n)\)</span>.</li>
+<li>Common sample estimators are, indeed, plug-in estimators.</li>
+</ul>
+</section>
+<section id="some-plug-in-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="some-plug-in-estimators">Some plug-in estimators</h2>
+<ul>
+<li>Many estimators we usally work with are plug-in estimators.</li>
+</ul>
+<p><span class="math display">\[\begin{eqnarray*}
+\theta_1 &amp;=&amp; E_F(X)=\theta (F) \\
+\hat{\theta_1}&amp;=&amp;\overline{X}=\int XdF_n(x)=\frac
+1n\sum_{i=1}^nx_i=\theta (F_n)
+\\
+\theta_2 &amp;=&amp; Med(X)=\{m:P_F(X\leq m)=1/2\}=
+\theta (F),
+\\
+\hat{\theta_2}&amp;=&amp;\widehat{Med}(X)=\{m:\frac{\#x_i\leq m}n=1/2\}=\theta (F_n)
+\end{eqnarray*}\]</span></p>
+</section>
+<section id="precision-of-an-estimate" class="level2">
+<h2 class="anchored" data-anchor-id="precision-of-an-estimate">Precision of an estimate</h2>
+<ul>
+<li><p>An key point, when computing an estimator <span class="math inline">\(\hat \theta\)</span> of a parameter <span class="math inline">\(\theta\)</span>, is <em>how precise is</em> <span class="math inline">\(\hat \theta\)</span> <em>as an estimator of</em> <span class="math inline">\(\theta\)</span>?</p>
+<ul>
+<li><p>With the sample mean, <span class="math inline">\(\overline{X}\)</span>, the standard error estimation is immediate because the variance of the estimator is known: <span class="math inline">\(\sigma_\overline{X}=\frac{\sigma (X)}{\sqrt{n}}\)</span></p></li>
+<li><p>So, a natural estimator of the standard error of <span class="math inline">\(\overline{X}\)</span> is: <span class="math inline">\(\hat\sigma_\overline{X}=\frac{\hat{\sigma}(X)}{\sqrt{n}}\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="precision-of-an-estimate-2" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="precision-of-an-estimate-2">Precision of an estimate (2)</h2>
+<ul>
+<li>If, as in this case, the variance of <span class="math inline">\(X\)</span> (and, here, that of <span class="math inline">\(\overline{X}\)</span>) is a functional of <span class="math inline">\(F\)</span>:</li>
+</ul>
+<div class="font90">
+<p><span class="math display">\[
+\sigma _{\overline{X}}=\frac{\sigma (X)}{\sqrt{n}}=\frac{\sqrt{\int
+[x-\int x\,dF(x)]^2 dF(x)}}{\sqrt{n}}=\sigma _{\overline{X}}(F)
+\]</span></p>
+</div>
+<p>then, the standard error estimator is the same functional applied on <span class="math inline">\(F_n\)</span>, that is:</p>
+<div class="font90">
+<p><span class="math display">\[
+\hat{\sigma}_{\overline{X}}=\frac{\hat{\sigma}(X)}{\sqrt{n}}=\frac{\sqrt{1/n\sum_{i=1}^n(x_i-\overline{x})^2}}{\sqrt{n}}=\sigma
+_{\overline{X}}(F_n).
+\]</span></p>
+</div>
+</section>
+<section id="standard-error-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="standard-error-estimation">Standard error estimation</h2>
+<ul>
+<li>Thus, a way to obtain a standard error estimator <span class="math inline">\(\widehat{\sigma}_{\widehat{\theta}}\)</span> of an estimator <span class="math inline">\(\widehat{\theta}\)</span> consists on replacing <span class="math inline">\(F\)</span> with <span class="math inline">\(F_n\)</span> in the ``population’’ standard error expression of <span class="math inline">\(\hat \theta\)</span>, <span class="math inline">\(\displaystyle{\sigma_{\hat
+\theta}= \sigma_{\hat \theta}(F)}\)</span>, <strong>whenever it is known</strong>.</li>
+<li>In a schematic form: <span class="math display">\[
+\sigma_{\hat \theta}= \sigma_{\hat \theta}(F) \Longrightarrow
+\sigma_{\hat \theta}(F_n)= \widehat{\sigma}_{\hat \theta}.
+\]</span> That is, <em>the process consists of “plugging-in” <span class="math inline">\(F_n\)</span> in the (known) functional form, <span class="math inline">\(\sigma_{\hat \theta}(F)\)</span> that defines <span class="math inline">\(\sigma_{\hat \theta}\)</span>}</em>.</li>
+</ul>
+</section>
+<section id="the-bootstrap-1" class="level2">
+<h2 class="anchored" data-anchor-id="the-bootstrap-1">The bootstrap (1)</h2>
+<ul>
+<li>The previous approach, <span class="math inline">\(F\simeq F_n \Longrightarrow \sigma_{\hat \theta}(F) \simeq \sigma_{\hat \theta}(F_n)\)</span> presents the obvious drawback that, when the functional form <span class="math inline">\(\sigma _{\hat{\theta}}(F)\)</span> is unknown, it is not possible to carry out the substitution of <span class="math inline">\(F\)</span> by <span class="math inline">\(F_n\)</span>.</li>
+<li>This is, for example, the case of standard error of the median or <a href="http://artent.net/2012/07/31/standard-deviation-of-sample-median/">that of the correlation coefficient</a>.</li>
+</ul>
+</section>
+<section id="the-bootstrap-2" class="level2">
+<h2 class="anchored" data-anchor-id="the-bootstrap-2">The bootstrap (2)</h2>
+<ul>
+<li><p>The <em>bootstrap</em> method makes it possible to do the desired approximation: <span class="math display">\[\hat{\sigma}_{\hat\theta} \simeq \sigma _{\hat\theta}(F_n)\]</span> <em>without having to to know the form of</em> <span class="math inline">\(\sigma_{\hat\theta}(F)\)</span>.</p></li>
+<li><p>To do this,<em>the bootstrap estimates, or directly approaches</em> <span class="math inline">\(\sigma_{\hat{\theta}}(F_n)\)</span> <em>over the sample</em>.</p></li>
+</ul>
+</section>
+<section id="bootstrap-sampling-resampling" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrap-sampling-resampling">Bootstrap sampling (<em>resampling</em>)</h2>
+<ul>
+<li>The <em>bootstrap</em> allows to estimate the standard error from samples of <span class="math inline">\(F_n\)</span></li>
+</ul>
+<div class="font80">
+<p><span class="math display">\[\begin{eqnarray*}
+&amp;&amp;\mbox{Instead of: } \\
+&amp;&amp; \quad F\stackrel{s.r.s}{\longrightarrow }{\bf X} =
+(X_1,X_2,\dots, X_n) \, \quad (\hat \sigma_{\hat\theta} =\underbrace{\sigma_\theta(F_n)}_{unknown})
+\\
+&amp;&amp; \mbox{It is done: } \\
+&amp;&amp; \quad F_n\stackrel{s.r.s}{\longrightarrow }\quad {\bf X^{*}}=(X_1^{*},X_2^{*},
+\dots ,X_n^{*}) \\
+&amp;&amp; \quad (\hat \sigma_{\hat\theta}= \hat \sigma_{\hat \theta}^* \simeq \sigma_{\hat \theta}^*=\sigma_{\hat \theta}(F_n)).
+
+\end{eqnarray*}\]</span></p>
+</div>
+<div class="notes">
+<ul>
+<li><span class="math inline">\(\sigma_{\hat \theta}^*\)</span> is the bootstrap standard error of <span class="math inline">\(\hat \theta\)</span> and</li>
+<li><span class="math inline">\(\hat \sigma_{\hat \theta}^*\)</span> the bootstrap estimate of the standard error of <span class="math inline">\(\hat \theta\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="the-resampling-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-resampling-process">The resampling process</h2>
+<div class="font80">
+<ul>
+<li><p>Resampling consists of <em>extracting samples of size <span class="math inline">\(n\)</span> of <span class="math inline">\(F_n\)</span></em>: <span class="math inline">\({\bf X_b^{*}}\)</span> is a random sample of size <span class="math inline">\(n\)</span> obtained <em>with replacement</em> from the original sample <span class="math inline">\({\bf X}\)</span>.</p></li>
+<li><p>Samples <span class="math inline">\({\bf X^*_1, X^*_2, ..., X^*_B }\)</span>, obtained through this procedure are called <em>bootstrap</em>&nbsp;samples or <em>re-samples</em>.</p></li>
+<li><p>On each resample the statistic of interest <span class="math inline">\(\hat \theta\)</span> can be computed yielding a <em>bootstrap estimate</em> <span class="math inline">\(\hat \theta^*_b= s(\mathbf{x^*_b})\)</span>.</p></li>
+<li><p>The collection of bootstrap estimates obtained form the resampled samples can be used to estimate distinct characteristics of <span class="math inline">\(\hat \theta\)</span> such as its standard error, its bias, etc.</p></li>
+</ul>
+</div>
+</section>
+<section id="resampling-illustrated" class="level2">
+<h2 class="anchored" data-anchor-id="resampling-illustrated">Resampling illustrated</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/1.2-Ensemble_Methods-Slides_insertimage_2.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/1.2-Ensemble_Methods-Slides_insertimage_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ## The bootstrap distribution -->
+<!-- - The distribution of a statistic computed from re-samples is called the *bootstrap distribution*, -->
+<!-- :::{.font90} -->
+<!-- \begin{eqnarray*} -->
+<!-- \mathcal {L}(\hat \theta)&\simeq& P_F(\hat\theta \leq t): \mbox{Sampling distribution of } \hat \theta,\\ -->
+<!-- \mathcal {L}(\hat \theta^*)&\simeq& P_{F_n}(\hat\theta^* \leq t): \mbox{Bootstrap distribution of } \hat \theta, -->
+<!-- \end{eqnarray*} -->
+<!-- ::: -->
+<!-- - This distribution is usually not known. -->
+<!-- - However the sampling process and the calculation of the statistics can be approximated using a Monte Carlo Algorithm. -->
+</section>
+<section id="boot.-monte-carlo-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="boot.-monte-carlo-algorithm">Boot. Monte Carlo Algorithm</h2>
+<div class="font80">
+<ol type="1">
+<li>Draw a bootstrap sample, <span class="math inline">\({\bf x}_1^{*}\)</span> from <span class="math inline">\(F_n\)</span> and compute <span class="math inline">\(\hat{\theta}({\bf x}_1^{*})\)</span>.</li>
+<li>Repeat (1) <span class="math inline">\(B\)</span> times yielding <span class="math inline">\(\hat{\theta}({\bf x}_2^{*})\)</span>, <span class="math inline">\(\dots\)</span>, <span class="math inline">\(\hat{\theta}({\bf x}_B^{*})\)</span> estimates.</li>
+<li>Compute: <span class="math display">\[\begin{equation*}
+\hat{\sigma}_B (\hat\theta)= \sqrt{
+\frac{
+     \sum_{b=1}^B\left( \hat{\theta}(%
+     {\bf x^{*}_i})-\overline{\hat{\theta}^*}\right) ^2
+     }{
+     (B-1)   
+     }
+}, \quad \overline{\hat{\theta}^*}\equiv \frac 1B\sum_{b=1}^B\hat{\theta}\left( {\bf x}%
+_b^{*}\right)
+\end{equation*}\]</span></li>
+</ol>
+</div>
+</section>
+<section id="bootstrap-estimates-of-se" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrap-estimates-of-se">Bootstrap Estimates of SE</h2>
+<div class="font90">
+<ul>
+<li>Idea behind the bootstrap: the standard error of <span class="math inline">\(\hat\theta\)</span>, <span class="math inline">\(\sigma(\hat\theta)\)</span> can be <em>approximated</em> by the bootstrap estimator of the standard error, <span class="math inline">\(\sigma_B (\hat\theta)\)</span> which:
+<ul>
+<li>Coincides with <span class="math inline">\(\sigma_{\hat\theta}(F_n)\)</span>, that cannot be evaluated, if the functional form of <span class="math inline">\(\sigma_{\hat\theta}(F)\)</span> is unkown.</li>
+<li>Can be approximated by the Monte Carlo Estimator, <span class="math inline">\(\hat\sigma_{\hat\theta}(F_n)\)</span>, which is evaluated by resampling.</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\hat{\sigma}_B(\hat\theta)\left (\simeq \sigma_B(\hat\theta)=\sigma_{\hat\theta}(F_n)\right )\simeq\hat \sigma_{\hat\theta}(F_n).
+\]</span></p>
+</div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>From real world to <em>bootstrap</em> world:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/fromRealWorld2BootstrapWorld.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fromRealWorld2BootstrapWorld.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<p>Aquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci</p>
+</div>
+</section>
+<section id="references" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="references">References</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
