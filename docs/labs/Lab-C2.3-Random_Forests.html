@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-05-09">
+<meta name="dcterms.date" content="2026-05-13">
 
 <title>Lab 2: Ensembles of Trees – Introduction to Statistical Learning</title>
 <style>
@@ -197,7 +197,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C2.2-Ensemble_Methods-Slides.html">Ensemble Methods</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C2.3-Random_Forests.html">Lab-C2.3-Random Forest</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C2.2-Ensemble_Methods-Slides-RevealJS.html">Ensemble Methods</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C2.3-Random_Forests.html">Lab-C2.3-Random Forest</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -290,7 +290,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../C2.2-Ensemble_Methods-Slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../C2.2-Ensemble_Methods-Slides-RevealJS.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ensemble Methods</span></a>
   </div>
 </li>
@@ -453,7 +453,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C2.2-Ensemble_Methods-Slides.html">Ensemble Methods</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C2.3-Random_Forests.html">Lab-C2.3-Random Forest</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C2.2-Ensemble_Methods-Slides-RevealJS.html">Ensemble Methods</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C2.3-Random_Forests.html">Lab-C2.3-Random Forest</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Lab 2: Ensembles of Trees</h1>
 </div>
@@ -472,7 +472,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 9, 2026</p>
+      <p class="date">May 13, 2026</p>
     </div>
   </div>
   
@@ -1392,7 +1392,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The exploration shows that the data set is well formed with factor data types for categorical variables and no missings.</p>
-<p>It can also be seen that tha response variabl, <code>Sales_Price</code> varies on a high range, as confirmed below.</p>
+<p>It can also be seen that tha response variable, <code>Sales_Price</code> varies on a high range, as confirmed below.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1422,7 +1422,7 @@ window.Quarto = {
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ames <span class="ot">&lt;-</span> ames <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Sale_Price =</span> Sale_Price<span class="sc">/</span><span class="dv">1000</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ames, <span class="at">las=</span><span class="dv">2</span>, <span class="at">cex.axis=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1453,31 +1453,34 @@ window.Quarto = {
 </section>
 <section id="a-simple-regression-tree" class="level1">
 <h1>A simple regression tree</h1>
-<p>As a first attempt to predict Sales_Price we build a unique regression tree, which as has been discussed is a weak learner. The <code>tree</code> package will be used to fit and optimize the tree.</p>
+<p>As a first attempt to predict <code>Sales_Price</code> we build a unique regression tree, which as has been discussed is a weak learner. The <code>tree</code> package will be used to fit and optimize the tree.</p>
 <p>We build a tree using non-restrictive parameters. This will allow space for pruning it better.</p>
 <p>We use the <code>tree.control</code> function to set the values for the <code>control</code> parameter in the <code>tree</code> function.</p>
-<p>Let’s start with a tree with the default values.</p>
+<p>Let’s start with a relatively small tree obtained with mildly restrictive control parameters.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tree)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ctlPars <span class="ot">&lt;-</span><span class="fu">tree.control</span>(<span class="at">nobs =</span><span class="fu">nrow</span>(ames_train), </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">mincut =</span> <span class="dv">5</span>, </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">minsize =</span> <span class="dv">10</span>, </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">mindev =</span> <span class="fl">0.01</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ames_rt1 <span class="ot">&lt;-</span>  tree<span class="sc">::</span><span class="fu">tree</span>(</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data    =</span> ames_train,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">split   =</span> <span class="st">"deviance"</span>,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">control =</span> ctlPars)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ames_rt1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Control pars as defined by tree package</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ctl_tree <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">tree.control</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nobs =</span> <span class="fu">nrow</span>(ames_train),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mincut =</span> <span class="dv">5</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">minsize =</span> <span class="dv">10</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mindev =</span> <span class="fl">0.01</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>ames_rt1 <span class="ot">&lt;-</span>  tree<span class="sc">::</span><span class="fu">tree</span>(</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data    =</span> ames_train,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">split   =</span> <span class="st">"deviance"</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">control =</span> ctl_tree)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ames_rt1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Regression tree:
-tree::tree(formula = Sale_Price ~ ., data = ames_train, control = ctlPars, 
+tree::tree(formula = Sale_Price ~ ., data = ames_train, control = ctl_tree, 
     split = "deviance")
 Variables actually used in tree construction:
 [1] "Neighborhood"  "First_Flr_SF"  "Gr_Liv_Area"   "Total_Bsmt_SF"
@@ -1489,7 +1492,7 @@ Distribution of residuals:
 -227.1000  -21.2400   -0.2372    0.0000   19.0800  212.0000 </code></pre>
 </div>
 </div>
-<p>This gives a small tree with only 11 terminal nodes.</p>
+<p>This gives a small tree with only 12 terminal nodes.</p>
 <p>We can visualize the tree</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1505,71 +1508,85 @@ Distribution of residuals:
 </div>
 </div>
 </div>
-<p>If instead of using the <code>tree</code>package we use <code>rpart</code> we can get a better plot:</p>
+<p>If instead of using the <code>tree</code>package we use <code>rpart</code> we can get a better plot. In that case we use the <code>rpart.control</code> function to set the values for the <code>control</code> parameter in the <code>rpart</code> function.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ames_rt1bis <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> ames_train,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method  =</span> <span class="st">"anova"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> ctlPars</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(ames_rt1bis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Control pars as defined for package rpart</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Roughly but noty exactly equivalent to ctl_tree</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ctl_rpart <span class="ot">&lt;-</span> rpart<span class="sc">::</span><span class="fu">rpart.control</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">minsplit =</span> <span class="dv">10</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">minbucket =</span> <span class="dv">5</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cp =</span> <span class="fl">0.01</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xval =</span> <span class="dv">10</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>ames_rt1bis <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data    =</span> ames_train,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">method  =</span> <span class="st">"anova"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> ctl_rpart</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(ames_rt1bis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
 </div>
 <section id="optimizing-the-tree" class="level2">
 <h2 class="anchored" data-anchor-id="optimizing-the-tree">Optimizing the tree</h2>
-<p>In order to optimize the tree we ccan ompute the best cost complexity value</p>
+<p>In order to optimize the tree we can compute the best cost complexity value</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cv_ames_rt1 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">cv.tree</span>(ames_rt1, <span class="at">K =</span> <span class="dv">5</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>optSize <span class="ot">&lt;-</span> <span class="fu">rev</span>(cv_ames_rt1<span class="sc">$</span>size)[<span class="fu">which.min</span>(<span class="fu">rev</span>(cv_ames_rt1<span class="sc">$</span>dev))]</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Optimal size obtained is:"</span>, optSize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cv_ames_rt1 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">cv.tree</span>(ames_rt1, <span class="at">K =</span> <span class="dv">5</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>optSize <span class="ot">&lt;-</span> <span class="fu">rev</span>(cv_ames_rt1<span class="sc">$</span>size)[<span class="fu">which.min</span>(<span class="fu">rev</span>(cv_ames_rt1<span class="sc">$</span>dev))]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Optimal size obtained is:"</span>, optSize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Optimal size obtained is: 12"</code></pre>
 </div>
 </div>
-<p>The best value of alpha is obtained with the same tree, which suggests that <em>there will be no advantage in pruning</em>.</p>
+<p>The optimal tree size coincides with the size of the original tree, <em>suggesting that pruning would not improve prediction performance</em>.</p>
 <p>This is confirmed by plotting tree size vs deviance which shows that the tree with the samllest error is the biggest one that can be obtained.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>resultados_cv <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">n_nodes  =</span> cv_ames_rt1<span class="sc">$</span>size,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">deviance =</span> cv_ames_rt1<span class="sc">$</span>dev,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha    =</span> cv_ames_rt1<span class="sc">$</span>k</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                 )</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> resultados_cv, <span class="fu">aes</span>(<span class="at">x =</span> n_nodes, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> optSize, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs tree size"</span>) <span class="sc">+</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> resultados_cv, <span class="fu">aes</span>(<span class="at">x =</span> alpha, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs penalization (alpha)"</span>) <span class="sc">+</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>resultados_cv <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">n_nodes  =</span> cv_ames_rt1<span class="sc">$</span>size,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">deviance =</span> cv_ames_rt1<span class="sc">$</span>dev,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha    =</span> cv_ames_rt1<span class="sc">$</span>k</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> resultados_cv, <span class="fu">aes</span>(<span class="at">x =</span> n_nodes, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> optSize, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs tree size"</span>) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> resultados_cv, <span class="fu">aes</span>(<span class="at">x =</span> alpha, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs penalization (alpha)"</span>) <span class="sc">+</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1583,18 +1600,18 @@ Distribution of residuals:
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ctlPars2 <span class="ot">&lt;-</span><span class="fu">tree.control</span>(<span class="at">nobs=</span><span class="fu">nrow</span>(ames_train), <span class="at">mincut =</span> <span class="dv">1</span>, <span class="at">minsize =</span> <span class="dv">2</span>, <span class="at">mindev =</span> <span class="dv">0</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ames_rt2 <span class="ot">&lt;-</span>  tree<span class="sc">::</span><span class="fu">tree</span>(</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data    =</span> ames_train,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">split   =</span> <span class="st">"deviance"</span>,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">control =</span> ctlPars2)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ames_rt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ctl_tree22 <span class="ot">&lt;-</span><span class="fu">tree.control</span>(<span class="at">nobs=</span><span class="fu">nrow</span>(ames_train), <span class="at">mincut =</span> <span class="dv">1</span>, <span class="at">minsize =</span> <span class="dv">2</span>, <span class="at">mindev =</span> <span class="dv">0</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ames_rt2 <span class="ot">&lt;-</span>  tree<span class="sc">::</span><span class="fu">tree</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">formula =</span> Sale_Price <span class="sc">~</span> .,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data    =</span> ames_train,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">split   =</span> <span class="st">"deviance"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">control =</span> ctl_tree22)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ames_rt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Regression tree:
-tree::tree(formula = Sale_Price ~ ., data = ames_train, control = ctlPars2, 
+tree::tree(formula = Sale_Price ~ ., data = ames_train, control = ctl_tree22, 
     split = "deviance")
 Variables actually used in tree construction:
  [1] "Neighborhood"   "First_Flr_SF"   "Garage_Cond"    "Gr_Liv_Area"   
@@ -1623,11 +1640,11 @@ Distribution of residuals:
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cv_ames_rt2 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">cv.tree</span>(ames_rt2, <span class="at">K =</span> <span class="dv">5</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>optSize2 <span class="ot">&lt;-</span> <span class="fu">rev</span>(cv_ames_rt2<span class="sc">$</span>size)[<span class="fu">which.min</span>(<span class="fu">rev</span>(cv_ames_rt2<span class="sc">$</span>dev))]</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Optimal size obtained is:"</span>, optSize2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cv_ames_rt2 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">cv.tree</span>(ames_rt2, <span class="at">K =</span> <span class="dv">5</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>optSize2 <span class="ot">&lt;-</span> <span class="fu">rev</span>(cv_ames_rt2<span class="sc">$</span>size)[<span class="fu">which.min</span>(<span class="fu">rev</span>(cv_ames_rt2<span class="sc">$</span>dev))]</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Optimal size obtained is:"</span>, optSize2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Optimal size obtained is: 12"</code></pre>
@@ -1636,11 +1653,11 @@ Distribution of residuals:
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>prunedTree2 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">prune.tree</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tree =</span> ames_rt2,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">best =</span> optSize2</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>               )</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(prunedTree2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>prunedTree2 <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">prune.tree</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tree =</span> ames_rt2,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">best =</span> optSize2</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>               )</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(prunedTree2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1660,31 +1677,31 @@ Distribution of residuals:
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>res_cv2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">n_nodes  =</span> cv_ames_rt2<span class="sc">$</span>size,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">deviance =</span> cv_ames_rt2<span class="sc">$</span>dev,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha    =</span> cv_ames_rt2<span class="sc">$</span>k</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                 )</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> res_cv2, <span class="fu">aes</span>(<span class="at">x =</span> n_nodes, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> optSize2, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs tree size"</span>) <span class="sc">+</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> res_cv2, <span class="fu">aes</span>(<span class="at">x =</span> alpha, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs penalization (alpha)"</span>) <span class="sc">+</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>res_cv2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">n_nodes  =</span> cv_ames_rt2<span class="sc">$</span>size,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">deviance =</span> cv_ames_rt2<span class="sc">$</span>dev,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">alpha    =</span> cv_ames_rt2<span class="sc">$</span>k</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> res_cv2, <span class="fu">aes</span>(<span class="at">x =</span> n_nodes, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> optSize2, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs tree size"</span>) <span class="sc">+</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> res_cv2, <span class="fu">aes</span>(<span class="at">x =</span> alpha, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Error vs penalization (alpha)"</span>) <span class="sc">+</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1693,9 +1710,9 @@ Distribution of residuals:
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ames_rt_pred1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(ames_rt1, <span class="at">newdata =</span> ames_test)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>test_rmse1    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_rt_pred1 <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for initial tree:"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ames_rt_pred1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(ames_rt1, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>test_rmse1    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_rt_pred1 <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for initial tree:"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Error test (rmse) for initial tree: 39.69"</code></pre>
@@ -1704,9 +1721,9 @@ Distribution of residuals:
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ames_rt_pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(ames_rt2, <span class="at">newdata =</span> ames_test)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>test_rmse2    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_rt_pred2 <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for big tree:"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ames_rt_pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(ames_rt2, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>test_rmse2    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_rt_pred2 <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for big tree:"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Error test (rmse) for big tree: 37.59"</code></pre>
@@ -1715,33 +1732,33 @@ Distribution of residuals:
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ames_pruned_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(prunedTree2, <span class="at">newdata =</span> ames_test)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>test_rmse3    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_pruned_pred <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for pruned tree:"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ames_pruned_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(prunedTree2, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>test_rmse3    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((ames_pruned_pred <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for pruned tree:"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Error test (rmse) for pruned tree: 39.69"</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>improvement <span class="ot">&lt;-</span> (test_rmse3<span class="sc">-</span>test_rmse2)<span class="sc">/</span>test_rmse2<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>improvement <span class="ot">&lt;-</span> (test_rmse3<span class="sc">-</span>test_rmse2)<span class="sc">/</span>test_rmse2<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The MSE for each model will be saved to facilitate comparison with other models</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>errTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(),  <span class="at">RMSE=</span><span class="fu">double</span>())</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">1</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Default Regression Tree"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">2</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Big Regression Tree"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">3</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Optimally pruned Regression Tree"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>errTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(),  <span class="at">RMSE=</span><span class="fu">double</span>())</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">1</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Default Regression Tree"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">2</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Big Regression Tree"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">3</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Optimally pruned Regression Tree"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kableExtra::kable(errTable) %&gt;% kableExtra::kable_styling()</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(errTable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kableExtra::kable(errTable) %&gt;% kableExtra::kable_styling()</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(errTable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1768,7 +1785,7 @@ Distribution of residuals:
 </table>
 </div>
 </div>
-<p>In summary, what is illustrated by this example is that, <em>for some datasets, it is very hard to obtain an optimal tree because there seems to be a minimum complexity which is very hard to decrease</em>.</p>
+<p>In summary, this example illustrates that, for some datasets, increasing tree complexity only leads to marginal improvements in prediction accuracy.</p>
 <p>Building a saturated tree only provides a slight improvement of less than 5% in RMSE at the cost of having to use 5 times more variables in a tree withh more than 1000 nodes.</p>
 <p>This is a good point to consider using an ensemble instead of single trees.</p>
 </section>
@@ -1780,12 +1797,12 @@ Distribution of residuals:
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(ames_rt1bis, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(ames_rt1bis, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1796,25 +1813,26 @@ Distribution of residuals:
 <h1>Bagging trees</h1>
 <p>The first attempt to build an ensemble may be to apply <code>bagging</code> that is building multiple trees from a set of resamples and averaging the predictions of each tree.</p>
 <p>In this example, rather than use a single pruned decision tree, we can use, say, 100 bagged unpruned trees (by not pruning the trees we’re keeping bias low and variance high which is when bagging will have the biggest effect).</p>
-<p>Bagging is equivalent to RandomForest if we use all the trees so the library <code>randomForest</code> is used.</p>
+<p>Bagging can be seen as a particular case of Random Forests <em>where all predictors are considered at each split</em>.</p>
+<p>Therefore, bagging can be implemented using the <code>randomForest</code> package by setting <code>mtry</code> equal to the total number of predictors.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make bootstrapping reproducible</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>bag.Ames <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> <span class="fu">ncol</span>(ames_train<span class="dv">-1</span>), </span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree =</span> <span class="dv">100</span>,</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">show</span>(bag.Ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make bootstrapping reproducible</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>bag.Ames <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> <span class="fu">ncol</span>(ames_train)<span class="sc">-</span><span class="dv">1</span>, </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree =</span> <span class="dv">100</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="fu">show</span>(bag.Ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
- randomForest(formula = Sale_Price ~ ., data = ames_train, mtry = ncol(ames_train -      1), ntree = 100, importance = TRUE) 
+ randomForest(formula = Sale_Price ~ ., data = ames_train, mtry = ncol(ames_train) -      1, ntree = 100, importance = TRUE) 
                Type of random forest: regression
                      Number of trees: 100
 No. of variables tried at each split: 73
@@ -1832,12 +1850,12 @@ No. of variables tried at each split: 73
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>yhattrain.bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag.Ames, <span class="at">newdata =</span> ames_train)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># train_mse_bag  &lt;- sqrt(mean(yhattrain.bag - ames_train$Sale_Price)^2)</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>train_rmse_bag <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhattrain.bag <span class="sc">-</span> ames_train<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>showError<span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Error train (rmse) for bagged tree:"</span>, <span class="fu">round</span>(train_rmse_bag,<span class="dv">6</span>))</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhattrain.bag, ames_train<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>yhattrain.bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag.Ames, <span class="at">newdata =</span> ames_train)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># train_mse_bag  &lt;- sqrt(mean(yhattrain.bag - ames_train$Sale_Price)^2)</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>train_rmse_bag <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhattrain.bag <span class="sc">-</span> ames_train<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>showError<span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Error train (rmse) for bagged tree:"</span>, <span class="fu">round</span>(train_rmse_bag,<span class="dv">6</span>))</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhattrain.bag, ames_train<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1847,19 +1865,19 @@ No. of variables tried at each split: 73
 </div>
 </div>
 </div>
-<p>THis error is much smaller even than those from trees because of overfitting</p>
+<p>As expected, the training error is substantially smaller than the test error because the ensemble adapts very closely to the training data.</p>
 </section>
 <section id="error-estimated-from-test-samples" class="level3">
 <h3 class="anchored" data-anchor-id="error-estimated-from-test-samples">Error estimated from test samples</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>yhat.bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag.Ames, <span class="at">newdata =</span> ames_test)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># test_mse_bag  &lt;- sqrt(mean(yhat.bag - ames_test$Sale_Price)^2)</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>test_rmse_bag  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.bag <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>showError<span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Error test (rmse) for bagged tree:"</span>, <span class="fu">round</span>(test_rmse_bag,<span class="dv">4</span>))</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhat.bag, ames_test<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>yhat.bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag.Ames, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># test_mse_bag  &lt;- sqrt(mean(yhat.bag - ames_test$Sale_Price)^2)</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>test_rmse_bag  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.bag <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>showError<span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Error test (rmse) for bagged tree:"</span>, <span class="fu">round</span>(test_rmse_bag,<span class="dv">4</span>))</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhat.bag, ames_test<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1873,14 +1891,15 @@ No. of variables tried at each split: 73
 <section id="error-estimated-from-out-of-bag-samples" class="level3">
 <h3 class="anchored" data-anchor-id="error-estimated-from-out-of-bag-samples">Error estimated from out-of-bag samples</h3>
 <p>Bagging allows computing an out-of bag error estimate.</p>
-<p>Out of bag error rate is reported in the output and can be computed from the <code>predicted</code> (<em>“the predicted values of the input data based on out-of-bag samples”</em>)</p>
+<p>For each observation, only the trees where that observation was not included in the bootstrap sample are used to compute its prediction.</p>
+<p>Therefore, OOB predictions behave similarly to predictions obtained from an internal validation set, providing an almost unbiased estimate of test error without requiring a separate validation dataset.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>oob_err<span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((bag.Ames<span class="sc">$</span>predicted<span class="sc">-</span>ames_train<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>showError <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Out of bag error for bagged tree:"</span>, <span class="fu">round</span>(oob_err,<span class="dv">4</span>))</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bag.Ames<span class="sc">$</span>predicted, ames_train<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>oob_err<span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((bag.Ames<span class="sc">$</span>predicted<span class="sc">-</span>ames_train<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>showError <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Out of bag error for bagged tree:"</span>, <span class="fu">round</span>(oob_err,<span class="dv">4</span>))</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bag.Ames<span class="sc">$</span>predicted, ames_train<span class="sc">$</span>Sale_Price, <span class="at">main=</span>showError)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1895,13 +1914,13 @@ No. of variables tried at each split: 73
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>errTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(),  <span class="at">RMSE=</span><span class="fu">double</span>())</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">1</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Default Regression Tree"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">2</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Big Regression Tree"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">3</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Optimally pruned Regression Tree"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">4</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with Train Data"</span>, <span class="fu">round</span>(train_rmse_bag,<span class="dv">2</span>))</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">5</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with Test Data"</span>, <span class="fu">round</span>(test_rmse_bag,<span class="dv">2</span>))</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">6</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with OOB error rate"</span>, <span class="fu">round</span>(oob_err,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>errTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(),  <span class="at">RMSE=</span><span class="fu">double</span>())</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">1</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Default Regression Tree"</span>, <span class="fu">round</span>(test_rmse1,<span class="dv">2</span>))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">2</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Big Regression Tree"</span>, <span class="fu">round</span>(test_rmse2,<span class="dv">2</span>))</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">3</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Optimally pruned Regression Tree"</span>, <span class="fu">round</span>(test_rmse3,<span class="dv">2</span>))</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">4</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with Train Data"</span>, <span class="fu">round</span>(train_rmse_bag,<span class="dv">2</span>))</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">5</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with Test Data"</span>, <span class="fu">round</span>(test_rmse_bag,<span class="dv">2</span>))</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">6</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Bagged Tree with OOB error rate"</span>, <span class="fu">round</span>(oob_err,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1928,10 +1947,10 @@ No. of variables tried at each split: 73
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>VIP <span class="ot">&lt;-</span> <span class="fu">importance</span>(bag.Ames) </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>VIP <span class="ot">&lt;-</span> VIP[<span class="fu">order</span>(VIP[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(VIP, <span class="at">n=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>VIP <span class="ot">&lt;-</span> <span class="fu">importance</span>(bag.Ames) </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>VIP <span class="ot">&lt;-</span> VIP[<span class="fu">order</span>(VIP[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(VIP, <span class="at">n=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 %IncMSE IncNodePurity
@@ -1971,14 +1990,14 @@ Mas_Vnr_Area    3.862446      72973.11</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>invVIP <span class="ot">&lt;-</span>VIP[<span class="fu">order</span>(VIP[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">FALSE</span>),<span class="dv">1</span>] </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>tVIP<span class="ot">&lt;-</span> <span class="fu">tail</span>(invVIP, <span class="at">n=</span><span class="dv">15</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tVIP, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">cex.names=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>invVIP <span class="ot">&lt;-</span>VIP[<span class="fu">order</span>(VIP[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">FALSE</span>),<span class="dv">1</span>] </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>tVIP<span class="ot">&lt;-</span> <span class="fu">tail</span>(invVIP, <span class="at">n=</span><span class="dv">15</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tVIP, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">cex.names=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1987,13 +2006,13 @@ Mas_Vnr_Area    3.862446      72973.11</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(bag.Ames, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(bag.Ames, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -2007,19 +2026,19 @@ Mas_Vnr_Area    3.862446      72973.11</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make bootstrapping reproducible</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(randomForest)</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>RF.Ames <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make bootstrapping reproducible</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(randomForest)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>RF.Ames <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show</span>(RF.Ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show</span>(RF.Ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2036,9 +2055,9 @@ No. of variables tried at each split: 24
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>yhat.rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(RF.Ames, <span class="at">newdata =</span> ames_test)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhat.rf, ames_test<span class="sc">$</span>Sale_Price)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>yhat.rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(RF.Ames, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(yhat.rf, ames_test<span class="sc">$</span>Sale_Price)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -2049,15 +2068,15 @@ No. of variables tried at each split: 24
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>test_rmse_rf  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.rf <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for Random Forest:"</span>, <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>test_rmse_rf  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.rf <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Error test (rmse) for Random Forest:"</span>, <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Error test (rmse) for Random Forest: 24.57"</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">7</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest (defaults)"</span>, <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">7</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest (defaults)"</span>, <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>There is some improvement on bagging but it is clearly small.</p>
@@ -2069,47 +2088,46 @@ No. of variables tried at each split: 24
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>num_trees_range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">400</span>, <span class="dv">100</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>num_vars_range <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">ncol</span>(ames_train)<span class="sc">/</span>(<span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">1</span>)))</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>RFerrTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(), </span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">NumTree=</span><span class="fu">integer</span>(), <span class="at">NumVar=</span><span class="fu">integer</span>(), </span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">RMSE=</span><span class="fu">double</span>())</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>errValue <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(</span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(num_trees_range)){</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq_along</span>(num_vars_range)) {  </span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    numTrees <span class="ot">&lt;-</span> num_trees_range[i]</span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    numVars <span class="ot">&lt;-</span> num_vars_range [j] <span class="co"># floor(ncol(ames_train)/3) # default</span></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>    RF.Ames.n <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> numVars,</span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree=</span> numTrees,</span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    yhat.rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(RF.Ames.n, <span class="at">newdata =</span> ames_test)</span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>    oob.rf <span class="ot">&lt;-</span> RF.Ames.n<span class="sc">$</span>predicted</span>
-<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>    test_rmse_rf  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.rf <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>    RFerrTable[errValue, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest"</span>, </span>
-<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a>                            <span class="at">NumTree =</span> numTrees, <span class="at">NumVar =</span> numVars, </span>
-<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a>                            <span class="at">RMSE =</span> <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>)) </span>
-<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a>    errValue <span class="ot">&lt;-</span> errValue<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>num_trees_range <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">300</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>num_vars_range <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">24</span>, <span class="dv">37</span>)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>RFerrTable <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Model=</span><span class="fu">character</span>(), </span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">NumTree=</span><span class="fu">integer</span>(), <span class="at">NumVar=</span><span class="fu">integer</span>(), </span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">RMSE=</span><span class="fu">double</span>())</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>errValue <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(num_trees_range)){</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq_along</span>(num_vars_range)) {  </span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    numTrees <span class="ot">&lt;-</span> num_trees_range[i]</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>    numVars <span class="ot">&lt;-</span> num_vars_range [j] <span class="co"># floor(ncol(ames_train)/3) # default</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>    RF.Ames.n <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Sale_Price <span class="sc">~</span> ., </span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> ames_train, </span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> numVars,</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree=</span> numTrees,</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">importance =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>    yhat.rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(RF.Ames.n, <span class="at">newdata =</span> ames_test)</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>    oob.rf <span class="ot">&lt;-</span> RF.Ames.n<span class="sc">$</span>predicted</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a>    test_rmse_rf  <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((yhat.rf <span class="sc">-</span> ames_test<span class="sc">$</span>Sale_Price)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a>    RFerrTable[errValue, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest"</span>, </span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>                            <span class="at">NumTree =</span> numTrees, <span class="at">NumVar =</span> numVars, </span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>                            <span class="at">RMSE =</span> <span class="fu">round</span>(test_rmse_rf,<span class="dv">2</span>)) </span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a>    errValue <span class="ot">&lt;-</span> errValue<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
- 207.77    0.58  210.37 </code></pre>
+  97.88    0.47  101.03 </code></pre>
 </div>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>RFerrTable <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>RFerrTable <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -2202,8 +2220,8 @@ No. of variables tried at each split: 24
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>bestRF <span class="ot">&lt;-</span> <span class="fu">which</span>(RFerrTable<span class="sc">$</span>RMSE<span class="sc">==</span><span class="fu">min</span>(RFerrTable<span class="sc">$</span>RMSE))</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>RFerrTable[bestRF,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>bestRF <span class="ot">&lt;-</span> <span class="fu">which</span>(RFerrTable<span class="sc">$</span>RMSE<span class="sc">==</span><span class="fu">min</span>(RFerrTable<span class="sc">$</span>RMSE))</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>RFerrTable[bestRF,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Model NumTree NumVar  RMSE
@@ -2212,8 +2230,8 @@ No. of variables tried at each split: 24
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>minRFErr <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(RFerrTable[bestRF,<span class="dv">4</span>])</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">8</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest (Optimized)"</span>, <span class="fu">round</span>(minRFErr,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>minRFErr <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(RFerrTable[bestRF,<span class="dv">4</span>])</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>errTable[<span class="dv">8</span>, ] <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"Random Forest (Optimized)"</span>, <span class="fu">round</span>(minRFErr,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2222,8 +2240,8 @@ No. of variables tried at each split: 24
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kableExtra::kable(errTable) %&gt;% kableExtra::kable_styling()</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(errTable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kableExtra::kable(errTable) %&gt;% kableExtra::kable_styling()</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(errTable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -2270,7 +2288,7 @@ No. of variables tried at each split: 24
 </table>
 </div>
 </div>
-<p>In summary, it has been shown that a Random Forest with 400 trees and 37 variables provides the smallest error rate, though the improvement on the default values and even the bagging approach is very small. This may be seen as a confirmation from the fact that Random Forests are well known to be good “out-of-the-box predictors”, that is that they perform well, even without tuning.</p>
+<p>In summary, it has been shown that the best RMSE was obtained using 37 variables at each split, while increasing the number of trees beyond 100 provided almost no improvement, and even the improvement of the bagging approach is very small. This may be seen as a confirmation from the fact that Random Forests are well known to be good “out-of-the-box predictors”, that is that they perform well, even without tuning.</p>
 </section>
 <section id="variable-importance-1" class="level2">
 <h2 class="anchored" data-anchor-id="variable-importance-1">Variable importance</h2>
@@ -2278,13 +2296,13 @@ No. of variables tried at each split: 24
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(RF.Ames, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(RF.Ames, <span class="at">num_features =</span> <span class="dv">40</span>, <span class="at">bar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="Lab-C2.3-Random_Forests_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>

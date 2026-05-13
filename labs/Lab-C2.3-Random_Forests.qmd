@@ -101,7 +101,7 @@ skim(ames)
 
 The exploration shows that the data set is well formed with factor data types for categorical variables and no missings.
 
-It can also be seen that tha response variabl, `Sales_Price` varies on a high range, as confirmed below.
+It can also be seen that tha response variable, `Sales_Price` varies on a high range, as confirmed below.
 
 ```{r}
 summary(ames$Sale_Price)
@@ -116,7 +116,7 @@ Although not strictly necessary, given that the variable that has the widest ran
 ```{r}
 require(dplyr)
 ames <- ames %>% mutate(Sale_Price = Sale_Price/1000)
-boxplot(ames)
+boxplot(ames, las=2, cex.axis=0.5)
 ```
 
 ## Spliting the data into test/train
@@ -137,31 +137,34 @@ ames_test   <- testing(split)
 
 # A simple regression tree
 
-As a first attempt to predict Sales_Price we build a unique regression tree, which as has been discussed is a weak learner. The `tree` package will be used to fit and optimize the tree.
+As a first attempt to predict `Sales_Price` we build a unique regression tree, which as has been discussed is a weak learner. The `tree` package will be used to fit and optimize the tree.
 
 We build a tree using non-restrictive parameters. This will allow space for pruning it better.
 
 We use the `tree.control` function to set the values for the `control` parameter in the `tree` function.
 
-Let's start with a tree with the default values.
+Let’s start with a relatively small tree obtained with mildly restrictive control parameters.
 
 ```{r}
 library(tree)
 
-ctlPars <-tree.control(nobs =nrow(ames_train), 
-                       mincut = 5, 
-                       minsize = 10, 
-                       mindev = 0.01)
+# Control pars as defined by tree package
+ctl_tree <- tree::tree.control(
+  nobs = nrow(ames_train),
+  mincut = 5,
+  minsize = 10,
+  mindev = 0.01
+)
 
 ames_rt1 <-  tree::tree(
                     formula = Sale_Price ~ .,
                     data    = ames_train,
                     split   = "deviance",
-                    control = ctlPars)
+                    control = ctl_tree)
 summary(ames_rt1)
 ```
 
-This gives a small tree with only 11 terminal nodes.
+This gives a small tree with only 12 terminal nodes.
 
 We can visualize the tree 
 
@@ -170,24 +173,35 @@ plot(x = ames_rt1, type = "proportional")
 text(x = ames_rt1, splits = TRUE, pretty = 0, cex = 0.6, col = "firebrick")
 ```
 
-If instead of using the `tree`package we use `rpart` we can get a better plot:
+If instead of using the `tree`package we use `rpart` we can get a better plot. In that case we use the `rpart.control` function to set the values for the `control` parameter in the `rpart` function.
 
 ```{r}
+# Control pars as defined for package rpart
+# Roughly but noty exactly equivalent to ctl_tree
+ctl_rpart <- rpart::rpart.control(
+  minsplit = 10,
+  minbucket = 5,
+  cp = 0.01,
+  xval = 10
+)
+
 ames_rt1bis <- rpart(
   formula = Sale_Price ~ .,
   data    = ames_train,
   method  = "anova",
-  control = ctlPars
+  control = ctl_rpart
 )
+```
+
+```{r}
 library(rpart.plot)
 rpart.plot(ames_rt1bis)
-
 ```
 
 
 ## Optimizing the tree
 
-In order to optimize the tree we ccan ompute the best cost complexity value
+In order to optimize the tree we can compute the best cost complexity value
 
 ```{r pruneAmes1}
 set.seed(123)
@@ -197,7 +211,7 @@ optSize <- rev(cv_ames_rt1$size)[which.min(rev(cv_ames_rt1$dev))]
 paste("Optimal size obtained is:", optSize)
 ```
 
-The best value of alpha is obtained with the same tree, which suggests that *there will be no advantage in pruning*.
+The optimal tree size coincides with the size of the original tree, *suggesting that pruning would not improve prediction performance*.
 
 This is confirmed by plotting tree size vs deviance which shows that the tree with the samllest error is the biggest one that can be obtained.
 
@@ -231,12 +245,12 @@ We could have tried to obtain a bigger tree with the hope that pruning might fin
 
 
 ```{r fitAmesRT2}
-ctlPars2 <-tree.control(nobs=nrow(ames_train), mincut = 1, minsize = 2, mindev = 0)
+ctl_tree22 <-tree.control(nobs=nrow(ames_train), mincut = 1, minsize = 2, mindev = 0)
 ames_rt2 <-  tree::tree(
                     formula = Sale_Price ~ .,
                     data    = ames_train,
                     split   = "deviance",
-                    control = ctlPars2)
+                    control = ctl_tree22)
 summary(ames_rt2)
 ```
 
@@ -319,7 +333,7 @@ knitr::kable(errTable)
 ```
 
 
-In summary, what is illustrated by this example is that, *for some datasets, it is very hard to obtain an optimal tree because there seems to be a minimum complexity which is very hard to decrease*. 
+In summary, this example illustrates that, for some datasets, increasing tree complexity only leads to marginal improvements in prediction accuracy.
 
 Building a saturated tree only provides a slight improvement of less than 5% in RMSE at the cost of having to use 5 times more variables in a tree withh more than 1000 nodes.
 
@@ -345,7 +359,9 @@ The first attempt to build an ensemble may be to apply `bagging` that is buildin
 
 In this example, rather than use a single pruned decision tree, we can use, say, 100 bagged unpruned trees (by not pruning the trees we're keeping bias low and variance high which is when bagging will have the biggest effect).
 
-Bagging is equivalent to RandomForest if we use all the trees so the library `randomForest` is used.
+Bagging can be seen as a particular case of Random Forests *where all predictors are considered at each split*.
+
+Therefore, bagging can be implemented using the `randomForest` package by setting `mtry` equal to the total number of predictors.
 
 ```{r fitbaggedTrees1}
 # make bootstrapping reproducible
@@ -354,7 +370,7 @@ set.seed(123)
 library(randomForest)
 bag.Ames <- randomForest(Sale_Price ~ ., 
                          data = ames_train, 
-                         mtry = ncol(ames_train-1), 
+                         mtry = ncol(ames_train)-1, 
                          ntree = 100,
                          importance = TRUE)
 show(bag.Ames)
@@ -379,7 +395,7 @@ plot(yhattrain.bag, ames_train$Sale_Price, main=showError)
 abline(0, 1)
 ```
 
-THis error is much smaller even than those from trees because of overfitting
+As expected, the training error is substantially smaller than the test error because the ensemble adapts very closely to the training data.
 
 ### Error estimated from test samples
 
@@ -398,7 +414,9 @@ abline(0, 1)
 
 Bagging allows computing an out-of bag error estimate. 
 
-Out of bag error rate is reported in the output and can be computed from the `predicted` (*"the predicted values of the input data based on out-of-bag samples"*) 
+For each observation, only the trees where that observation was not included in the bootstrap sample are used to compute its prediction.
+
+Therefore, OOB predictions behave similarly to predictions obtained from an internal validation set, providing an almost unbiased estimate of test error without requiring a separate validation dataset.
 
 
 ```{r predictBagOOB}
@@ -507,9 +525,8 @@ A common strategy to find the optimum combination of parameters is  to perform a
 
 
 ```{r}
-num_trees_range <- seq(100, 400, 100)
-
-num_vars_range <- floor(ncol(ames_train)/(seq(2,4,1)))
+num_trees_range <- c(100, 300)
+num_vars_range <- c(18, 24, 37)
 
 RFerrTable <- data.frame(Model=character(), 
                        NumTree=integer(), NumVar=integer(), 
@@ -560,7 +577,7 @@ errTable[8, ] <-  c("Random Forest (Optimized)", round(minRFErr,2))
 knitr::kable(errTable) 
 ```
 
-In summary, it has been shown that a Random Forest with 400 trees and 37 variables provides the smallest error rate, though the improvement on the default values and even the bagging approach is very small. This may be seen as a confirmation from the fact that Random Forests are well known to be good "out-of-the-box predictors", that is that they perform well, even without tuning.
+In summary, it has been shown that the best RMSE was obtained using 37 variables at each split, while increasing the number of trees beyond 100 provided almost no improvement, and even the improvement of the bagging approach is very small. This may be seen as a confirmation from the fact that Random Forests are well known to be good "out-of-the-box predictors", that is that they perform well, even without tuning.
 
 ## Variable importance
 
