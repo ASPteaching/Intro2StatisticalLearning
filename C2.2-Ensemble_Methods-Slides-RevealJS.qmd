@@ -27,3 +27,4 @@ editor_options:
 ---
 
 {{< include C2.2-Ensemble_Methods-Slides-body.qmd >}}
+{{< include C2-Appendix_1-The_Bootstrap.qmd >}}

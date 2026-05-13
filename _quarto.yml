@@ -44,6 +44,8 @@ website:
             text: Ensemble Methods
           - href: labs/Lab-C2.3-Random_Forests.qmd
             text: Lab-C2.3-Random Forest
+          - href: labs/Lab-C2.3-Random_Forests_Python.html
+            text: Lab-C2.3-Random Forest (Python)
           - href: labs/Lab-C2.4-Boosting.qmd
             text: Lab-C2.4-Boosting
           - href: labs/Lab-C2.5-The-caret_package.qmd
