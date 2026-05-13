@@ -1,0 +1,291 @@
+---
+title: "Why does bagging reduce variance"
+subtitle: "And why  do Random Forests do better than bagging"
+format:
+  html:
+    toc: true
+    theme: cosmo
+    embed-resources: true
+  pdf:
+    toc: true
+    geometry: 
+      - top=30mm
+      - left=20mm  
+---
+
+
+# Why Does Bagging Work?
+
+## Motivation
+
+- Decision trees are typically **high-variance** estimators.
+
+- Small changes in the training data can lead to very different trees.
+
+- The idea of *bagging* is to:
+
+  1. Generate many bootstrap samples.
+  2. Train one tree on each bootstrap sample.
+  3. Aggregate the predictions.
+
+- But why should averaging many unstable trees improve prediction?
+
+
+## Bagging as an Averaging Procedure
+
+Suppose we build $B$ trees:
+
+$$
+\hat f_1(x),\hat f_2(x),\ldots,\hat f_B(x)
+$$
+
+and define the bagged predictor as:
+
+$$
+\hat f_{\mathrm{bag}}(x)
+=
+\frac{1}{B}\sum_{b=1}^B \hat f_b(x)
+$$
+
+Assume:
+
+$$
+\operatorname{Var}(\hat f_b(x)) = \sigma^2
+$$
+
+and that all pairs of predictors have correlation:
+
+$$
+\operatorname{Corr}(\hat f_b(x),\hat f_{b'}(x)) = \rho
+$$
+
+Therefore:
+
+$$
+\operatorname{Cov}(\hat f_b(x),\hat f_{b'}(x))
+=
+\rho\sigma^2
+$$
+
+
+## Variance of the Bagged Predictor
+
+The variance of the aggregated predictor is:
+
+$$
+\operatorname{Var}\left(
+\frac{1}{B}\sum_{b=1}^B \hat f_b(x)
+\right)
+$$
+
+Using the variance formula for sums:
+
+$$
+\operatorname{Var}\left(
+\sum_{b=1}^B \hat f_b(x)
+\right)
+=
+\sum_{b=1}^B \operatorname{Var}(\hat f_b(x))
++
+\sum_{b\neq b'} \operatorname{Cov}(\hat f_b(x),\hat f_{b'}(x))
+$$
+
+Substituting the assumptions:
+
+$$
+=
+B\sigma^2 + B(B-1)\rho\sigma^2
+$$
+
+Thus:
+
+$$
+\operatorname{Var}(\hat f_{\mathrm{bag}}(x))
+=
+\frac{1}{B^2}
+\left[
+B\sigma^2 + B(B-1)\rho\sigma^2
+\right]
+$$
+
+Simplifying:
+
+$$
+\boxed{
+\operatorname{Var}(\hat f_{\mathrm{bag}}(x))
+=
+\sigma^2\left(
+\rho + \frac{1-\rho}{B}
+\right)
+}
+$$
+
+
+## Interpretation of the Result
+
+### If predictors were independent
+
+If:
+
+$$
+\rho = 0
+$$
+
+then:
+
+$$
+\operatorname{Var}(\hat f_{\mathrm{bag}}(x))
+=
+\frac{\sigma^2}{B}
+$$
+
+- Averaging strongly reduces variance.
+- Increasing $B$ makes predictions more stable.
+
+
+### In practice
+
+- Trees are **not independent**.
+- Bootstrap samples overlap.
+- Similar observations often generate similar trees.
+
+Therefore:
+
+$$
+\rho > 0
+$$
+
+and:
+
+$$
+\operatorname{Var}(\hat f_{\mathrm{bag}}(x))
+=
+\sigma^2\left(
+\rho + \frac{1-\rho}{B}
+\right)
+$$
+
+
+## Key Consequence
+
+As:
+
+$$
+B \to \infty
+$$
+
+we obtain:
+
+$$
+\operatorname{Var}(\hat f_{\mathrm{bag}}(x))
+\to
+\rho\sigma^2
+$$
+
+Therefore:
+
+- Bagging reduces variance.
+- But the reduction is limited by the correlation between trees.
+
+The more correlated the trees are, the less variance reduction we obtain.
+
+
+# From Bagging to Random Forests
+
+## The Limitation of Bagging
+
+Bagging improves prediction accuracy because:
+
+- it averages many unstable trees,
+- and averaging reduces variance.
+
+However:
+
+- the trees are often highly correlated,
+- especially when a few predictors are very strong.
+
+In that situation:
+
+- the same variables tend to appear in the first splits,
+- many trees become structurally similar,
+- and averaging becomes less effective.
+
+
+## The Role of Correlation
+
+Recall:
+
+$$
+\operatorname{Var}(\hat f_{\mathrm{bag}}(x))
+=
+\sigma^2\left(
+\rho + \frac{1-\rho}{B}
+\right)
+$$
+
+Once $B$ is large:
+
+$$
+\operatorname{Var}(\hat f_{\mathrm{bag}}(x))
+\approx
+\rho\sigma^2
+$$
+
+This shows that:
+
+- increasing the number of trees eventually has limited impact,
+- unless we also reduce the correlation $\rho$.
+
+
+## The Key Idea Behind Random Forests
+
+Random Forests introduce an additional source of randomness.
+
+Instead of considering all predictors at every split:
+
+- only a random subset of predictors is considered.
+
+This forces different trees to:
+
+- explore different splitting variables,
+- become less similar,
+- and therefore become less correlated.
+
+
+## Why Random Forests Improve Over Bagging
+
+Reducing tree correlation decreases:
+
+$$
+\rho
+$$
+
+and therefore decreases:
+
+$$
+\operatorname{Var}(\hat f_{\mathrm{RF}}(x))
+$$
+
+Thus Random Forests aim to:
+
+1. Keep the low bias of deep trees.
+2. Preserve the variance reduction of bagging.
+3. Further improve performance by reducing correlation between trees.
+
+
+## Summary
+
+### Bagging
+
+- Reduces variance by averaging many trees.
+- Works especially well with unstable models.
+- Performance is limited by correlation between trees.
+
+
+### Random Forests
+
+- Add randomness in predictor selection.
+- Reduce correlation between trees.
+- Achieve additional variance reduction.
+- Usually outperform pure bagging.
+

@@ -281,6 +281,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./labs/Lab-C2.3-Random_Forests_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.3-Random Forest (Python)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./labs/Lab-C2.4-Boosting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab-C2.4-Boosting</span></a>
   </div>
@@ -818,8 +824,8 @@ No. of variables tried at each split: 80
 </section>
 <section id="random-forests" class="level1">
 <h1>Random Forests</h1>
-<section id="random-forests-decorrelating-predictors" class="level2">
-<h2 class="anchored" data-anchor-id="random-forests-decorrelating-predictors">Random forests: decorrelating predictors</h2>
+<section id="random-forests-decorrelating-predictions" class="level2">
+<h2 class="anchored" data-anchor-id="random-forests-decorrelating-predictions">Random forests: decorrelating predictions</h2>
 <ul>
 <li>Bagged trees, based on re-samples (of the same sample) tend to be highly correlated.</li>
 <li>Leo Breimann, again, introduced a modification to bagging, he called <em>Random forests</em>, that aims at decorrelating trees as follows:
@@ -860,8 +866,8 @@ No. of variables tried at each split: 80
 <li><span class="math inline">\(m\)</span> can be chosen using cross-validation, but</li>
 <li>The usual recommendation for random selection of variables at each split has been studied by simulation:
 <ul>
-<li>For regression default value is <span class="math inline">\(m=p/3\)</span></li>
-<li>For classification default value is <span class="math inline">\(m=\sqrt{p}\)</span>.</li>
+<li>For regression a typical default is <span class="math inline">\(m=p/3\)</span></li>
+<li>For classification a typical default is <span class="math inline">\(m=\sqrt{p}\)</span>.</li>
 </ul></li>
 <li>If <span class="math inline">\(m=p\)</span>, we have bagging instead of RF.</li>
 </ul>
@@ -1018,7 +1024,7 @@ No. of variables tried at each split: 80
 <div class="small">
 <ul>
 <li>Default: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.</li>
-<li>Node size has strong influence on error and time.</li>
+<li>Sampling fraction and replacement strategy influence diversity and prediction error.</li>
 </ul>
 </div>
 </section>
@@ -1378,7 +1384,6 @@ No. of variables tried at each split: 80
 <li><p>Boosting, like other Ensemble methods, improves the accuracy of weak learners and achieve better predictive performance than individual models.</p></li>
 <li><p>Boosting also reduces overfitting by improving the generalization ability of models.</p></li>
 <li><p>Available in many flavors,</p></li>
-<li><p>Can be parallelized</p></li>
 <li><p>Strong experience in Real world applications and industry.</p></li>
 </ul>
 </section>
@@ -1403,322 +1408,12 @@ No. of variables tried at each split: 80
 <li><p><a href="https://github.com/dmlc/xgboost/tree/master/R-package">xgboost</a></p></li>
 <li><p>An interesting option is to rely on the <a href="https://cran.r-project.org/web/packages/caret/index.html">caret</a> package which allows to run the distinct methods with a common interface.</p></li>
 </ul></li>
-<li><p>Inpython we usually rely on scikit-learn libraries although there are many alternative implementations</p>
+<li><p>In Python we usually rely on scikit-learn libraries although there are many alternative implementations</p>
 <ul>
 <li><a href="https://scikit-learn.org/stable/modules/ensemble.html">Scikit-learn ensemble</a></li>
 <li><a href="https://python-course.eu/machine-learning/boosting-algorithm-in-python.php">https://python-course.eu/machine-learning/boosting-algorithm-in-python.php</a></li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="appendix-i-the-bootstrap" class="level1">
-<h1>Appendix I: The Bootstrap</h1>
-<p>These slides have been conserved as an appendix because they were originally added to this chapter, when a section on resampling was not included in previous chapters.</p>
-<p>They can be used as an introduction to the bootstrap, similar to the scond part of the Chapter on Cross-validation and resampling.</p>
-<section id="the-bootstrap" class="level2">
-<h2 class="anchored" data-anchor-id="the-bootstrap">The bootstrap</h2>
-<ul>
-<li><em>Bootstrap</em> methods were introduced by <span class="citation" data-cites="Efron79">@Efron79</span> to estimate the standard error of a statistic.</li>
-<li>The success of the idea lied in that the procedure was presented as <em>automatic</em>, that is:
-<ul>
-<li>instead of having to do complex calculations,</li>
-<li>it allowed to approximate them using computer simulation.</li>
-</ul></li>
-<li>Some called it <em>the end of mathematical statistics</em>.</li>
-</ul>
-</section>
-<section id="bootstrap-applications" class="level2">
-<h2 class="anchored" data-anchor-id="bootstrap-applications">Bootstrap Applications</h2>
-<ul>
-<li><p>The bootstrap has been applied to almost any problem in Statistics.</p>
-<ul>
-<li>Computing standard errors, Bias, Quantiles,</li>
-<li>Building Confidence intervals,</li>
-<li>Doing Significance tests, …</li>
-</ul></li>
-<li><p>We illustrate it with the simplest case: <em>estimating the standard error of an estimator</em>.</p></li>
-</ul>
-</section>
-<section id="empirical-distribution-function" class="level2">
-<h2 class="anchored" data-anchor-id="empirical-distribution-function">Empirical Distribution Function</h2>
-<div class="font80">
-<ul>
-<li>Let <span class="math inline">\(X\)</span> be a random variable with distribution function <span class="math inline">\(F\)</span>,</li>
-<li>Let <span class="math inline">\(\mathbf{X}=X_1,\ldots,X_n\)</span> be an i.i.d random sample of <span class="math inline">\(F\)</span> and,</li>
-<li>let <span class="math inline">\(x_1,\dots, x_n\)</span> be a realization of <span class="math inline">\(\mathbf{X}\)</span>.</li>
-<li>The <em>Empirical Cumulative Distribution Function (ECDF)</em> <span class="math display">\[
-F_n(x) = \frac{1}{n} \#\{x_i\le x: i=1\dots n\} = \frac{1}{n}
-\sum_{i=1}^n I_{(-\infty,x]}(x_i),
-\]</span> is the function that assigns to each real number <span class="math inline">\(x\)</span> the proportion of observed values that are less or equal than <span class="math inline">\(x\)</span>.</li>
-</ul>
-</div>
-</section>
-<section id="the-ecdf-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="the-ecdf-in-r">The ECDF in R</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">11</span>,<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>Fn <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(x)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">knots</span>(Fn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -1  0  2  5 11</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Fn(3) = "</span>, <span class="fu">Fn</span>(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Fn(3) =  0.6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Fn(-2) = "</span>, <span class="fu">Fn</span>(<span class="sc">-</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Fn(-2) =  0</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:60%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Fn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="C2.2-Ensemble_Methods-Slides-body_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="ecdf-has-good-properties" class="level2">
-<h2 class="anchored" data-anchor-id="ecdf-has-good-properties">ECDF has good properties</h2>
-<ul>
-<li><p><span class="math inline">\(F_n (x)\)</span> is a cumulative distribution function.</p></li>
-<li><p><span class="math inline">\(F_n()\)</span> is an important DF because it comes to be <em>the best approximation that one can find for the theoretical (population) distribution function</em>, that is: <span class="math display">\[
-F_n(x) \longrightarrow F(x), \text { uniformly in } x \text{ as } n \rightarrow \infty.
-\]</span></p></li>
-<li><p>This is stated in the Glivenko-Cantelli theorem also know as the <em>Central Theorem of Statistics</em>.</p></li>
-</ul>
-</section>
-<section id="the-sample-distribution-function" class="level2">
-<h2 class="anchored" data-anchor-id="the-sample-distribution-function">The Sample distribution function</h2>
-<div class="font80">
-<ul>
-<li>Given a sample, <span class="math inline">\(\mathbf{X}\)</span> from a certain distribution, <span class="math inline">\(X\)</span>,</li>
-<li>Consider it a discrete random variable <span class="math inline">\(X_e\)</span> that sets mass <span class="math inline">\(1/n\)</span> to each of the observed <span class="math inline">\(n\)</span> points <span class="math inline">\(x_i\)</span>:</li>
-</ul>
-</div>
-<center>
-<img src="images/1.2-Ensemble_Methods-Slides_insertimage_3.png" class="img-fluid">
-</center>
-<div class="font80">
-<ul>
-<li><p><span class="math inline">\(F_n\)</span> is the distribution (function) of <span class="math inline">\(X_e\)</span>.</p></li>
-<li><p>From here, we notice that <em>generating samples from <span class="math inline">\(F_n\)</span> can be done by randomly taking values from <span class="math inline">\(\mathbf{X}\)</span> with probability <span class="math inline">\(1/n\)</span></em></p></li>
-</ul>
-</div>
-</section>
-<section id="plug-in-estimators" class="level2">
-<h2 class="anchored" data-anchor-id="plug-in-estimators">Plug-in estimators</h2>
-<ul>
-<li><p>Assume we want to estimate some parameter <span class="math inline">\(\theta\)</span>, that can be expressed as <span class="math inline">\(\theta (F)\)</span>, where <span class="math inline">\(F\)</span> is the distribution function of each <span class="math inline">\(X_i\)</span> in <span class="math inline">\((X_1,X_2,...,X_n)\)</span>.</p></li>
-<li><p>For example, <span class="math inline">\(\theta = E_F(X)=\theta (F)\)</span>.</p></li>
-<li><p>A <em>natural</em> way to estimate <span class="math inline">\(\theta(F)\)</span> may be to rely on <em>plug-in estimators</em>, where <span class="math inline">\(F\)</span> in <span class="math inline">\(\hat \theta (F)\)</span> is substituted by some approximation (estimate) to <span class="math inline">\(F\)</span>.</p></li>
-</ul>
-</section>
-<section id="plug-in-estimators-1" class="level2">
-<h2 class="anchored" data-anchor-id="plug-in-estimators-1">Plug-in estimators</h2>
-<ul>
-<li>A plug-in estimator is obtained by substituting <span class="math inline">\(F\)</span> by an approximation to <span class="math inline">\(F\)</span>, call it <span class="math inline">\(\hat F\)</span> in <span class="math inline">\(\theta(F)\)</span>: <span class="math display">\[
-\widehat {\theta (F)}=\theta(\hat{F})
-\]</span></li>
-<li>Given that <span class="math inline">\(F_n\)</span> is the best approximation to <span class="math inline">\(F\)</span> a reasonable plug-in estimator is <span class="math inline">\(\theta(F_n)\)</span>.</li>
-<li>Common sample estimators are, indeed, plug-in estimators.</li>
-</ul>
-</section>
-<section id="some-plug-in-estimators" class="level2">
-<h2 class="anchored" data-anchor-id="some-plug-in-estimators">Some plug-in estimators</h2>
-<ul>
-<li>Many estimators we usally work with are plug-in estimators.</li>
-</ul>
-<p><span class="math display">\[\begin{eqnarray*}
-\theta_1 &amp;=&amp; E_F(X)=\theta (F) \\
-\hat{\theta_1}&amp;=&amp;\overline{X}=\int XdF_n(x)=\frac
-1n\sum_{i=1}^nx_i=\theta (F_n)
-\\
-\theta_2 &amp;=&amp; Med(X)=\{m:P_F(X\leq m)=1/2\}=
-\theta (F),
-\\
-\hat{\theta_2}&amp;=&amp;\widehat{Med}(X)=\{m:\frac{\#x_i\leq m}n=1/2\}=\theta (F_n)
-\end{eqnarray*}\]</span></p>
-</section>
-<section id="precision-of-an-estimate" class="level2">
-<h2 class="anchored" data-anchor-id="precision-of-an-estimate">Precision of an estimate</h2>
-<ul>
-<li><p>A key point, when computing an estimator <span class="math inline">\(\hat \theta\)</span> of a parameter <span class="math inline">\(\theta\)</span>, is how precise is <span class="math inline">\(\hat \theta\)</span> as an estimator of <span class="math inline">\(\theta\)</span>?</p>
-<ul>
-<li><p>With the sample mean, <span class="math inline">\(\overline{X}\)</span>, the standard error estimation is immediate because the variance of the estimator is known: <span class="math inline">\(\sigma_{\overline{X}}=\frac{\sigma (X)}{\sqrt{n}}\)</span></p></li>
-<li><p>So, a natural estimator of the standard error of <span class="math inline">\(\overline{X}\)</span> is: <span class="math inline">\(\hat\sigma_{\overline{X}}=\frac{\hat{\sigma}(X)}{\sqrt{n}}\)</span></p></li>
-</ul></li>
-</ul>
-</section>
-<section id="precision-of-an-estimate-2" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="precision-of-an-estimate-2">Precision of an estimate (2)</h2>
-<ul>
-<li>If, as in this case, the variance of <span class="math inline">\(X\)</span> (and, here, that of <span class="math inline">\(\overline{X}\)</span>) is a functional of <span class="math inline">\(F\)</span>:</li>
-</ul>
-<div class="font90">
-<p><span class="math display">\[
-\sigma _{\overline{X}}=\frac{\sigma (X)}{\sqrt{n}}=\frac{\sqrt{\int
-[x-\int x\,dF(x)]^2 dF(x)}}{\sqrt{n}}=\sigma _{\overline{X}}(F)
-\]</span></p>
-</div>
-<p>then, the standard error estimator is the same functional applied on <span class="math inline">\(F_n\)</span>, that is:</p>
-<div class="font90">
-<p><span class="math display">\[
-\hat{\sigma}_{\overline{X}}=\frac{\hat{\sigma}(X)}{\sqrt{n}}=\frac{\sqrt{1/n\sum_{i=1}^n(x_i-\overline{x})^2}}{\sqrt{n}}=\sigma
-_{\overline{X}}(F_n).
-\]</span></p>
-</div>
-</section>
-<section id="standard-error-estimation" class="level2">
-<h2 class="anchored" data-anchor-id="standard-error-estimation">Standard error estimation</h2>
-<ul>
-<li>Thus, a way to obtain a standard error estimator <span class="math inline">\(\widehat{\sigma}_{\widehat{\theta}}\)</span> of an estimator <span class="math inline">\(\widehat{\theta}\)</span> consists on replacing <span class="math inline">\(F\)</span> with <span class="math inline">\(F_n\)</span> in the ``population’’ standard error expression of <span class="math inline">\(\hat \theta\)</span>, <span class="math inline">\(\displaystyle{\sigma_{\hat
-\theta}= \sigma_{\hat \theta}(F)}\)</span>, <strong>whenever it is known</strong>.</li>
-<li>In a schematic form: <span class="math display">\[
-\sigma_{\hat \theta}= \sigma_{\hat \theta}(F) \Longrightarrow
-\sigma_{\hat \theta}(F_n)= \widehat{\sigma}_{\hat \theta}.
-\]</span> That is, <em>the process consists of “plugging-in” <span class="math inline">\(F_n\)</span> in the (known) functional form, <span class="math inline">\(\sigma_{\hat \theta}(F)\)</span> that defines <span class="math inline">\(\sigma_{\hat \theta}\)</span>}</em>.</li>
-</ul>
-</section>
-<section id="the-bootstrap-1" class="level2">
-<h2 class="anchored" data-anchor-id="the-bootstrap-1">The bootstrap (1)</h2>
-<ul>
-<li>The previous approach, <span class="math inline">\(F\simeq F_n \Longrightarrow \sigma_{\hat \theta}(F) \simeq \sigma_{\hat \theta}(F_n)\)</span> presents the obvious drawback that, when the functional form <span class="math inline">\(\sigma _{\hat{\theta}}(F)\)</span> is unknown, it is not possible to carry out the substitution of <span class="math inline">\(F\)</span> by <span class="math inline">\(F_n\)</span>.</li>
-<li>This is, for example, the case of standard error of the median or <a href="http://artent.net/2012/07/31/standard-deviation-of-sample-median/">that of the correlation coefficient</a>.</li>
-</ul>
-</section>
-<section id="the-bootstrap-2" class="level2">
-<h2 class="anchored" data-anchor-id="the-bootstrap-2">The bootstrap (2)</h2>
-<ul>
-<li><p>The <em>bootstrap</em> method makes it possible to do the desired approximation: <span class="math display">\[\hat{\sigma}_{\hat\theta} \simeq \sigma _{\hat\theta}(F_n)\]</span> <em>without having to to know the form of</em> <span class="math inline">\(\sigma_{\hat\theta}(F)\)</span>.</p></li>
-<li><p>To do this,<em>the bootstrap estimates, or directly approaches</em> <span class="math inline">\(\sigma_{\hat{\theta}}(F_n)\)</span> <em>over the sample</em>.</p></li>
-</ul>
-</section>
-<section id="bootstrap-sampling-resampling" class="level2">
-<h2 class="anchored" data-anchor-id="bootstrap-sampling-resampling">Bootstrap sampling (<em>resampling</em>)</h2>
-<ul>
-<li>The <em>bootstrap</em> allows to estimate the standard error from samples of <span class="math inline">\(F_n\)</span></li>
-</ul>
-<div class="font80">
-<p><span class="math display">\[\begin{eqnarray*}
-&amp;&amp;\mbox{Instead of: } \\
-&amp;&amp; \quad F\stackrel{s.r.s}{\longrightarrow }{\bf X} =
-(X_1,X_2,\dots, X_n) \, \quad (\hat \sigma_{\hat\theta} =\underbrace{\sigma_{\theta(F_n)}_{unknown})
-\\
-&amp;&amp; \mbox{It is done: } \\
-&amp;&amp; \quad F_n\stackrel{s.r.s}{\longrightarrow }\quad {\bf X^{*}}=(X_1^{*},X_2^{*},
-\dots ,X_n^{*}) \\
-&amp;&amp; \quad (\hat \sigma_{\hat\theta}= \hat \sigma_{\hat \theta}^* \simeq \sigma_{\hat \theta}^*=\sigma_{\hat \theta}(F_n)).
-
-\end{eqnarray*}\]</span></p>
-</div>
-<div class="notes">
-<ul>
-<li><span class="math inline">\(\sigma_{\hat \theta}^*\)</span> is the bootstrap standard error of <span class="math inline">\(\hat \theta\)</span> and</li>
-<li><span class="math inline">\(\hat \sigma_{\hat \theta}^*\)</span> the bootstrap estimate of the standard error of <span class="math inline">\(\hat \theta\)</span>.</li>
-</ul>
-</div>
-</section>
-<section id="the-resampling-process" class="level2">
-<h2 class="anchored" data-anchor-id="the-resampling-process">The resampling process</h2>
-<div class="font80">
-<ul>
-<li><p>Resampling consists of <em>extracting samples of size <span class="math inline">\(n\)</span> of <span class="math inline">\(F_n\)</span></em>: <span class="math inline">\({\bf X_b^{*}}\)</span> is a random sample of size <span class="math inline">\(n\)</span> obtained <em>with replacement</em> from the original sample <span class="math inline">\({\bf X}\)</span>.</p></li>
-<li><p>Samples <span class="math inline">\({\bf X^*_1, X^*_2, ..., X^*_B }\)</span>, obtained through this procedure are called <em>bootstrap</em>&nbsp;samples or <em>re-samples</em>.</p></li>
-<li><p>On each resample the statistic of interest <span class="math inline">\(\hat \theta\)</span> can be computed yielding a <em>bootstrap estimate</em> <span class="math inline">\(\hat \theta^*_b= s(\mathbf{x^*_b})\)</span>.</p></li>
-<li><p>The collection of bootstrap estimates obtained form the resampled samples can be used to estimate distinct characteristics of <span class="math inline">\(\hat \theta\)</span> such as its standard error, its bias, etc.</p></li>
-</ul>
-</div>
-</section>
-<section id="resampling-illustrated" class="level2">
-<h2 class="anchored" data-anchor-id="resampling-illustrated">Resampling illustrated</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/1.2-Ensemble_Methods-Slides_insertimage_2.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/1.2-Ensemble_Methods-Slides_insertimage_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="the-bootstrap-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="the-bootstrap-distribution">The bootstrap distribution</h2>
-<ul>
-<li>The distribution of a statistic computed from re-samples is called the <em>bootstrap distribution</em>,</li>
-</ul>
-<div class="font90">
-<p><span class="math display">\[\begin{eqnarray*}
-\mathcal {L}(\hat \theta)&amp;\simeq&amp; P_F(\hat\theta \leq t): \mbox{Sampling distribution of } \hat \theta,\\
-\mathcal {L}(\hat \theta^*)&amp;\simeq&amp; P_{F_n}(\hat\theta^* \leq t): \mbox{Bootstrap distribution of } \hat \theta,
-\end{eqnarray*}\]</span></p>
-</div>
-<ul>
-<li><p>This distribution is usually not known.</p></li>
-<li><p>However the sampling process and the calculation of the statistics can be approximated using a Monte Carlo Algorithm.</p></li>
-</ul>
-</section>
-<section id="boot.-monte-carlo-algorithm" class="level2">
-<h2 class="anchored" data-anchor-id="boot.-monte-carlo-algorithm">Boot. Monte Carlo Algorithm</h2>
-<div class="font80">
-<ol type="1">
-<li>Draw a bootstrap sample, <span class="math inline">\({\bf x}_1^{*}\)</span> from <span class="math inline">\(F_n\)</span> and compute <span class="math inline">\(\hat{\theta}({\bf x}_1^{*})\)</span>.</li>
-<li>Repeat (1) <span class="math inline">\(B\)</span> times yielding <span class="math inline">\(\hat{\theta}({\bf x}_2^{*})\)</span>, <span class="math inline">\(\dots\)</span>, <span class="math inline">\(\hat{\theta}({\bf x}_B^{*})\)</span> estimates.</li>
-<li>Compute: <span class="math display">\[\begin{equation*}
-\hat{\sigma}_B (\hat\theta)= \sqrt{
-\frac{
-     \sum_{b=1}^B\left( \hat{\theta}(%
-     {\bf x^{*}_i})-\overline{\hat{\theta}^*}\right) ^2
-     }{
-     (B-1)
-     }
-}, \quad \overline{\hat{\theta}^*}\equiv \frac 1B\sum_{b=1}^B\hat{\theta}\left( {\bf x}%
-_b^{*}\right)
-\end{equation*}\]</span></li>
-</ol>
-</div>
-</section>
-<section id="bootstrap-estimates-of-se" class="level2">
-<h2 class="anchored" data-anchor-id="bootstrap-estimates-of-se">Bootstrap Estimates of SE</h2>
-<div class="font90">
-<ul>
-<li>Idea behind the bootstrap: the standard error of <span class="math inline">\(\hat\theta\)</span>, <span class="math inline">\(\sigma(\hat\theta)\)</span> can be <em>approximated</em> by the bootstrap estimator of the standard error, <span class="math inline">\(\sigma_B (\hat\theta)\)</span> which:
-<ul>
-<li>Coincides with <span class="math inline">\(\sigma_{\hat\theta}(F_n)\)</span>, that cannot be evaluated, if the functional form of <span class="math inline">\(\sigma_{\hat\theta}(F)\)</span> is unkown.</li>
-<li>Can be approximated by the Monte Carlo Estimator, <span class="math inline">\(\hat\sigma_{\hat\theta}(F_n)\)</span>, which is evaluated by resampling.</li>
-</ul></li>
-</ul>
-<p><span class="math display">\[
-\hat{\sigma}_B(\hat\theta)\left (\simeq \sigma_B(\hat\theta)=\sigma_{\hat\theta}(F_n)\right )\simeq\hat \sigma_{\hat\theta}(F_n).
-\]</span></p>
-</div>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>From real world to <em>bootstrap</em> world:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/fromRealWorld2BootstrapWorld.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/fromRealWorld2BootstrapWorld.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="notes">
-<p>Aquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci</p>
-</div>
 </section>
 <section id="references" class="level2 smaller">
 <h2 class="smaller anchored" data-anchor-id="references">References</h2>

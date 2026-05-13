@@ -340,11 +340,9 @@ knitr::include_graphics("images/amesVIP2.png")
 
 
 
-
-
 # Random Forests
 
-## Random forests: decorrelating predictors
+## Random forests: decorrelating predictions
 
 - Bagged trees, based on re-samples (of the same sample) tend to be highly correlated. 
 - Leo Breimann, again, introduced a modification to bagging, he called *Random forests*, that aims at decorrelating trees as follows:
@@ -371,8 +369,8 @@ Source: [AIML.com research](https://aiml.com/what-is-random-forest-2/)
 
 - $m$ can be chosen using cross-validation, but
 - The usual recommendation for random selection of variables at each split has been studied by simulation:
-  - For regression default value is $m=p/3$
-  - For classification default value is $m=\sqrt{p}$.
+  - For regression a typical default  is $m=p/3$
+  - For classification a typical default is $m=\sqrt{p}$.
 - If $m=p$, we have bagging instead of RF.
 
 
@@ -478,8 +476,8 @@ knitr::include_graphics("images/RandomForestsHyperparameters4.png")
 ```
 
 :::{.small}
-- Default: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.
-- Node size has strong influence on error and time.
+- Default: Bootstrap sampling with replacement on 100% observations.
+- Sampling fraction and replacement strategy influence diversity and prediction error.
 :::
 
 ## 5. Splitting rule 
@@ -824,8 +822,6 @@ Source: [Ensemble Learning: Bagging & Boosting](https://resources.experfy.com/ai
 
 - Available in many flavors, 
 
-- Can be parallelized
-
 - Strong experience in Real world applications and industry.
 
 ## Limitations of Boosting
@@ -851,7 +847,7 @@ Source: [Ensemble Learning: Bagging & Boosting](https://resources.experfy.com/ai
 
   - An interesting option is to rely on the   [caret](https://cran.r-project.org/web/packages/caret/index.html) package which allows to run the distinct methods with a common interface.
 
-- Inpython we usually rely on scikit-learn libraries although there are many alternative implementations
+- In Python we usually rely on scikit-learn libraries although there are many alternative implementations
 
   - [Scikit-learn ensemble](https://scikit-learn.org/stable/modules/ensemble.html)
   - [https://python-course.eu/machine-learning/boosting-algorithm-in-python.php](https://python-course.eu/machine-learning/boosting-algorithm-in-python.php)

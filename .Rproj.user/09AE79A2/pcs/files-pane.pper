@@ -5,9 +5,13 @@
             "ascending": false
         },
         {
+            "columnIndex": 3,
+            "ascending": true
+        },
+        {
             "columnIndex": 2,
             "ascending": false
         }
     ],
-    "path": "C:/Users/Usuario/Dropbox (Personal)/Classes/StatisticalLearning/Introduction2StatisticalLearning/docs/labs"
+    "path": "C:/Users/Usuario/Dropbox (Personal)/Classes/StatisticalLearning/Introduction2StatisticalLearning"
 }

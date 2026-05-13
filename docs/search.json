@@ -544,7 +544,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#how-many-variables-per-split",
     "title": "Ensemble Methods",
     "section": "How many variables per split?",
-    "text": "How many variables per split?\n\n\\(m\\) can be chosen using cross-validation, but\nThe usual recommendation for random selection of variables at each split has been studied by simulation:\n\nFor regression default value is \\(m=p/3\\)\nFor classification default value is \\(m=\\sqrt{p}\\).\n\nIf \\(m=p\\), we have bagging instead of RF.",
+    "text": "How many variables per split?\n\n\\(m\\) can be chosen using cross-validation, but\nThe usual recommendation for random selection of variables at each split has been studied by simulation:\n\nFor regression a typical default is \\(m=p/3\\)\nFor classification a typical default is \\(m=\\sqrt{p}\\).\n\nIf \\(m=p\\), we have bagging instead of RF.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -664,7 +664,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#sampling-scheme.",
     "title": "Ensemble Methods",
     "section": "4. Sampling scheme.",
-    "text": "4. Sampling scheme.\n\n\n\nDefault: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.\nNode size has strong influence on error and time.",
+    "text": "4. Sampling scheme.\n\n\n\nDefault: Bootstrap sampling with replacement on 100% observations.\nSampling fraction and replacement strategy influence diversity and prediction error.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -952,7 +952,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#advantages-of-boosting",
     "title": "Ensemble Methods",
     "section": "Advantages of Boosting",
-    "text": "Advantages of Boosting\n\nBoosting, like other Ensemble methods, improves the accuracy of weak learners and achieve better predictive performance than individual models.\nBoosting also reduces overfitting by improving the generalization ability of models.\nAvailable in many flavors,\nCan be parallelized\nStrong experience in Real world applications and industry.",
+    "text": "Advantages of Boosting\n\nBoosting, like other Ensemble methods, improves the accuracy of weak learners and achieve better predictive performance than individual models.\nBoosting also reduces overfitting by improving the generalization ability of models.\nAvailable in many flavors,\nStrong experience in Real world applications and industry.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -976,7 +976,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-application-with-r-and-python",
     "title": "Ensemble Methods",
     "section": "Boosting application with R and Python",
-    "text": "Boosting application with R and Python\n\nMany R packages implement the many variations of boosting:\n\nada,\nadabag,\nmboost,\ngbm,\nxgboost\nAn interesting option is to rely on the caret package which allows to run the distinct methods with a common interface.\n\nInpython we usually rely on scikit-learn libraries although there are many alternative implementations\n\nScikit-learn ensemble\nhttps://python-course.eu/machine-learning/boosting-algorithm-in-python.php",
+    "text": "Boosting application with R and Python\n\nMany R packages implement the many variations of boosting:\n\nada,\nadabag,\nmboost,\ngbm,\nxgboost\nAn interesting option is to rely on the caret package which allows to run the distinct methods with a common interface.\n\nIn Python we usually rely on scikit-learn libraries although there are many alternative implementations\n\nScikit-learn ensemble\nhttps://python-course.eu/machine-learning/boosting-algorithm-in-python.php",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -1471,7 +1471,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-body.html#how-many-variables-per-split",
     "title": "Introduction to Ensembles",
     "section": "How many variables per split?",
-    "text": "How many variables per split?\n\n\\(m\\) can be chosen using cross-validation, but\nThe usual recommendation for random selection of variables at each split has been studied by simulation:\n\nFor regression default value is \\(m=p/3\\)\nFor classification default value is \\(m=\\sqrt{p}\\).\n\nIf \\(m=p\\), we have bagging instead of RF."
+    "text": "How many variables per split?\n\n\\(m\\) can be chosen using cross-validation, but\nThe usual recommendation for random selection of variables at each split has been studied by simulation:\n\nFor regression a typical default is \\(m=p/3\\)\nFor classification a typical default is \\(m=\\sqrt{p}\\).\n\nIf \\(m=p\\), we have bagging instead of RF."
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#random-forest-algorithm-1",
@@ -1541,7 +1541,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-body.html#sampling-scheme.",
     "title": "Introduction to Ensembles",
     "section": "4. Sampling scheme.",
-    "text": "4. Sampling scheme.\n\nknitr::include_graphics(\"images/RandomForestsHyperparameters4.png\")\n\n\n\n\n\n\n\n\n\n\nDefault: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.\nNode size has strong influence on error and time."
+    "text": "4. Sampling scheme.\n\nknitr::include_graphics(\"images/RandomForestsHyperparameters4.png\")\n\n\n\n\n\n\n\n\n\n\nDefault: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.\nSampling fraction and replacement strategy influence diversity and prediction error."
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#splitting-rule",
@@ -1709,7 +1709,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-body.html#advantages-of-boosting",
     "title": "Introduction to Ensembles",
     "section": "Advantages of Boosting",
-    "text": "Advantages of Boosting\n\nBoosting, like other Ensemble methods, improves the accuracy of weak learners and achieve better predictive performance than individual models.\nBoosting also reduces overfitting by improving the generalization ability of models.\nAvailable in many flavors,\nCan be parallelized\nStrong experience in Real world applications and industry."
+    "text": "Advantages of Boosting\n\nBoosting, like other Ensemble methods, improves the accuracy of weak learners and achieve better predictive performance than individual models.\nBoosting also reduces overfitting by improving the generalization ability of models.\nAvailable in many flavors,\nStrong experience in Real world applications and industry."
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#limitations-of-boosting",
@@ -1723,7 +1723,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-body.html#boosting-application-with-r-and-python",
     "title": "Introduction to Ensembles",
     "section": "Boosting application with R and Python",
-    "text": "Boosting application with R and Python\n\nMany R packages implement the many variations of boosting:\n\nada,\nadabag,\nmboost,\ngbm,\nxgboost\nAn interesting option is to rely on the caret package which allows to run the distinct methods with a common interface.\n\nInpython we usually rely on scikit-learn libraries although there are many alternative implementations\n\nScikit-learn ensemble\nhttps://python-course.eu/machine-learning/boosting-algorithm-in-python.php"
+    "text": "Boosting application with R and Python\n\nMany R packages implement the many variations of boosting:\n\nada,\nadabag,\nmboost,\ngbm,\nxgboost\nAn interesting option is to rely on the caret package which allows to run the distinct methods with a common interface.\n\nIn Python we usually rely on scikit-learn libraries although there are many alternative implementations\n\nScikit-learn ensemble\nhttps://python-course.eu/machine-learning/boosting-algorithm-in-python.php"
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#the-bootstrap",
@@ -2374,5 +2374,375 @@
       "Ensemble Methods",
       "Ensemble Methods"
     ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#motivation",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#motivation",
+    "title": "Ensemble Methods",
+    "section": "Motivation",
+    "text": "Motivation\n\nDecision trees are typically high-variance estimators.\nSmall changes in the training data can lead to very different trees.\nThe idea of bagging is to:\n\nGenerate many bootstrap samples.\nTrain one tree on each bootstrap sample.\nAggregate the predictions.\n\nBut why should averaging many unstable trees improve prediction?",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-as-an-averaging-procedure",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-as-an-averaging-procedure",
+    "title": "Ensemble Methods",
+    "section": "Bagging as an Averaging Procedure",
+    "text": "Bagging as an Averaging Procedure\nSuppose we build \\(B\\) trees:\n\\[\n\\hat f_1(x),\\hat f_2(x),\\ldots,\\hat f_B(x)\n\\]\nand define the bagged predictor as:\n\\[\n\\hat f_{\\mathrm{bag}}(x)\n=\n\\frac{1}{B}\\sum_{b=1}^B \\hat f_b(x)\n\\]\nAssume:\n\\[\n\\operatorname{Var}(\\hat f_b(x)) = \\sigma^2\n\\]\nand that all pairs of predictors have correlation:\n\\[\n\\operatorname{Corr}(\\hat f_b(x),\\hat f_{b'}(x)) = \\rho\n\\]\nTherefore:\n\\[\n\\operatorname{Cov}(\\hat f_b(x),\\hat f_{b'}(x))\n=\n\\rho\\sigma^2\n\\]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#variance-of-the-bagged-predictor",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#variance-of-the-bagged-predictor",
+    "title": "Ensemble Methods",
+    "section": "Variance of the Bagged Predictor",
+    "text": "Variance of the Bagged Predictor\nThe variance of the aggregated predictor is:\n\\[\n\\operatorname{Var}\\left(\n\\frac{1}{B}\\sum_{b=1}^B \\hat f_b(x)\n\\right)\n\\]\nUsing the variance formula for sums:\n\\[\n\\operatorname{Var}\\left(\n\\sum_{b=1}^B \\hat f_b(x)\n\\right)\n=\n\\sum_{b=1}^B \\operatorname{Var}(\\hat f_b(x))\n+\n\\sum_{b\\neq b'} \\operatorname{Cov}(\\hat f_b(x),\\hat f_{b'}(x))\n\\]\nSubstituting the assumptions:\n\\[\n=\nB\\sigma^2 + B(B-1)\\rho\\sigma^2\n\\]\nThus:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\frac{1}{B^2}\n\\left[\nB\\sigma^2 + B(B-1)\\rho\\sigma^2\n\\right]\n\\]\nSimplifying:\n\\[\n\\boxed{\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\sigma^2\\left(\n\\rho + \\frac{1-\\rho}{B}\n\\right)\n}\n\\]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#interpretation-of-the-result",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#interpretation-of-the-result",
+    "title": "Ensemble Methods",
+    "section": "Interpretation of the Result",
+    "text": "Interpretation of the Result\nIf predictors were independent\nIf:\n\\[\n\\rho = 0\n\\]\nthen:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\frac{\\sigma^2}{B}\n\\]\n\nAveraging strongly reduces variance.\nIncreasing \\(B\\) makes predictions more stable.\n\nIn practice\n\nTrees are not independent.\nBootstrap samples overlap.\nSimilar observations often generate similar trees.\n\nTherefore:\n\\[\n\\rho &gt; 0\n\\]\nand:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\sigma^2\\left(\n\\rho + \\frac{1-\\rho}{B}\n\\right)\n\\]",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#key-consequence",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#key-consequence",
+    "title": "Ensemble Methods",
+    "section": "Key Consequence",
+    "text": "Key Consequence\nAs:\n\\[\nB \\to \\infty\n\\]\nwe obtain:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n\\to\n\\rho\\sigma^2\n\\]\nTherefore:\n\nBagging reduces variance.\nBut the reduction is limited by the correlation between trees.\n\nThe more correlated the trees are, the less variance reduction we obtain.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-limitation-of-bagging",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-limitation-of-bagging",
+    "title": "Ensemble Methods",
+    "section": "The Limitation of Bagging",
+    "text": "The Limitation of Bagging\nBagging improves prediction accuracy because:\n\nit averages many unstable trees,\nand averaging reduces variance.\n\nHowever:\n\nthe trees are often highly correlated,\nespecially when a few predictors are very strong.\n\nIn that situation:\n\nthe same variables tend to appear in the first splits,\nmany trees become structurally similar,\nand averaging becomes less effective.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-role-of-correlation",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-role-of-correlation",
+    "title": "Ensemble Methods",
+    "section": "The Role of Correlation",
+    "text": "The Role of Correlation\nRecall:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\sigma^2\\left(\n\\rho + \\frac{1-\\rho}{B}\n\\right)\n\\]\nOnce \\(B\\) is large:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n\\approx\n\\rho\\sigma^2\n\\]\nThis shows that:\n\nincreasing the number of trees eventually has limited impact,\nunless we also reduce the correlation \\(\\rho\\).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-key-idea-behind-random-forests",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#the-key-idea-behind-random-forests",
+    "title": "Ensemble Methods",
+    "section": "The Key Idea Behind Random Forests",
+    "text": "The Key Idea Behind Random Forests\nRandom Forests introduce an additional source of randomness.\nInstead of considering all predictors at every split:\n\nonly a random subset of predictors is considered.\n\nThis forces different trees to:\n\nexplore different splitting variables,\nbecome less similar,\nand therefore become less correlated.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#why-random-forests-improve-over-bagging",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#why-random-forests-improve-over-bagging",
+    "title": "Ensemble Methods",
+    "section": "Why Random Forests Improve Over Bagging",
+    "text": "Why Random Forests Improve Over Bagging\nReducing tree correlation decreases:\n\\[\n\\rho\n\\]\nand therefore decreases:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{RF}}(x))\n\\]\nThus Random Forests aim to:\n\nKeep the low bias of deep trees.\nPreserve the variance reduction of bagging.\nFurther improve performance by reducing correlation between trees.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-decorrelating-predictions",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-decorrelating-predictions",
+    "title": "Ensemble Methods",
+    "section": "Random forests: decorrelating predictions",
+    "text": "Random forests: decorrelating predictions\n\nBagged trees, based on re-samples (of the same sample) tend to be highly correlated.\nLeo Breimann, again, introduced a modification to bagging, he called Random forests, that aims at decorrelating trees as follows:\n\nWhen growing a tree from one bootstrap sample,\nAt each split use only a randomly selected subset of predictors.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-2",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#random-forests-2",
+    "title": "Ensemble Methods",
+    "section": "Random forests",
+    "text": "Random forests\n\nSource: AIML.com research",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html",
+    "href": "bagging_to_random_forests_variance_explanation.html",
+    "title": "Why does bagging reduce variance",
+    "section": "",
+    "text": "Decision trees are typically high-variance estimators.\nSmall changes in the training data can lead to very different trees.\nThe idea of bagging is to:\n\nGenerate many bootstrap samples.\nTrain one tree on each bootstrap sample.\nAggregate the predictions.\n\nBut why should averaging many unstable trees improve prediction?\n\n\n\n\nSuppose we build \\(B\\) trees:\n\\[\n\\hat f_1(x),\\hat f_2(x),\\ldots,\\hat f_B(x)\n\\]\nand define the bagged predictor as:\n\\[\n\\hat f_{\\mathrm{bag}}(x)\n=\n\\frac{1}{B}\\sum_{b=1}^B \\hat f_b(x)\n\\]\nAssume:\n\\[\n\\operatorname{Var}(\\hat f_b(x)) = \\sigma^2\n\\]\nand that all pairs of predictors have correlation:\n\\[\n\\operatorname{Corr}(\\hat f_b(x),\\hat f_{b'}(x)) = \\rho\n\\]\nTherefore:\n\\[\n\\operatorname{Cov}(\\hat f_b(x),\\hat f_{b'}(x))\n=\n\\rho\\sigma^2\n\\]\n\n\n\nThe variance of the aggregated predictor is:\n\\[\n\\operatorname{Var}\\left(\n\\frac{1}{B}\\sum_{b=1}^B \\hat f_b(x)\n\\right)\n\\]\nUsing the variance formula for sums:\n\\[\n\\operatorname{Var}\\left(\n\\sum_{b=1}^B \\hat f_b(x)\n\\right)\n=\n\\sum_{b=1}^B \\operatorname{Var}(\\hat f_b(x))\n+\n\\sum_{b\\neq b'} \\operatorname{Cov}(\\hat f_b(x),\\hat f_{b'}(x))\n\\]\nSubstituting the assumptions:\n\\[\n=\nB\\sigma^2 + B(B-1)\\rho\\sigma^2\n\\]\nThus:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\frac{1}{B^2}\n\\left[\nB\\sigma^2 + B(B-1)\\rho\\sigma^2\n\\right]\n\\]\nSimplifying:\n\\[\n\\boxed{\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\sigma^2\\left(\n\\rho + \\frac{1-\\rho}{B}\n\\right)\n}\n\\]\n\n\n\n\n\nIf:\n\\[\n\\rho = 0\n\\]\nthen:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\frac{\\sigma^2}{B}\n\\]\n\nAveraging strongly reduces variance.\nIncreasing \\(B\\) makes predictions more stable.\n\n\n\n\n\nTrees are not independent.\nBootstrap samples overlap.\nSimilar observations often generate similar trees.\n\nTherefore:\n\\[\n\\rho &gt; 0\n\\]\nand:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\sigma^2\\left(\n\\rho + \\frac{1-\\rho}{B}\n\\right)\n\\]\n\n\n\n\nAs:\n\\[\nB \\to \\infty\n\\]\nwe obtain:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n\\to\n\\rho\\sigma^2\n\\]\nTherefore:\n\nBagging reduces variance.\nBut the reduction is limited by the correlation between trees.\n\nThe more correlated the trees are, the less variance reduction we obtain."
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#motivation",
+    "href": "bagging_to_random_forests_variance_explanation.html#motivation",
+    "title": "Why does bagging reduce variance",
+    "section": "",
+    "text": "Decision trees are typically high-variance estimators.\nSmall changes in the training data can lead to very different trees.\nThe idea of bagging is to:\n\nGenerate many bootstrap samples.\nTrain one tree on each bootstrap sample.\nAggregate the predictions.\n\nBut why should averaging many unstable trees improve prediction?"
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#bagging-as-an-averaging-procedure",
+    "href": "bagging_to_random_forests_variance_explanation.html#bagging-as-an-averaging-procedure",
+    "title": "Why does bagging reduce variance",
+    "section": "",
+    "text": "Suppose we build \\(B\\) trees:\n\\[\n\\hat f_1(x),\\hat f_2(x),\\ldots,\\hat f_B(x)\n\\]\nand define the bagged predictor as:\n\\[\n\\hat f_{\\mathrm{bag}}(x)\n=\n\\frac{1}{B}\\sum_{b=1}^B \\hat f_b(x)\n\\]\nAssume:\n\\[\n\\operatorname{Var}(\\hat f_b(x)) = \\sigma^2\n\\]\nand that all pairs of predictors have correlation:\n\\[\n\\operatorname{Corr}(\\hat f_b(x),\\hat f_{b'}(x)) = \\rho\n\\]\nTherefore:\n\\[\n\\operatorname{Cov}(\\hat f_b(x),\\hat f_{b'}(x))\n=\n\\rho\\sigma^2\n\\]"
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#variance-of-the-bagged-predictor",
+    "href": "bagging_to_random_forests_variance_explanation.html#variance-of-the-bagged-predictor",
+    "title": "Why does bagging reduce variance",
+    "section": "",
+    "text": "The variance of the aggregated predictor is:\n\\[\n\\operatorname{Var}\\left(\n\\frac{1}{B}\\sum_{b=1}^B \\hat f_b(x)\n\\right)\n\\]\nUsing the variance formula for sums:\n\\[\n\\operatorname{Var}\\left(\n\\sum_{b=1}^B \\hat f_b(x)\n\\right)\n=\n\\sum_{b=1}^B \\operatorname{Var}(\\hat f_b(x))\n+\n\\sum_{b\\neq b'} \\operatorname{Cov}(\\hat f_b(x),\\hat f_{b'}(x))\n\\]\nSubstituting the assumptions:\n\\[\n=\nB\\sigma^2 + B(B-1)\\rho\\sigma^2\n\\]\nThus:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\frac{1}{B^2}\n\\left[\nB\\sigma^2 + B(B-1)\\rho\\sigma^2\n\\right]\n\\]\nSimplifying:\n\\[\n\\boxed{\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\sigma^2\\left(\n\\rho + \\frac{1-\\rho}{B}\n\\right)\n}\n\\]"
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#interpretation-of-the-result",
+    "href": "bagging_to_random_forests_variance_explanation.html#interpretation-of-the-result",
+    "title": "Why does bagging reduce variance",
+    "section": "",
+    "text": "If:\n\\[\n\\rho = 0\n\\]\nthen:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\frac{\\sigma^2}{B}\n\\]\n\nAveraging strongly reduces variance.\nIncreasing \\(B\\) makes predictions more stable.\n\n\n\n\n\nTrees are not independent.\nBootstrap samples overlap.\nSimilar observations often generate similar trees.\n\nTherefore:\n\\[\n\\rho &gt; 0\n\\]\nand:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\sigma^2\\left(\n\\rho + \\frac{1-\\rho}{B}\n\\right)\n\\]"
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#key-consequence",
+    "href": "bagging_to_random_forests_variance_explanation.html#key-consequence",
+    "title": "Why does bagging reduce variance",
+    "section": "",
+    "text": "As:\n\\[\nB \\to \\infty\n\\]\nwe obtain:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n\\to\n\\rho\\sigma^2\n\\]\nTherefore:\n\nBagging reduces variance.\nBut the reduction is limited by the correlation between trees.\n\nThe more correlated the trees are, the less variance reduction we obtain."
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#the-limitation-of-bagging",
+    "href": "bagging_to_random_forests_variance_explanation.html#the-limitation-of-bagging",
+    "title": "Why does bagging reduce variance",
+    "section": "The Limitation of Bagging",
+    "text": "The Limitation of Bagging\nBagging improves prediction accuracy because:\n\nit averages many unstable trees,\nand averaging reduces variance.\n\nHowever:\n\nthe trees are often highly correlated,\nespecially when a few predictors are very strong.\n\nIn that situation:\n\nthe same variables tend to appear in the first splits,\nmany trees become structurally similar,\nand averaging becomes less effective."
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#the-role-of-correlation",
+    "href": "bagging_to_random_forests_variance_explanation.html#the-role-of-correlation",
+    "title": "Why does bagging reduce variance",
+    "section": "The Role of Correlation",
+    "text": "The Role of Correlation\nRecall:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n=\n\\sigma^2\\left(\n\\rho + \\frac{1-\\rho}{B}\n\\right)\n\\]\nOnce \\(B\\) is large:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{bag}}(x))\n\\approx\n\\rho\\sigma^2\n\\]\nThis shows that:\n\nincreasing the number of trees eventually has limited impact,\nunless we also reduce the correlation \\(\\rho\\)."
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#the-key-idea-behind-random-forests",
+    "href": "bagging_to_random_forests_variance_explanation.html#the-key-idea-behind-random-forests",
+    "title": "Why does bagging reduce variance",
+    "section": "The Key Idea Behind Random Forests",
+    "text": "The Key Idea Behind Random Forests\nRandom Forests introduce an additional source of randomness.\nInstead of considering all predictors at every split:\n\nonly a random subset of predictors is considered.\n\nThis forces different trees to:\n\nexplore different splitting variables,\nbecome less similar,\nand therefore become less correlated."
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#why-random-forests-improve-over-bagging",
+    "href": "bagging_to_random_forests_variance_explanation.html#why-random-forests-improve-over-bagging",
+    "title": "Why does bagging reduce variance",
+    "section": "Why Random Forests Improve Over Bagging",
+    "text": "Why Random Forests Improve Over Bagging\nReducing tree correlation decreases:\n\\[\n\\rho\n\\]\nand therefore decreases:\n\\[\n\\operatorname{Var}(\\hat f_{\\mathrm{RF}}(x))\n\\]\nThus Random Forests aim to:\n\nKeep the low bias of deep trees.\nPreserve the variance reduction of bagging.\nFurther improve performance by reducing correlation between trees."
+  },
+  {
+    "objectID": "bagging_to_random_forests_variance_explanation.html#summary",
+    "href": "bagging_to_random_forests_variance_explanation.html#summary",
+    "title": "Why does bagging reduce variance",
+    "section": "Summary",
+    "text": "Summary\n\nBagging\n\nReduces variance by averaging many trees.\nWorks especially well with unstable models.\nPerformance is limited by correlation between trees.\n\n\n\nRandom Forests\n\nAdd randomness in predictor selection.\nReduce correlation between trees.\nAchieve additional variance reduction.\nUsually outperform pure bagging."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#random-forests-decorrelating-predictions",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#random-forests-decorrelating-predictions",
+    "title": "Introduction to Ensembles",
+    "section": "Random forests: decorrelating predictions",
+    "text": "Random forests: decorrelating predictions\n\nBagged trees, based on re-samples (of the same sample) tend to be highly correlated.\nLeo Breimann, again, introduced a modification to bagging, he called Random forests, that aims at decorrelating trees as follows:\n\nWhen growing a tree from one bootstrap sample,\nAt each split use only a randomly selected subset of predictors."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html",
+    "href": "C2-Appendix_1-The_Bootstrap.html",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "These slides have been conserved as an appendix because they were originally added to this chapter, when a section on resampling was not included in previous chapters.\nThey can be used as an introduction to the bootstrap, similar to the scond part of the Chapter on Cross-validation and resampling.\n\n\n\nBootstrap methods were introduced by @Efron79 to estimate the standard error of a statistic.\nThe success of the idea lied in that the procedure was presented as automatic, that is:\n\ninstead of having to do complex calculations,\nit allowed to approximate them using computer simulation.\n\nSome called it the end of mathematical statistics.\n\n\n\n\n\nThe bootstrap has been applied to almost any problem in Statistics.\n\nComputing standard errors, Bias, Quantiles,\nBuilding Confidence intervals,\nDoing Significance tests, …\n\nWe illustrate it with the simplest case: estimating the standard error of an estimator.\n\n\n\n\n\n\nLet \\(X\\) be a random variable with distribution function \\(F\\),\nLet \\(\\mathbf{X}=X_1,\\ldots,X_n\\) be an i.i.d random sample of \\(F\\) and,\nlet \\(x_1,\\dots, x_n\\) be a realization of \\(\\mathbf{X}\\).\nThe Empirical Cumulative Distribution Function (ECDF) \\[\nF_n(x) = \\frac{1}{n} \\#\\{x_i\\le x: i=1\\dots n\\} = \\frac{1}{n}\n\\sum_{i=1}^n I_{(-\\infty,x]}(x_i),\n\\] is the function that assigns to each real number \\(x\\) the proportion of observed values that are less or equal than \\(x\\).\n\n\n\n\n\n\n\n\nx&lt;- c(2,5,0,11,-1)\nFn &lt;- ecdf(x)\nknots(Fn)\n\n[1] -1  0  2  5 11\n\ncat(\"Fn(3) = \", Fn(3))\n\nFn(3) =  0.6\n\ncat(\"Fn(-2) = \", Fn(-2))\n\nFn(-2) =  0\n\n\n\n\nplot(Fn)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(F_n (x)\\) is a cumulative distribution function.\n\\(F_n()\\) is an important DF because it comes to be the best approximation that one can find for the theoretical (population) distribution function, that is: \\[\nF_n(x) \\longrightarrow F(x), \\text { uniformly in } x \\text{ as } n \\rightarrow \\infty.\n\\]\nThis is stated in the Glivenko-Cantelli theorem also know as the Central Theorem of Statistics.\n\n\n\n\n\n\nGiven a sample, \\(\\mathbf{X}\\) from a certain distribution, \\(X\\),\nConsider it a discrete random variable \\(X_e\\) that sets mass \\(1/n\\) to each of the observed \\(n\\) points \\(x_i\\):\n\n\n\n\n\n\n\n\\(F_n\\) is the distribution (function) of \\(X_e\\).\nFrom here, we notice that generating samples from \\(F_n\\) can be done by randomly taking values from \\(\\mathbf{X}\\) with probability \\(1/n\\)\n\n\n\n\n\n\nAssume we want to estimate some parameter \\(\\theta\\), that can be expressed as \\(\\theta (F)\\), where \\(F\\) is the distribution function of each \\(X_i\\) in \\((X_1,X_2,...,X_n)\\).\nFor example, \\(\\theta = E_F(X)=\\theta (F)\\).\nA natural way to estimate \\(\\theta(F)\\) may be to rely on plug-in estimators, where \\(F\\) in \\(\\hat \\theta (F)\\) is substituted by some approximation (estimate) to \\(F\\).\n\n\n\n\n\nA plug-in estimator is obtained by substituting \\(F\\) by an approximation to \\(F\\), call it \\(\\hat F\\) in \\(\\theta(F)\\): \\[\n\\widehat {\\theta (F)}=\\theta(\\hat{F})\n\\]\nGiven that \\(F_n\\) is the best approximation to \\(F\\) a reasonable plug-in estimator is \\(\\theta(F_n)\\).\nCommon sample estimators are, indeed, plug-in estimators.\n\n\n\n\n\nMany estimators we usally work with are plug-in estimators.\n\n\\[\\begin{eqnarray*}\n\\theta_1 &=& E_F(X)=\\theta (F) \\\\\n\\hat{\\theta_1}&=&\\overline{X}=\\int XdF_n(x)=\\frac\n1n\\sum_{i=1}^nx_i=\\theta (F_n)\n\\\\\n\\theta_2 &=& Med(X)=\\{m:P_F(X\\leq m)=1/2\\}=\n\\theta (F),\n\\\\\n\\hat{\\theta_2}&=&\\widehat{Med}(X)=\\{m:\\frac{\\#x_i\\leq m}n=1/2\\}=\\theta (F_n)\n\\end{eqnarray*}\\]\n\n\n\n\nA key point, when computing an estimator \\(\\hat \\theta\\) of a parameter \\(\\theta\\), is how precise is \\(\\hat \\theta\\) as an estimator of \\(\\theta\\)?\n\nWith the sample mean, \\(\\overline{X}\\), the standard error estimation is immediate because the variance of the estimator is known: \\(\\sigma_{\\overline{X}}=\\frac{\\sigma (X)}{\\sqrt{n}}\\)\nSo, a natural estimator of the standard error of \\(\\overline{X}\\) is: \\(\\hat\\sigma_{\\overline{X}}=\\frac{\\hat{\\sigma}(X)}{\\sqrt{n}}\\)\n\n\n\n\n\n\nIf, as in this case, the variance of \\(X\\) (and, here, that of \\(\\overline{X}\\)) is a functional of \\(F\\):\n\n\n\\[\n\\sigma _{\\overline{X}}=\\frac{\\sigma (X)}{\\sqrt{n}}=\\frac{\\sqrt{\\int\n[x-\\int x\\,dF(x)]^2 dF(x)}}{\\sqrt{n}}=\\sigma _{\\overline{X}}(F)\n\\]\n\nthen, the standard error estimator is the same functional applied on \\(F_n\\), that is:\n\n\\[\n\\hat{\\sigma}_{\\overline{X}}=\\frac{\\hat{\\sigma}(X)}{\\sqrt{n}}=\\frac{\\sqrt{1/n\\sum_{i=1}^n(x_i-\\overline{x})^2}}{\\sqrt{n}}=\\sigma\n_{\\overline{X}}(F_n).\n\\]\n\n\n\n\n\nThus, a way to obtain a standard error estimator \\(\\widehat{\\sigma}_{\\widehat{\\theta}}\\) of an estimator \\(\\widehat{\\theta}\\) consists on replacing \\(F\\) with \\(F_n\\) in the ``population’’ standard error expression of \\(\\hat \\theta\\), \\(\\displaystyle{\\sigma_{\\hat\n\\theta}= \\sigma_{\\hat \\theta}(F)}\\), whenever it is known.\nIn a schematic form: \\[\n\\sigma_{\\hat \\theta}= \\sigma_{\\hat \\theta}(F) \\Longrightarrow\n\\sigma_{\\hat \\theta}(F_n)= \\widehat{\\sigma}_{\\hat \\theta}.\n\\] That is, the process consists of “plugging-in” \\(F_n\\) in the (known) functional form, \\(\\sigma_{\\hat \\theta}(F)\\) that defines \\(\\sigma_{\\hat \\theta}\\)}.\n\n\n\n\n\nThe previous approach, \\(F\\simeq F_n \\Longrightarrow \\sigma_{\\hat \\theta}(F) \\simeq \\sigma_{\\hat \\theta}(F_n)\\) presents the obvious drawback that, when the functional form \\(\\sigma _{\\hat{\\theta}}(F)\\) is unknown, it is not possible to carry out the substitution of \\(F\\) by \\(F_n\\).\nThis is, for example, the case of standard error of the median or that of the correlation coefficient.\n\n\n\n\n\nThe bootstrap method makes it possible to do the desired approximation: \\[\\hat{\\sigma}_{\\hat\\theta} \\simeq \\sigma _{\\hat\\theta}(F_n)\\] without having to to know the form of \\(\\sigma_{\\hat\\theta}(F)\\).\nTo do this,the bootstrap estimates, or directly approaches \\(\\sigma_{\\hat{\\theta}}(F_n)\\) over the sample.\n\n\n\n\n\nThe bootstrap allows to estimate the standard error from samples of \\(F_n\\)\n\n\n\\[\\begin{eqnarray*}\n&&\\mbox{Instead of: } \\\\\n&& \\quad F\\stackrel{s.r.s}{\\longrightarrow }{\\bf X} =\n(X_1,X_2,\\dots, X_n) \\, \\quad (\\hat \\sigma_{\\hat\\theta} =\\underbrace{\\sigma_{\\theta(F_n)}_{unknown})\n\\\\\n&& \\mbox{It is done: } \\\\\n&& \\quad F_n\\stackrel{s.r.s}{\\longrightarrow }\\quad {\\bf X^{*}}=(X_1^{*},X_2^{*},\n\\dots ,X_n^{*}) \\\\\n&& \\quad (\\hat \\sigma_{\\hat\\theta}= \\hat \\sigma_{\\hat \\theta}^* \\simeq \\sigma_{\\hat \\theta}^*=\\sigma_{\\hat \\theta}(F_n)).\n\n\\end{eqnarray*}\\]\n\n\n\n\\(\\sigma_{\\hat \\theta}^*\\) is the bootstrap standard error of \\(\\hat \\theta\\) and\n\\(\\hat \\sigma_{\\hat \\theta}^*\\) the bootstrap estimate of the standard error of \\(\\hat \\theta\\).\n\n\n\n\n\n\n\nResampling consists of extracting samples of size \\(n\\) of \\(F_n\\): \\({\\bf X_b^{*}}\\) is a random sample of size \\(n\\) obtained with replacement from the original sample \\({\\bf X}\\).\nSamples \\({\\bf X^*_1, X^*_2, ..., X^*_B }\\), obtained through this procedure are called bootstrap samples or re-samples.\nOn each resample the statistic of interest \\(\\hat \\theta\\) can be computed yielding a bootstrap estimate \\(\\hat \\theta^*_b= s(\\mathbf{x^*_b})\\).\nThe collection of bootstrap estimates obtained form the resampled samples can be used to estimate distinct characteristics of \\(\\hat \\theta\\) such as its standard error, its bias, etc.\n\n\n\n\n\n\nknitr::include_graphics(\"images/1.2-Ensemble_Methods-Slides_insertimage_2.png\")\n\n\n\n\n\n\n\n\n\n\n\n\nThe distribution of a statistic computed from re-samples is called the bootstrap distribution,\n\n\n\\[\\begin{eqnarray*}\n\\mathcal {L}(\\hat \\theta)&\\simeq& P_F(\\hat\\theta \\leq t): \\mbox{Sampling distribution of } \\hat \\theta,\\\\\n\\mathcal {L}(\\hat \\theta^*)&\\simeq& P_{F_n}(\\hat\\theta^* \\leq t): \\mbox{Bootstrap distribution of } \\hat \\theta,\n\\end{eqnarray*}\\]\n\n\nThis distribution is usually not known.\nHowever the sampling process and the calculation of the statistics can be approximated using a Monte Carlo Algorithm.\n\n\n\n\n\n\nDraw a bootstrap sample, \\({\\bf x}_1^{*}\\) from \\(F_n\\) and compute \\(\\hat{\\theta}({\\bf x}_1^{*})\\).\nRepeat (1) \\(B\\) times yielding \\(\\hat{\\theta}({\\bf x}_2^{*})\\), \\(\\dots\\), \\(\\hat{\\theta}({\\bf x}_B^{*})\\) estimates.\nCompute: \\[\\begin{equation*}\n\\hat{\\sigma}_B (\\hat\\theta)= \\sqrt{\n\\frac{\n     \\sum_{b=1}^B\\left( \\hat{\\theta}(%\n     {\\bf x^{*}_i})-\\overline{\\hat{\\theta}^*}\\right) ^2\n     }{\n     (B-1)\n     }\n}, \\quad \\overline{\\hat{\\theta}^*}\\equiv \\frac 1B\\sum_{b=1}^B\\hat{\\theta}\\left( {\\bf x}%\n_b^{*}\\right)\n\\end{equation*}\\]\n\n\n\n\n\n\n\nIdea behind the bootstrap: the standard error of \\(\\hat\\theta\\), \\(\\sigma(\\hat\\theta)\\) can be approximated by the bootstrap estimator of the standard error, \\(\\sigma_B (\\hat\\theta)\\) which:\n\nCoincides with \\(\\sigma_{\\hat\\theta}(F_n)\\), that cannot be evaluated, if the functional form of \\(\\sigma_{\\hat\\theta}(F)\\) is unkown.\nCan be approximated by the Monte Carlo Estimator, \\(\\hat\\sigma_{\\hat\\theta}(F_n)\\), which is evaluated by resampling.\n\n\n\\[\n\\hat{\\sigma}_B(\\hat\\theta)\\left (\\simeq \\sigma_B(\\hat\\theta)=\\sigma_{\\hat\\theta}(F_n)\\right )\\simeq\\hat \\sigma_{\\hat\\theta}(F_n).\n\\]\n\n\n\n\nFrom real world to bootstrap world:\n\nknitr::include_graphics(\"images/fromRealWorld2BootstrapWorld.png\")\n\n\n\n\n\n\n\n\n\nAquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#the-bootstrap",
+    "href": "C2-Appendix_1-The_Bootstrap.html#the-bootstrap",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Bootstrap methods were introduced by @Efron79 to estimate the standard error of a statistic.\nThe success of the idea lied in that the procedure was presented as automatic, that is:\n\ninstead of having to do complex calculations,\nit allowed to approximate them using computer simulation.\n\nSome called it the end of mathematical statistics."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#bootstrap-applications",
+    "href": "C2-Appendix_1-The_Bootstrap.html#bootstrap-applications",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "The bootstrap has been applied to almost any problem in Statistics.\n\nComputing standard errors, Bias, Quantiles,\nBuilding Confidence intervals,\nDoing Significance tests, …\n\nWe illustrate it with the simplest case: estimating the standard error of an estimator."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#empirical-distribution-function",
+    "href": "C2-Appendix_1-The_Bootstrap.html#empirical-distribution-function",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Let \\(X\\) be a random variable with distribution function \\(F\\),\nLet \\(\\mathbf{X}=X_1,\\ldots,X_n\\) be an i.i.d random sample of \\(F\\) and,\nlet \\(x_1,\\dots, x_n\\) be a realization of \\(\\mathbf{X}\\).\nThe Empirical Cumulative Distribution Function (ECDF) \\[\nF_n(x) = \\frac{1}{n} \\#\\{x_i\\le x: i=1\\dots n\\} = \\frac{1}{n}\n\\sum_{i=1}^n I_{(-\\infty,x]}(x_i),\n\\] is the function that assigns to each real number \\(x\\) the proportion of observed values that are less or equal than \\(x\\)."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#the-ecdf-in-r",
+    "href": "C2-Appendix_1-The_Bootstrap.html#the-ecdf-in-r",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "x&lt;- c(2,5,0,11,-1)\nFn &lt;- ecdf(x)\nknots(Fn)\n\n[1] -1  0  2  5 11\n\ncat(\"Fn(3) = \", Fn(3))\n\nFn(3) =  0.6\n\ncat(\"Fn(-2) = \", Fn(-2))\n\nFn(-2) =  0\n\n\n\n\nplot(Fn)"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#ecdf-has-good-properties",
+    "href": "C2-Appendix_1-The_Bootstrap.html#ecdf-has-good-properties",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "\\(F_n (x)\\) is a cumulative distribution function.\n\\(F_n()\\) is an important DF because it comes to be the best approximation that one can find for the theoretical (population) distribution function, that is: \\[\nF_n(x) \\longrightarrow F(x), \\text { uniformly in } x \\text{ as } n \\rightarrow \\infty.\n\\]\nThis is stated in the Glivenko-Cantelli theorem also know as the Central Theorem of Statistics."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#the-sample-distribution-function",
+    "href": "C2-Appendix_1-The_Bootstrap.html#the-sample-distribution-function",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Given a sample, \\(\\mathbf{X}\\) from a certain distribution, \\(X\\),\nConsider it a discrete random variable \\(X_e\\) that sets mass \\(1/n\\) to each of the observed \\(n\\) points \\(x_i\\):\n\n\n\n\n\n\n\n\\(F_n\\) is the distribution (function) of \\(X_e\\).\nFrom here, we notice that generating samples from \\(F_n\\) can be done by randomly taking values from \\(\\mathbf{X}\\) with probability \\(1/n\\)"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#plug-in-estimators",
+    "href": "C2-Appendix_1-The_Bootstrap.html#plug-in-estimators",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Assume we want to estimate some parameter \\(\\theta\\), that can be expressed as \\(\\theta (F)\\), where \\(F\\) is the distribution function of each \\(X_i\\) in \\((X_1,X_2,...,X_n)\\).\nFor example, \\(\\theta = E_F(X)=\\theta (F)\\).\nA natural way to estimate \\(\\theta(F)\\) may be to rely on plug-in estimators, where \\(F\\) in \\(\\hat \\theta (F)\\) is substituted by some approximation (estimate) to \\(F\\)."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#plug-in-estimators-1",
+    "href": "C2-Appendix_1-The_Bootstrap.html#plug-in-estimators-1",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "A plug-in estimator is obtained by substituting \\(F\\) by an approximation to \\(F\\), call it \\(\\hat F\\) in \\(\\theta(F)\\): \\[\n\\widehat {\\theta (F)}=\\theta(\\hat{F})\n\\]\nGiven that \\(F_n\\) is the best approximation to \\(F\\) a reasonable plug-in estimator is \\(\\theta(F_n)\\).\nCommon sample estimators are, indeed, plug-in estimators."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#some-plug-in-estimators",
+    "href": "C2-Appendix_1-The_Bootstrap.html#some-plug-in-estimators",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Many estimators we usally work with are plug-in estimators.\n\n\\[\\begin{eqnarray*}\n\\theta_1 &=& E_F(X)=\\theta (F) \\\\\n\\hat{\\theta_1}&=&\\overline{X}=\\int XdF_n(x)=\\frac\n1n\\sum_{i=1}^nx_i=\\theta (F_n)\n\\\\\n\\theta_2 &=& Med(X)=\\{m:P_F(X\\leq m)=1/2\\}=\n\\theta (F),\n\\\\\n\\hat{\\theta_2}&=&\\widehat{Med}(X)=\\{m:\\frac{\\#x_i\\leq m}n=1/2\\}=\\theta (F_n)\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#precision-of-an-estimate",
+    "href": "C2-Appendix_1-The_Bootstrap.html#precision-of-an-estimate",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "A key point, when computing an estimator \\(\\hat \\theta\\) of a parameter \\(\\theta\\), is how precise is \\(\\hat \\theta\\) as an estimator of \\(\\theta\\)?\n\nWith the sample mean, \\(\\overline{X}\\), the standard error estimation is immediate because the variance of the estimator is known: \\(\\sigma_{\\overline{X}}=\\frac{\\sigma (X)}{\\sqrt{n}}\\)\nSo, a natural estimator of the standard error of \\(\\overline{X}\\) is: \\(\\hat\\sigma_{\\overline{X}}=\\frac{\\hat{\\sigma}(X)}{\\sqrt{n}}\\)"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#precision-of-an-estimate-2",
+    "href": "C2-Appendix_1-The_Bootstrap.html#precision-of-an-estimate-2",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "If, as in this case, the variance of \\(X\\) (and, here, that of \\(\\overline{X}\\)) is a functional of \\(F\\):\n\n\n\\[\n\\sigma _{\\overline{X}}=\\frac{\\sigma (X)}{\\sqrt{n}}=\\frac{\\sqrt{\\int\n[x-\\int x\\,dF(x)]^2 dF(x)}}{\\sqrt{n}}=\\sigma _{\\overline{X}}(F)\n\\]\n\nthen, the standard error estimator is the same functional applied on \\(F_n\\), that is:\n\n\\[\n\\hat{\\sigma}_{\\overline{X}}=\\frac{\\hat{\\sigma}(X)}{\\sqrt{n}}=\\frac{\\sqrt{1/n\\sum_{i=1}^n(x_i-\\overline{x})^2}}{\\sqrt{n}}=\\sigma\n_{\\overline{X}}(F_n).\n\\]"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#standard-error-estimation",
+    "href": "C2-Appendix_1-The_Bootstrap.html#standard-error-estimation",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Thus, a way to obtain a standard error estimator \\(\\widehat{\\sigma}_{\\widehat{\\theta}}\\) of an estimator \\(\\widehat{\\theta}\\) consists on replacing \\(F\\) with \\(F_n\\) in the ``population’’ standard error expression of \\(\\hat \\theta\\), \\(\\displaystyle{\\sigma_{\\hat\n\\theta}= \\sigma_{\\hat \\theta}(F)}\\), whenever it is known.\nIn a schematic form: \\[\n\\sigma_{\\hat \\theta}= \\sigma_{\\hat \\theta}(F) \\Longrightarrow\n\\sigma_{\\hat \\theta}(F_n)= \\widehat{\\sigma}_{\\hat \\theta}.\n\\] That is, the process consists of “plugging-in” \\(F_n\\) in the (known) functional form, \\(\\sigma_{\\hat \\theta}(F)\\) that defines \\(\\sigma_{\\hat \\theta}\\)}."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#the-bootstrap-1",
+    "href": "C2-Appendix_1-The_Bootstrap.html#the-bootstrap-1",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "The previous approach, \\(F\\simeq F_n \\Longrightarrow \\sigma_{\\hat \\theta}(F) \\simeq \\sigma_{\\hat \\theta}(F_n)\\) presents the obvious drawback that, when the functional form \\(\\sigma _{\\hat{\\theta}}(F)\\) is unknown, it is not possible to carry out the substitution of \\(F\\) by \\(F_n\\).\nThis is, for example, the case of standard error of the median or that of the correlation coefficient."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#the-bootstrap-2",
+    "href": "C2-Appendix_1-The_Bootstrap.html#the-bootstrap-2",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "The bootstrap method makes it possible to do the desired approximation: \\[\\hat{\\sigma}_{\\hat\\theta} \\simeq \\sigma _{\\hat\\theta}(F_n)\\] without having to to know the form of \\(\\sigma_{\\hat\\theta}(F)\\).\nTo do this,the bootstrap estimates, or directly approaches \\(\\sigma_{\\hat{\\theta}}(F_n)\\) over the sample."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#bootstrap-sampling-resampling",
+    "href": "C2-Appendix_1-The_Bootstrap.html#bootstrap-sampling-resampling",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "The bootstrap allows to estimate the standard error from samples of \\(F_n\\)\n\n\n\\[\\begin{eqnarray*}\n&&\\mbox{Instead of: } \\\\\n&& \\quad F\\stackrel{s.r.s}{\\longrightarrow }{\\bf X} =\n(X_1,X_2,\\dots, X_n) \\, \\quad (\\hat \\sigma_{\\hat\\theta} =\\underbrace{\\sigma_{\\theta(F_n)}_{unknown})\n\\\\\n&& \\mbox{It is done: } \\\\\n&& \\quad F_n\\stackrel{s.r.s}{\\longrightarrow }\\quad {\\bf X^{*}}=(X_1^{*},X_2^{*},\n\\dots ,X_n^{*}) \\\\\n&& \\quad (\\hat \\sigma_{\\hat\\theta}= \\hat \\sigma_{\\hat \\theta}^* \\simeq \\sigma_{\\hat \\theta}^*=\\sigma_{\\hat \\theta}(F_n)).\n\n\\end{eqnarray*}\\]\n\n\n\n\\(\\sigma_{\\hat \\theta}^*\\) is the bootstrap standard error of \\(\\hat \\theta\\) and\n\\(\\hat \\sigma_{\\hat \\theta}^*\\) the bootstrap estimate of the standard error of \\(\\hat \\theta\\)."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#the-resampling-process",
+    "href": "C2-Appendix_1-The_Bootstrap.html#the-resampling-process",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Resampling consists of extracting samples of size \\(n\\) of \\(F_n\\): \\({\\bf X_b^{*}}\\) is a random sample of size \\(n\\) obtained with replacement from the original sample \\({\\bf X}\\).\nSamples \\({\\bf X^*_1, X^*_2, ..., X^*_B }\\), obtained through this procedure are called bootstrap samples or re-samples.\nOn each resample the statistic of interest \\(\\hat \\theta\\) can be computed yielding a bootstrap estimate \\(\\hat \\theta^*_b= s(\\mathbf{x^*_b})\\).\nThe collection of bootstrap estimates obtained form the resampled samples can be used to estimate distinct characteristics of \\(\\hat \\theta\\) such as its standard error, its bias, etc."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#resampling-illustrated",
+    "href": "C2-Appendix_1-The_Bootstrap.html#resampling-illustrated",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "knitr::include_graphics(\"images/1.2-Ensemble_Methods-Slides_insertimage_2.png\")"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#the-bootstrap-distribution",
+    "href": "C2-Appendix_1-The_Bootstrap.html#the-bootstrap-distribution",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "The distribution of a statistic computed from re-samples is called the bootstrap distribution,\n\n\n\\[\\begin{eqnarray*}\n\\mathcal {L}(\\hat \\theta)&\\simeq& P_F(\\hat\\theta \\leq t): \\mbox{Sampling distribution of } \\hat \\theta,\\\\\n\\mathcal {L}(\\hat \\theta^*)&\\simeq& P_{F_n}(\\hat\\theta^* \\leq t): \\mbox{Bootstrap distribution of } \\hat \\theta,\n\\end{eqnarray*}\\]\n\n\nThis distribution is usually not known.\nHowever the sampling process and the calculation of the statistics can be approximated using a Monte Carlo Algorithm."
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#boot.-monte-carlo-algorithm",
+    "href": "C2-Appendix_1-The_Bootstrap.html#boot.-monte-carlo-algorithm",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Draw a bootstrap sample, \\({\\bf x}_1^{*}\\) from \\(F_n\\) and compute \\(\\hat{\\theta}({\\bf x}_1^{*})\\).\nRepeat (1) \\(B\\) times yielding \\(\\hat{\\theta}({\\bf x}_2^{*})\\), \\(\\dots\\), \\(\\hat{\\theta}({\\bf x}_B^{*})\\) estimates.\nCompute: \\[\\begin{equation*}\n\\hat{\\sigma}_B (\\hat\\theta)= \\sqrt{\n\\frac{\n     \\sum_{b=1}^B\\left( \\hat{\\theta}(%\n     {\\bf x^{*}_i})-\\overline{\\hat{\\theta}^*}\\right) ^2\n     }{\n     (B-1)\n     }\n}, \\quad \\overline{\\hat{\\theta}^*}\\equiv \\frac 1B\\sum_{b=1}^B\\hat{\\theta}\\left( {\\bf x}%\n_b^{*}\\right)\n\\end{equation*}\\]"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#bootstrap-estimates-of-se",
+    "href": "C2-Appendix_1-The_Bootstrap.html#bootstrap-estimates-of-se",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "Idea behind the bootstrap: the standard error of \\(\\hat\\theta\\), \\(\\sigma(\\hat\\theta)\\) can be approximated by the bootstrap estimator of the standard error, \\(\\sigma_B (\\hat\\theta)\\) which:\n\nCoincides with \\(\\sigma_{\\hat\\theta}(F_n)\\), that cannot be evaluated, if the functional form of \\(\\sigma_{\\hat\\theta}(F)\\) is unkown.\nCan be approximated by the Monte Carlo Estimator, \\(\\hat\\sigma_{\\hat\\theta}(F_n)\\), which is evaluated by resampling.\n\n\n\\[\n\\hat{\\sigma}_B(\\hat\\theta)\\left (\\simeq \\sigma_B(\\hat\\theta)=\\sigma_{\\hat\\theta}(F_n)\\right )\\simeq\\hat \\sigma_{\\hat\\theta}(F_n).\n\\]"
+  },
+  {
+    "objectID": "C2-Appendix_1-The_Bootstrap.html#summary",
+    "href": "C2-Appendix_1-The_Bootstrap.html#summary",
+    "title": "Appendix I: The Bootstrap",
+    "section": "",
+    "text": "From real world to bootstrap world:\n\nknitr::include_graphics(\"images/fromRealWorld2BootstrapWorld.png\")\n\n\n\n\n\n\n\n\n\nAquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci"
   }
 ]
