@@ -537,7 +537,6 @@ knitr::include_graphics("images/RandomForestsHyperparameters4.png")
     - This is what *Boosting* is about.
     
 
-
 ## Bagging vs Boosting
 
 :::: {.columns}
@@ -560,62 +559,91 @@ knitr::include_graphics("images/baggingVsboosting2.png")
 
 ::::
 
+::: {style="text-align: center;"}
 Source: [Ensemble Learning: Bagging & Boosting](https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/)
+:::
 
-## So what is Boosting
+## So bagging or boosting? {.smaller}
 
-<!-- - Boosting is an ensemble learning technique used in ML for improving the accuracy of *weak learners*. -->
+ - Bagging/RF improves predictive performance by reducing **variance**.
+    - *Averaging many unstable models* may produce a predictor with **smaller variance**.
 
-- Idea: create a model that is better than any of its individual components by combining their strengths and compensating for their weaknesses.
+- Averaging does not necessarily solve problems caused by **high bias**.
+  - If individual models  systematically underfit the data,  averaging many of them may still produce an underfitted predictor.
+  - Boosting aims to reduce **bias** by progressively improving the predictor.
 
-  - Multiple weak models are *trained sequentially*.
-  
-  - Each new model is trained to improve the errors made by the previous model. 
+## A sequential correction {.smaller}
 
-- The final model is a *weighted combination* of all the models where the *weights are determined by the accuracy of each model*. 
+Boosting follows the following strategy:
 
-<!-- - Boosting can be applied to various machine learning algorithms, including decision trees, neural networks, and support vector machines. -->
+- Models are built sequentially,
+- Each new model attempts to correct errors made by  previous ones.
 
-## Historical background
+Boosting constructs an additive model:
+$$
+F(x) = f_1(x)+f_2(x)+f_3(x)+\dots
+$$
 
-- The *boosting technique* was proposed by Robert Schapire [@Schapire89] and Yoav Freund in the 1990s. 
+- $f_1(x)$ captures the main structure of the data,
+- $f_2(x)$ corrects part of the remaining errors,
+- $f_3(x)$ corrects the residual errors left
+- and so on.
 
-- They introduced *AdaBoost*, the first widely-used Boosting algorithm.
+Final predictor is built incrementally through a sequence of weak learners.
 
-  - It achieved significant success in various applications, including *face detection* and *handwriting recognition*.
-  
-- Other Boosting algorithms have become popular: *Gradient Boosting*, *XGBoost*, and *LightGBM*. 
+## General idea of Boosting
 
-## Adaboost
+Boosting transforms many weak learners into a strong learner through *sequential error correction*.
 
-- AdaBoost (*Adaptive Boosting*) is a direct implementation of the "boosting" idea.
+1. It trains an initial weak learner.
+2. Evaluates its errors.
+3. Trains a new learner focused on correcting those errors.
+4. Adds the new learner to the ensemble.
+5. Repeats the process iteratively.
 
-- It trains models sequentially, new models *focusing on correcting the errors of the previous ones*.
-  
-- Final Decision is made by *combining models*, giving more influence to the most reliable ones through
+## Boosting variants
 
-  - A weighted majority vote (classification) or 
-  
-  - Weighted sum (regression).
-  
+- Different Boosting algorithms have been developed.
 
-## Running Adaboost
+- They mainly differ in:
+
+  - how the errors are defined and,
+  - how next learner is constructed to reduce them.
+
+- This leads to different Boosting methods such as:
+
+  - AdaBoost, 
+  - Gradient Boosting,    
+  - XGBoost, 
+  - LightGBM.
+
+## AdaBoost
+
+- It proceeds **Ada**ptatively by sequentially training weak,learners.
+
+- Each new learner focuses increasingly on the difficult observations.
+
+  - observations that are difficult to classify receive more attention,
+  - while observations already classified correctly become less important.
+
+- Final prediction combines all weak learners using a weighted vote.
+
+
+## Running Adaboost {.smaller}
  
-- Adaboost proceeds iteratively by, at each iteration:
+At each iteration AdaBoost performs four main steps:
 
-  - Fit the weak learner using initial weights.
-  
-  - Predict and identify misclassified observations.
-  
-  - Update *observation weights*: 
-  
-    - decrease for correctly classified
-    
-    - increase for misclassified.
-    
-  - Assign a *learner weight* to the weak learner based on its accuracy.
-  
-- The final prediction is a *weighted combination* of all weak learners.
+1. Fit a weak learner using the current observation weights.
+2. Evaluate which observations are misclassified.
+3. Increase the weights of difficult observations.
+4. Assign a reliability weight to the learner itself.
+
+As iterations proceed:
+
+- difficult observations receive more attention,
+- and accurate learners receive more influence in the final prediction.
+
+The final classifier is therefore a weighted combination of weak learners.
 
 ::: {.notes}
 - AdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight). 
@@ -628,6 +656,25 @@ Source: [Ensemble Learning: Bagging & Boosting](https://resources.experfy.com/ai
       - each of the predictions of each model will be voted (for the classification case) or averaged (for the regression case)
 :::
 
+## Why do learner weights appear? {.smaller}
+
+Initially, all observations receive the same weight, $w_i=\frac{1}{N}$
+
+AdaBoost gives more influence to learners that achieve better classification performance.
+
+If a learner has weighted error rate, $\epsilon_t$, 
+its contribution to the final ensemble is determined by:
+$$
+\alpha_t=\frac{1}{2}\log\left(\frac{1-\epsilon_t}{\epsilon_t}\right)
+$$
+
+Consequently:
+
+- highly accurate learners receive larger weights,
+- learners close to random guessing receive very small weights.
+
+The final prediction is therefore dominated by the most reliable classifiers.
+
 ## Adaboost Architecture
 
 ```{r, out.width="90%", fig.align='center'}
@@ -638,7 +685,7 @@ knitr::include_graphics("images/Adaboost.jpeg")
 Source: [Ensemble Learning: Bagging & Boosting](https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/)
 </small>
 
-## Adaboost pseudo-code
+## Adaboost algorithm
 
 <small>
 
@@ -677,21 +724,48 @@ source: [Evaluating the AdaBoost Algorithm for Biometric-Based Face Recognition]
 <!-- - AdaBoost iteratively trains weak classifiers and assigns higher weights to misclassified samples, leading to a stronger ensemble classifier.  -->
 <!-- - The resulting classifier can then be used to detect faces in new images with high accuracy. -->
 
-## Adaboost has limitations
 
-- Adaboost was a breakthrough algorithm that significantly improved the accuracy of ML models. 
 
-- However, Adaboost has its limitations. 
+## AdaBoost as loss minimization (1)
 
-  - It does not handle continuous variables very well. 
+- AdaBoost is often presented as a heuristic algorithm,
+- But it is also an optimization procedure: It can be shown to minimize the exponential loss:
+$$
+L(y,F(x))=e^{-yF(x)}
+$$
 
-  - Can be sensitive to noisy data and outliers,
+where:
 
-  - May not perform well with complex datasets. 
+- $y \in \{-1,+1\}$,
+- and $F(x)$ is the additive ensemble model.
 
-  - Its performance can reach a "plateau": it will no longer improve after a certain number of iterations.
+## Adaboost as loss minimization (2)
 
-- In  order to deal with some of these drawbacks different variants of boosting have been proposed.
+- The interpretation described above is important because it shows that *AdaBoost is not simply an arbitrary reweighting strategy*.
+
+- Instead, AdaBoost can be understood as 
+  - a sequential optimization procedure that
+  - incrementally builds an additive predictive model
+  - by reducing a **specific** loss function.
+
+- This connects AdaBoost with the more general framework of Gradient Boosting where more general loss functions can be minimized.
+
+## Moving beyond AdaBoost {.smaller}
+
+AdaBoost introduced the key idea of sequentially improving weak learners.
+
+But it has important limitations:
+
+- Originally designed mainly for classification,
+- It relies on a specific exponential loss,
+- It can become sensitive to noisy observations and outliers.
+
+This motivated the development of a more general framework:
+
+- instead of designing specific reweighting rules,
+- directly minimize a loss function through iterative optimization.
+
+This idea leads to Gradient Boosting.
 
 ## Gradient Boosting
 
@@ -718,48 +792,111 @@ source: [Evaluating the AdaBoost Algorithm for Biometric-Based Face Recognition]
 <!-- - While there are various adaptations, the general idea behind all of them is the same: train models sequentially, with each model adjusting the residuals (errors) of the previous models. -->
 
 
-## Gradient Boosting Algorithm  {.smaller}
 
-- Train a first weak learner $f_1$, which predicts the response variable $y$, and calculate the residuals $y - f_1(x)$.
+## A function optimization  {.smaller}
 
-- Next, train a new model $f_2$, to predict the residuals of the previous model, that is, to correct the errors made by model $f_1$.
-  
-  - $f_1(x) \approx y$
-  
-  - $f_2(x) \approx y - f_1(x)$
+Gradient Boosting views learning as an optimization problem.
 
-- Iterate calculating residuals of the two models together $y - f_1(x) - f_2(x)$ and train a third model $f_3$ to  correct them.
-  
-  - $f_3(x) \approx y - f_1(x) - f_2(x)$
+Instead of directly searching for a single complex predictor,
+the model is *built incrementally* as:
 
-- Repeat the process $M$ times, so that each new model minimizes the residuals (errors) of the previous one.
+$$
+F_M(x)=F_{M-1}(x)+\gamma_M h_M(x)
+$$
 
-## Gradient Boosting may overfit {.smaller}
+where:
 
-- Since the goal of Gradient Boosting is to minimize the residuals iteration by iteration, it is susceptible to overfitting. 
+- $F_{M-1}(x)$ is the current ensemble,
+- $h_M(x)$ is a new weak learner,
+- and $\gamma_M$ controls how much the new learner contributes.
 
-- One way to avoid this problem is by using a regularization value, also known as the learning rate ($\lambda$), which limits the influence of each model on the ensemble. 
+At each iteration, the algorithm searches for the weak learner
+that most reduces the current loss function.
 
-- As a result of this regularization, more models are needed to form the ensemble, but better results are achieved.
-
-  - $f_1(x) \approx y$
-  
-  - $f_2(x) \approx y - \lambda f_1(x)$
-  
-  - $f_3(x) \approx y - \lambda f_1(x) - \lambda f_2(x)$
-  
-  - $y \approx \lambda f_1(x) + \lambda f_2(x) + \lambda f_3(x) + \ldots + \lambda f_m(x)$
+The final model is constructed through a sequence
+of small corrective updates.
 
 
-## Gradient boosting architechture
+## Relation with Gradient Descent
 
-```{r, out.width="100%"}
-knitr::include_graphics("images/gradientboosting.jpeg")
-```
-<small>
-Source: [Ensemble Learning: Bagging & Boosting](https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/)
-</small>
-  
+In gradient descent optimization, parameters are updated in the direction that most decreases the loss function:
+
+$$
+\theta_{new}=\theta_{old}-\eta\nabla L
+$$
+
+Gradient Boosting *applies the idea to predictive functions*.
+
+Instead of updating numerical parameters the algorithm *updates the prediction function itself*.
+
+At each iteration, a new weak learner is fitted to approximate the direction of steepest loss reduction.
+
+
+## Residual fitting as a special case
+
+::: {.font90}
+- For squared error loss,  \small{$L(y,F(x))=(y-F(x))^2$ }
+the negative gradient becomes:
+\small{$-\partial{L}/\partial{F}=y-F(x)$}, which *corresponds exactly to the residuals*.
+
+- Therefore, for least-squares regression, fitting the negative gradient, and fitting the residuals, are equivalent procedures.
+
+- This explains why Gradient Boosting is often described
+as "iteratively fitting residuals".
+
+- However, for other loss functions the negative gradient is no longer the residual, and Gradient Boosting provides a much more general framework.
+
+:::
+
+
+## Gradient Boosting algorithm
+
+1. Initialize model with constant prediction, $F_0(x)$.
+2. For each iteration $m=1,\dots,M$:
+
+   a. Compute the negative gradient of the loss function.
+   b. Fit a weak learner $h_m(x)$ to the negative gradient.
+   c. Find the optimal step size:$\gamma_m$.
+   d. Update the ensemble
+$$
+F_m(x)=F_{m-1}(x)+\gamma_m h_m(x)
+$$
+3. Output the final ensemble model.
+
+
+<!-- ## Gradient Boosting Algorithm  {.smaller} -->
+
+<!-- - Train a first weak learner $f_1$, which predicts the response variable $y$, and calculate the residuals $y - f_1(x)$. -->
+
+<!-- - Next, train a new model $f_2$, to predict the residuals of the previous model, that is, to correct the errors made by model $f_1$. -->
+
+<!--   - $f_1(x) \approx y$ -->
+
+<!--   - $f_2(x) \approx y - f_1(x)$ -->
+
+<!-- - Iterate calculating residuals of the two models together $y - f_1(x) - f_2(x)$ and train a third model $f_3$ to  correct them. -->
+
+<!--   - $f_3(x) \approx y - f_1(x) - f_2(x)$ -->
+
+<!-- - Repeat the process $M$ times, so that each new model minimizes the residuals (errors) of the previous one. -->
+
+<!-- ## Gradient Boosting may overfit {.smaller} -->
+
+<!-- - Since the goal of Gradient Boosting is to minimize the residuals iteration by iteration, it is susceptible to overfitting.  -->
+
+<!-- - One way to avoid this problem is by using a regularization value, also known as the learning rate ($\lambda$), which limits the influence of each model on the ensemble.  -->
+
+<!-- - As a result of this regularization, more models are needed to form the ensemble, but better results are achieved. -->
+
+<!--   - $f_1(x) \approx y$ -->
+
+<!--   - $f_2(x) \approx y - \lambda f_1(x)$ -->
+
+<!--   - $f_3(x) \approx y - \lambda f_1(x) - \lambda f_2(x)$ -->
+
+<!--   - $y \approx \lambda f_1(x) + \lambda f_2(x) + \lambda f_3(x) + \ldots + \lambda f_m(x)$ -->
+
+
 ## Gradient Boosting pseudo-code{.smaller}
 
 1. Initialize the model with a constant value:
@@ -775,29 +912,32 @@ Source: [Ensemble Learning: Bagging & Boosting](https://resources.experfy.com/ai
         $f_t(x) = f_{t-1}(x) + \gamma_t h(x; \theta_t)$
 3. Output the final model:
     $F(x) = f_T(x)$
-    
-## Relation with *Gradient Descent*
 
-- Gradient Boosting can be seen as an extension of Gradient Descent, a popular optimization algorithm used to find the minimum of a function. 
+## Gradient boosting architechture
 
-  - In Gradient Descent, the weights of the model are updated in the opposite direction of the gradient of the cost function. 
-  
-  - In Gradient Boosting, the new model is trained on the negative gradient of the loss function, which is equivalent to minimizing the loss function in the direction of steepest descent.
+```{r, out.width="100%"}
+knitr::include_graphics("images/gradientboosting.jpeg")
+```
+<small>
+Source: [Ensemble Learning: Bagging & Boosting](https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/)
+</small>
+      
 
 ## Gradient Boosting Variations
-
-- Multiple extensions from Gradient Boosting.
 
 - **XGBoost**
 
   - Optimized implementation that uses regularization to control overfitting and provide better accuracy.
-  - Won many competitions.
 
 - **LightGBM**
 
   - Relies on a technique to reduce the number of samples used in each iteration.
   - Faster training, good for large datasets.
 
+- **CatBoost**
+
+  - specifically designed to handle categorical variables efficiently.
+  
 ## Boosting applications
 
 - Fraud Detection

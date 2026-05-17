@@ -748,7 +748,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#bagging-vs-boosting",
     "title": "Ensemble Methods",
     "section": "Bagging vs Boosting",
-    "text": "Bagging vs Boosting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Ensemble Learning: Bagging & Boosting",
+    "text": "Bagging vs Boosting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Ensemble Learning: Bagging & Boosting",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -783,8 +783,8 @@
     "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost",
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost",
     "title": "Ensemble Methods",
-    "section": "Adaboost",
-    "text": "Adaboost\n\nAdaBoost (Adaptive Boosting) is a direct implementation of the “boosting” idea.\nIt trains models sequentially, new models focusing on correcting the errors of the previous ones.\nFinal Decision is made by combining models, giving more influence to the most reliable ones through\n\nA weighted majority vote (classification) or\nWeighted sum (regression).",
+    "section": "AdaBoost",
+    "text": "AdaBoost\n\nIt proceeds Adaptatively by sequentially training weak,learners.\nEach new learner focuses increasingly on the difficult observations.\n\nobservations that are difficult to classify receive more attention,\nwhile observations already classified correctly become less important.\n\nFinal prediction combines all weak learners using a weighted vote.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -796,7 +796,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#running-adaboost",
     "title": "Ensemble Methods",
     "section": "Running Adaboost",
-    "text": "Running Adaboost\n\nAdaboost proceeds iteratively by, at each iteration:\n\nFit the weak learner using initial weights.\nPredict and identify misclassified observations.\nUpdate observation weights:\n\ndecrease for correctly classified\nincrease for misclassified.\n\nAssign a learner weight to the weak learner based on its accuracy.\n\nThe final prediction is a weighted combination of all weak learners.\n\n\n\nAdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight).\n\nUpdating this weight vector will generate a distribution where it will be more likely to extract those samples with higher weight (that is, those that were incorrectly inferred),\nThis sample will be introduced to the next base learner in the sequence and\nThis will be repeated until a stop criterion is met.\nLikewise, each base learner in the sequence will have assigned a weight, the higher the performance, the higher the weight and the greater the impact of this base learner for the final decision.\nFinally, to make a prediction,\n\neach base learner in the sequence will be fed with the test data,\neach of the predictions of each model will be voted (for the classification case) or averaged (for the regression case)",
+    "text": "Running Adaboost\nAt each iteration AdaBoost performs four main steps:\n\nFit a weak learner using the current observation weights.\nEvaluate which observations are misclassified.\nIncrease the weights of difficult observations.\nAssign a reliability weight to the learner itself.\n\nAs iterations proceed:\n\ndifficult observations receive more attention,\nand accurate learners receive more influence in the final prediction.\n\nThe final classifier is therefore a weighted combination of weak learners.\n\n\nAdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight).\n\nUpdating this weight vector will generate a distribution where it will be more likely to extract those samples with higher weight (that is, those that were incorrectly inferred),\nThis sample will be introduced to the next base learner in the sequence and\nThis will be repeated until a stop criterion is met.\nLikewise, each base learner in the sequence will have assigned a weight, the higher the performance, the higher the weight and the greater the impact of this base learner for the final decision.\nFinally, to make a prediction,\n\neach base learner in the sequence will be fed with the test data,\neach of the predictions of each model will be voted (for the classification case) or averaged (for the regression case)",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -844,7 +844,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-has-limitations",
     "title": "Ensemble Methods",
     "section": "Adaboost has limitations",
-    "text": "Adaboost has limitations\n\nAdaboost was a breakthrough algorithm that significantly improved the accuracy of ML models.\nHowever, Adaboost has its limitations.\n\nIt does not handle continuous variables very well.\nCan be sensitive to noisy data and outliers,\nMay not perform well with complex datasets.\nIts performance can reach a “plateau”: it will no longer improve after a certain number of iterations.\n\nIn order to deal with some of these drawbacks different variants of boosting have been proposed.",
+    "text": "Adaboost has limitations\n\n\nAdaboost was a breakthrough algorithm that significantly improved the accuracy of ML models.\nHowever, Adaboost has its limitations.\n\nIt does not handle continuous variables very well.\nCan be sensitive to noisy data and outliers,\nMay not perform well with complex datasets.\nIt may no longer improve (performance “plateau”) after a certain number of iterations.\n\nIn order to deal with some of these drawbacks different variants of boosting have been proposed.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -867,8 +867,8 @@
     "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-algorithm",
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-algorithm",
     "title": "Ensemble Methods",
-    "section": "Gradient Boosting Algorithm",
-    "text": "Gradient Boosting Algorithm\n\nTrain a first weak learner \\(f_1\\), which predicts the response variable \\(y\\), and calculate the residuals \\(y - f_1(x)\\).\nNext, train a new model \\(f_2\\), to predict the residuals of the previous model, that is, to correct the errors made by model \\(f_1\\).\n\n\\(f_1(x) \\approx y\\)\n\\(f_2(x) \\approx y - f_1(x)\\)\n\nIterate calculating residuals of the two models together \\(y - f_1(x) - f_2(x)\\) and train a third model \\(f_3\\) to correct them.\n\n\\(f_3(x) \\approx y - f_1(x) - f_2(x)\\)\n\nRepeat the process \\(M\\) times, so that each new model minimizes the residuals (errors) of the previous one.",
+    "section": "Gradient Boosting algorithm",
+    "text": "Gradient Boosting algorithm\n\nInitialize model with constant prediction, \\(F_0(x)\\).\nFor each iteration \\(m=1,\\dots,M\\):\n\nCompute the negative gradient of the loss function.\nFit a weak learner \\(h_m(x)\\) to the negative gradient.\nFind the optimal step size:\\(\\gamma_m\\).\nUpdate the ensemble \\[\nF_m(x)=F_{m-1}(x)+\\gamma_m h_m(x)\n\\]\n\nOutput the final ensemble model.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -916,7 +916,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#relation-with-gradient-descent",
     "title": "Ensemble Methods",
     "section": "Relation with Gradient Descent",
-    "text": "Relation with Gradient Descent\n\nGradient Boosting can be seen as an extension of Gradient Descent, a popular optimization algorithm used to find the minimum of a function.\n\nIn Gradient Descent, the weights of the model are updated in the opposite direction of the gradient of the cost function.\nIn Gradient Boosting, the new model is trained on the negative gradient of the loss function, which is equivalent to minimizing the loss function in the direction of steepest descent.",
+    "text": "Relation with Gradient Descent\nIn gradient descent optimization, parameters are updated in the direction that most decreases the loss function:\n\\[\n\\theta_{new}=\\theta_{old}-\\eta\\nabla L\n\\]\nGradient Boosting applies the idea to predictive functions.\nInstead of updating numerical parameters the algorithm updates the prediction function itself.\nAt each iteration, a new weak learner is fitted to approximate the direction of steepest loss reduction.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -928,7 +928,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#gradient-boosting-variations",
     "title": "Ensemble Methods",
     "section": "Gradient Boosting Variations",
-    "text": "Gradient Boosting Variations\n\nMultiple extensions from Gradient Boosting.\nXGBoost\n\nOptimized implementation that uses regularization to control overfitting and provide better accuracy.\nWon many competitions.\n\nLightGBM\n\nRelies on a technique to reduce the number of samples used in each iteration.\nFaster training, good for large datasets.",
+    "text": "Gradient Boosting Variations\n\nXGBoost\n\nOptimized implementation that uses regularization to control overfitting and provide better accuracy.\n\nLightGBM\n\nRelies on a technique to reduce the number of samples used in each iteration.\nFaster training, good for large datasets.\n\nCatBoost\n\nspecifically designed to handle categorical variables efficiently. ## Boosting applications\n\nFraud Detection\nImage and Speech Recognition\nAnomaly Detection\nMedical Diagnosis\nAmazon’s recommendation engine\nModels that predict protein structures from amino acid sequences\nPattern identification in fMRI brain scans.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -1216,7 +1216,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#summary",
     "title": "Ensemble Methods",
     "section": "Summary",
-    "text": "Summary\nFrom real world to bootstrap world:\n\n\nAquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci\n\n\n\n\n\n\n\n\n\nBishop, Christopher M. 2007. Pattern Recognition and Machine Learning (Information Science and Statistics). 1st ed. Springer. http://www.amazon.com/Pattern-Recognition-Learning-Information-Statistics/dp/0387310738%3FSubscriptionId%3D13CT5CVB80YFWJEPWS02%26tag%3Dws%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0387310738.\n\n\nBoehmke, Bradley, and Brandon Greenwell. 2020. The r Series Hands-on Machine Learning with r. CRC Press. https://www.routledge.com/Hands-On-Machine-Learning-with-R/Boehmke-Greenwell/p/book/9781138495685.\n\n\nBoulesteix, Anne Laure, Silke Janitza, Jochen Kruppa, and Inke R. König. 2012. “Overview of Random Forest Methodology and Practical Guidance with Emphasis on Computational Biology and Bioinformatics.” Undefined 2 (November): 493–507. https://doi.org/10.1002/WIDM.1072.\n\n\nBreiman, Leo. 1996. “Bagging Predictors.” Machine Learning 24: 123–40. https://doi.org/10.1007/BF00058655/METRICS.\n\n\nEfron, B. 1979. “Bootstrap Methods: Another Look at the Jackknife.” The Annals of Statistics 7 (1): 1–26. https://doi.org/10.1214/aos/1176344552.\n\n\nProbst, Philipp, Marvin N. Wright, and Anne-Laure Boulesteix. 2019. “Hyperparameters and Tuning Strategies for Random Forest.” WIREs Data Mining and Knowledge Discovery 9 (3): e1301. https://doi.org/https://doi.org/10.1002/widm.1301.\n\n\nSchapire, Robert E. 1989. “The Strength of Weak Learnability (Extended Abstract).” In 30th Annual Symposium on Foundations of Computer Science, Research Triangle Park, North Carolina, USA, 30 October - 1 November 1989, 28–33. IEEE Computer Society. https://doi.org/10.1109/SFCS.1989.63451.",
+    "text": "Summary\nFrom real world to bootstrap world:\n\n\nAquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci\n\n\n\n\n\n\n\n\n\nBishop, Christopher M. 2007. Pattern Recognition and Machine Learning (Information Science and Statistics). 1st ed. Springer. http://www.amazon.com/Pattern-Recognition-Learning-Information-Statistics/dp/0387310738%3FSubscriptionId%3D13CT5CVB80YFWJEPWS02%26tag%3Dws%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0387310738.\n\n\nBoehmke, Bradley, and Brandon Greenwell. 2020. The r Series Hands-on Machine Learning with r. CRC Press. https://www.routledge.com/Hands-On-Machine-Learning-with-R/Boehmke-Greenwell/p/book/9781138495685.\n\n\nBoulesteix, Anne Laure, Silke Janitza, Jochen Kruppa, and Inke R. König. 2012. “Overview of Random Forest Methodology and Practical Guidance with Emphasis on Computational Biology and Bioinformatics.” Undefined 2 (November): 493–507. https://doi.org/10.1002/WIDM.1072.\n\n\nBreiman, Leo. 1996. “Bagging Predictors.” Machine Learning 24: 123–40. https://doi.org/10.1007/BF00058655/METRICS.\n\n\nEfron, B. 1979. “Bootstrap Methods: Another Look at the Jackknife.” The Annals of Statistics 7 (1): 1–26. https://doi.org/10.1214/aos/1176344552.\n\n\nProbst, Philipp, Marvin N. Wright, and Anne-Laure Boulesteix. 2019. “Hyperparameters and Tuning Strategies for Random Forest.” WIREs Data Mining and Knowledge Discovery 9 (3): e1301. https://doi.org/https://doi.org/10.1002/widm.1301.",
     "crumbs": [
       "Home",
       "Ensemble Methods",
@@ -1541,7 +1541,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-body.html#sampling-scheme.",
     "title": "Introduction to Ensembles",
     "section": "4. Sampling scheme.",
-    "text": "4. Sampling scheme.\n\nknitr::include_graphics(\"images/RandomForestsHyperparameters4.png\")\n\n\n\n\n\n\n\n\n\n\nDefault: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.\nSampling fraction and replacement strategy influence diversity and prediction error."
+    "text": "4. Sampling scheme.\n\nknitr::include_graphics(\"images/RandomForestsHyperparameters4.png\")\n\n\n\n\n\n\n\n\n\n\nDefault: Bootstrap sampling with replacement on 100% observations.\nSampling fraction and replacement strategy influence diversity and prediction error."
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#splitting-rule",
@@ -1590,7 +1590,7 @@
     "href": "C2.2-Ensemble_Methods-Slides-body.html#bagging-vs-boosting",
     "title": "Introduction to Ensembles",
     "section": "Bagging vs Boosting",
-    "text": "Bagging vs Boosting\n\n\n\nknitr::include_graphics(\"images/baggingVsboosting1.png\")\n\n\n\n\n\n\n\n\n\n\nknitr::include_graphics(\"images/baggingVsboosting2.png\")\n\n\n\n\n\n\n\n\n\n\nSource: Ensemble Learning: Bagging & Boosting"
+    "text": "Bagging vs Boosting\n\n\n\nknitr::include_graphics(\"images/baggingVsboosting1.png\")\n\n\n\n\n\n\n\n\n\n\nknitr::include_graphics(\"images/baggingVsboosting2.png\")\n\n\n\n\n\n\n\n\n\n\n\nSource: Ensemble Learning: Bagging & Boosting"
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#so-what-is-boosting",
@@ -1610,15 +1610,15 @@
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost",
     "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost",
     "title": "Introduction to Ensembles",
-    "section": "Adaboost",
-    "text": "Adaboost\n\nAdaBoost (Adaptive Boosting) is a direct implementation of the “boosting” idea.\nIt trains models sequentially, new models focusing on correcting the errors of the previous ones.\nFinal Decision is made by combining models, giving more influence to the most reliable ones through\n\nA weighted majority vote (classification) or\nWeighted sum (regression)."
+    "section": "AdaBoost",
+    "text": "AdaBoost\n\nIt proceeds Adaptatively by sequentially training weak,learners.\nEach new learner focuses increasingly on the difficult observations.\n\nobservations that are difficult to classify receive more attention,\nwhile observations already classified correctly become less important.\n\nFinal prediction combines all weak learners using a weighted vote."
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#running-adaboost",
     "href": "C2.2-Ensemble_Methods-Slides-body.html#running-adaboost",
     "title": "Introduction to Ensembles",
     "section": "Running Adaboost",
-    "text": "Running Adaboost\n\nAdaboost proceeds iteratively by, at each iteration:\n\nFit the weak learner using initial weights.\nPredict and identify misclassified observations.\nUpdate observation weights:\n\ndecrease for correctly classified\nincrease for misclassified.\n\nAssign a learner weight to the weak learner based on its accuracy.\n\nThe final prediction is a weighted combination of all weak learners.\n\n\n\nAdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight).\n\nUpdating this weight vector will generate a distribution where it will be more likely to extract those samples with higher weight (that is, those that were incorrectly inferred),\nThis sample will be introduced to the next base learner in the sequence and\nThis will be repeated until a stop criterion is met.\nLikewise, each base learner in the sequence will have assigned a weight, the higher the performance, the higher the weight and the greater the impact of this base learner for the final decision.\nFinally, to make a prediction,\n\neach base learner in the sequence will be fed with the test data,\neach of the predictions of each model will be voted (for the classification case) or averaged (for the regression case)"
+    "text": "Running Adaboost\nAt each iteration AdaBoost performs four main steps:\n\nFit a weak learner using the current observation weights.\nEvaluate which observations are misclassified.\nIncrease the weights of difficult observations.\nAssign a reliability weight to the learner itself.\n\nAs iterations proceed:\n\ndifficult observations receive more attention,\nand accurate learners receive more influence in the final prediction.\n\nThe final classifier is therefore a weighted combination of weak learners.\n\n\nAdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight).\n\nUpdating this weight vector will generate a distribution where it will be more likely to extract those samples with higher weight (that is, those that were incorrectly inferred),\nThis sample will be introduced to the next base learner in the sequence and\nThis will be repeated until a stop criterion is met.\nLikewise, each base learner in the sequence will have assigned a weight, the higher the performance, the higher the weight and the greater the impact of this base learner for the final decision.\nFinally, to make a prediction,\n\neach base learner in the sequence will be fed with the test data,\neach of the predictions of each model will be voted (for the classification case) or averaged (for the regression case)"
   },
   {
     "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-architecture",
@@ -2744,5 +2744,298 @@
     "title": "Appendix I: The Bootstrap",
     "section": "",
     "text": "From real world to bootstrap world:\n\nknitr::include_graphics(\"images/fromRealWorld2BootstrapWorld.png\")\n\n\n\n\n\n\n\n\n\nAquesta imatge no mostra el càlcul del error estandar. Canviar-la per una que si ho faci"
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#when-is-baggingboosting-appropriate",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#when-is-baggingboosting-appropriate",
+    "title": "Introduction to Ensembles",
+    "section": "When is bagging/boosting appropriate?",
+    "text": "When is bagging/boosting appropriate?\n\nBagging/RF improve predictive performance by reducing variance.\n\nKey idea: averaging many unstable models may produce a more stable predictor.\n\nAveraging does not necessarily solve problems caused by high bias.\n\nIf individual models systematically underfit the data, averaging many of them may still produce an underfitted predictor.\n\n\n-That is: - Bagging and Random Forests primarily reduce variance. - Boosting aims to reduce bias by progressively improving the predictor."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#when-is-baggingboosting-appropriate",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#when-is-baggingboosting-appropriate",
+    "title": "Ensemble Methods",
+    "section": "When is bagging/boosting appropriate?",
+    "text": "When is bagging/boosting appropriate?\n\nBagging/RF improve predictive performance by reducing variance.\n\nKey idea: averaging many unstable models may produce a more stable predictor.\n\nAveraging does not necessarily solve problems caused by high bias.\n\nIf individual models systematically underfit the data, averaging many of them may still produce an underfitted predictor.\n\n\n-That is: - Bagging and Random Forests primarily reduce variance. - Boosting aims to reduce bias by progressively improving the predictor.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#from-averaging-to-sequential-correction",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#from-averaging-to-sequential-correction",
+    "title": "Introduction to Ensembles",
+    "section": "From averaging to sequential correction",
+    "text": "From averaging to sequential correction\nBoosting follows the following strategy:\n\nmodels are built sequentially,\nand each new model attempts to correct the errors made by the previous ones.\n\nInstead of averaging independent predictors, Boosting constructs an additive model: \\[\nF(x) = f_1(x)+f_2(x)+f_3(x)+\\dots\n\\] where: - \\(f_1(x)\\) captures the main structure of the data, - \\(f_2(x)\\) corrects part of the remaining errors, - \\(f_3(x)\\) corrects the residual errors left by the first two models, - and so on.\nThe final predictor is therefore built incrementally through a sequence of weak learners."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#from-averaging-to-sequential-correction",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#from-averaging-to-sequential-correction",
+    "title": "Ensemble Methods",
+    "section": "From averaging to sequential correction",
+    "text": "From averaging to sequential correction\nBoosting follows the following strategy:\n\nmodels are built sequentially,\nand each new model attempts to correct the errors made by the previous ones.\n\nInstead of averaging independent predictors, Boosting constructs an additive model: \\[\nF(x) = f_1(x)+f_2(x)+f_3(x)+\\dots\n\\] where: - \\(f_1(x)\\) captures the main structure of the data, - \\(f_2(x)\\) corrects part of the remaining errors, - \\(f_3(x)\\) corrects the residual errors left by the first two models, - and so on.\nThe final predictor is therefore built incrementally through a sequence of weak learners.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#so-bagging-or-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#so-bagging-or-boosting",
+    "title": "Ensemble Methods",
+    "section": "So bagging or boosting?",
+    "text": "So bagging or boosting?\n\nBagging/RF improves predictive performance by reducing variance.\n\nAveraging many unstable models may produce a predictor with smaller variance.\n\nAveraging does not necessarily solve problems caused by high bias.\n\nIf individual models systematically underfit the data, averaging many of them may still produce an underfitted predictor.\nBoosting aims to reduce bias by progressively improving the predictor.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#a-sequential-correction",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#a-sequential-correction",
+    "title": "Ensemble Methods",
+    "section": "A sequential correction",
+    "text": "A sequential correction\nBoosting follows the following strategy:\n\nModels are built sequentially,\nEach new model attempts to correct errors made by previous ones.\n\nBoosting constructs an additive model: \\[\nF(x) = f_1(x)+f_2(x)+f_3(x)+\\dots\n\\]\n\n\\(f_1(x)\\) captures the main structure of the data,\n\\(f_2(x)\\) corrects part of the remaining errors,\n\\(f_3(x)\\) corrects the residual errors left\nand so on.\n\nFinal predictor is built incrementally through a sequence of weak learners.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#so-bagging-or-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#so-bagging-or-boosting",
+    "title": "Introduction to Ensembles",
+    "section": "So bagging or boosting?",
+    "text": "So bagging or boosting?\n\nBagging/RF improves predictive performance by reducing variance.\n\nAveraging many unstable models may produce a predictor with smaller variance.\n\nAveraging does not necessarily solve problems caused by high bias.\n\nIf individual models systematically underfit the data, averaging many of them may still produce an underfitted predictor.\nBoosting aims to reduce bias by progressively improving the predictor."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#a-sequential-correction",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#a-sequential-correction",
+    "title": "Introduction to Ensembles",
+    "section": "A sequential correction",
+    "text": "A sequential correction\nBoosting follows the following strategy:\n\nModels are built sequentially,\nEach new model attempts to correct errors made by previous ones.\n\nBoosting constructs an additive model: \\[\nF(x) = f_1(x)+f_2(x)+f_3(x)+\\dots\n\\]\n\n\\(f_1(x)\\) captures the main structure of the data,\n\\(f_2(x)\\) corrects part of the remaining errors,\n\\(f_3(x)\\) corrects the residual errors left\nand so on.\n\nFinal predictor is built incrementally through a sequence of weak learners."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#general-idea-of-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#general-idea-of-boosting",
+    "title": "Ensemble Methods",
+    "section": "General idea of Boosting",
+    "text": "General idea of Boosting\nBoosting transforms many weak learners into a strong learner through sequential error correction.\n\nIt trains an initial weak learner.\nEvaluates its errors.\nTrains a new learner focused on correcting those errors.\nAdds the new learner to the ensemble.\nRepeats the process iteratively.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#general-idea-of-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#general-idea-of-boosting",
+    "title": "Introduction to Ensembles",
+    "section": "General idea of Boosting",
+    "text": "General idea of Boosting\nBoosting transforms many weak learners into a strong learner through sequential error correction.\n\nIt trains an initial weak learner.\nEvaluates its errors.\nTrains a new learner focused on correcting those errors.\nAdds the new learner to the ensemble.\nRepeats the process iteratively."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#boosting-variants",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#boosting-variants",
+    "title": "Introduction to Ensembles",
+    "section": "Boosting variants",
+    "text": "Boosting variants\n\nDifferent Boosting algorithms have been developed.\nThey mainly differ in:\n\nhow the errors are defined and,\nhow next learner is constructed to reduce them.\n\nThis leads to different Boosting methods such as:\n\nAdaBoost,\nGradient Boosting,\n\nXGBoost,\nLightGBM."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-variants",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-variants",
+    "title": "Ensemble Methods",
+    "section": "Boosting variants",
+    "text": "Boosting variants\n\nDifferent Boosting algorithms have been developed.\nThey mainly differ in:\n\nhow the errors are defined and,\nhow next learner is constructed to reduce them.\n\nThis leads to different Boosting methods such as:\n\nAdaBoost,\nGradient Boosting,\n\nXGBoost,\nLightGBM.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#why-do-learner-weights-appear",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#why-do-learner-weights-appear",
+    "title": "Ensemble Methods",
+    "section": "Why do learner weights appear?",
+    "text": "Why do learner weights appear?\nInitially, all observations receive the same weight, \\(w_i=\\frac{1}{N}\\)\nAdaBoost gives more influence to learners that achieve better classification performance.\nIf a learner has weighted error rate, \\(\\epsilon_t\\), its contribution to the final ensemble is determined by: \\[\n\\alpha_t=\\frac{1}{2}\\log\\left(\\frac{1-\\epsilon_t}{\\epsilon_t}\\right)\n\\]\nConsequently:\n\nhighly accurate learners receive larger weights,\nlearners close to random guessing receive very small weights.\n\nThe final prediction is therefore dominated by the most reliable classifiers.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-algorithm",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-algorithm",
+    "title": "Ensemble Methods",
+    "section": "Adaboost algorithm",
+    "text": "Adaboost algorithm\n\n\nInitialize sample weights: \\(w_i = 1/N\\), where \\(N\\) = # of training samples.\nFor each iteration \\(t=1,2,\\dots,T\\) do:\n\nTrain weak classifier \\(h_t(x)\\) on training set weighted by \\(w_i\\).\nCompute the weighted error rate: \\[{\\small \\left. \\epsilon_t = \\sum_{i=1}^N w_i I(y_i \\neq h_t(x_i)) \\right/ \\left. \\sum_{i=1}^N w_i\\right. }\\]\nCompute the classifier weight: \\(\\alpha_t = \\frac{1}{2}\\log\\frac{1-\\epsilon_t}{\\epsilon_t}\\).\nUpdate the sample weights: \\(w_i \\leftarrow w_i^{-\\alpha_t I(y_i \\neq h_t(x_i))}\\).\nNormalize the sample weights: \\(w_i \\leftarrow \\frac{w_i}{\\sum_{j=1}^N w_j}\\).\n\nOutput the final classifier: \\(H(x) = \\text{sign}\\left(\\sum_{t=1}^T \\alpha_t h_t(x)\\right)\\).",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-as-loss-minimization",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-as-loss-minimization",
+    "title": "Ensemble Methods",
+    "section": "AdaBoost as loss minimization",
+    "text": "AdaBoost as loss minimization\n\nAdaBoost is often presented as a heuristic algorithm,\nBut it is also an optimization procedure: It can be shown to minimize the exponential loss: \\[\nL(y,F(x))=e^{-yF(x)}\n\\]\n\nwhere:\n\n\\(y \\in \\{-1,+1\\}\\),\nand \\(F(x)\\) is the additive ensemble model.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#from-adaboost-to-gradient-boosting",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#from-adaboost-to-gradient-boosting",
+    "title": "Ensemble Methods",
+    "section": "From adaboost to gradient boosting",
+    "text": "From adaboost to gradient boosting\n\nThe interpretation described above is important because it shows that AdaBoost is not simply an arbitrary reweighting strategy.\nInstead, AdaBoost can be understood as\n\na sequential optimization procedure that\nincrementally builds an additive predictive model\nby reducing a specific loss function.\n\nThis connects AdaBoost with the more general framework of Gradient Boosting where more general loss functions can be minimized.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#extending-adaboost",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#extending-adaboost",
+    "title": "Ensemble Methods",
+    "section": "EXtending adaboost",
+    "text": "EXtending adaboost\n\nThe interpretation described above is important because it shows that AdaBoost is not simply an arbitrary reweighting strategy.\nInstead, AdaBoost can be understood as\n\na sequential optimization procedure that\nincrementally builds an additive predictive model\nby reducing a specific loss function.\n\nThis connects AdaBoost with the more general framework of Gradient Boosting where more general loss functions can be minimized.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-as-loss-minimization-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-as-loss-minimization-1",
+    "title": "Ensemble Methods",
+    "section": "AdaBoost as loss minimization (1)",
+    "text": "AdaBoost as loss minimization (1)\n\nAdaBoost is often presented as a heuristic algorithm,\nBut it is also an optimization procedure: It can be shown to minimize the exponential loss: \\[\nL(y,F(x))=e^{-yF(x)}\n\\]\n\nwhere:\n\n\\(y \\in \\{-1,+1\\}\\),\nand \\(F(x)\\) is the additive ensemble model.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-as-loss-minimization-2",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#adaboost-as-loss-minimization-2",
+    "title": "Ensemble Methods",
+    "section": "Adaboost as loss minimization (2)",
+    "text": "Adaboost as loss minimization (2)\n\nThe interpretation described above is important because it shows that AdaBoost is not simply an arbitrary reweighting strategy.\nInstead, AdaBoost can be understood as\n\na sequential optimization procedure that\nincrementally builds an additive predictive model\nby reducing a specific loss function.\n\nThis connects AdaBoost with the more general framework of Gradient Boosting where more general loss functions can be minimized.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#moving-beyond-adaboost",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#moving-beyond-adaboost",
+    "title": "Ensemble Methods",
+    "section": "Moving beyond AdaBoost",
+    "text": "Moving beyond AdaBoost\nAdaBoost introduced the key idea of sequentially improving weak learners.\nBut it has important limitations:\n\nOriginally designed mainly for classification,\nIt relies on a specific exponential loss,\nIt can become sensitive to noisy observations and outliers.\n\nThis motivated the development of a more general framework:\n\ninstead of designing specific reweighting rules,\ndirectly minimize a loss function through iterative optimization.\n\nThis idea leads to Gradient Boosting.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#why-do-learner-weights-appear",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#why-do-learner-weights-appear",
+    "title": "Introduction to Ensembles",
+    "section": "Why do learner weights appear?",
+    "text": "Why do learner weights appear?\nInitially, all observations receive the same weight, \\(w_i=\\frac{1}{N}\\)\nAdaBoost gives more influence to learners that achieve better classification performance.\nIf a learner has weighted error rate, \\(\\epsilon_t\\), its contribution to the final ensemble is determined by: \\[\n\\alpha_t=\\frac{1}{2}\\log\\left(\\frac{1-\\epsilon_t}{\\epsilon_t}\\right)\n\\]\nConsequently:\n\nhighly accurate learners receive larger weights,\nlearners close to random guessing receive very small weights.\n\nThe final prediction is therefore dominated by the most reliable classifiers."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-algorithm",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-algorithm",
+    "title": "Introduction to Ensembles",
+    "section": "Adaboost algorithm",
+    "text": "Adaboost algorithm\n\n\nInitialize sample weights: \\(w_i = 1/N\\), where \\(N\\) = # of training samples.\nFor each iteration \\(t=1,2,\\dots,T\\) do:\n\nTrain weak classifier \\(h_t(x)\\) on training set weighted by \\(w_i\\).\nCompute the weighted error rate: \\[{\\small \\left. \\epsilon_t = \\sum_{i=1}^N w_i I(y_i \\neq h_t(x_i)) \\right/ \\left. \\sum_{i=1}^N w_i\\right. }\\]\nCompute the classifier weight: \\(\\alpha_t = \\frac{1}{2}\\log\\frac{1-\\epsilon_t}{\\epsilon_t}\\).\nUpdate the sample weights: \\(w_i \\leftarrow w_i^{-\\alpha_t I(y_i \\neq h_t(x_i))}\\).\nNormalize the sample weights: \\(w_i \\leftarrow \\frac{w_i}{\\sum_{j=1}^N w_j}\\).\n\nOutput the final classifier: \\(H(x) = \\text{sign}\\left(\\sum_{t=1}^T \\alpha_t h_t(x)\\right)\\)."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-as-loss-minimization-1",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-as-loss-minimization-1",
+    "title": "Introduction to Ensembles",
+    "section": "AdaBoost as loss minimization (1)",
+    "text": "AdaBoost as loss minimization (1)\n\nAdaBoost is often presented as a heuristic algorithm,\nBut it is also an optimization procedure: It can be shown to minimize the exponential loss: \\[\nL(y,F(x))=e^{-yF(x)}\n\\]\n\nwhere:\n\n\\(y \\in \\{-1,+1\\}\\),\nand \\(F(x)\\) is the additive ensemble model."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-as-loss-minimization-2",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#adaboost-as-loss-minimization-2",
+    "title": "Introduction to Ensembles",
+    "section": "Adaboost as loss minimization (2)",
+    "text": "Adaboost as loss minimization (2)\n\nThe interpretation described above is important because it shows that AdaBoost is not simply an arbitrary reweighting strategy.\nInstead, AdaBoost can be understood as\n\na sequential optimization procedure that\nincrementally builds an additive predictive model\nby reducing a specific loss function.\n\nThis connects AdaBoost with the more general framework of Gradient Boosting where more general loss functions can be minimized."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-body.html#moving-beyond-adaboost",
+    "href": "C2.2-Ensemble_Methods-Slides-body.html#moving-beyond-adaboost",
+    "title": "Introduction to Ensembles",
+    "section": "Moving beyond AdaBoost",
+    "text": "Moving beyond AdaBoost\nAdaBoost introduced the key idea of sequentially improving weak learners.\nBut it has important limitations:\n\nOriginally designed mainly for classification,\nIt relies on a specific exponential loss,\nIt can become sensitive to noisy observations and outliers.\n\nThis motivated the development of a more general framework:\n\ninstead of designing specific reweighting rules,\ndirectly minimize a loss function through iterative optimization.\n\nThis idea leads to Gradient Boosting."
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-as-function-optimization",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#boosting-as-function-optimization",
+    "title": "Ensemble Methods",
+    "section": "Boosting as function optimization",
+    "text": "Boosting as function optimization\nGradient Boosting views learning as an optimization problem.\nInstead of directly searching for a single complex predictor, the model is built incrementally as:\n\\[\nF_M(x)=F_{M-1}(x)+\\gamma_M h_M(x)\n\\]\nwhere:\n\n\\(F_{M-1}(x)\\) is the current ensemble,\n\\(h_M(x)\\) is a new weak learner,\nand \\(\\gamma_M\\) controls how much the new learner contributes.\n\nAt each iteration, the algorithm searches for the weak learner that most reduces the current loss function.\nThe final model is therefore constructed through a sequence of small corrective updates.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#a-function-optimization",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#a-function-optimization",
+    "title": "Ensemble Methods",
+    "section": "A function optimization",
+    "text": "A function optimization\nGradient Boosting views learning as an optimization problem.\nInstead of directly searching for a single complex predictor, the model is built incrementally as:\n\\[\nF_M(x)=F_{M-1}(x)+\\gamma_M h_M(x)\n\\]\nwhere:\n\n\\(F_{M-1}(x)\\) is the current ensemble,\n\\(h_M(x)\\) is a new weak learner,\nand \\(\\gamma_M\\) controls how much the new learner contributes.\n\nAt each iteration, the algorithm searches for the weak learner that most reduces the current loss function.\nThe final model is constructed through a sequence of small corrective updates.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#residual-fitting-as-a-special-case",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#residual-fitting-as-a-special-case",
+    "title": "Ensemble Methods",
+    "section": "Residual fitting as a special case",
+    "text": "Residual fitting as a special case\n\n\nFor squared error loss, {\\(L(y,F(x))=(y-F(x))^2\\) } the negative gradient becomes: {\\(-\\partial{L}/\\partial{F}=y-F(x)\\)}, which corresponds exactly to the residuals.\nTherefore, for least-squares regression, fitting the negative gradient, and fitting the residuals, are equivalent procedures.\nThis explains why Gradient Boosting is often described as “iteratively fitting residuals”.\nHowever, for other loss functions the negative gradient is no longer the residual, and Gradient Boosting provides a much more general framework.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
+  },
+  {
+    "objectID": "C2.2-Ensemble_Methods-Slides-RevealJS.html#relation-with-gradient-descent-1",
+    "href": "C2.2-Ensemble_Methods-Slides-RevealJS.html#relation-with-gradient-descent-1",
+    "title": "Ensemble Methods",
+    "section": "Relation with Gradient Descent",
+    "text": "Relation with Gradient Descent\n\nGradient Boosting can be seen as an extension of Gradient Descent, a popular optimization algorithm used to find the minimum of a function.\n\nIn Gradient Descent, the weights of the model are updated in the opposite direction of the gradient of the cost function.\nIn Gradient Boosting, the new model is trained on the negative gradient of the loss function, which is equivalent to minimizing the loss function in the direction of steepest descent.",
+    "crumbs": [
+      "Home",
+      "Ensemble Methods",
+      "Ensemble Methods"
+    ]
   }
 ]

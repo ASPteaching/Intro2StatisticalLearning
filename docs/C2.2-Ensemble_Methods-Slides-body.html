@@ -1023,7 +1023,7 @@ No. of variables tried at each split: 80
 </div>
 <div class="small">
 <ul>
-<li>Default: Bootstrap sampling with replacement on 100% observations. - Sampling size and replacement or not can affect diversity and reduce bias.</li>
+<li>Default: Bootstrap sampling with replacement on 100% observations.</li>
 <li>Sampling fraction and replacement strategy influence diversity and prediction error.</li>
 </ul>
 </div>
@@ -1129,60 +1129,99 @@ No. of variables tried at each split: 80
 </div>
 </div>
 </div>
+<div style="text-align: center;">
 <p>Source: <a href="https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/">Ensemble Learning: Bagging &amp; Boosting</a></p>
+</div>
 </section>
-<section id="so-what-is-boosting" class="level2">
-<h2 class="anchored" data-anchor-id="so-what-is-boosting">So what is Boosting</h2>
-<!-- - Boosting is an ensemble learning technique used in ML for improving the accuracy of *weak learners*. -->
+<section id="so-bagging-or-boosting" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="so-bagging-or-boosting">So bagging or boosting?</h2>
 <ul>
-<li><p>Idea: create a model that is better than any of its individual components by combining their strengths and compensating for their weaknesses.</p>
+<li>Bagging/RF improves predictive performance by reducing <strong>variance</strong>.
 <ul>
-<li><p>Multiple weak models are <em>trained sequentially</em>.</p></li>
-<li><p>Each new model is trained to improve the errors made by the previous model.</p></li>
+<li><em>Averaging many unstable models</em> may produce a predictor with <strong>smaller variance</strong>.</li>
 </ul></li>
-<li><p>The final model is a <em>weighted combination</em> of all the models where the <em>weights are determined by the accuracy of each model</em>.</p></li>
+<li>Averaging does not necessarily solve problems caused by <strong>high bias</strong>.
+<ul>
+<li>If individual models systematically underfit the data, averaging many of them may still produce an underfitted predictor.</li>
+<li>Boosting aims to reduce <strong>bias</strong> by progressively improving the predictor.</li>
+</ul></li>
 </ul>
-<!-- - Boosting can be applied to various machine learning algorithms, including decision trees, neural networks, and support vector machines. -->
 </section>
-<section id="historical-background" class="level2">
-<h2 class="anchored" data-anchor-id="historical-background">Historical background</h2>
+<section id="a-sequential-correction" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="a-sequential-correction">A sequential correction</h2>
+<p>Boosting follows the following strategy:</p>
 <ul>
-<li><p>The <em>boosting technique</em> was proposed by Robert Schapire <span class="citation" data-cites="Schapire89">[@Schapire89]</span> and Yoav Freund in the 1990s.</p></li>
-<li><p>They introduced <em>AdaBoost</em>, the first widely-used Boosting algorithm.</p>
+<li>Models are built sequentially,</li>
+<li>Each new model attempts to correct errors made by previous ones.</li>
+</ul>
+<p>Boosting constructs an additive model: <span class="math display">\[
+F(x) = f_1(x)+f_2(x)+f_3(x)+\dots
+\]</span></p>
 <ul>
-<li>It achieved significant success in various applications, including <em>face detection</em> and <em>handwriting recognition</em>.</li>
+<li><span class="math inline">\(f_1(x)\)</span> captures the main structure of the data,</li>
+<li><span class="math inline">\(f_2(x)\)</span> corrects part of the remaining errors,</li>
+<li><span class="math inline">\(f_3(x)\)</span> corrects the residual errors left</li>
+<li>and so on.</li>
+</ul>
+<p>Final predictor is built incrementally through a sequence of weak learners.</p>
+</section>
+<section id="general-idea-of-boosting" class="level2">
+<h2 class="anchored" data-anchor-id="general-idea-of-boosting">General idea of Boosting</h2>
+<p>Boosting transforms many weak learners into a strong learner through <em>sequential error correction</em>.</p>
+<ol type="1">
+<li>It trains an initial weak learner.</li>
+<li>Evaluates its errors.</li>
+<li>Trains a new learner focused on correcting those errors.</li>
+<li>Adds the new learner to the ensemble.</li>
+<li>Repeats the process iteratively.</li>
+</ol>
+</section>
+<section id="boosting-variants" class="level2">
+<h2 class="anchored" data-anchor-id="boosting-variants">Boosting variants</h2>
+<ul>
+<li><p>Different Boosting algorithms have been developed.</p></li>
+<li><p>They mainly differ in:</p>
+<ul>
+<li>how the errors are defined and,</li>
+<li>how next learner is constructed to reduce them.</li>
 </ul></li>
-<li><p>Other Boosting algorithms have become popular: <em>Gradient Boosting</em>, <em>XGBoost</em>, and <em>LightGBM</em>.</p></li>
+<li><p>This leads to different Boosting methods such as:</p>
+<ul>
+<li>AdaBoost,</li>
+<li>Gradient Boosting,<br>
+</li>
+<li>XGBoost,</li>
+<li>LightGBM.</li>
+</ul></li>
 </ul>
 </section>
 <section id="adaboost" class="level2">
-<h2 class="anchored" data-anchor-id="adaboost">Adaboost</h2>
+<h2 class="anchored" data-anchor-id="adaboost">AdaBoost</h2>
 <ul>
-<li><p>AdaBoost (<em>Adaptive Boosting</em>) is a direct implementation of the “boosting” idea.</p></li>
-<li><p>It trains models sequentially, new models <em>focusing on correcting the errors of the previous ones</em>.</p></li>
-<li><p>Final Decision is made by <em>combining models</em>, giving more influence to the most reliable ones through</p>
+<li><p>It proceeds <strong>Ada</strong>ptatively by sequentially training weak,learners.</p></li>
+<li><p>Each new learner focuses increasingly on the difficult observations.</p>
 <ul>
-<li><p>A weighted majority vote (classification) or</p></li>
-<li><p>Weighted sum (regression).</p></li>
+<li>observations that are difficult to classify receive more attention,</li>
+<li>while observations already classified correctly become less important.</li>
 </ul></li>
+<li><p>Final prediction combines all weak learners using a weighted vote.</p></li>
 </ul>
 </section>
-<section id="running-adaboost" class="level2">
-<h2 class="anchored" data-anchor-id="running-adaboost">Running Adaboost</h2>
+<section id="running-adaboost" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="running-adaboost">Running Adaboost</h2>
+<p>At each iteration AdaBoost performs four main steps:</p>
+<ol type="1">
+<li>Fit a weak learner using the current observation weights.</li>
+<li>Evaluate which observations are misclassified.</li>
+<li>Increase the weights of difficult observations.</li>
+<li>Assign a reliability weight to the learner itself.</li>
+</ol>
+<p>As iterations proceed:</p>
 <ul>
-<li><p>Adaboost proceeds iteratively by, at each iteration:</p>
-<ul>
-<li><p>Fit the weak learner using initial weights.</p></li>
-<li><p>Predict and identify misclassified observations.</p></li>
-<li><p>Update <em>observation weights</em>:</p>
-<ul>
-<li><p>decrease for correctly classified</p></li>
-<li><p>increase for misclassified.</p></li>
-</ul></li>
-<li><p>Assign a <em>learner weight</em> to the weak learner based on its accuracy.</p></li>
-</ul></li>
-<li><p>The final prediction is a <em>weighted combination</em> of all weak learners.</p></li>
+<li>difficult observations receive more attention,</li>
+<li>and accurate learners receive more influence in the final prediction.</li>
 </ul>
+<p>The final classifier is therefore a weighted combination of weak learners.</p>
 <div class="notes">
 <ul>
 <li>AdaBoost implements a vector of weights to penalize those samples that were incorrectly inferred (by increasing the weight) and reward those that were correctly inferred (by decreasing the weight).
@@ -1200,6 +1239,20 @@ No. of variables tried at each split: 80
 </ul>
 </div>
 </section>
+<section id="why-do-learner-weights-appear" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="why-do-learner-weights-appear">Why do learner weights appear?</h2>
+<p>Initially, all observations receive the same weight, <span class="math inline">\(w_i=\frac{1}{N}\)</span></p>
+<p>AdaBoost gives more influence to learners that achieve better classification performance.</p>
+<p>If a learner has weighted error rate, <span class="math inline">\(\epsilon_t\)</span>, its contribution to the final ensemble is determined by: <span class="math display">\[
+\alpha_t=\frac{1}{2}\log\left(\frac{1-\epsilon_t}{\epsilon_t}\right)
+\]</span></p>
+<p>Consequently:</p>
+<ul>
+<li>highly accurate learners receive larger weights,</li>
+<li>learners close to random guessing receive very small weights.</li>
+</ul>
+<p>The final prediction is therefore dominated by the most reliable classifiers.</p>
+</section>
 <section id="adaboost-architecture" class="level2">
 <h2 class="anchored" data-anchor-id="adaboost-architecture">Adaboost Architecture</h2>
 <div class="cell" data-layout-align="center">
@@ -1214,8 +1267,8 @@ No. of variables tried at each split: 80
 </div>
 <p><small> Source: <a href="https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/">Ensemble Learning: Bagging &amp; Boosting</a> </small></p>
 </section>
-<section id="adaboost-pseudo-code" class="level2">
-<h2 class="anchored" data-anchor-id="adaboost-pseudo-code">Adaboost pseudo-code</h2>
+<section id="adaboost-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="adaboost-algorithm">Adaboost algorithm</h2>
 <p><small></small></p><small>
 <ol type="1">
 <li><p>Initialize sample weights: <span class="math inline">\(w_i = 1/N\)</span>, where <span class="math inline">\(N\)</span> = # of training samples.</p></li>
@@ -1250,19 +1303,48 @@ No. of variables tried at each split: 80
 <!-- - AdaBoost iteratively trains weak classifiers and assigns higher weights to misclassified samples, leading to a stronger ensemble classifier.  -->
 <!-- - The resulting classifier can then be used to detect faces in new images with high accuracy. -->
 </section>
-<section id="adaboost-has-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="adaboost-has-limitations">Adaboost has limitations</h2>
+<section id="adaboost-as-loss-minimization-1" class="level2">
+<h2 class="anchored" data-anchor-id="adaboost-as-loss-minimization-1">AdaBoost as loss minimization (1)</h2>
 <ul>
-<li><p>Adaboost was a breakthrough algorithm that significantly improved the accuracy of ML models.</p></li>
-<li><p>However, Adaboost has its limitations.</p>
-<ul>
-<li><p>It does not handle continuous variables very well.</p></li>
-<li><p>Can be sensitive to noisy data and outliers,</p></li>
-<li><p>May not perform well with complex datasets.</p></li>
-<li><p>Its performance can reach a “plateau”: it will no longer improve after a certain number of iterations.</p></li>
-</ul></li>
-<li><p>In order to deal with some of these drawbacks different variants of boosting have been proposed.</p></li>
+<li>AdaBoost is often presented as a heuristic algorithm,</li>
+<li>But it is also an optimization procedure: It can be shown to minimize the exponential loss: <span class="math display">\[
+L(y,F(x))=e^{-yF(x)}
+\]</span></li>
 </ul>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(y \in \{-1,+1\}\)</span>,</li>
+<li>and <span class="math inline">\(F(x)\)</span> is the additive ensemble model.</li>
+</ul>
+</section>
+<section id="adaboost-as-loss-minimization-2" class="level2">
+<h2 class="anchored" data-anchor-id="adaboost-as-loss-minimization-2">Adaboost as loss minimization (2)</h2>
+<ul>
+<li><p>The interpretation described above is important because it shows that <em>AdaBoost is not simply an arbitrary reweighting strategy</em>.</p></li>
+<li><p>Instead, AdaBoost can be understood as</p>
+<ul>
+<li>a sequential optimization procedure that</li>
+<li>incrementally builds an additive predictive model</li>
+<li>by reducing a <strong>specific</strong> loss function.</li>
+</ul></li>
+<li><p>This connects AdaBoost with the more general framework of Gradient Boosting where more general loss functions can be minimized.</p></li>
+</ul>
+</section>
+<section id="moving-beyond-adaboost" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="moving-beyond-adaboost">Moving beyond AdaBoost</h2>
+<p>AdaBoost introduced the key idea of sequentially improving weak learners.</p>
+<p>But it has important limitations:</p>
+<ul>
+<li>Originally designed mainly for classification,</li>
+<li>It relies on a specific exponential loss,</li>
+<li>It can become sensitive to noisy observations and outliers.</li>
+</ul>
+<p>This motivated the development of a more general framework:</p>
+<ul>
+<li>instead of designing specific reweighting rules,</li>
+<li>directly minimize a loss function through iterative optimization.</li>
+</ul>
+<p>This idea leads to Gradient Boosting.</p>
 </section>
 <section id="gradient-boosting" class="level2">
 <h2 class="anchored" data-anchor-id="gradient-boosting">Gradient Boosting</h2>
