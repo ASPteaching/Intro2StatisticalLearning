@@ -81,14 +81,14 @@ We will work with the `AmesHousing` dataset, a dataset with multiple variables a
 
 Packge `AmesHousing` contains the data jointly with some instructions to create the required dataset.
 
-We will use, however data from the `modeldata` package where some preprocessing of the data has already been performed (see: [https://www.tmwr.org/ames](https://www.tmwr.org/ames))
+We will use, however, data from the `modeldata` package where some preprocessing of the data has already been performed (see: [https://www.tmwr.org/ames](https://www.tmwr.org/ames))
 
 ```{r}
 data(ames, package = "modeldata")
 dim(ames)
 ```
 
-## Exploratory Data Analysis an preprocessing 
+## Exploratory Data Analysis and preprocessing 
 
 The dataset has 74 variables, and has already been prepared by the package `modeldata`maintainers.
 
@@ -132,6 +132,9 @@ split <- rsample::initial_split(ames, prop = 0.7,
                        strata = "Sale_Price")
 ames_train  <- training(split)
 ames_test   <- testing(split)
+
+dim(ames_train)
+dim(ames_test)
 ```
 
 
@@ -589,10 +592,95 @@ vip(RF.Ames, num_features = 40, bar = FALSE)
 ```
 
 
-# Random Forests with Python
+# Questions
 
-The following link points to a good brief tutorial on how to train and evaluate Random Forests using Python
+1. Compare the test RMSE obtained with:
+   - a single regression tree,
+   - Bagging,
+   - and Random Forests.
 
-[DataCamp: Random Forest Classification with Scikit-Learn](https://www.datacamp.com/tutorial/random-forests-classifier-python)
+   Which method achieves the best predictive performance on the Ames Housing dataset?
+
+2. Inspect the selected value of `mtry` (R) or `max_features` (Python).
+   
+   - What value was selected?
+   - How does it compare with the total number of predictors?
+
+3. Increase the number of trees (`ntree` in R or `n_estimators` in Python) from 100 to 1000.
+   
+   - Does the test RMSE improve substantially?
+   - Does computation time increase noticeably?
+
+4. Identify the 10 most important variables according to the Random Forest model.
+   
+   - Are these variables reasonable from a real-estate perspective?
+   - Do the same variables appear important in both R and Python?
+
+5. Compare the variable importance obtained using:
+   
+   - impurity-based importance,
+   - and permutation importance (if available).
+
+   Do both approaches rank variables similarly?
+
+6. Modify the Random Forest model so that only numerical predictors are used.
+   
+   - Does predictive performance decrease?
+   - Which categorical variables seem most informative in the original model?
+
+7. Train a Random Forest using only the 10 most important predictors identified previously.
+   
+   - How much predictive performance is lost compared with the full model?
+
+8. Compare the training RMSE and the test RMSE for:
+   
+   - a single tree,
+   - Bagging,
+   - and Random Forests.
+
+   Which model appears to overfit the most?
+
+9. Change the value of `max_features` (`mtry`) manually:
+   
+   - try a very small value,
+   - and a very large value.
+
+   How does this affect:
+   
+   - test RMSE,
+   - and the correlation between trees?
+
+10. Examine the Out-Of-Bag (OOB) error estimate.
+    
+    - How similar is the OOB error to the test error?
+    - Why can OOB error be useful in practice?
+
+11. Repeat the train/test split using a different random seed.
+    
+    - Are the results stable?
+    - Which model appears most robust to changes in the split?
+
+12. Compare the execution time of:
+    
+    - a single regression tree,
+    - Bagging,
+    - and Random Forests.
+
+    Is the improvement in predictive performance worth the additional computational cost?
+
+13. Visualize the predictions versus observed values for the Random Forest model.
+    
+    - Are prediction errors approximately homogeneous?
+    - Do you observe systematic underestimation or overestimation for expensive houses?
+
+14. In the Python notebook, inspect the effect of `OneHotEncoder`.
+    
+    - How many predictors are generated after preprocessing?
+    - Why is this transformation necessary in `scikit-learn`?
+
+15. Compare the Random Forest implementation in R and Python.
+    
+    - Are the results identical?
+    - Which implementation is easier to interpret or customize?
 
 # References

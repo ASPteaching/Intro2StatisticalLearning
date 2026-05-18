@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>c2.2-ensemble_methods-slides-body – Introduction to Statistical Learning</title>
+<title>Introduction to Statistical Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -101,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -145,7 +145,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -167,17 +167,17 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -190,9 +190,9 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -231,9 +231,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Tree-based Methods</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -260,9 +260,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Ensemble Methods</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -301,9 +301,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Neural Networks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -348,9 +348,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Deep Learning</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -377,9 +377,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Resources</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -466,7 +466,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/1.2-Ensemble_Methods-Slides_insertimage_1.png" class="img-fluid figure-img" width="346"></p>
+<p><img src="images/1.2-Ensemble_Methods-Slides_insertimage_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="346"></p>
 <figcaption>The bias-variance trade-off</figcaption>
 </figure>
 </div>
@@ -1364,49 +1364,74 @@ L(y,F(x))=e^{-yF(x)}
 <!-- - The flexibility of this algorithm has made it possible to apply boosting to a multitude of problems (regression, multiple classification, etc.), making it one of the most successful machine learning methods.  -->
 <!-- - While there are various adaptations, the general idea behind all of them is the same: train models sequentially, with each model adjusting the residuals (errors) of the previous models. -->
 </section>
-<section id="gradient-boosting-algorithm" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="gradient-boosting-algorithm">Gradient Boosting Algorithm</h2>
+<section id="a-function-optimization" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="a-function-optimization">A function optimization</h2>
+<p>Gradient Boosting views learning as an optimization problem.</p>
+<p>Instead of directly searching for a single complex predictor, the model is <em>built incrementally</em> as:</p>
+<p><span class="math display">\[
+F_M(x)=F_{M-1}(x)+\gamma_M h_M(x)
+\]</span></p>
+<p>where:</p>
 <ul>
-<li><p>Train a first weak learner <span class="math inline">\(f_1\)</span>, which predicts the response variable <span class="math inline">\(y\)</span>, and calculate the residuals <span class="math inline">\(y - f_1(x)\)</span>.</p></li>
-<li><p>Next, train a new model <span class="math inline">\(f_2\)</span>, to predict the residuals of the previous model, that is, to correct the errors made by model <span class="math inline">\(f_1\)</span>.</p>
-<ul>
-<li><p><span class="math inline">\(f_1(x) \approx y\)</span></p></li>
-<li><p><span class="math inline">\(f_2(x) \approx y - f_1(x)\)</span></p></li>
-</ul></li>
-<li><p>Iterate calculating residuals of the two models together <span class="math inline">\(y - f_1(x) - f_2(x)\)</span> and train a third model <span class="math inline">\(f_3\)</span> to correct them.</p>
-<ul>
-<li><span class="math inline">\(f_3(x) \approx y - f_1(x) - f_2(x)\)</span></li>
-</ul></li>
-<li><p>Repeat the process <span class="math inline">\(M\)</span> times, so that each new model minimizes the residuals (errors) of the previous one.</p></li>
+<li><span class="math inline">\(F_{M-1}(x)\)</span> is the current ensemble,</li>
+<li><span class="math inline">\(h_M(x)\)</span> is a new weak learner,</li>
+<li>and <span class="math inline">\(\gamma_M\)</span> controls how much the new learner contributes.</li>
 </ul>
+<p>At each iteration, the algorithm searches for the weak learner that most reduces the current loss function.</p>
+<p>The final model is constructed through a sequence of small corrective updates.</p>
 </section>
-<section id="gradient-boosting-may-overfit" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="gradient-boosting-may-overfit">Gradient Boosting may overfit</h2>
+<section id="relation-with-gradient-descent" class="level2">
+<h2 class="anchored" data-anchor-id="relation-with-gradient-descent">Relation with Gradient Descent</h2>
+<p>In gradient descent optimization, parameters are updated in the direction that most decreases the loss function:</p>
+<p><span class="math display">\[
+\theta_{new}=\theta_{old}-\eta\nabla L
+\]</span></p>
+<p>Gradient Boosting <em>applies the idea to predictive functions</em>.</p>
+<p>Instead of updating numerical parameters the algorithm <em>updates the prediction function itself</em>.</p>
+<p>At each iteration, a new weak learner is fitted to approximate the direction of steepest loss reduction.</p>
+</section>
+<section id="residual-fitting-as-a-special-case" class="level2">
+<h2 class="anchored" data-anchor-id="residual-fitting-as-a-special-case">Residual fitting as a special case</h2>
+<div class="font90">
 <ul>
-<li><p>Since the goal of Gradient Boosting is to minimize the residuals iteration by iteration, it is susceptible to overfitting.</p></li>
-<li><p>One way to avoid this problem is by using a regularization value, also known as the learning rate (<span class="math inline">\(\lambda\)</span>), which limits the influence of each model on the ensemble.</p></li>
-<li><p>As a result of this regularization, more models are needed to form the ensemble, but better results are achieved.</p>
-<ul>
-<li><p><span class="math inline">\(f_1(x) \approx y\)</span></p></li>
-<li><p><span class="math inline">\(f_2(x) \approx y - \lambda f_1(x)\)</span></p></li>
-<li><p><span class="math inline">\(f_3(x) \approx y - \lambda f_1(x) - \lambda f_2(x)\)</span></p></li>
-<li><p><span class="math inline">\(y \approx \lambda f_1(x) + \lambda f_2(x) + \lambda f_3(x) + \ldots + \lambda f_m(x)\)</span></p></li>
-</ul></li>
+<li><p>For squared error loss, {<span class="math inline">\(L(y,F(x))=(y-F(x))^2\)</span> } the negative gradient becomes: {<span class="math inline">\(-\partial{L}/\partial{F}=y-F(x)\)</span>}, which <em>corresponds exactly to the residuals</em>.</p></li>
+<li><p>Therefore, for least-squares regression, fitting the negative gradient, and fitting the residuals, are equivalent procedures.</p></li>
+<li><p>This explains why Gradient Boosting is often described as “iteratively fitting residuals”.</p></li>
+<li><p>However, for other loss functions the negative gradient is no longer the residual, and Gradient Boosting provides a much more general framework.</p></li>
 </ul>
+</div>
 </section>
-<section id="gradient-boosting-architechture" class="level2">
-<h2 class="anchored" data-anchor-id="gradient-boosting-architechture">Gradient boosting architechture</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/gradientboosting.jpeg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="images/gradientboosting.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><small> Source: <a href="https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/">Ensemble Learning: Bagging &amp; Boosting</a> </small></p>
+<section id="gradient-boosting-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="gradient-boosting-algorithm">Gradient Boosting algorithm</h2>
+<ol type="1">
+<li><p>Initialize model with constant prediction, <span class="math inline">\(F_0(x)\)</span>.</p></li>
+<li><p>For each iteration <span class="math inline">\(m=1,\dots,M\)</span>:</p>
+<ol type="a">
+<li>Compute the negative gradient of the loss function.</li>
+<li>Fit a weak learner <span class="math inline">\(h_m(x)\)</span> to the negative gradient.</li>
+<li>Find the optimal step size:<span class="math inline">\(\gamma_m\)</span>.</li>
+<li>Update the ensemble <span class="math display">\[
+F_m(x)=F_{m-1}(x)+\gamma_m h_m(x)
+\]</span></li>
+</ol></li>
+<li><p>Output the final ensemble model.</p></li>
+</ol>
+<!-- ## Gradient Boosting Algorithm  {.smaller} -->
+<!-- - Train a first weak learner $f_1$, which predicts the response variable $y$, and calculate the residuals $y - f_1(x)$. -->
+<!-- - Next, train a new model $f_2$, to predict the residuals of the previous model, that is, to correct the errors made by model $f_1$. -->
+<!--   - $f_1(x) \approx y$ -->
+<!--   - $f_2(x) \approx y - f_1(x)$ -->
+<!-- - Iterate calculating residuals of the two models together $y - f_1(x) - f_2(x)$ and train a third model $f_3$ to  correct them. -->
+<!--   - $f_3(x) \approx y - f_1(x) - f_2(x)$ -->
+<!-- - Repeat the process $M$ times, so that each new model minimizes the residuals (errors) of the previous one. -->
+<!-- ## Gradient Boosting may overfit {.smaller} -->
+<!-- - Since the goal of Gradient Boosting is to minimize the residuals iteration by iteration, it is susceptible to overfitting.  -->
+<!-- - One way to avoid this problem is by using a regularization value, also known as the learning rate ($\lambda$), which limits the influence of each model on the ensemble.  -->
+<!-- - As a result of this regularization, more models are needed to form the ensemble, but better results are achieved. -->
+<!--   - $f_1(x) \approx y$ -->
+<!--   - $f_2(x) \approx y - \lambda f_1(x)$ -->
+<!--   - $f_3(x) \approx y - \lambda f_1(x) - \lambda f_2(x)$ -->
+<!--   - $y \approx \lambda f_1(x) + \lambda f_2(x) + \lambda f_3(x) + \ldots + \lambda f_m(x)$ -->
 </section>
 <section id="gradient-boosting-pseudo-code" class="level2 smaller">
 <h2 class="smaller anchored" data-anchor-id="gradient-boosting-pseudo-code">Gradient Boosting pseudo-code</h2>
@@ -1422,29 +1447,35 @@ L(y,F(x))=e^{-yF(x)}
 <li>Output the final model: <span class="math inline">\(F(x) = f_T(x)\)</span></li>
 </ol>
 </section>
-<section id="relation-with-gradient-descent" class="level2">
-<h2 class="anchored" data-anchor-id="relation-with-gradient-descent">Relation with <em>Gradient Descent</em></h2>
-<ul>
-<li><p>Gradient Boosting can be seen as an extension of Gradient Descent, a popular optimization algorithm used to find the minimum of a function.</p>
-<ul>
-<li><p>In Gradient Descent, the weights of the model are updated in the opposite direction of the gradient of the cost function.</p></li>
-<li><p>In Gradient Boosting, the new model is trained on the negative gradient of the loss function, which is equivalent to minimizing the loss function in the direction of steepest descent.</p></li>
-</ul></li>
-</ul>
+<section id="gradient-boosting-architechture" class="level2">
+<h2 class="anchored" data-anchor-id="gradient-boosting-architechture">Gradient boosting architechture</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/gradientboosting.jpeg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="images/gradientboosting.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><small> Source: <a href="https://resources.experfy.com/ai-ml/ensemble-learning-bagging-boosting/">Ensemble Learning: Bagging &amp; Boosting</a> </small></p>
 </section>
 <section id="gradient-boosting-variations" class="level2">
 <h2 class="anchored" data-anchor-id="gradient-boosting-variations">Gradient Boosting Variations</h2>
 <ul>
-<li><p>Multiple extensions from Gradient Boosting.</p></li>
 <li><p><strong>XGBoost</strong></p>
 <ul>
 <li>Optimized implementation that uses regularization to control overfitting and provide better accuracy.</li>
-<li>Won many competitions.</li>
 </ul></li>
 <li><p><strong>LightGBM</strong></p>
 <ul>
 <li>Relies on a technique to reduce the number of samples used in each iteration.</li>
 <li>Faster training, good for large datasets.</li>
+</ul></li>
+<li><p><strong>CatBoost</strong></p>
+<ul>
+<li>specifically designed to handle categorical variables efficiently.</li>
 </ul></li>
 </ul>
 </section>
@@ -1540,7 +1571,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1572,47 +1614,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1647,11 +1649,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
