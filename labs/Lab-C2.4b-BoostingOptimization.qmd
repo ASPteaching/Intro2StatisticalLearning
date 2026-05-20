@@ -1,5 +1,5 @@
 ---
-title: "Ensembles Lab 2: Boosting"
+title: "Ensembles Lab 2.4: Boosting Optimization"
 authors:
 - Adapted by EVL, FRC and ASP
 date: "`r Sys.Date()`"
@@ -305,7 +305,7 @@ for (eta in eta_values) {
 cat("\n, Best hyperparameters values found:\n")
 cat("Eta:", best_params$eta, "\n")
 cat("Nrounds:", best_params$nrounds, "\n")
-cat("RMSE mínimo:", round(best_rmse, 4), "\n")
+cat("Minimum RMSE :", round(best_rmse, 4), "\n")
 
 ```
 

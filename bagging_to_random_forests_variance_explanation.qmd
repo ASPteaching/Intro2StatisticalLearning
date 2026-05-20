@@ -4,7 +4,6 @@ subtitle: "And why  do Random Forests do better than bagging"
 format:
   html:
     toc: true
-    theme: cosmo
     embed-resources: true
   pdf:
     toc: true

@@ -42,12 +42,12 @@ website:
         contents:
           - href: C2.2-Ensemble_Methods-Slides-RevealJS.qmd
             text: Ensemble Methods
-          - href: labs/Lab-C2.3-Random_Forests.qmd
-            text: Lab-C2.3-Random Forest
-          - href: labs/Lab-C2.3-Random_Forests_Python.html
-            text: Lab-C2.3-Random Forest (Python)
-          - href: labs/Lab-C2.4-Boosting.qmd
-            text: Lab-C2.4-Boosting
+          - href: labs/Lab-C2.3-Ensemble_Methods.qmd
+            text: Lab-C2.3-Ensemble Methods (R)
+          - href: labs/Lab-C2.3-Ensemble_Methods_Python_updated.html
+            text: Lab-C2.3-Ensemble Methods (Python)
+          - href: labs/Lab-C2.4b-BoostingOptimization.qmd
+            text: Lab-C2.4-Boosting Optimization (R)
           - href: labs/Lab-C2.5-The-caret_package.qmd
             text: Lab-C2.5-Caret
 

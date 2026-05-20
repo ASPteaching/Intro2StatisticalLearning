@@ -62,7 +62,7 @@ This lab continues on the previous one showing how to apply boosting. The same d
 
 ## Ames Housing dataset
 
-Packge `AmesHousing` contains the data jointly with some instructions to create the required dataset.
+Package `AmesHousing` contains the data jointly with some instructions to create the required dataset.
 
 We will use, however data from the `modeldata` package where some preprocessing of the data has already been performed (see: [https://www.tmwr.org/ames](https://www.tmwr.org/ames))
 
@@ -71,7 +71,7 @@ The dataset has 74 variables so a descriptive analysis is not provided.
 
 ```{r}
 dim(ames)
-boxplot(ames)
+boxplot(ames[,sapply(ames, is.numeric)], las=2, cex.axis=0.5)
 ```
 
 We proceed as in the previous lab and divide the reponse variable by 1000 facilitate reviewing the results .

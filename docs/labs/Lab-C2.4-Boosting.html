@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-05-09">
+<meta name="dcterms.date" content="2026-05-20">
 
 <title>Ensembles Lab 2: Boosting – Introduction to Statistical Learning</title>
 <style>
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C2.2-Ensemble_Methods-Slides.html">Ensemble Methods</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C2.4-Boosting.html">Lab-C2.4-Boosting</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Ensembles Lab 2: Boosting</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -241,20 +241,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../C2.2-Ensemble_Methods-Slides.html" class="sidebar-item-text sidebar-link">
+  <a href="../C2.2-Ensemble_Methods-Slides-RevealJS.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ensemble Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab-C2.3-Random_Forests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab-C2.3-Random Forest</span></a>
+  <a href="../labs/Lab-C2.3-Ensemble_Methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.3-Ensemble Methods (R)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab-C2.4-Boosting.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab-C2.4-Boosting</span></a>
+  <a href="../labs/Lab-C2.3-Ensemble_Methods_Python_updated.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.3-Ensemble Methods (Python)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab-C2.4b-BoostingOptimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab-C2.4-Boosting Optimization (R)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -394,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../C2.2-Ensemble_Methods-Slides.html">Ensemble Methods</a></li><li class="breadcrumb-item"><a href="../labs/Lab-C2.4-Boosting.html">Lab-C2.4-Boosting</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Ensembles Lab 2: Boosting</h1>
 </div>
@@ -413,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 9, 2026</p>
+      <p class="date">May 20, 2026</p>
     </div>
   </div>
   
@@ -442,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This lab continues on the previous one showing how to apply boosting. The same dataset as before will be used</p>
 <section id="ames-housing-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="ames-housing-dataset">Ames Housing dataset</h2>
-<p>Packge <code>AmesHousing</code> contains the data jointly with some instructions to create the required dataset.</p>
+<p>Package <code>AmesHousing</code> contains the data jointly with some instructions to create the required dataset.</p>
 <p>We will use, however data from the <code>modeldata</code> package where some preprocessing of the data has already been performed (see: <a href="https://www.tmwr.org/ames">https://www.tmwr.org/ames</a>)</p>
 <p>The dataset has 74 variables so a descriptive analysis is not provided.</p>
 <div class="cell">
@@ -450,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2930   74</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ames[,<span class="fu">sapply</span>(ames, is.numeric)], <span class="at">las=</span><span class="dv">2</span>, <span class="at">cex.axis=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
